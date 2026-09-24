@@ -1,22 +1,20 @@
 # MFE 230GA Final Project
 
-State-dependent climate alpha: a walk-forward test of green-minus-brown industry returns, conditioned on climate-transition attention and macro regimes. The assignment brief is in `assignment/`.
+State-dependent climate alpha: a walk-forward test of green-minus-brown industry returns, conditioned on climate-transition attention and macro regimes. The assignment brief is `MFE230GA_Final_Project_2025.pdf` and the current write-up is `writeup.pdf`.
 
 ## Layout
 
 ```
-assignment/   project brief
 data/         input CSVs (FF49 industries, FF3 factors, emissions intensity, macro series)
-literature/   reference papers
-notebooks/    analysis notebooks
+papers/       reference papers
+notebooks/    analysis notebooks, each paired with a .py script via jupytext
 outputs/      figures and tables produced by the notebooks
-reports/      write-ups and the final report
-chatgpt/      ChatGPT prompts, transcripts, and evaluations (required deliverable)
 ```
 
-## Running
+## Setup
 
 ```
-pip install -r requirements.txt
-jupyter notebook notebooks/climate_alpha_analysis.ipynb
+uv sync
 ```
+
+Open `notebooks/climate_alpha_analysis.ipynb` and select the `.venv` kernel. Edits to a notebook or its `.py` twin can be synced with `uv run jupytext --sync notebooks/<name>.ipynb`.
