@@ -1,0 +1,8 @@
+Paper,Central finding,Relation to this analysis
+Bolton & Kacperczyk (2021),Positive carbon premium,Not supported as a stable industry-level premium; not a direct test given the firm- vs. industry-level design difference.
+"Pastor, Stambaugh & Taylor (2021, 2022)",Green expected returns can be lower; ESG shocks create episodic realized outperformance,"Consistent with episodic repricing, especially during COVID, rather than constant alpha."
+"Aswani, Raghunandan & Rajgopal (2024)","Emissions-return results are sensitive to scaling, vendor estimates, and industry controls","Strongly consistent: the emissions file used here covers only 41 of 49 industries, omitting Oil."
+Zhang (2025),Brown firms' required return depends on policy-shock/climate-concern interaction and can switch sign,Consistent with the COVID/post-COVID sign reversal found here.
+Eskildsen et al. (2026),Green-minus-brown realized returns are insignificant after multiple-testing correction,Directly consistent with the full-sample null and the multiple-testing results above.
+Garleanu & Pedersen (2026),Required green-minus-brown return can switch sign across policy/climate states,Consistent with the COVID/post-COVID sign reversal.
+"Calin, Lupu & Topa (2026)",Transition spreads are asymmetric and regime dependent,"Partially supported: episodic and COVID-concentrated, but neither rule tested here produces a multiple-testing-robust holdout alpha."
