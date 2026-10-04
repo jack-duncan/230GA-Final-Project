@@ -1,0 +1,2 @@
+mutant,audit_rows,rows_flagged,detected,flagged_by_test,truncate_flags,synthetic_alpha,seconds
+M2 month-t return hedged with b_t,91,48,True,"{'f_perturb': 24, 'rb_perturb': 24}",0,-0.0002448409461802505,85

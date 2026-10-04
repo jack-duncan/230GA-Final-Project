@@ -1,0 +1,156 @@
+{
+ "purpose": "State of the M8 outputs before the post-verification correction rerun; copies with preserved mtimes are in this folder (tables/, figures/, run_0341.py).",
+ "recorded": "2026-09-26 06:04:26 PDT",
+ "files": {
+  "modules/M8_frozen_pre2010/PREREGISTRATION.md": {
+   "sha256": "e926c3aeef48555d3b895243cfeeb2007a356654207eb10ed8a630de2f270b51",
+   "birth": "2026-09-26 03:30:46.443458278 -0700",
+   "modify": "2026-09-26 03:30:46.447458277 -0700",
+   "size": 14129
+  },
+  "modules/M8_frozen_pre2010/first_run_record.json": {
+   "sha256": "74d2c238c2d878d199a05de052a2883ec398d7c5eb1a0afcb113ab46b322628d",
+   "birth": "2026-09-26 03:38:18.667452979 -0700",
+   "modify": "2026-09-26 03:38:18.670665887 -0700",
+   "size": 366
+  },
+  "modules/M8_frozen_pre2010/run.py": {
+   "sha256": "bcbbe32cf06d1878de7e834076c2a5374cf80346c81f30c9c6fe5c3c637522b5",
+   "birth": "2026-09-26 03:35:43.583464239 -0700",
+   "modify": "2026-09-26 03:41:13.398379745 -0700",
+   "size": 44443
+  },
+  "outputs/figures/M8_share_signal.pdf": {
+   "sha256": "ecfc20b31a04d55390dc8f116500b94495d580294b97d34dbcb8308e96eeed57",
+   "birth": "2026-09-26 03:38:16.163452666 -0700",
+   "modify": "2026-09-26 03:41:25.907466129 -0700",
+   "size": 41579
+  },
+  "outputs/figures/M8_share_signal.png": {
+   "sha256": "5a0f73b181c2886a0ef8026ec86f0ebf30e672f4e0b85cf663cc407aaebdb6be",
+   "birth": "2026-09-26 03:38:18.295452665 -0700",
+   "modify": "2026-09-26 03:41:27.078000189 -0700",
+   "size": 334309
+  },
+  "outputs/tables/M8_attribution.csv": {
+   "sha256": "65b034076daa8f3087639d7e881f0bcf0996419a09fba6107e65b75d3d79cbef",
+   "birth": "2026-09-26 03:38:13.211452656 -0700",
+   "modify": "2026-09-26 03:41:24.059466348 -0700",
+   "size": 4573
+  },
+  "outputs/tables/M8_attribution.tex": {
+   "sha256": "963776df6c2a491261bcb2f66ce38ab01be79684e35319e1a1d1b5418fc818ba",
+   "birth": "2026-09-26 03:38:13.235452656 -0700",
+   "modify": "2026-09-26 03:41:24.069676747 -0700",
+   "size": 1220
+  },
+  "outputs/tables/M8_bond_check.csv": {
+   "sha256": "bd8667d2f0fc86199fd39e501dd45f694ff5c7efdf348c4886aad0c6b8f511fb",
+   "birth": "2026-09-26 03:38:13.570375858 -0700",
+   "modify": "2026-09-26 03:41:24.199475031 -0700",
+   "size": 1667
+  },
+  "outputs/tables/M8_bond_check.tex": {
+   "sha256": "c70a9a411edf9a55670401bff040f661cb4cdb2de71f0a39ebd9f8e14722a3f5",
+   "birth": "2026-09-26 03:38:13.579452658 -0700",
+   "modify": "2026-09-26 03:41:24.202854131 -0700",
+   "size": 1108
+  },
+  "outputs/tables/M8_crossings.csv": {
+   "sha256": "92fe61dc201a2cc096ae94579ea2d0b73a57e50e066bebafbeaeeacbf522d0be",
+   "birth": "2026-09-26 03:38:13.551452658 -0700",
+   "modify": "2026-09-26 03:41:24.187466333 -0700",
+   "size": 5425
+  },
+  "outputs/tables/M8_crossings.tex": {
+   "sha256": "0ef8afadee0970bec2e82cc5538f5fd01a1ded34b7a42a73076dc8c3b5adda93",
+   "birth": "2026-09-26 03:38:13.567452658 -0700",
+   "modify": "2026-09-26 03:41:24.198216432 -0700",
+   "size": 2980
+  },
+  "outputs/tables/M8_decomposition.csv": {
+   "sha256": "8a998f4524a0830aee679216e55b9eb6104e7f0f992c80f5fbbca83e652d3eb0",
+   "birth": "2026-09-26 03:38:13.255452656 -0700",
+   "modify": "2026-09-26 03:41:24.076113146 -0700",
+   "size": 1425
+  },
+  "outputs/tables/M8_decomposition.tex": {
+   "sha256": "af14cc2cd78c945314522ccf76a48e6d2d1d591571a6a74d12fbbc8670b4f89b",
+   "birth": "2026-09-26 03:38:13.275452656 -0700",
+   "modify": "2026-09-26 03:41:24.083012645 -0700",
+   "size": 621
+  },
+  "outputs/tables/M8_decomposition_terms.csv": {
+   "sha256": "b2c6b2969ab3fc51e307e73284ecc6dd46d65c927d8d8fd08690e558f9373e11",
+   "birth": "2026-09-26 03:38:13.260407656 -0700",
+   "modify": "2026-09-26 03:41:24.078328646 -0700",
+   "size": 2609
+  },
+  "outputs/tables/M8_drop_one.csv": {
+   "sha256": "7a526036dd03f0e4652520d15bab2e6859502aa602d87dbdcd2b4129bd9d916d",
+   "birth": "2026-09-26 03:38:13.280651256 -0700",
+   "modify": "2026-09-26 03:41:24.084287045 -0700",
+   "size": 1314
+  },
+  "outputs/tables/M8_drop_one.tex": {
+   "sha256": "0562e4af033aed4b2a01f2c37cc6fcc2b23cd089bc28514d299c36c0a1c6c393",
+   "birth": "2026-09-26 03:38:13.291452656 -0700",
+   "modify": "2026-09-26 03:41:24.087712745 -0700",
+   "size": 534
+  },
+  "outputs/tables/M8_episodes.csv": {
+   "sha256": "261935f2c1c448600ae66cd42f8892475e74aed0b81fb906b67abe0895040206",
+   "birth": "2026-09-26 03:38:13.303452656 -0700",
+   "modify": "2026-09-26 03:41:24.092181044 -0700",
+   "size": 1376
+  },
+  "outputs/tables/M8_monthly_panel.csv": {
+   "sha256": "4392fc0b0fd5601b7f5223c7858ad06c20ddebba549571ee81861dfde408eaa2",
+   "birth": "2026-09-26 03:38:13.599452658 -0700",
+   "modify": "2026-09-26 03:41:24.227466328 -0700",
+   "size": 77608
+  },
+  "outputs/tables/M8_passbar.csv": {
+   "sha256": "6fe5557e4f71bb6518ce60d5ac5468eb902c0991dcfefe42bf4fceb82acfbc3e",
+   "birth": "2026-09-26 03:38:13.195452656 -0700",
+   "modify": "2026-09-26 03:41:24.055369548 -0700",
+   "size": 1306
+  },
+  "outputs/tables/M8_passbar.tex": {
+   "sha256": "9219eea9ad42fe4e6ea8b4f8b726a86d4e263946cc58c430a97d1c0ceb1dde68",
+   "birth": "2026-09-26 03:38:13.203452656 -0700",
+   "modify": "2026-09-26 03:41:24.057803348 -0700",
+   "size": 1256
+  },
+  "outputs/tables/M8_preregistration_hash.csv": {
+   "sha256": "a5c6f47d1d51dce30a03e7b48b07f64f3a277dd0207e9732d0ec6111b1d5c8bf",
+   "birth": "2026-09-26 03:38:13.639452658 -0700",
+   "modify": "2026-09-26 03:41:24.236615927 -0700",
+   "size": 426
+  },
+  "outputs/tables/M8_shuffle_draws.csv": {
+   "sha256": "25e7844780c6d693ae8f63825e3059e90460f878b543f71a15348530cb92edd8",
+   "birth": "2026-09-26 03:38:13.307452656 -0700",
+   "modify": "2026-09-26 03:41:24.163952636 -0700",
+   "size": 415425
+  },
+  "outputs/tables/M8_strategy_summary.csv": {
+   "sha256": "2f443e3f5821f0ce7a1d43ff655d9b377a095aa78a5d15af4dd935e61fd9aa2a",
+   "birth": "2026-09-26 03:38:13.295452656 -0700",
+   "modify": "2026-09-26 03:41:24.089032644 -0700",
+   "size": 783
+  },
+  "outputs/tables/M8_strategy_summary.tex": {
+   "sha256": "14dcbf22e5bd682f801234158220ed2a7c1e188cd451663d4a8f8aab27221f12",
+   "birth": "2026-09-26 03:38:13.299985256 -0700",
+   "modify": "2026-09-26 03:41:24.090404244 -0700",
+   "size": 520
+  },
+  "outputs/tables/M8_tests_ledger.csv": {
+   "sha256": "5eb9ae562485c87d8b55914790a892a76beed8b3c8c18ab3b6234400a3157331",
+   "birth": "2026-09-26 03:38:13.635452658 -0700",
+   "modify": "2026-09-26 03:41:24.234907127 -0700",
+   "size": 5542
+  }
+ }
+}

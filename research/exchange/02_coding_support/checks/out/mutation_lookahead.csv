@@ -1,0 +1,8 @@
+mutant,cuts,cuts_flagged,detected,synthetic_alpha
+none (as delivered),59,0,False,0.00017773181959506747
+M1 publication lag dropped,59,12,True,6.476831804707911e-05
+M2 month-t return hedged with b_t,59,0,False,0.0001697948643083306
+M3 signal uses next month's EMV,57,12,True,6.476831804707911e-05
+M4 size m_t uses next month's sd,59,59,True,0.0001616101881816865
+M5 hedge betas from a centered window,59,54,True,0.0002434476149417685
+M6 position earns its own month,59,0,False,-0.00043247056912570957

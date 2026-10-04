@@ -1,0 +1,46 @@
+% Re-wrapped by report/make_tables.py from outputs/tables/M4_emissions_team_rule_rerun.tex (content unchanged).
+\begin{table}[H]
+\centering\small
+\caption{Team Short-Brown timing rule (Original attention signal, 80th percentile, 3/6-month holds, 5\% residual vol target, team costs) re-run with the Brown leg swapped. team brown reproduces the team's numbers exactly, under same-month timing. Returns and alphas are annual decimals; active months is the team's count, which includes exit-cost months (Appendix~\ref{app:replication}, item 6).}
+\label{tab:m4_team_rule}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lllrrrrrrr}
+\toprule
+brown leg & hold & period & n months & active months & ann net & sharpe net & alpha ff3 ann & alpha ff3 t hac6 & b HML \\
+\midrule
+team brown & 3-month & post-2010 & 199 & 96 & 0.001 & 0.021 & 0.001 & 0.109 & -0.051 \\
+team brown & 3-month & validation & 151 & 74 & 0.013 & 0.412 & 0.013 & 1.468 & -0.049 \\
+team brown & 3-month & holdout & 48 & 22 & -0.038 & -1.153 & -0.040 & -2.187 & -0.034 \\
+team brown & 3-month & last 12 & 12 & 6 & -0.088 & -1.843 & -0.113 & -2.684 & 0.061 \\
+team brown & 6-month & post-2010 & 199 & 140 & 0.013 & 0.317 & 0.012 & 1.331 & -0.061 \\
+team brown & 6-month & validation & 151 & 103 & 0.025 & 0.588 & 0.022 & 2.230 & -0.064 \\
+team brown & 6-month & holdout & 48 & 37 & -0.021 & -0.492 & -0.023 & -1.657 & -0.036 \\
+team brown & 6-month & last 12 & 12 & 11 & -0.010 & -0.149 & -0.041 & -0.502 & 0.022 \\
+team brown ex aero ships & 3-month & post-2010 & 199 & 96 & 0.004 & 0.106 & 0.003 & 0.281 & -0.024 \\
+team brown ex aero ships & 3-month & validation & 151 & 74 & 0.010 & 0.296 & 0.009 & 0.924 & -0.014 \\
+team brown ex aero ships & 3-month & holdout & 48 & 22 & -0.018 & -0.588 & -0.019 & -1.304 & -0.035 \\
+team brown ex aero ships & 3-month & last 12 & 12 & 6 & -0.064 & -1.558 & -0.057 & -2.442 & -0.081 \\
+team brown ex aero ships & 6-month & post-2010 & 199 & 140 & 0.018 & 0.394 & 0.015 & 1.456 & -0.042 \\
+team brown ex aero ships & 6-month & validation & 151 & 103 & 0.022 & 0.486 & 0.019 & 1.536 & -0.033 \\
+team brown ex aero ships & 6-month & holdout & 48 & 37 & 0.003 & 0.081 & 0.002 & 0.098 & -0.055 \\
+team brown ex aero ships & 6-month & last 12 & 12 & 11 & -0.002 & -0.037 & -0.011 & -0.168 & -0.111 \\
+epa brown & 3-month & post-2010 & 199 & 96 & 0.009 & 0.265 & 0.009 & 1.132 & -0.055 \\
+epa brown & 3-month & validation & 151 & 74 & 0.017 & 0.448 & 0.017 & 1.753 & -0.051 \\
+epa brown & 3-month & holdout & 48 & 22 & -0.014 & -0.569 & -0.015 & -1.295 & -0.055 \\
+epa brown & 3-month & last 12 & 12 & 6 & -0.022 & -0.748 & 0.051 & 2.724 & -0.355 \\
+epa brown & 6-month & post-2010 & 199 & 140 & 0.024 & 0.510 & 0.020 & 1.459 & -0.062 \\
+epa brown & 6-month & validation & 151 & 103 & 0.031 & 0.660 & 0.029 & 1.748 & -0.041 \\
+epa brown & 6-month & holdout & 48 & 37 & 0.001 & 0.022 & -0.006 & -0.606 & -0.109 \\
+epa brown & 6-month & last 12 & 12 & 11 & 0.023 & 0.331 & 0.003 & 0.260 & -0.208 \\
+epa41 brown & 3-month & post-2010 & 199 & 96 & 0.010 & 0.303 & 0.010 & 1.297 & -0.060 \\
+epa41 brown & 3-month & validation & 151 & 74 & 0.018 & 0.487 & 0.017 & 1.877 & -0.055 \\
+epa41 brown & 3-month & holdout & 48 & 22 & -0.012 & -0.462 & -0.011 & -0.890 & -0.069 \\
+epa41 brown & 3-month & last 12 & 12 & 6 & -0.024 & -0.715 & 0.053 & 2.907 & -0.356 \\
+epa41 brown & 6-month & post-2010 & 199 & 140 & 0.024 & 0.539 & 0.021 & 1.663 & -0.069 \\
+epa41 brown & 6-month & validation & 151 & 103 & 0.029 & 0.647 & 0.027 & 1.745 & -0.051 \\
+epa41 brown & 6-month & holdout & 48 & 37 & 0.008 & 0.188 & 0.005 & 0.449 & -0.117 \\
+epa41 brown & 6-month & last 12 & 12 & 11 & 0.025 & 0.400 & 0.024 & 1.637 & -0.239 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table}

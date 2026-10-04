@@ -1,0 +1,1 @@
+{'mutant': 'M5 hedge betas from a centered window', 'audit_rows': 0, 'rows_flagged': 0, 'detected': 'audit raised ValueError: non-finite strategy values inside the test window', 'flagged_by_test': '', 'truncate_flags': 0, 'synthetic_alpha': nan, 'seconds': 2}

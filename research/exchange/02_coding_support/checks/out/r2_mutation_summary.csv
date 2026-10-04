@@ -1,0 +1,10 @@
+mutant,audit_rows,rows_flagged,detected,flagged_by_test,truncate_flags,synthetic_alpha,seconds
+none (as delivered),91,0,False,{},0,-0.000272716767759,84
+M1 publication lag dropped,91,10,True,{'signal_perturb': 10},0,-0.0006880746710232,84
+M2 month-t return hedged with b_t,91,48,True,"{'f_perturb': 24, 'rb_perturb': 24}",0,-0.0002448409461802,85
+M3 signal uses next month's EMV,91,10,True,{'signal_perturb': 10},0,-0.0008378439796672,85
+M4 size m_t uses next month's sd,91,49,True,"{'f_perturb': 24, 'post_window': 1, 'rb_perturb': 24}",0,-0.0002709558699345,96
+M5 hedge betas from a centered window,0,0,audit raised ValueError: non-finite strategy values inside the test window,,0,,2
+"M5b centered hedge betas, tail filled",91,67,True,"{'f_perturb': 24, 'post_window': 1, 'rb_perturb': 24, 'truncate': 18}",18,-0.0005239102909219,55
+M6 position earns its own month,91,59,True,"{'f_perturb': 24, 'rb_perturb': 24, 'signal_perturb': 11}",0,-0.000605129290773,95
+M7 cost charged in the trade month,91,59,True,"{'f_perturb': 24, 'rb_perturb': 24, 'signal_perturb': 11}",0,-0.0002431435901038,95

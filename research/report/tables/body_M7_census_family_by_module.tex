@@ -1,0 +1,18 @@
+% Written by report/make_tables.py from outputs/tables/M7_census_family_by_module.tex (tabular and note only).
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{llrrrrrrrrr}
+\toprule
+Family & Treatment & M1 & M1b & M2 & M3 & M4 & M5 & M6 & M8 & Total \\
+\midrule
+F & Holm, one-sided & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 \\
+P & Holm and BH, one-sided & 0 & 24 & 42 & 12 & 1 & 2 & 0 & 0 & 81 \\
+D & raw p, no correction & 15 & 16 & 4 & 21 & 0 & 2 & 8 & 7 & 73 \\
+X & calibration only & 0 & 170 & 0 & 0 & 0 & 0 & 0 & 0 & 170 \\
+L & confidence intervals only & 0 & 0 & 2231 & 2527 & 0 & 56 & 36 & 0 & 4850 \\
+R & BH and BY, one-sided, as distributions & 0 & 736 & 8161 & 156 & 282 & 0 & 2 & 0 & 9337 \\
+E & no correction & 652 & 954 & 3044 & 3644 & 519 & 356 & 228 & 14 & 9411 \\
+Total &  & 667 & 1900 & 13482 & 6360 & 802 & 416 & 274 & 22 & 23923 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\par\smallskip{\scriptsize 23,923 rows from eight ledgers; no exact duplicates. F frozen and hash-verified; P module primary alpha tests; D other primaries; X placebo and reference; L loadings and beta-timing terms; R robustness alpha grids; E exploratory. Rows with two-sided p below 0.05: 4,184, of which 1,624 alpha (783 positive, 841 negative), 1,325 loading, 561 mean, 536 other and 138 beta-timing.}

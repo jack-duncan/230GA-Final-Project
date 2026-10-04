@@ -1,0 +1,1 @@
+{'mutant': 'none (as delivered)', 'audit_rows': 91, 'rows_flagged': 0, 'detected': False, 'flagged_by_test': '{}', 'truncate_flags': 0, 'synthetic_alpha': -0.00027271676775901836, 'seconds': 84}

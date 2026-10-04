@@ -1,0 +1,7 @@
+test_attention_signal: ok
+test_pass_fail_table: ok
+test_seen_cut: ok
+test_leg_pipeline: ok
+test_check_no_lookahead: ok
+test_make_synthetic_inputs: ok
+run_unit_tests elapsed 32.6 s

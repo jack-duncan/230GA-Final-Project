@@ -1,0 +1,17 @@
+check,value,reference,note
+calendar-year total return 1994,-0.07456013815202411,-0.08036655550998592,reference = Damodaran annual 10y T-bond return; exact-repricing BOND = -0.0747
+calendar-year total return 1999,-0.06713968271692428,-0.08254214796268576,reference = Damodaran annual 10y T-bond return; exact-repricing BOND = -0.0670
+calendar-year total return 2008,0.19402644208352782,0.20101279926977011,reference = Damodaran annual 10y T-bond return; exact-repricing BOND = 0.1928
+calendar-year total return 2009,-0.06712452340882658,-0.11116695313259162,reference = Damodaran annual 10y T-bond return; exact-repricing BOND = -0.0667
+calendar-year total return 2022,-0.15035253420346895,-0.1782817153825067,reference = Damodaran annual 10y T-bond return; exact-repricing BOND = -0.1494
+calendar-year total return 2023,0.005246096664031752,0.0388,reference = Damodaran annual 10y T-bond return; exact-repricing BOND = 0.0052
+"corr(annual BOND, Damodaran) 1993-2025",0.9870294248315271,,33 years
+mean GS10 1990-1999 (decimal),0.06664333333333333,,
+modified duration 1990-1999 mean,7.223221246302244,,range 6.54 to 7.97
+modified duration 1993-2009 mean,7.744869288378229,,range 6.81 to 8.83
+modified duration 2010-2019 mean,8.839634151832854,,range 8.24 to 9.25
+max |D - closed form (1/y)(1-(1+y/2)^-20)|,3.055333763768431e-13,0.0,all months
+max |monthly BOND total - exact repricing| 1993-2009,0.0005369586180476171,,exact = dirty-price repricing at remaining maturity 10y - 1m
+"corr(monthly BOND total, exact) 1993-2009",0.9999995427840727,,
+"BOND excess mean 1993-2009, annualized",0.03286238804695124,,
+"BOND excess vol 1993-2009, annualized",0.0643494183070636,,

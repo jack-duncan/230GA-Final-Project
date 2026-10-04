@@ -1,0 +1,50 @@
+,value
+first signal month with a defined flag,1994-01
+first month a position can be set (end of),1994-02
+first return month the rule can affect,1994-03
+test window (return months),2010-01 to 2022-07
+n return months,151
+"EMVENRGYENVREG zero months, whole file",51
+signal months feeding the window,2009-11 to 2022-05
+  zero months among them,11
+  signal-off months (>10% zeros in trailing 60),0
+  months with a defined flag,140
+  extreme months,29
+crossings affecting the window,25
+hold months (position months in window),112
+independent episodes,6
+pi,0.7628392276533736
+mean m_t in hold months,0.7285779746448406
+min # Brown industries available (hedge history + window),5
+cfg.test_start,2010-01
+cfg.test_end,2022-07
+cfg.brown,"('Util', 'Ships', 'Aero', 'Steel', 'BldMt')"
+cfg.hedge_factors,"('Mkt-RF', 'SMB', 'HML')"
+cfg.hedge_window,60
+cfg.vol_window,36
+cfg.vol_target,0.05
+cfg.cost_w,0.001
+cfg.cost_mkt,0.0005
+cfg.cost_smb,0.0025
+cfg.cost_hml,0.0025
+cfg.hold_months,6
+cfg.pub_lag,1
+cfg.z_window,60
+cfg.z_min_nonzero,48
+cfg.max_zero_share,0.1
+cfg.pct,80.0
+cfg.min_pct_history,60
+cfg.attr_factors,"('Mkt-RF', 'SMB', 'HML', 'RMW', 'CMA', 'UMD', 'BOND', 'WTI', 'dVIX', 'dlogEMV')"
+cfg.interact,"('Mkt-RF', 'HML', 'BOND', 'dVIX')"
+cfg.nw_lags,6
+cfg.nw_lags_check,12
+cfg.t_bar,2.0
+cfg.p_bar,0.05
+cfg.min_episodes,8
+cfg.bridge_missing,True
+cfg.bridge_limit,6
+cfg.end_policy,truncate
+cfg.shuffle_draws,5000
+cfg.shuffle_min_gap,1
+cfg.shuffle_recompute_pi_I,True
+cfg.seed,230

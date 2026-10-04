@@ -1,0 +1,38 @@
+% Re-wrapped by report/make_tables.py from outputs/tables/M6_factor_timing_oos_primary.tex (content unchanged).
+\begin{table}[H]
+\centering\small
+\caption{Out-of-sample predictability of next-month Green-minus-Brown. Campbell-Thompson $R^2_{OOS}$ (percent) vs the expanding historical mean (or vs the nested no-attention model) and Clark-West t (NW6). Ridge penalty chosen each month by expanding-fold time-series CV. When CV picks the maximum penalty in every month the forecast equals the benchmark and the CW statistic is set to 0.}
+\label{tab:m6_oos_primary}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lllllrlllll}
+\toprule
+model & benchmark & period & start & end & n & r2 oos pct & cw t & cw p one sided & share lambda at max & label \\
+\midrule
+A noVIX 1970 ridge-CV & historical mean & full oos & 1990-01 & 2026-07 & 439 & 0.000 & 0.00 & 0.500 & 1.00 & primary \\
+A noVIX 1970 ridge-CV & historical mean & post-2010 & 2010-01 & 2026-07 & 199 & 0.000 & 0.00 & 0.500 & 1.00 & primary \\
+A noVIX 1970 ridge-CV & historical mean & validation & 2010-01 & 2022-07 & 151 & 0.000 & 0.00 & 0.500 & 1.00 & exploratory \\
+A noVIX 1970 ridge-CV & historical mean & holdout & 2022-08 & 2026-07 & 48 & 0.000 & 0.00 & 0.500 & 1.00 & exploratory \\
+A noVIX 1970 ridge-CV & historical mean & COVID & 2020-01 & 2021-12 & 24 & 0.000 & 0.00 & 0.500 & 1.00 & exploratory \\
+A noVIX 1970 ridge-CV & historical mean & rates, 2022--24 & 2022-01 & 2024-12 & 36 & 0.000 & 0.00 & 0.500 & 1.00 & exploratory \\
+A noVIX 1970 ridge-CV & historical mean & last 18 & 2025-02 & 2026-07 & 18 & 0.000 & 0.00 & 0.500 & 1.00 & exploratory \\
+A noVIX 1970 ridge-CV & historical mean & last 12 & 2025-08 & 2026-07 & 12 & 0.000 & 0.00 & 0.500 & 1.00 & exploratory \\
+B full 1990 ridge-CV & historical mean & full oos & 2000-01 & 2026-07 & 319 & 0.000 & 0.00 & 0.500 & 1.00 & primary \\
+B full 1990 ridge-CV & historical mean & post-2010 & 2010-01 & 2026-07 & 199 & 0.000 & 0.00 & 0.500 & 1.00 & primary \\
+B full 1990 ridge-CV & historical mean & validation & 2010-01 & 2022-07 & 151 & 0.000 & 0.00 & 0.500 & 1.00 & exploratory \\
+B full 1990 ridge-CV & historical mean & holdout & 2022-08 & 2026-07 & 48 & 0.000 & 0.00 & 0.500 & 1.00 & exploratory \\
+B full 1990 ridge-CV & historical mean & COVID & 2020-01 & 2021-12 & 24 & 0.000 & 0.00 & 0.500 & 1.00 & exploratory \\
+B full 1990 ridge-CV & historical mean & rates, 2022--24 & 2022-01 & 2024-12 & 36 & 0.000 & 0.00 & 0.500 & 1.00 & exploratory \\
+B full 1990 ridge-CV & historical mean & last 18 & 2025-02 & 2026-07 & 18 & 0.000 & 0.00 & 0.500 & 1.00 & exploratory \\
+B full 1990 ridge-CV & historical mean & last 12 & 2025-08 & 2026-07 & 12 & 0.000 & 0.00 & 0.500 & 1.00 & exploratory \\
+B full 1990 ridge-CV & B0 noATTN 1990 ridge-CV & full oos & 2000-01 & 2026-07 & 319 & 0.000 & 0.00 & 0.500 &  & primary \\
+B full 1990 ridge-CV & B0 noATTN 1990 ridge-CV & post-2010 & 2010-01 & 2026-07 & 199 & 0.000 & 0.00 & 0.500 &  & primary \\
+B full 1990 ridge-CV & B0 noATTN 1990 ridge-CV & validation & 2010-01 & 2022-07 & 151 & 0.000 & 0.00 & 0.500 &  & exploratory \\
+B full 1990 ridge-CV & B0 noATTN 1990 ridge-CV & holdout & 2022-08 & 2026-07 & 48 & 0.000 & 0.00 & 0.500 &  & exploratory \\
+B full 1990 ridge-CV & B0 noATTN 1990 ridge-CV & COVID & 2020-01 & 2021-12 & 24 & 0.000 & 0.00 & 0.500 &  & exploratory \\
+B full 1990 ridge-CV & B0 noATTN 1990 ridge-CV & rates, 2022--24 & 2022-01 & 2024-12 & 36 & 0.000 & 0.00 & 0.500 &  & exploratory \\
+B full 1990 ridge-CV & B0 noATTN 1990 ridge-CV & last 18 & 2025-02 & 2026-07 & 18 & 0.000 & 0.00 & 0.500 &  & exploratory \\
+B full 1990 ridge-CV & B0 noATTN 1990 ridge-CV & last 12 & 2025-08 & 2026-07 & 12 & 0.000 & 0.00 & 0.500 &  & exploratory \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table}

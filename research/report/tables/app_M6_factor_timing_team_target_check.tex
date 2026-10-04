@@ -1,0 +1,29 @@
+% Re-wrapped by report/make_tables.py from outputs/tables/M6_factor_timing_team_target_check.tex (content unchanged).
+\begin{table}[H]
+\centering\small
+\caption{Attention and the team's own target: next-month FF3 residual of the Brown leg (60-month rolling hedge, alpha and betas lagged one month). Out-of-sample $R^2$ (percent) and Clark-West t (NW6, one-sided p).}
+\label{tab:m6_team_target}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lllllrlll}
+\toprule
+model & benchmark & period & start & end & n & r2 oos pct & cw t & cw p one sided \\
+\midrule
+team target, ATTN ols & historical mean & full oos & 2000-01 & 2026-07 & 319 & -0.738 & -1.98 & 0.976 \\
+team target, ATTN ols & historical mean & post-2010 & 2010-01 & 2026-07 & 199 & -0.253 & -0.61 & 0.730 \\
+team target, ATTN ols & historical mean & holdout & 2022-08 & 2026-07 & 48 & -0.778 & -0.82 & 0.793 \\
+team target, B full 1990 ridge-CV & historical mean & full oos & 2000-01 & 2026-07 & 319 & -0.017 & -1.10 & 0.865 \\
+team target, B full 1990 ridge-CV & historical mean & post-2010 & 2010-01 & 2026-07 & 199 & -0.046 & -2.00 & 0.977 \\
+team target, B full 1990 ridge-CV & historical mean & holdout & 2022-08 & 2026-07 & 48 & 0.000 & 0.00 & 0.500 \\
+team target, B full 1990 ridge-CV & team target, B0 noATTN 1990 ridge-CV & full oos & 2000-01 & 2026-07 & 319 & 0.072 & 1.25 & 0.105 \\
+team target, B full 1990 ridge-CV & team target, B0 noATTN 1990 ridge-CV & post-2010 & 2010-01 & 2026-07 & 199 & 0.066 & 1.11 & 0.134 \\
+team target, B full 1990 ridge-CV & team target, B0 noATTN 1990 ridge-CV & holdout & 2022-08 & 2026-07 & 48 & 0.000 & 0.00 & 0.500 \\
+team target, B full 1990 fixed0 & team target, B0 noATTN 1990 fixed0 & full oos & 2000-01 & 2026-07 & 319 & -0.565 & -0.60 & 0.726 \\
+team target, B full 1990 fixed0 & team target, B0 noATTN 1990 fixed0 & post-2010 & 2010-01 & 2026-07 & 199 & -0.662 & -0.97 & 0.834 \\
+team target, B full 1990 fixed0 & team target, B0 noATTN 1990 fixed0 & holdout & 2022-08 & 2026-07 & 48 & 0.238 & 0.83 & 0.204 \\
+team target, B full 1990 fixed1 & team target, B0 noATTN 1990 fixed1 & full oos & 2000-01 & 2026-07 & 319 & -0.264 & -1.82 & 0.966 \\
+team target, B full 1990 fixed1 & team target, B0 noATTN 1990 fixed1 & post-2010 & 2010-01 & 2026-07 & 199 & -0.179 & -1.55 & 0.939 \\
+team target, B full 1990 fixed1 & team target, B0 noATTN 1990 fixed1 & holdout & 2022-08 & 2026-07 & 48 & -0.133 & -0.81 & 0.790 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table}

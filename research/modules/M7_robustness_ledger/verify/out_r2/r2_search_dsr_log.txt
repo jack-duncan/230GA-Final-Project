@@ -1,0 +1,84 @@
+[OK ] own factor parse equals lib/common (FF5+UMD, KF3): 0.0e+00, 0.0e+00; UMD from 1927-01
+building members ...
+[OK ] my EW variant list = non-primary rows of M5 robustness table
+[OK ] my screen list = non-primary rows of M5 screens table
+[OK ] 18 M5 regenerations reproduce Sharpe and FF5+UMD alpha to 1e-6: max diff 1.8e-16
+team rules: ['Original | Short Brown hold 3m', 'Pure | Short Brown hold 3m', 'Original | Short Brown hold 6m', 'Pure | Short Brown hold 6m', 'Continuous | raw attention', 'Continuous | pure attention']
+  MCCC eval_end 2025-07
+  CPU eval_end 2025-10
+  nonzero months zeroed after eval_end: {'MCCC O3': 0, 'MCCC P3': 0, 'MCCC O6': 2, 'MCCC P6': 2, 'MCCC CR': 2, 'MCCC CP': 2, 'CPU O3': 0, 'CPU P3': 2, 'CPU O6': 0, 'CPU P6': 5, 'CPU CR': 2, 'CPU CP': 2}
+[OK ] 12 M1b rules reproduce validation alpha t to 1e-6: 8.3e-17
+  M6 series: 13
+[OK ] S-full: (679, 58) with no missing month
+[OK ] S-post: (199, 89) with no missing month
+[OK ] S-full: my NW t and alpha equal M7_search_members.csv for all members: t 2.8e-14, alpha 3.8e-16
+[OK ] S-post: my NW t and alpha equal M7_search_members.csv for all members: t 4.7e-14, alpha 1.3e-15
+S-full: best opt:X_b-1.00 t 3.340 RW 0.0088; SPA 0.0086; max-t 95% 2.677; survivors 15
+    opt:X_b-0.75           t 3.329  RW adj p 0.0088
+    opt:X_b-1.00           t 3.340  RW adj p 0.0088
+    opt:X_b-0.50           t 3.313  RW adj p 0.0090
+    opt:X_b-0.25           t 3.270  RW adj p 0.0092
+    GB:epa_nomargin5       t 3.228  RW adj p 0.0106
+    opt:X_b-1.25           t 3.234  RW adj p 0.0106
+    opt:X_b+0.00           t 3.199  RW adj p 0.0120
+    GB:epa8                t 3.126  RW adj p 0.0142
+    opt:X_b+0.25           t 3.128  RW adj p 0.0142
+    opt:X_b+0.50           t 3.108  RW adj p 0.0150
+    opt:X_unc              t 3.071  RW adj p 0.0166
+    opt:X_b+1.00           t 3.071  RW adj p 0.0168
+    opt:X_b-1.50           t 3.004  RW adj p 0.0202
+    GB:epa_median8         t 2.761  RW adj p 0.0350
+    GB:epa_anylink5        t 2.665  RW adj p 0.0478
+[OK ] S-full: my RW adjusted p equal M7 for every member: max diff 9.0e-17
+    opt:X_unc: alpha 2.17% t 3.07 RW 0.0166
+    GB:epa5: alpha 4.54% t 2.58 RW 0.0580
+S-post: best opt:X_b-0.25 t 2.320 RW 0.1496; SPA 0.1496; max-t 95% 2.781; survivors 0
+[OK ] S-post: my RW adjusted p equal M7 for every member: max diff 1.1e-16
+    opt:X_unc: alpha 3.12% t 2.18 RW 0.1994
+    GB:epa5: alpha 4.72% t 1.52 RW 0.5577
+  RW sensitivity (draw, seed 20260926): S-full book 0.0104 epa5 0.0506 survivors 15 best 0.0050; S-post book 0.2094 epa5 0.5649 survivors 0 best 0.1576
+  RW sensitivity (m7, seed 777): S-full book 0.0146 epa5 0.0546 survivors 15 best 0.0058; S-post book 0.2048 epa5 0.5561 survivors 0 best 0.1588
+E[max] check N=42: formula 2.2087, simulated mean max of N iid N(0,1) 2.1770
+E[max] check N=75: formula 2.4277, simulated mean max of N iid N(0,1) 2.4024
+S-full: Nyholt 42.383 Li-Ji 14.000 K 42 clusters formed 42 V_cl 0.00246 floor 0.00147 E_N 2.2122 SR0 annual 0.380
+[OK ] book (X_unc) S-full: max N pass 3 equals M7 3
+[OK ] EPA 5v5 spread S-full: max N pass 2 equals M7 2
+S-post: Nyholt 74.816 Li-Ji 27.000 K 75 clusters formed 75 V_cl 0.00583 floor 0.00505 E_N 2.4268 SR0 annual 0.642
+[OK ] book (X_unc) S-post: max N pass 2 equals M7 2
+[OK ] EPA 5v5 spread S-post: max N pass 0 equals M7 0
+     candidate family  AR_annual  t_NW  t_OLS   skew  kurt  DSR_iid  DSR_NW  DSR_gov  N = Li-Ji  N = raw M  V = 1/(T-1), N = Nyholt  N = Li-Ji, V = 1/(T-1)  N = raw M, V = 1/(T-1)  PSR0  maxN  raw_SR  lo_SR  raw_DSR
+  book (X_unc) S-full      0.400 3.071  2.850  0.040 3.409    0.559   0.563    0.559      0.776      0.497                    0.786                   0.897                   0.749 0.999     3   0.555  0.553    0.859
+EPA 5v5 spread S-full      0.376 2.581  2.681 -0.208 4.101    0.488   0.488    0.488      0.709      0.427                    0.720                   0.849                   0.680 0.996     2   0.199  0.181    0.062
+  book (X_unc) S-post      0.557 2.180  2.154  0.213 2.909    0.363   0.362    0.362      0.533      0.336                    0.433                   0.593                   0.408 0.989     2   0.696  0.632    0.505
+EPA 5v5 spread S-post      0.410 1.516  1.585  0.183 3.884    0.171   0.182    0.171      0.302      0.155                    0.222                   0.357                   0.203 0.945     0   0.520  0.418    0.238
+[OK ] every DSR, sensitivity, PSR and context value equals M7_dsr.csv: max diff 8.0e-15
+[OK ] both candidates fail 0.95 in both windows under every sensitivity: most lenient 0.897
+  holdout FF5+UMD optimizer book (X_unc)                        a  -0.34% [ -4.16,   3.48] d  1.35 MDE  5.75 inconclusive
+  holdout FF5+UMD EW momentum book                              a  -4.48% [-13.51,   4.54] d  2.35 MDE 13.58 inconclusive
+  holdout FF5+UMD EPA 5v5 spread                                a   3.90% [ -5.49,  13.29] d  3.18 MDE 14.14 inconclusive
+  holdout FF5+UMD team: Original | Short Brown hold 3m          a  -4.41% [ -8.00,  -0.81] d  0.86 MDE  5.41 rejects a worthwhile alpha
+  holdout FF3     team: Original | Short Brown hold 3m          a  -4.03% [ -7.13,  -0.94] d  0.84 MDE  4.67 rejects a worthwhile alpha
+  holdout FF5+UMD team: Pure | Short Brown hold 3m              a  -2.09% [ -3.84,  -0.35] d  0.62 MDE  2.63 rejects a worthwhile alpha
+  holdout FF3     team: Pure | Short Brown hold 3m              a  -2.21% [ -4.13,  -0.29] d  0.60 MDE  2.89 rejects a worthwhile alpha
+  holdout FF5+UMD team: Original | Short Brown hold 6m          a  -3.18% [ -5.85,  -0.51] d  1.10 MDE  4.01 rejects a worthwhile alpha
+  holdout FF3     team: Original | Short Brown hold 6m          a  -2.28% [ -4.59,   0.03] d  1.12 MDE  3.48 rejects a worthwhile alpha
+  holdout FF5+UMD team: Pure | Short Brown hold 6m              a  -3.38% [ -6.19,  -0.58] d  1.07 MDE  4.22 rejects a worthwhile alpha
+  holdout FF3     team: Pure | Short Brown hold 6m              a  -2.71% [ -5.06,  -0.37] d  1.06 MDE  3.53 rejects a worthwhile alpha
+  holdout FF5+UMD team: Continuous | raw attention              a  -0.92% [ -1.69,  -0.14] d  0.28 MDE  1.16 rejects a worthwhile alpha
+  holdout FF3     team: Continuous | raw attention              a  -0.76% [ -1.41,  -0.12] d  0.28 MDE  0.97 rejects a worthwhile alpha
+  holdout FF5+UMD team: Continuous | pure attention             a  -0.65% [ -1.17,  -0.13] d  0.27 MDE  0.78 rejects a worthwhile alpha
+  holdout FF3     team: Continuous | pure attention             a  -0.54% [ -1.05,  -0.03] d  0.26 MDE  0.77 rejects a worthwhile alpha
+  holdout FF5+UMD reference: Always-short Brown                 a  -2.37% [ -5.44,   0.70] d  1.29 MDE  4.62 rejects a worthwhile alpha
+[OK ] holdout: 16 rows equal M7_holdout_reading.csv, readings identical: 8.1e-16
+  cost full: gross alpha 2.47% break-even 84 bp; turnover 2.92
+  cost post2010: gross alpha 3.42% break-even 117 bp; turnover 2.89
+  cost holdout: gross alpha -0.04% break-even nan bp; turnover 3.12
+[OK ] cost stress 12 alphas and t equal M7_cost_stress.csv: 2.0e-14
+frozen: n 462 alpha 1.953% SE 0.798% t 2.4478 p1 0.00737 df 457; halves 1.71% (t 1.44, n 231) / 0.90% (t 0.83, n 231); CI90 [0.64, 3.27] delta 1.28 (resid vol 5.14); UMD b 0.229 t 12.12; mkt b 0.030; R2 0.415; AR 0.380; S1 3.26% SE 1.85% t 1.76 n 78; S4 1.55% t 1.94; PASS
+[OK ] frozen stats equal M7_frozen_pre1970.csv
+  halves diff t 0.501; S3 worst -11.2% (1932-07), worst 3m -21.6% (ends 1932-09), max DD -30.2% (trough 1939-09); net 3.42% vol 6.69% turnover 2.68; elig 34-39; TE range 0.050000-0.050000; fallbacks 0, inaccurate 0; b=-1 net IR diff check: -0.005687625588842837
+  post-1970 FF3+UMD (kf3+umd): 2.024% t 2.859
+  post-1970 FF3+UMD (ff5file ff3+umd): 2.010% t 2.840
+  FF5+UMD 1970-2009: 1.987% t 2.308 n 480
+verdict book: (a) True (b) False [0.0166 / 0.1994] (c) False [0.559, 0.362] (d) False [-0.34%, inconclusive] -> Paper-trade
+verdict EPA 5v5: (a) False (b) False [0.0580 / 0.5577] (c) False [0.488, 0.171] (d) True [3.90%, inconclusive] -> Do not implement

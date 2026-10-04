@@ -1,0 +1,2 @@
+mutant,audit_rows,rows_flagged,detected,flagged_by_test,truncate_flags,synthetic_alpha,seconds
+M3 signal uses next month's EMV,91,10,True,{'signal_perturb': 10},0,-0.0008378439796672932,85

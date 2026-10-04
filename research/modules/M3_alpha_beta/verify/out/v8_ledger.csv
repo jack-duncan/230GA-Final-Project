@@ -1,0 +1,13 @@
+claim,ledger_rows
+COVID 24m structural leakage p 0.006 / residual p 0.72 (Sec 6),0
+COVID in-period regression residual t 0.24 (Sec 6),4
+"D = strategy - pi x benchmark: mean / COVID D / in-window alpha of D / holdout D (Sec 4 iii, 6, 7)",0
+D timing term (Sec 4 iii),48
+hedged Brown holdout alpha FF3 / FF3+UMD+BOND (Sec 4 ii),2
+"FS COVID / holdout dummy alphas (Sec 5, 6)",30
+FS bootstrap joint test (Sec 5),54
+macro-state corrected / BOND-control diffs (Sec 4 ii),120
+GB FF3 HML loading t -4.63 / -5.74 (Sec 4 i),192
+COVID FF5+UMD+BOND UMD t 4.49 / BOND t 2.29 (Sec 6),1
+BOND-hedged rerun holdout means (Sec 4 ii table),98
+"timing tests (Sec 5), expect 1,080",1080

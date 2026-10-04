@@ -1,0 +1,2 @@
+first_run_time,this_run_time,prereg_written,mode,prereg_file,prereg_sha256,window,tau0,shuffle_reps,seed,engine_check_team_orig6m,engine_check_always
+2026-09-26 03:37:46 PDT,2026-09-26 03:41:14 PDT,2026-09-26 03:29:54 PDT,primary,/home/hashim/projects/GA/project/research/modules/M8_frozen_pre2010/PREREGISTRATION.md,e926c3aeef48555d3b895243cfeeb2007a356654207eb10ed8a630de2f270b51,1994-03 to 2009-12,1994-02,5000,230,0.0,0.0

@@ -1,0 +1,21 @@
+[pass] (b)1 units and dates: EMV first month 1985-01-31; VIX first month 1990-01-31; loaders raised no unit error; Brown NaNs 1985-2009 = 0
+[STOP] (b)2 team trade 2010-01..2022-07, as delivered (hedge on FF5-file SMB/HML, FF5 RF): max |R^AO - team Always-short| = 2.32e-03; max |timed(team 6m hold) - team Original 6m| = 2.32e-03
+[pass] (b)2 team trade 2010-01..2022-07, hedge on team FF3 file (switch B): max |R^AO - team Always-short| = 5.55e-17; max |timed(team 6m hold) - team Original 6m| = 5.55e-17
+{'check': 'context: FF5-file vs team FF3-file factors, 1963-07..2026-07', 'chatgpt_stop_rule': '', 'result': "max |diff| {'Mkt-RF': 0.0007999999999999952, 'SMB': 0.0351, 'HML': 9.974659986866641e-17, 'RF': 9.974659986866641e-17}; corr(SMB) 1989-2009 = 0.9796", 'status': 'info'}
+[pass] (b)3 lag probe (pub_lag=0): hold(pub_lag=0) shifted one month == hold(pub_lag=1) in all 757 months: True
+[pass] (b)4 signal unit tests: extreme,1,zero,1,0,1: crossings with bridging 2 (expect 2), without 3 (expect 3); 6 zeros in trailing 60 -> on: True; 7 zeros -> off: True; zero months have NaN z: True
+[pass] (b)5 hold tests: single crossing 2000-03 -> positions 2000-04..2000-09: True; two crossings -> 9 months in 1 run: True; w range [-1.000, 0.000]
+[pass] (b)6 cost test: zero costs: max |net-gross| = 0.0e+00; first entry 1995-09: hand cost 2.138e-03, engine charges 2.138e-03 in 1995-10
+[pass] (b)7 BOND: D(5%) = 7.794581 vs closed form 7.794581; corr(BOND, -dy) 1993-2009 = 0.9959
+[pass] (b)8 regression mechanics: k = 15, n - k = 164, identity gap = 1.9e-18; run_backtest raised nothing
+[pass] (b)9 shuffle validity (placement): 5,000 placements of the real blocks [np.int64(6), np.int64(6), np.int64(16), np.int64(6), np.int64(11), np.int64(25), np.int64(20), np.int64(25), np.int64(23), np.int64(10)] in 179 slots: 0 violate K or total; seed 230 reproduces the reference p draw by draw under AB (p = 0.477904)
+                              case  delta   alpha_base  alpha_planted  t_planted  shuffle_p_planted  mean_D_shift  share_of_D_shift_in_alpha largest_|t|_regressor    its_t verdict
+0      v1 synthetic (as delivered)   0.03  0.000177732    0.000309128   0.983985           0.258706    0.00327447                  0.0401274                I*BOND -10.8392    FAIL
+1       v2 synthetic (BUG-1 fixed)   0.03  0.000354565     0.00379969    4.14879         0.00497512    0.00327447                    1.05211                   UMD -3.51625    FAIL
+2          v1 synthetic, delta = 0      0  0.000177732    0.000177732   0.413705           0.303483             0                        NaN                I*dVIX  2.32456    FAIL
+3  real data 1994-03..2009-12 (AB)  0.005 -0.000151528    0.000511544   0.862851           0.124378   0.000671395                   0.987603                 I*HML -2.22288    FAIL
+4  real data 1994-03..2009-12 (AB)   0.01 -0.000151528     0.00115974     1.8687          0.0199005    0.00132764                   0.987662                 I*HML -2.08608    FAIL
+5  real data 1994-03..2009-12 (AB)   0.03 -0.000151528     0.00346897    4.94569         0.00497512    0.00363336                   0.996459               dlogEMV   1.7898    PASS
+[STOP] (b)10 positive control, v1 as delivered: delta 3%: alpha 0.00031, t 0.98, shuffle p 0.259; only 4% of the mean(D) shift reaches alpha; I*BOND t = -10.8
+[pass] (b)10 positive control, v2 (GS10 generator fixed): delta 3%: alpha 0.00380, t 4.15, shuffle p 0.005; 105% of the mean(D) shift reaches alpha
+[pass] (b)10 delta = 0 returns the original alpha: |alpha(delta=0) - alpha| = 0.0e+00

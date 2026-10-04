@@ -1,0 +1,52 @@
+% Re-wrapped by report/make_tables.py from outputs/tables/M6_factor_timing_cv_design.tex (content unchanged).
+\begin{table}[H]
+\centering\small
+\caption{Cross-validation design sensitivity. Primary: validate on all expanding 12-month blocks after the first 60 training rows. recent120/recent60: only blocks ending in the last 120/60 training months. first120: first fold trains on 120 rows. grid max1e3: grid without the 1e6 point. Share of monthly refits at the largest grid penalty, median penalty, $R^2_{OOS}$ (percent) and Clark-West t.}
+\label{tab:m6_cv_design}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{llllrlllll}
+\toprule
+model & benchmark & cv design & period & n & share lambda at max & median lambda & r2 oos pct & cw t & cw p one sided \\
+\midrule
+A noVIX 1970 ridge-CV & historical mean & expanding all blocks (primary) & full oos & 439 & 1.00 & 1000000 & 0.000 & 0.00 & 0.500 \\
+A noVIX 1970 ridge-CV & historical mean & expanding all blocks (primary) & post-2010 & 199 & 1.00 & 1000000 & 0.000 & 0.00 & 0.500 \\
+B full 1990 ridge-CV & historical mean & expanding all blocks (primary) & full oos & 319 & 1.00 & 1000000 & 0.000 & 0.00 & 0.500 \\
+B full 1990 ridge-CV & historical mean & expanding all blocks (primary) & post-2010 & 199 & 1.00 & 1000000 & 0.000 & 0.00 & 0.500 \\
+B full 1990 ridge-CV & B0 noATTN 1990 ridge-CV & expanding all blocks (primary) & full oos & 319 &  &  & 0.000 & 0.00 & 0.500 \\
+B full 1990 ridge-CV & B0 noATTN 1990 ridge-CV & expanding all blocks (primary) & post-2010 & 199 &  &  & 0.000 & 0.00 & 0.500 \\
+A noVIX 1970 ridge-CV recent120 & historical mean & recent120 & full oos & 439 & 0.86 & 1000000 & -0.206 & -1.30 & 0.903 \\
+A noVIX 1970 ridge-CV recent120 & historical mean & recent120 & post-2010 & 199 & 0.86 & 1000000 & -0.410 & -1.11 & 0.866 \\
+A noVIX 1970 ridge-CV recent60 & historical mean & recent60 & full oos & 439 & 0.80 & 1000000 & -0.542 & -0.63 & 0.735 \\
+A noVIX 1970 ridge-CV recent60 & historical mean & recent60 & post-2010 & 199 & 0.80 & 1000000 & -0.325 & -0.18 & 0.570 \\
+A noVIX 1970 ridge-CV first120 & historical mean & first120 & full oos & 439 & 1.00 & 1000000 & 0.000 & 0.00 & 0.500 \\
+A noVIX 1970 ridge-CV first120 & historical mean & first120 & post-2010 & 199 & 1.00 & 1000000 & 0.000 & 0.00 & 0.500 \\
+A noVIX 1970 ridge-CV grid max1e3 & historical mean & grid max1e3 & full oos & 439 & 1.00 & 1000 & -0.001 & -1.06 & 0.855 \\
+A noVIX 1970 ridge-CV grid max1e3 & historical mean & grid max1e3 & post-2010 & 199 & 1.00 & 1000 & 0.001 & 0.47 & 0.320 \\
+B full 1990 ridge-CV recent120 & historical mean & recent120 & full oos & 319 & 0.81 & 1000000 & 0.070 & 0.50 & 0.307 \\
+B full 1990 ridge-CV recent120 & historical mean & recent120 & post-2010 & 199 & 0.81 & 1000000 & 0.130 & 0.50 & 0.307 \\
+B full 1990 ridge-CV recent60 & historical mean & recent60 & full oos & 319 & 0.52 & 1000000 & -0.343 & 0.34 & 0.366 \\
+B full 1990 ridge-CV recent60 & historical mean & recent60 & post-2010 & 199 & 0.52 & 1000000 & -0.327 & 0.10 & 0.461 \\
+B full 1990 ridge-CV first120 & historical mean & first120 & full oos & 319 & 0.99 & 1000000 & -0.596 & -1.04 & 0.850 \\
+B full 1990 ridge-CV first120 & historical mean & first120 & post-2010 & 199 & 0.99 & 1000000 & 0.000 & 0.00 & 0.500 \\
+B full 1990 ridge-CV grid max1e3 & historical mean & grid max1e3 & full oos & 319 & 1.00 & 1000 & 0.000 & 0.15 & 0.440 \\
+B full 1990 ridge-CV grid max1e3 & historical mean & grid max1e3 & post-2010 & 199 & 1.00 & 1000 & 0.003 & 0.69 & 0.245 \\
+B0 noATTN 1990 ridge-CV recent120 & historical mean & recent120 & full oos & 319 & 0.80 & 1000000 & 0.006 & 0.41 & 0.342 \\
+B0 noATTN 1990 ridge-CV recent120 & historical mean & recent120 & post-2010 & 199 & 0.80 & 1000000 & 0.011 & 0.41 & 0.342 \\
+B0 noATTN 1990 ridge-CV recent60 & historical mean & recent60 & full oos & 319 & 0.52 & 1000000 & -0.389 & 0.31 & 0.377 \\
+B0 noATTN 1990 ridge-CV recent60 & historical mean & recent60 & post-2010 & 199 & 0.52 & 1000000 & -0.476 & 0.06 & 0.477 \\
+B0 noATTN 1990 ridge-CV first120 & historical mean & first120 & full oos & 319 & 0.84 & 1000000 & -0.498 & -1.45 & 0.926 \\
+B0 noATTN 1990 ridge-CV first120 & historical mean & first120 & post-2010 & 199 & 0.84 & 1000000 & -0.138 & -1.97 & 0.975 \\
+B0 noATTN 1990 ridge-CV grid max1e3 & historical mean & grid max1e3 & full oos & 319 & 1.00 & 1000 & 0.001 & 0.51 & 0.306 \\
+B0 noATTN 1990 ridge-CV grid max1e3 & historical mean & grid max1e3 & post-2010 & 199 & 1.00 & 1000 & 0.003 & 0.75 & 0.226 \\
+B full 1990 ridge-CV recent120 & B0 noATTN 1990 ridge-CV recent120 & recent120 & full oos & 319 &  &  & 0.064 & 0.73 & 0.233 \\
+B full 1990 ridge-CV recent120 & B0 noATTN 1990 ridge-CV recent120 & recent120 & post-2010 & 199 &  &  & 0.120 & 0.73 & 0.232 \\
+B full 1990 ridge-CV recent60 & B0 noATTN 1990 ridge-CV recent60 & recent60 & full oos & 319 &  &  & 0.045 & 0.38 & 0.353 \\
+B full 1990 ridge-CV recent60 & B0 noATTN 1990 ridge-CV recent60 & recent60 & post-2010 & 199 &  &  & 0.148 & 0.73 & 0.232 \\
+B full 1990 ridge-CV first120 & B0 noATTN 1990 ridge-CV first120 & first120 & full oos & 319 &  &  & -0.098 & -0.33 & 0.631 \\
+B full 1990 ridge-CV first120 & B0 noATTN 1990 ridge-CV first120 & first120 & post-2010 & 199 &  &  & 0.138 & 1.99 & 0.024 \\
+B full 1990 ridge-CV grid max1e3 & B0 noATTN 1990 ridge-CV grid max1e3 & grid max1e3 & full oos & 319 &  &  & -0.001 & -1.47 & 0.929 \\
+B full 1990 ridge-CV grid max1e3 & B0 noATTN 1990 ridge-CV grid max1e3 & grid max1e3 & post-2010 & 199 &  &  & 0.000 & -0.14 & 0.554 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table}

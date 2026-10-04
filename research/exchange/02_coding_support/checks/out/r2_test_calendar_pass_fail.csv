@@ -1,0 +1,6 @@
+component,name,statistic,bar,value,passed,result,detail
+(i),timing alpha,NW(6) t of alpha,alpha > 0 and t >= 2,-0.2487438707918238,False,FAIL,"alpha = -0.000155/month, p = 0.8039 (t, n-k df)"
+(ii),calendar shuffle,shuffle p,<= 0.05,0.5302939412117577,False,FAIL,
+(iii),independent episodes,merged hold episodes,>= 8,10.0,True,PASS,
+(iv),drop each Brown industry,"min(full, drop-one alphas)","> 0, all 6",-0.0004458529469382213,False,FAIL,"full: -0.000155, Util: -0.000446, Ships: 0.000029, Aero: -0.000096, Steel: -0.000205, BldMt: -0.000070"
+overall,verdict,components passed,4 of 4,1.0,False,FAIL,1 of 4

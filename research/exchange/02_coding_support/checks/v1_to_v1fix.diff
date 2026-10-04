@@ -1,0 +1,20 @@
+--- chatgpt_code_v1.py	2026-09-26 06:27:07.777525361 -0700
++++ chatgpt_code_v1fix.py	2026-09-26 06:36:22.543075538 -0700
+@@ -878,7 +878,16 @@
+     emv_cat = emv_all * np.exp(-3.5 + x)
+     emv_cat[rng.random(ne) < np.where(e_idx < _me("1996-01"), 0.05, 0.01)] = 0.0
+     g_idx = _month_range("1953-04", end)
+-    gs10 = np.clip(5.0 + np.cumsum(rng.normal(0.0, 0.2, len(g_idx))), 0.5, 15.0)
++    # FIX (BUG-1): v1 used a driftless random walk clipped at [0.5, 15]; with this seed it sits on the 0.5 floor in
++    # 76% of 1995-2009 months, so BOND is a constant there and I*BOND acts as an I main effect that absorbs the
++    # planted timing effect. Same shocks (same RNG consumption, so every later synthetic series is unchanged),
++    # filtered as a mean-reverting AR(1) around 5% whose clip never binds.
++    shocks = rng.normal(0.0, 0.2, len(g_idx))
++    gs10 = np.empty(len(g_idx))
++    gs10[0] = 5.0 + shocks[0]
++    for i in range(1, len(g_idx)):
++        gs10[i] = 5.0 + 0.97 * (gs10[i - 1] - 5.0) + shocks[i]
++    gs10 = np.clip(gs10, 0.5, 15.0)
+     w_idx = _month_range("1986-01", end)
+     wti = 20.0 * np.exp(np.cumsum(rng.normal(0.0, 0.08, len(w_idx))))
+     days = pd.bdate_range("1990-01-02", _me(end))

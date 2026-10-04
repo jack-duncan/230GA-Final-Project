@@ -1,0 +1,127 @@
+**Bottom line:** no candidate reaches "implement" on the current evidence. The attention thesis is finished (items 1–3, 7 and 8). Two strategies from outside the thesis deserve strict scrutiny. Both fail today, and only one still has an unseen sample that could change that.
+
+---
+
+## 1. Families
+
+Group tests by the decision they could change, not by module.
+
+- **Confirmatory family, controlled for family-wise error.** This holds only the tests that could flip the verdict: each candidate's pre-specified alpha test. Make them one-sided, because only a positive alpha leads to implementation.
+  - Use Romano-Wolf stepdown. Romano and Wolf (2005, *Econometrica*) show that a bootstrap stepdown controls the family-wise error rate while using the dependence between tests, so it has more power than Holm.
+  - Bootstrap with a stationary block bootstrap that resamples the same months across every series. Report Holm alongside, since Holm is valid under any dependence.
+- **The 155 "primary" labels.** Only item 7 can be shown to have been pre-registered. Treat all 155 as one project-level family, not eight module families. A committee cannot check labels a module gave itself.
+- **Robustness grids, controlled for false discovery rate.** Cristhian's 8,091 alphas are a sensitivity analysis.
+  - BH (Benjamini and Hochberg 1995) holds under positive dependence. Benjamini and Yekutieli (2001) prove this for PRDS test statistics, and near-duplicate one-sided alphas are plausibly PRDS.
+  - BY, from the same 2001 paper, holds under any dependence but costs a factor of about ln m + 0.58. That is about 9.6 for m = 8,091 (my arithmetic, a guess).
+  - BH already finds zero positive survivors, and BY and Romano-Wolf are stricter, so they will not rescue anything.
+  - Report the grid as a distribution: the share of positive alphas and the median t.
+- **Exploratory tests (15,485): no family.** They generate hypotheses. Nothing here can be confirmed on the data that produced it, and the optimizer book's full-sample alpha sits in this group.
+- **Excluded: loadings, descriptive statistics and placebos.**
+  - Loadings (UMD beta 0.99, the beta-timing term) are diagnostics of the mechanism. Report them with confidence intervals.
+  - Placebos calibrate the null; they are not hypotheses.
+  - Most of the roughly 4,200 nominal hits are loadings, so that count tells you nothing.
+- **Near-duplicate variants**, in order of preference:
+  1. Pre-specify one composite statistic per strategy family, for example the equal-weight average of the six variants' alphas. That is one test, with more power.
+  2. Use a max-t bootstrap such as Romano-Wolf, which handles the correlation automatically.
+  3. To count tests, use Nyholt (2004): M_eff = 1 + (M−1)(1 − Var(λ)/M), where λ are the eigenvalues of the variants' return-correlation matrix.
+- **"Best of many" claims.** Use White's Reality Check (2000, *Econometrica*) or Hansen's SPA test (2005, *JBES*). Both test whether the best strategy beats the benchmark after allowing for the search. SPA is less distorted by poor, irrelevant alternatives.
+
+## 2. Deflated Sharpe
+
+**Formula.** Bailey and López de Prado (2014, *JPM*) define the deflated Sharpe ratio as DSR = PSR(SR₀), where:
+
+PSR(SR₀) = Φ[(SR̂ − SR₀)·√(T−1) / √(1 − γ₃·SR̂ + ((γ₄−1)/4)·SR̂²)]
+
+SR₀ = √V[SRₙ] · [(1−γ)·Φ⁻¹(1 − 1/N) + γ·Φ⁻¹(1 − 1/(N·e))]
+
+**Inputs:**
+- SR̂ as a monthly figure, not annualized
+- T, the number of months
+- skewness γ₃
+- raw kurtosis γ₄
+- N, the effective number of independent trials
+- V[SRₙ], the variance of Sharpe estimates across trials, in monthly units
+- γ ≈ 0.5772 (the Euler-Mascheroni constant)
+- pass bar: DSR ≥ 0.95
+
+**Which ratios to deflate:**
+1. The book's Sharpe ratio.
+2. The book's appraisal ratio (alpha divided by residual volatility). The claim is alpha, and with a UMD beta of 0.99 the raw Sharpe is mostly momentum.
+3. The EPA spread's post-2010 Sharpe ratio.
+
+**What counts as a trial:** every return series you looked at that could have been presented as "the strategy." That includes the team variants, the MCCC and CPU versions, Cristhian's grid, momentum lookbacks, carbon bounds, the optimizer's IC and tracking-error settings, and the choice of sample window (full versus post-2010). Placebos and loadings are not trials.
+
+**Effective number of trials:** cluster the trials' return series. López de Prado and Lewis (2019, *Quantitative Finance*) use clustering of strategy returns to estimate how many trials are effectively independent. Alternatively, use the eigenvalue M_eff above.
+
+**V[SRₙ]:** use the variance of Sharpe ratios across clusters. Setting it to the null value 1/(T−1) gives a lower bound on SR₀.
+
+**Autocorrelation:** PSR assumes independent returns. Your Newey-West t-statistics are below their iid equivalents (EPA: 1.72 against about 2.1). Correct with Lo (2002, *FAJ*), which gives the serial-correlation adjustment for annualized Sharpe ratios and their standard errors.
+
+**Hand arithmetic with V = 1/(T−1).** These are my calculations from your summary statistics; treat every figure as a guess until you code it.
+
+| Series | PSR(0) | DSR, N=10 | DSR, N=100 | DSR, N=1,000 |
+|---|---|---|---|---|
+| Book, full sample (0.555, T=679) | ≈1.00 | ≈0.99 | ≈0.94 | ≈0.81 |
+| Book, post-2010 (0.70, T=199) | ≈0.998 | ≈0.90 | ≈0.62 | ≈0.34 |
+| EPA, post-2010 (0.52, T=199) | ≈0.98 | ≈0.71 | – | – |
+
+- **EPA spread:** DSR is only about 0.94 to 0.95 at N = 2 (the team ranking versus the EPA ranking), before the autocorrelation correction. It fails.
+- **Book, appraisal ratio:** roughly t/√years ≈ 0.41. It clears DSR ≥ 0.95 only if the effective number of trials is at most about 7 (guess). Your project almost certainly has more, so the full-sample alpha does not survive deflation.
+
+## 3. Candidates
+
+**A. Carbon-aware momentum optimizer book.** It has the strongest statistics, but its alpha was exploratory.
+- **Holdout:** −0.34% with a standard error of about 2.3% (backed out from the t). Too short either to confirm the alpha or to kill it.
+- **Holdout rank IC:** 0.030, about one standard error below 0.054. I guess that standard error at about 0.02 for 48 months × 49 industries. The signal has not clearly died.
+- **Sample:** 1927-07 to 1969-12. FF49 starts in 1926-07 and the momentum signal needs 12 months of history. Nothing has touched this period.
+- **Freeze before running:** the code, IC 0.05, 5% tracking error, b = −1, 10 bp costs, and the rule for industries with missing early data. Hash and timestamp it as in item 7, then run it once.
+- **Benchmark:** FF3 + UMD, because FF5 starts in 1963-07. As a secondary test, FF5 + UMD on 1963-07 to 1969-12. The carbon ranks use 2022 intensities. That is acceptable here because carbon acts as a constraint, not as the source of return.
+- **Statistics:** the one-sided NW(6) t on alpha, and the alpha of the book minus the unconstrained book.
+- **Pass bar:**
+  - alpha t ≥ 2.0;
+  - alpha positive both before and after 1948;
+  - no significant carbon cost;
+  - project-wide DSR on the appraisal ratio ≥ 0.95.
+- **Power (guess):** your t implies residual volatility of about 5% a year, so the standard error is about 0.8% a year over 43 years. A true 2% alpha would clear t = 2.0 about two-thirds of the time. Residual volatility before the war is probably higher, which lowers power.
+
+**B. EPA Green-minus-Brown spread.** This one is weaker.
+- Its pre-specified alpha has t 1.52.
+- Its full-sample alpha comes from CMA and UMD loadings and a 2022 sort applied back to 1970.
+- Pástor, Stambaugh and Taylor (2022, *JFE*) attribute green stocks' outperformance in 2012–2020 to unexpected rises in climate concern, not to higher expected returns.
+- **Test:** post-2010 FF5 + UMD alpha with MCCC innovations added as a control. MCCC is an existing series, not a new signal.
+- **Pass bar:** one-sided alpha t ≥ 2.0 and DSR ≥ 0.95.
+- It has no clean unseen sample. Emissions intensities as they stood at the time do not exist before 2010, and a pre-1970 test says nothing about climate. It cannot reach "implement" within this project; its only route is live paper-trading.
+
+## 4. The one check
+
+**The frozen pre-1970 run of the book.** The result that would overturn "Do not implement":
+- FF3 + UMD alpha of roughly 1.5% a year or more (guess) with one-sided t ≥ 2.0;
+- the same sign in both halves;
+- DSR ≥ 0.95 at a documented effective number of trials.
+
+Even that would justify only "implement at pilot size with paper-trading," because the post-1970 evidence is exploratory and the holdout is flat. It would also change the verdict for a different strategy, not the attention thesis. EMV data start in 1985, and the frozen 1994–2009 test has already failed.
+
+## 5. What the committee will still object to
+
+- **It is just momentum.** The book is industry momentum with a carbon screen (UMD beta 0.99). Why not buy a cheaper momentum factor? The incremental alpha is small and was found by searching.
+- **Crash risk.** Daniel and Moskowitz (2016, *JFE*) show momentum suffers rare, persistent crashes in panic states after market declines, when the market rebounds. The full-sample skew is −0.28.
+- **Low power.** Forty-eight holdout months cannot tell 0% from a 2–4% alpha. "Do not implement" rests on insufficient evidence, not on evidence of no alpha.
+- **Unverified pre-registration.** Only item 7 is provable. With 23,923 tests, every other "primary" label has to be taken on trust.
+- **Data provenance.** One missing CPI print created an entire result. The emissions file has no source. The 2022 carbon ranks are applied back to 1970.
+- **Implementability.** FF49 portfolios cannot be traded directly. ETF proxies, borrow costs for shorting Aero and Ships, and costs above 10 bp are untested.
+- **Regime.** The IC flip and the across-the-board holdout losses coincide with the 2022 rate and energy shock. The BOND control helps, but 48 months cover a single regime.
+
+## 6. Checklist
+
+| # | Test | Pass bar | A fail means |
+|---|---|---|---|
+| 1 | Frozen pre-1970 run of the book | alpha t ≥ 2.0; positive in both halves | The book is a post-1970 artifact; close it |
+| 2 | DSR on the book's appraisal ratio, effective trials from clustering | ≥ 0.95 | The full-sample alpha is a product of selection |
+| 3 | Project-wide one-sided Romano-Wolf on the 155 primary tests | any positive survivor at 5% | Confirms the verdict |
+| 4 | Hansen SPA over all strategy return series against zero alpha | p < 0.05 | The best result from the search is noise |
+| 5 | Holdout power and equivalence (TOST, ±2% a year margin, a guess) | 90% interval inside the margin | The holdout cannot settle it; say "insufficient evidence" |
+| 6 | EPA spread with MCCC-innovation control | alpha t ≥ 2.0 | Its returns came from a shock in climate concern |
+| 7 | Data audit: ALFRED vintages for CPI and EMV, emissions source | headline figures move < 0.1 pp | Rerun everything downstream |
+| 8 | Pre-registered crash stress on the book (1932, 2009) | drawdown within the stated budget | Needs smaller size or an overlay |
+| 9 | ETF proxies with 25 bp costs | net alpha > 0 | The alpha exists only on paper |
+| 10 | Carbon frontier re-run on pre-1970 data | IR change at b = −1 not significant | The carbon constraint is not free |

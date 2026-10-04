@@ -1,0 +1,2 @@
+mutant,audit_rows,rows_flagged,detected,flagged_by_test,truncate_flags,synthetic_alpha,seconds
+M7 cost charged in the trade month,91,59,True,"{'f_perturb': 24, 'rb_perturb': 24, 'signal_perturb': 11}",0,-0.0002431435901038012,95

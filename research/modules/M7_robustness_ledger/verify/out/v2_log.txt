@@ -1,0 +1,59 @@
+S-full (679, 58) any NaN: False
+S-post (199, 89) any NaN: False
+S-full: member t max diff vs M7 2.80e-14; alpha max diff 3.82e-16
+S-full RW survivors: ['opt:X_unc', 'opt:X_b+1.00', 'opt:X_b+0.50', 'opt:X_b+0.25', 'opt:X_b+0.00', 'opt:X_b-0.25', 'opt:X_b-0.50', 'opt:X_b-0.75', 'opt:X_b-1.00', 'opt:X_b-1.25', 'opt:X_b-1.50', 'GB:epa8', 'GB:epa_nomargin5', 'GB:epa_anylink5', 'GB:epa_median8']
+S-full: Nyholt 42.383, Li-Ji 14.000, Sidak best 116.0
+S-post: member t max diff vs M7 4.73e-14; alpha max diff 1.25e-15
+S-post RW survivors: []
+S-post: Nyholt 74.816, Li-Ji 27.000, Sidak best 4.8
+   family                       boot          best    best_t   rw_best     spa_p    crit95  rw_survivors  rw_X_unc   rw_epa5  max_diff_rw_vs_M7
+0  S-full  same order, seed 20260926  opt:X_b-1.00  3.340026  0.008798  0.008598  2.677137            15  0.016597  0.057988       9.020562e-17
+1  S-full   row order, seed 20260926  opt:X_b-1.00  3.340026  0.004999  0.004999  2.606457            15  0.010398  0.050590                NaN
+2  S-full    block order, seed 12345  opt:X_b-1.00  3.340026  0.006599  0.006599  2.662515            15  0.016997  0.052390                NaN
+3  S-post  same order, seed 20260926  opt:X_b-0.25  2.320360  0.149570  0.149570  2.781301             0  0.199360  0.557688       1.110223e-16
+4  S-post   row order, seed 20260926  opt:X_b-0.25  2.320360  0.157568  0.157568  2.832477             0  0.209358  0.564887                NaN
+5  S-post    block order, seed 12345  opt:X_b-0.25  2.320360  0.156969  0.156969  2.866762             0  0.203559  0.550290                NaN
+S-full: K 42 (clusters formed 42), V_cl 0.00246, floor 0.00147, E_N 2.212, SR0 annual 0.380
+S-post: K 75 (clusters formed 75), V_cl 0.00583, floor 0.00505, E_N 2.427, SR0 annual 0.642
+   family     cand    T  AR_ann    t_nw   t_ols    skew    kurt     N_ny  N_lj       V  DSR_iid  DSR_NW  DSR_gov    LiJi    rawM  Vfloor  LiJi_Vfloor  rawM_Vfloor    PSR0  maxN  raw_SR_ann  lo_SR_ann  raw_DSR
+0  S-full     book  679  0.3999  3.0712  2.8504  0.0401  3.4094  42.3825  14.0  0.0025   0.5586  0.5631   0.5586  0.7759  0.4967  0.7858       0.8971       0.7492  0.9987     3      0.5553     0.5534   0.8593
+1  S-full  EPA 5v5  679  0.3761  2.5808  2.6807 -0.2076  4.1014  42.3825  14.0  0.0025   0.4877  0.4882   0.4877  0.7090  0.4271  0.7199       0.8488       0.6802  0.9963     2      0.1988     0.1811   0.0616
+2  S-post     book  199  0.5570  2.1802  2.1543  0.2134  2.9086  74.8161  27.0  0.0058   0.3633  0.3617   0.3617  0.5326  0.3362  0.4332       0.5930       0.4082  0.9889     2      0.6961     0.6321   0.5049
+3  S-post  EPA 5v5  199  0.4097  1.5164  1.5849  0.1834  3.8840  74.8161  27.0  0.0058   0.1712  0.1818   0.1712  0.3015  0.1546  0.2216       0.3567       0.2033  0.9454     0      0.5204     0.4183   0.2383
+S-full book diff DSR_gov 3.097522238704187e-13 diff raw 1.7785772854495008e-13 diff LiJi 2.822186928597148e-13 diff Vfloor 1.7963408538435033e-13 maxN 3 3 lo 0.5534226315249743 0.5534226315249743
+S-full EPA 5v5 diff DSR_gov 3.086420008457935e-13 diff raw 1.0037803921392197e-13 diff LiJi 3.0675462170393075e-13 diff Vfloor 1.9695356456850277e-13 maxN 2 2 lo 0.18110681104864756 0.1811068110486475
+S-post book diff DSR_gov 2.2370993946196904e-13 diff raw 2.3647750424515834e-13 diff LiJi 2.717825964282383e-13 diff Vfloor 2.1893598045608087e-13 maxN 2 2 lo 0.6320625400480115 0.6320625400480115
+S-post EPA 5v5 diff DSR_gov 1.5226708782734022e-13 diff raw 2.0483614804334138e-13 diff LiJi 2.4119595209981526e-13 diff Vfloor 1.6633916466446408e-13 maxN 0 0 lo 0.41831649038117175 0.4183164903811717
+                                 series    model   n   alpha      lo      hi   delta   mde80       reading
+0                                  book  FF5+UMD  48 -0.0034 -0.0416  0.0348  0.0135  0.0575  inconclusive
+1                                    EW  FF5+UMD  48 -0.0448 -0.1351  0.0454  0.0235  0.1358  inconclusive
+2                                  EPA5  FF5+UMD  48  0.0390 -0.0549  0.1329  0.0318  0.1414  inconclusive
+3   team:Original | Short Brown hold 3m  FF5+UMD  48 -0.0441 -0.0800 -0.0081  0.0086  0.0541       rejects
+4   team:Original | Short Brown hold 3m      FF3  48 -0.0403 -0.0713 -0.0094  0.0084  0.0467       rejects
+5       team:Pure | Short Brown hold 3m  FF5+UMD  48 -0.0209 -0.0384 -0.0035  0.0062  0.0263       rejects
+6       team:Pure | Short Brown hold 3m      FF3  48 -0.0221 -0.0413 -0.0029  0.0060  0.0289       rejects
+7   team:Original | Short Brown hold 6m  FF5+UMD  48 -0.0318 -0.0585 -0.0051  0.0110  0.0401       rejects
+8   team:Original | Short Brown hold 6m      FF3  48 -0.0228 -0.0459  0.0003  0.0112  0.0348       rejects
+9       team:Pure | Short Brown hold 6m  FF5+UMD  48 -0.0338 -0.0619 -0.0058  0.0107  0.0422       rejects
+10      team:Pure | Short Brown hold 6m      FF3  48 -0.0271 -0.0506 -0.0037  0.0106  0.0353       rejects
+11      team:Continuous | raw attention  FF5+UMD  48 -0.0092 -0.0169 -0.0014  0.0028  0.0116       rejects
+12      team:Continuous | raw attention      FF3  48 -0.0076 -0.0141 -0.0012  0.0028  0.0097       rejects
+13     team:Continuous | pure attention  FF5+UMD  48 -0.0065 -0.0117 -0.0013  0.0027  0.0078       rejects
+14     team:Continuous | pure attention      FF3  48 -0.0054 -0.0105 -0.0003  0.0026  0.0077       rejects
+15                         always-short  FF5+UMD  48 -0.0237 -0.0544  0.0070  0.0129  0.0462       rejects
+full 0bp 2.47% (t 3.50); 10bp 2.17% (t 3.07); 25bp 1.73% (t 2.43); 50bp 1.00% (t 1.39) ; breakeven 84 bp ; turnover 2.92
+post2010 0bp 3.42% (t 2.40); 10bp 3.12% (t 2.18); 25bp 2.68% (t 1.86); 50bp 1.95% (t 1.33) ; breakeven 117 bp ; turnover 2.89
+holdout 0bp -0.04% (t -0.02); 10bp -0.34% (t -0.15); 25bp -0.79% (t -0.35); 50bp -1.54% (t -0.67) ; gross alpha <= 0 ; turnover 3.12
+frozen months 462 1931-07-31 1969-12-31
+frozen (i): alpha 1.953% se 0.798% t 2.4478 p1 0.00737 df 457; UMD beta 0.229 (t 12.12), mkt 0.030, R2 0.415, AR 0.380
+  halves: 231 m 1.71% (t 1.44); 231 m 0.90% (t 0.83)
+  90% [0.64, 3.27], delta 1.28 (resid vol 5.14); net 3.42% vol 6.69% turnover 2.68
+  S4 25bp 1.55% t 1.94; elig 34-39; te 0.05000-0.05000; fallback 0, inaccurate 0
+  S3 worst month -11.2% 1932-07; worst 3m -21.6% end 1932-09; maxDD -30.2% trough 1939-09
+  S1 78 m: 3.26% se 1.85% t 1.76
+post-1970 book FF3+UMD alpha 2.02% t 2.86; resid vol 5.44%
+post-1970 crash: worst -12.8% 2009-04; 3m -17.5% end 2009-05; Mar-May 2009 -17.5%; maxDD -24.1% 2010-01
+
+real	0m50.264s
+user	1m25.946s
+sys	0m0.358s

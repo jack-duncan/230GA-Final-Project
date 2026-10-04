@@ -1,0 +1,21 @@
+signal,first_decision_month,last_decision_month,months,in_window_months
+Frozen EMV-share rule (primary),1995-09-30,1996-02-29,6,6
+Frozen EMV-share rule (primary),1996-05-31,1996-10-31,6,6
+Frozen EMV-share rule (primary),1996-12-31,1998-03-31,16,16
+Frozen EMV-share rule (primary),1998-08-31,1999-01-31,6,6
+Frozen EMV-share rule (primary),1999-04-30,2000-02-29,11,11
+Frozen EMV-share rule (primary),2000-10-31,2002-10-31,25,25
+Frozen EMV-share rule (primary),2003-07-31,2004-08-31,14,14
+Frozen EMV-share rule (primary),2004-11-30,2006-11-30,25,25
+Frozen EMV-share rule (primary),2007-02-28,2008-12-31,23,23
+Frozen EMV-share rule (primary),2009-02-28,2009-11-30,10,10
+"Team EMV_env level, lagged 1m (secondary)",1995-09-30,1996-02-29,6,6
+"Team EMV_env level, lagged 1m (secondary)",1996-04-30,1996-09-30,6,6
+"Team EMV_env level, lagged 1m (secondary)",1997-01-31,1998-03-31,15,15
+"Team EMV_env level, lagged 1m (secondary)",1998-08-31,2000-02-29,19,19
+"Team EMV_env level, lagged 1m (secondary)",2000-10-31,2001-09-30,12,12
+"Team EMV_env level, lagged 1m (secondary)",2002-02-28,2002-12-31,11,11
+"Team EMV_env level, lagged 1m (secondary)",2006-06-30,2006-11-30,6,6
+"Team EMV_env level, lagged 1m (secondary)",2007-02-28,2008-03-31,14,14
+"Team EMV_env level, lagged 1m (secondary)",2008-07-31,2009-03-31,9,9
+"Team EMV_env level, lagged 1m (secondary)",2009-06-30,2009-11-30,6,6

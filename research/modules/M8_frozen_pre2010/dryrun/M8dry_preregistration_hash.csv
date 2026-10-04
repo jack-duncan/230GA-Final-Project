@@ -1,0 +1,2 @@
+run_time,mode,prereg_file,prereg_sha256,window,tau0,shuffle_reps,seed,engine_check_team_orig6m,engine_check_always
+2026-09-26 03:36:35 PDT,dry_run,/home/hashim/projects/GA/project/research/modules/M8_frozen_pre2010/PREREGISTRATION.md,e926c3aeef48555d3b895243cfeeb2007a356654207eb10ed8a630de2f270b51,2010-01 to 2022-07,1994-02,5000,230,0.0,0.0

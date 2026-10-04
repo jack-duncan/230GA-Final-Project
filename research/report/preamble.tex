@@ -1,0 +1,29 @@
+% Shared preamble for the final report (built with tectonic; no shell-escape).
+\documentclass[11pt]{article}
+\usepackage[letterpaper,margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{booktabs,longtable,array,tabularx,multirow}
+\usepackage{threeparttable}
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage{subcaption}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\setlist{nosep,leftmargin=*}
+\usepackage[round,authoryear]{natbib}
+\usepackage{listings}
+\lstset{basicstyle=\ttfamily\scriptsize,breaklines=true,columns=fullflexible,frame=single,rulecolor=\color{black!30},showstringspaces=false,keywordstyle=\color{blue!60!black},commentstyle=\color{black!55},numbers=left,numberstyle=\tiny\color{black!40}}
+\usepackage{fancyhdr}
+\usepackage[hidelinks]{hyperref}
+\graphicspath{{../outputs/figures/}}
+\newcommand{\runningtitle}{MFE 230GA Final Project}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small\itshape\runningtitle}\fancyhead[R]{\small\itshape\nouppercase{\leftmark}}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+\setlength{\parskip}{0.45em}
+\setlength{\parindent}{0pt}

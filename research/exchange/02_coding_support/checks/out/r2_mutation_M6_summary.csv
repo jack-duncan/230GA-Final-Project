@@ -1,0 +1,2 @@
+mutant,audit_rows,rows_flagged,detected,flagged_by_test,truncate_flags,synthetic_alpha,seconds
+M6 position earns its own month,91,59,True,"{'f_perturb': 24, 'rb_perturb': 24, 'signal_perturb': 11}",0,-0.0006051292907730343,95

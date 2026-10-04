@@ -1,0 +1,26 @@
+% Written by report/make_tables.py from outputs/tables/M7_holdout_reading.tex (tabular and note only).
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{llrrrrrrl}
+\toprule
+Series & Model & Alpha \% & SE \% & 90\% CI low & 90\% CI high & Margin delta \% & MDE80 \% & Reading \\
+\midrule
+optimizer book (unconstrained) & FF5+UMD & -0.34 & 2.27 & -4.16 & 3.48 & 1.35 & 5.75 & inconclusive \\
+EW momentum book & FF5+UMD & -4.48 & 5.36 & -13.51 & 4.54 & 2.35 & 13.58 & inconclusive \\
+EPA 5v5 spread & FF5+UMD & 3.90 & 5.58 & -5.49 & 13.29 & 3.18 & 14.14 & inconclusive \\
+Original 3m & FF5+UMD & -4.41 & 2.14 & -8.00 & -0.81 & 0.86 & 5.41 & rejects a worthwhile alpha \\
+Original 3m & FF3 & -4.03 & 1.84 & -7.13 & -0.94 & 0.84 & 4.67 & rejects a worthwhile alpha \\
+Pure 3m & FF5+UMD & -2.09 & 1.04 & -3.84 & -0.35 & 0.62 & 2.63 & rejects a worthwhile alpha \\
+Pure 3m & FF3 & -2.21 & 1.14 & -4.13 & -0.29 & 0.60 & 2.89 & rejects a worthwhile alpha \\
+Original 6m & FF5+UMD & -3.18 & 1.58 & -5.85 & -0.51 & 1.10 & 4.01 & rejects a worthwhile alpha \\
+Original 6m & FF3 & -2.28 & 1.38 & -4.59 & 0.03 & 1.12 & 3.48 & rejects a worthwhile alpha \\
+Pure 6m & FF5+UMD & -3.38 & 1.66 & -6.19 & -0.58 & 1.07 & 4.22 & rejects a worthwhile alpha \\
+Pure 6m & FF3 & -2.71 & 1.40 & -5.06 & -0.37 & 1.06 & 3.53 & rejects a worthwhile alpha \\
+Continuous raw & FF5+UMD & -0.92 & 0.46 & -1.69 & -0.14 & 0.28 & 1.16 & rejects a worthwhile alpha \\
+Continuous raw & FF3 & -0.76 & 0.38 & -1.41 & -0.12 & 0.28 & 0.97 & rejects a worthwhile alpha \\
+Continuous pure & FF5+UMD & -0.65 & 0.31 & -1.17 & -0.13 & 0.27 & 0.78 & rejects a worthwhile alpha \\
+Continuous pure & FF3 & -0.54 & 0.30 & -1.05 & -0.03 & 0.26 & 0.77 & rejects a worthwhile alpha \\
+Ref.: Always-short Brown & FF5+UMD & -2.37 & 1.82 & -5.44 & 0.70 & 1.29 & 4.62 & rejects a worthwhile alpha \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\par\smallskip{\scriptsize Alpha: annualized intercept, NW(6) standard error. 90\% interval from t(n-k). Margin delta = 0.25 times the annualized residual volatility of the same regression. MDE80: minimum detectable alpha at 80\% power. Reading, first match: L > 0 and U < delta, positive but below the margin; L > 0, confirms; U < delta, rejects a worthwhile alpha; otherwise inconclusive.}

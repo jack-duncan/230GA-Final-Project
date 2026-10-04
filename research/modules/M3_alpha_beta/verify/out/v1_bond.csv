@@ -1,0 +1,32 @@
+,value
+max|mine - M8 ret_total|,2.8901226828415005e-09
+max|mine - M8 D_mod|,1.8270629453809306e-08
+max|mine - M8 ret_exact|,0.0
+max|mine BOND - M3 published BOND| 1970-2026,2.8901226967192883e-09
+2022-06 y0 (should be GS10 May-2022 = 2.90%),0.028999999999999998
+2022-06 y (should be GS10 Jun-2022 = 3.14%),0.031400000000000004
+1970-2026 excess mean ann (claim 2.16%),0.021625395634685587
+1970-2026 vol ann (claim 6.95%),0.06948280851127193
+Sharpe (claim 0.31),0.31123375836452233
+AR1 (claim 0.31),0.31130820793020275
+mean D (claim 7.56),7.562936503492123
+min D (5.04),5.035810511238025
+max D (9.68),9.681769756056742
+max |approx - exact| bp (claim 5.4),5.369586721294811
+corr approx vs exact (claim 0.99999),0.9999940366738133
+holdout mean excess ann (claim -3.68%),-0.0368112625050956
+2022-2024 mean excess ann (claim -8.37%),-0.08371365940085412
+2022 total (claim -15.0%),-0.1503525346472544
+worst year since 1954 (claim 2022),2022.0
+second worst year,2013.0
+second worst value,-0.07955847088285284
+n years Damodaran overlap (claim 72),72.0
+corr annual vs Damodaran 1954-2025 (claim 0.991),0.9907462812819967
+corr 1993-2025 (claim 0.987),0.9870294248053033
+mean abs diff pp (claim 0.85),0.8536670486452215
+Damodaran 2022 (claim -17.8%),-0.1782817153825067
+Damodaran worst year,2022.0
+BOND_eom AR1 (claim 0.08),0.08171105883181115
+BOND_eom holdout mean ann,-0.04389601116918519
+corr BOND vs BOND_eom monthly 1990-2026,0.7187281024559279
+corr BOND_t vs BOND_eom_{t-1},0.5796836976256339

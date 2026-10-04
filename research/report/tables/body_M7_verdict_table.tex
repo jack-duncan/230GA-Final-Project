@@ -1,0 +1,13 @@
+% Written by report/make_tables.py from outputs/tables/M7_verdict_table.tex (tabular and note only).
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{>{\raggedright\arraybackslash}p{2.1cm}>{\raggedright\arraybackslash}p{3.3cm}>{\raggedright\arraybackslash}p{3.3cm}>{\raggedright\arraybackslash}p{1.7cm}>{\raggedright\arraybackslash}p{1.5cm}>{\raggedright\arraybackslash}p{1.9cm}}
+\toprule
+Candidate & Evidence for & Evidence against & Adjusted significance & Deflated Sharpe (AR) & Verdict \\
+\midrule
+Optimizer book (unconstrained) & FF5+UMD alpha 2.17\%, t 3.07, 1970-2026; RW adj. p 0.017 (1970-2026), 0.199 (2010-2026); pre-1970 FF3+UMD alpha 1.95\%, t 2.45 (PASS) & holdout alpha -0.34\% (inconclusive); DSR 0.559 / 0.362; validation-to-holdout decay & RW 0.017 / 0.199 & 0.559 / 0.362 & Paper-trade (report verdict stays Do not implement) \\
+EPA 5v5 spread & FF5+UMD alpha 4.72\%, t 1.52, 2010-2026; RW adj. p 0.058 (1970-2026), 0.558 (2010-2026) & holdout alpha 3.90\% (inconclusive); DSR 0.488 / 0.171; no confirmatory test; 2022 intensities applied back to 1970 & RW 0.058 / 0.558 & 0.488 / 0.171 & Do not implement \\
+Attention thesis (Short-Brown rules) & validation-window alphas (team, M2 grid 89\% positive) & M8 frozen FAIL; family P smallest Holm p 1.00; holdout rejects a worthwhile alpha for 6 of 6 rules & Holm 1.00, BH 0.72 & not a candidate & Do not implement \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\par\smallskip{\scriptsize Implement requires (a) a hash-verified confirmatory alpha test, (b) Romano--Wolf adjusted p at most 0.05 in both search families, (c) governing DSR at least 0.95 in both windows and (d) a positive holdout alpha whose reading is not ``rejects''. Paper-trade: (a) holds and any of (b) to (d) fails. Do not implement: (a) fails.}

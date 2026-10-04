@@ -1,0 +1,76 @@
+ledgers: 8: ['M1_signal_audit_tests_ledger.csv', 'M1b_alt_signals_tests_ledger.csv', 'M2_christhian_tests_tests_ledger.csv', 'M3_alpha_beta_tests_ledger.csv', 'M4_emissions_tests_ledger.csv', 'M5_industry_momentum_tests_ledger.csv', 'M6_factor_timing_tests_ledger.csv', 'M8_tests_ledger.csv']
+[OK ] ledger rows = 23,923: 23923
+[OK ] no exact duplicates on nine standard columns
+[OK ] family x module table equals M7_census_family_by_module.csv: []
+family totals: {'F': 1, 'P': 81, 'D': 73, 'X': 170, 'L': 4850, 'R': 9337, 'E': 9411}
+[OK ] family totals equal the spec and FINDINGS
+[OK ] P by module = FINDINGS: {'M1b': 24, 'M2': 42, 'M3': 12, 'M4': 1, 'M5': 2}
+[OK ] D by module = FINDINGS: {'M1': 15, 'M1b': 16, 'M2': 4, 'M3': 21, 'M5': 2, 'M6': 8, 'M8': 7}
+R subfamilies: {'R-other:M1b': 736, 'R-M2': 8161, 'R-other:M3': 156, 'R-other:M4': 282, 'R-other:M6': 2}
+[OK ] R-M2 8,161 and R-other 1,176 (M1b 736, M4 282, M3 156, M6 2)
+[OK ] label x module table equals M7_census_label_by_module.csv: []
+[OK ] FINDINGS label-by-module table (every cell): []
+label totals: {'exploratory': 15485, 'primary': 155, 'robustness': 8113, 'reference': 82, 'placebo': 88}
+[OK ] label totals 15,485 / 8,113 / 155 / 88 / 82
+nominal: 4184; {'other': 536, 'alpha': 1624, 'mean': 561, 'loading': 1325, 'beta-timing': 138}; alpha +783 -841; loading share 0.3167; alpha share 0.3881
+[OK ] nominal census 4,184: alpha 1,624 (783+, 841-), loading 1,325, mean 561, other 536, beta-timing 138
+[OK ] nominal D 15, X 33, L 1,452, E 1,636: {'D': 15, 'X': 33, 'L': 1452, 'E': 1636}
+[OK ] P: 81 rows, 8 exact duplicates (M2 6, M3 2), m = 73: 81, 73, {'M2': 6, 'M3': 2}
+   duplicate: strat|L5|corr|FF5UC|team|Pure 3m|holdout|E:FF5UC|alpha == strat|L5|corr|FF5UC|team|Original 3m|holdout|E:FF5UC|alpha
+   duplicate: strat|L5|corr|FF5UC|team|Pure 6m|holdout|E:FF5UC|alpha == strat|L5|corr|FF5UC|team|Original 6m|holdout|E:FF5UC|alpha
+   duplicate: strat|L8H|corr|FF3|team|Pure 3m|holdout|E:FF3|alpha == strat|L8H|corr|FF3|team|Original 3m|holdout|E:FF3|alpha
+   duplicate: strat|L8H|corr|FF3|team|Pure 6m|holdout|E:FF3|alpha == strat|L8H|corr|FF3|team|Original 6m|holdout|E:FF3|alpha
+   duplicate: strat|L5|corr|FF3|u5|Pure 3m|holdout|E:FF3|alpha == strat|L5|corr|FF3|u5|Original 3m|holdout|E:FF3|alpha
+   duplicate: strat|L5|corr|FF3|u5|Pure 6m|holdout|E:FF3|alpha == strat|L5|corr|FF3|u5|Original 6m|holdout|E:FF3|alpha
+   duplicate: Q2.holdout_alpha_FF3UMDBOND.Pure 3m|corrected == Q2.holdout_alpha_FF3UMDBOND.Orig 3m|corrected
+   duplicate: Q2.holdout_alpha_FF3UMDBOND.Pure 6m|corrected == Q2.holdout_alpha_FF3UMDBOND.Orig 6m|corrected
+P xcheck vs statsmodels: holm 0.0e+00, bh 1.1e-16, by 0.0e+00
+P best: strat|L5|corr|FF3|u5|Pure 6m|post2010|E:FF3|alpha (M2_christhian_tests) t 1.8931 p1 0.02991; Sidak count 1.689
+P min Holm 1.0000, min BH 0.7181, min BY 1.0000; survivors Holm 0, BH 0, BY 0
+[OK ] P adjusted p equal M7_family_P.csv: max diff 2.2e-16
+[OK ] P: FINDINGS best p 0.0299, t 1.89, Sidak < 1.69; min Holm 1.00, BH 0.718, BY 1.00; 0 survivors
+F: M8 t -0.266 p1 0.6048 Holm 0.6048; C7(i) t 2.4478 p1 0.00737 Holm 0.01475
+[OK ] F Holm: M8 0.605 (no), C7(i) 0.0147 (yes)
+all primaries: 155, with p 154; missing: ['M8_share_iii_episodes']
+  Holm: ['Q2_joint_team_signal_z_full', 'Q3_fisher_zero_pre_post', 'spread|L5|full_1970|E:FF3|b_HML', 'spread|L5|post2010|E:FF3|b_HML']
+  BH: ['Q2_joint_team_signal_z_full', 'Q3_fisher_zero_pre_post', 'spread|L5|full_1970|E:FF3|b_HML', 'spread|L5|post2010|E:FF3|b_HML', 'spread|L5|post2010|E:FF5U|b_HML', 'Q3b.ln_timing.Pure 3m|corrected|36m-backward|post2010']
+  BY: ['Q2_joint_team_signal_z_full', 'Q3_fisher_zero_pre_post', 'spread|L5|full_1970|E:FF3|b_HML', 'spread|L5|post2010|E:FF3|b_HML']
+  types of BH survivors: [('Q2_joint_team_signal_z_full', 'M1', 'other'), ('Q3_fisher_zero_pre_post', 'M1', 'other'), ('spread|L5|full_1970|E:FF3|b_HML', 'M2', 'loading'), ('spread|L5|post2010|E:FF3|b_HML', 'M2', 'loading'), ('spread|L5|post2010|E:FF5U|b_HML', 'M2', 'loading'), ('Q3b.ln_timing.Pure 3m|corrected|36m-backward|post2010', 'M3', 'beta-timing')]
+[OK ] all-primaries: 4 Holm, 6 BH, 4 BY, Holm set == BY set, none alpha
+R family: m, share pos, min p1, min BH, min BY, BH surv, BY surv, BY divisor, best
+  R-M2             8161 0.5404 1.765e-04 0.4755 1.0000 0 0 9.584 strat|L5|corr|FF3|u5|Pure 3m|covid|E:FF3|alpha
+  R-other M1b       736 0.4076 6.607e-05 0.0486 0.3491 1 0 7.179 CPU_realtime_none_O3_covid_alpha
+  R-other M3        156 0.2500 1.156e-02 0.8041 1.0000 0 0 5.630 Q3a.fs_alpha_windowstd.Pure 6m|team|validation
+  R-other M4        282 0.5922 6.232e-04 0.1249 0.7769 0 0 6.221 alpha_FF5UMD_epa_nomargin5_full_1970
+  R-other M6          2 0.0000 6.414e-01 0.9288 1.0000 0 0 1.500 PORT_B_full_1990_timing_ols_lambda0_alpha_ff6_net_full
+  R-other pooled   1176 0.4303 6.607e-05 0.0777 0.5942 0 0 7.648 CPU_realtime_none_O3_covid_alpha
+  R pooled         9337 0.5265 6.607e-05 0.4661 1.0000 0 0 9.719 CPU_realtime_none_O3_covid_alpha
+    xcheck statsmodels BH 2.2e-16, BY 0.0e+00
+[OK ] every R row equals M7_family_R_summary.csv
+  R-other M1b BH survivors: [('CPU_realtime_none_O3_covid_alpha', 4.716904828148601, '24', 'alpha_ann=0.06829; window 2020-01-31 to 2021-12-31')]
+R-M2 by window (all rows | strategy rows): n, share>0, median t
+  all               8161  54.0%  0.126 |  8008  53.8%  0.118
+  full_1970           21 100.0%  1.453 |     0   nan%    nan
+  full_live         1078  75.0%  0.515 |  1078  75.0%  0.515
+  post2010          1078  76.4%  0.604 |  1057  76.6%  0.609
+  validation        1099  88.9%  1.142 |  1078  88.9%  1.148
+  pre_covid         1071  73.2%  0.502 |  1050  72.9%  0.493
+  covid             1071  70.7%  0.438 |  1050  70.5%  0.438
+  holdout           1078   2.7% -1.316 |  1057   2.3% -1.339
+  inflation_rates   1071  13.9% -0.728 |  1050  13.3% -0.740
+  last18             297   0.0% -2.350 |   294   0.0% -2.350
+  last12             297  20.2% -1.110 |   294  20.4% -1.110
+[OK ] R-M2 window table equals M7_grid_windows.csv
+[OK ] spread rows 153, strategy rows 8,008
+M7 ledger: 481 rows; {'robustness': 387, 'descriptive': 86, 'exploratory': 7, 'primary': 1}
+[OK ] M7 ledger 481 rows: 1 primary, 387 robustness, 86 descriptive, 7 exploratory
+[OK ] context tags: 33 descriptive, 1 exploratory: 33, 1
+  exploratory-tag row: ['M7_C2_allprimaries_holm_survivors']
+[OK ] only C7_i is primary
+[OK ] checks 1 and 9 rows are descriptive or exploratory
+[OK ] checks 2 to 8 rows other than C7(i) are robustness
+  rows by check: {1.0: 78, 2.0: 84, 3.0: 41, 4.0: 156, 5.0: 36, 6.0: 16, 7.0: 37, 8.0: 16, 9.0: 15, 10.0: 2}
+[OK ] M7 ledger has the 12 G7 columns: ['test_id', 'module', 'question', 'statistic_name', 'statistic', 'p_value_two_sided', 'n_obs', 'primary_or_exploratory', 'note', 'p_value_one_sided', 'alternative', 'family']
+[OK ] M7_all_tests.csv 24,404 rows = 23,923 module + 481 M7
+[OK ] M7_all_tests family column (module rows) equals my classification: {'E': 9411, 'R': 9337, 'L': 4850, 'X': 170, 'P': 81, 'D': 73, 'F': 1}
+[OK ] M7_all_tests module rows: same order, test_id, label, family and type; statistic and p equal: max |d stat| 5.7e-14, max |d p| 1.1e-16 (pandas fast float parser)

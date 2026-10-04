@@ -1,0 +1,546 @@
+section,claim,csv_value,claimed,tol,match
+Q2 spread,E:FF3 full_1970 alpha %,0.54364122,0.54,0.005000001,True
+Q2 spread,E:FF3 full_1970 t alpha,0.40695401,0.41,0.005000001,True
+Q2 spread,E:FF3 full_1970 b_HML,-0.23311144,-0.23,0.005000001,True
+Q2 spread,E:FF3 full_1970 t_HML,-4.6260255,-4.63,0.005000001,True
+Q2 spread,E:FF3 post2010 alpha %,-1.1231199,-1.12,0.005000001,True
+Q2 spread,E:FF3 post2010 t alpha,-0.48925906,-0.49,0.005000001,True
+Q2 spread,E:FF3 post2010 b_HML,-0.29842503,-0.3,0.005000001,True
+Q2 spread,E:FF3 post2010 t_HML,-5.7443533,-5.74,0.005000001,True
+Q2 spread,E:FF3 holdout alpha %,-4.590487,-4.59,0.005000001,True
+Q2 spread,E:FF3 holdout t alpha,-0.98834016,-0.99,0.005000001,True
+Q2 spread,E:FF3 holdout b_HML,-0.12613417,-0.13,0.005000001,True
+Q2 spread,E:FF3 holdout t_HML,-1.3414848,-1.34,0.005000001,True
+Q2 spread,E:FF3U full_1970 alpha %,1.1970448,1.2,0.005000001,True
+Q2 spread,E:FF3U full_1970 t alpha,0.89264525,0.89,0.005000001,True
+Q2 spread,E:FF3U full_1970 b_HML,-0.25610039,-0.26,0.005000001,True
+Q2 spread,E:FF3U full_1970 t_HML,-5.2043078,-5.2,0.005000001,True
+Q2 spread,E:FF3U post2010 alpha %,-0.67059177,-0.67,0.005000001,True
+Q2 spread,E:FF3U post2010 t alpha,-0.29806603,-0.3,0.005000001,True
+Q2 spread,E:FF3U post2010 b_HML,-0.32292287,-0.32,0.005000001,True
+Q2 spread,E:FF3U post2010 t_HML,-6.1554647,-6.16,0.005000001,True
+Q2 spread,E:FF3U holdout alpha %,-3.9620992,-3.96,0.005000001,True
+Q2 spread,E:FF3U holdout t alpha,-0.85029568,-0.85,0.005000001,True
+Q2 spread,E:FF3U holdout b_HML,-0.11333677,-0.11,0.005000001,True
+Q2 spread,E:FF3U holdout t_HML,-1.4455541,-1.45,0.005000001,True
+Q2 spread,E:FF5U full_1970 alpha %,2.1968608,2.2,0.005000001,True
+Q2 spread,E:FF5U full_1970 t alpha,1.6023541,1.6,0.005000001,True
+Q2 spread,E:FF5U full_1970 b_HML,-0.1403534,-0.14,0.005000001,True
+Q2 spread,E:FF5U full_1970 t_HML,-2.3844962,-2.38,0.005000001,True
+Q2 spread,E:FF5U post2010 alpha %,-0.16135962,-0.16,0.005000001,True
+Q2 spread,E:FF5U post2010 t alpha,-0.074946497,-0.07,0.005000001,True
+Q2 spread,E:FF5U post2010 b_HML,-0.23999421,-0.24,0.005000001,True
+Q2 spread,E:FF5U post2010 t_HML,-3.2065725,-3.21,0.005000001,True
+Q2 spread,E:FF5U holdout alpha %,-4.4431007,-4.44,0.005000001,True
+Q2 spread,E:FF5U holdout t alpha,-0.89722088,-0.9,0.005000001,True
+Q2 spread,E:FF5U holdout b_HML,0.017745938,0.02,0.005000001,True
+Q2 spread,E:FF5U holdout t_HML,0.13713299,0.14,0.005000001,True
+Q2 spread,E:FF5UC full_1970 alpha %,1.9134355,1.91,0.005000001,True
+Q2 spread,E:FF5UC full_1970 t alpha,1.5749433,1.57,0.005000001,True
+Q2 spread,E:FF5UC full_1970 b_HML,-0.11394368,-0.11,0.005000001,True
+Q2 spread,E:FF5UC full_1970 t_HML,-2.3002916,-2.3,0.005000001,True
+Q2 spread,E:FF5UC post2010 alpha %,-0.40840976,-0.41,0.005000001,True
+Q2 spread,E:FF5UC post2010 t alpha,-0.21917324,-0.22,0.005000001,True
+Q2 spread,E:FF5UC post2010 b_HML,-0.20591557,-0.21,0.005000001,True
+Q2 spread,E:FF5UC post2010 t_HML,-2.6706807,-2.67,0.005000001,True
+Q2 spread,E:FF5UC holdout alpha %,-2.3679043,-2.37,0.005000001,True
+Q2 spread,E:FF5UC holdout t alpha,-0.52952984,-0.53,0.005000001,True
+Q2 spread,E:FF5UC holdout b_HML,0.24193556,0.24,0.005000001,True
+Q2 spread,E:FF5UC holdout t_HML,2.0147134,2.01,0.005000001,True
+Q2 spread,E:FF5UC+cmdty full_1970 alpha %,1.1906408,1.19,0.005000001,True
+Q2 spread,E:FF5UC+cmdty full_1970 t alpha,0.78868223,0.79,0.005000001,True
+Q2 spread,E:FF5UC+cmdty full_1970 b_HML,-0.09101453,-0.09,0.005000001,True
+Q2 spread,E:FF5UC+cmdty full_1970 t_HML,-1.5577011,-1.56,0.005000001,True
+Q2 spread,E:FF5UC+cmdty post2010 alpha %,-0.40426579,-0.4,0.005000001,True
+Q2 spread,E:FF5UC+cmdty post2010 t alpha,-0.21939383,-0.22,0.005000001,True
+Q2 spread,E:FF5UC+cmdty post2010 b_HML,-0.19476305,-0.19,0.005000001,True
+Q2 spread,E:FF5UC+cmdty post2010 t_HML,-2.5534138,-2.55,0.005000001,True
+Q2 spread,E:FF5UC+cmdty holdout alpha %,-1.9022828,-1.9,0.005000001,True
+Q2 spread,E:FF5UC+cmdty holdout t alpha,-0.42098227,-0.42,0.005000001,True
+Q2 spread,E:FF5UC+cmdty holdout b_HML,0.20328939,0.2,0.005000001,True
+Q2 spread,E:FF5UC+cmdty holdout t_HML,1.9553367,1.96,0.005000001,True
+Q2 spread,E:FF5UC+cmdty full n,414,414,0.5,True
+Q2 spread,COMEQ loading full_1970,-0.17588202,-0.18,0.005000001,True
+Q2 spread,COMEQ t full_1970,-8.6993573,-8.7,0.005000001,True
+Q2 spread,COMEQ loading post2010,-0.12442067,-0.12,0.005000001,True
+Q2 spread,COMEQ t post2010,-2.697375,-2.7,0.005000001,True
+Q2 spread,COMEQ loading holdout,-0.2827449,-0.28,0.005000001,True
+Q2 spread,COMEQ t holdout,-3.5730569,-3.57,0.005000001,True
+Q2 spread,UMD holdout (FF5UC),-0.38279388,-0.38,0.005000001,True
+Q2 spread,UMD holdout t (FF5UC),-6.7640042,-6.76,0.005000001,True
+Q2 spread,UMD post2010 (FF5UC),-0.14167482,-0.14,0.005000001,True
+Q2 spread,UMD post2010 t (FF5UC),-2.1013989,-2.1,0.005000001,True
+Q2 spread,WTI t post2010,-0.66159236,-0.66,0.005000001,True
+Q2 spread,IMF t post2010,0.65486734,0.65,0.005000001,True
+Q2 spread,8/8H FF5UC full alpha %,2.5249259,2.52,0.005000001,True
+Q2 spread,8/8H FF5UC full t,2.5719169,2.57,0.005000001,True
+Q2 spread,8/8H FF5UC full p,0.010327783,0.01,0.000500001,True
+Q2 spread,8/8H FF5U full alpha %,2.9144066,2.91,0.005000001,True
+Q2 spread,8/8H FF5U full t,2.3456929,2.35,0.005000001,True
+Q2 spread,8/8H FF5UC post2010 alpha %,1.6397555,1.64,0.005000001,True
+Q2 spread,8/8H FF5UC post2010 t,1.1114104,1.11,0.005000001,True
+Q2 spread,8/8H FF5UC holdout alpha %,0.87847211,0.88,0.005000001,True
+Q2 spread,8/8H FF5UC holdout t,0.20119306,0.2,0.005000001,True
+Q1 spread,L8H post2010 FF3 alpha %,1.0876175,1.09,0.005000001,True
+Q1 spread,L8H post2010 FF3 t,0.55836215,0.56,0.005000001,True
+Q1 spread,L8M post2010 FF3 alpha %,0.86777035,0.87,0.005000001,True
+Q1 spread,L8M post2010 FF3 t,0.40582328,0.41,0.005000001,True
+Q1 spread,L8H holdout FF3 alpha %,1.2058497,1.21,0.005000001,True
+Q1 spread,L8H holdout FF3 t,0.23222688,0.23,0.005000001,True
+Q1 spread,L8M holdout FF3 alpha %,-2.5189797,-2.52,0.005000001,True
+Q1 spread,L8M holdout FF3 t,-0.43535425,-0.44,0.005000001,True
+Q1 team table,L5 validation Original 3m alpha %,1.3288322,1.33,0.005000001,True
+Q1 team table,L5 validation Original 3m t,1.4682783,1.47,0.005000001,True
+Q1 team table,L8H validation Original 3m alpha %,0.90225955,0.9,0.005000001,True
+Q1 team table,L8H validation Original 3m t,1.0152091,1.02,0.005000001,True
+Q1 team table,L5 validation Pure 6m alpha %,2.5080806,2.51,0.005000001,True
+Q1 team table,L5 validation Pure 6m t,2.4574121,2.46,0.005000001,True
+Q1 team table,L8H validation Pure 6m alpha %,2.5991873,2.6,0.005000001,True
+Q1 team table,L8H validation Pure 6m t,2.3056505,2.31,0.005000001,True
+Q1 team table,L5 holdout Original 3m alpha %,-4.0342993,-4.03,0.005000001,True
+Q1 team table,L5 holdout Original 3m t,-2.1873481,-2.19,0.005000001,True
+Q1 team table,L8H holdout Original 3m alpha %,-4.017279,-4.02,0.005000001,True
+Q1 team table,L8H holdout Original 3m t,-2.0083668,-2.01,0.005000001,True
+Q1 team table,L5 holdout Pure 6m alpha %,-2.7141371,-2.71,0.005000001,True
+Q1 team table,L5 holdout Pure 6m t,-1.9436089,-1.94,0.005000001,True
+Q1 team table,L8H holdout Pure 6m alpha %,-2.1589207,-2.16,0.005000001,True
+Q1 team table,L8H holdout Pure 6m t,-1.0902812,-1.09,0.005000001,True
+Q1 bootstrap,8/8 corr Pure 6m net %,1.7926832,1.79,0.005000001,True
+Q1 bootstrap,8/8 corr Pure 6m Sharpe,0.407039,0.41,0.005000001,True
+Q1 bootstrap,8/8 corr Pure 6m boot p,0.05,0.05,0.000500001,True
+Q1 bootstrap,8/8 team Continuous pure boot p,0.0372,0.037,0.000500001,True
+Q1 bootstrap,8/8 Always-short boot p (corr),0.0564,0.056,0.000500001,True
+Q1 bootstrap,8/8 Always-short boot p (team),0.0564,0.056,0.000500001,True
+Q2 bootstrap,"min bootstrap p over L5 FF5UC strategies (both baselines, excl. B&H GB)",0.2888,0.29,0.005000001,True
+Q2 hedge cost,Original 3m turnover FF3,4.7952784,4.8,0.005000001,True
+Q2 hedge cost,Original 3m turnover FF5UC,5.9869319,5.99,0.005000001,True
+Q2 hedge cost,Original 3m cost drag FF3 %,0.53119945,0.53,0.005000001,True
+Q2 hedge cost,Original 3m cost drag FF5UC %,0.85080408,0.85,0.005000001,True
+Q2 hedge cost,Always-short gross FF3 %,1.1497969,1.15,0.005000001,True
+Q2 hedge cost,Always-short gross FF5UC %,0.44164222,0.44,0.005000001,True
+Q2 hedge cost,"overlay turnover increase, signal rules, min %",35.056463,35,0.5,True
+Q2 hedge cost,"overlay turnover increase, signal rules, max %",53.903351,54,0.5,True
+Q2 hedge cost,"overlay turnover increase, always-short %",163.20092,163,0.5,True
+Q2 hedge cost,"total turnover increase, signal rules, min %",23.633142,24,0.5,True
+Q2 hedge cost,"total turnover increase, signal rules, max %",36.955657,37,0.5,True
+Q2 hedge cost,"total turnover increase, always-short %",126.63151,127,0.5,True
+Q2 hedge cost,q2_hedge_cost_change total pct min (signal rules),23.633142,24,0.5,True
+Q2 hedge cost,q2_hedge_cost_change overlay pct max (signal rules),53.903357,54,0.5,True
+Q2 hedge cost,q2_hedge_cost_change always-short overlay pct,163.20092,163,0.5,True
+Q2 residual HML,FF3 hedge post2010 b_HML max (least negative),-0.01549834,-0.015,0.000500001,True
+Q2 residual HML,FF3 hedge post2010 b_HML min,-0.052950815,-0.053,0.000500001,True
+Q2 residual HML,FF3 hedge post2010 t_HML max,-1.1898804,-1.19,0.005000001,True
+Q2 residual HML,FF3 hedge post2010 t_HML min,-1.9508612,-1.95,0.005000001,True
+Q2 residual HML,FF5UC hedge post2010 b_HML max,-0.023771288,-0.024,0.000500001,True
+Q2 residual HML,FF5UC hedge post2010 b_HML min,-0.078530656,-0.079,0.000500001,True
+Q2 residual HML,FF5UC hedge holdout b_HML min,0.039117511,0.039,0.000500001,True
+Q2 residual HML,FF5UC hedge holdout b_HML max,0.14829362,0.148,0.000500001,True
+Q2 residual HML,FF5UC hedge holdout t_HML max,2.2387588,2.24,0.005000001,True
+Q2 eval only,FF3-hedged Pure 6m post2010 on E:FF3 alpha %,1.4169109,1.42,0.005000001,True
+Q2 eval only,FF3-hedged Pure 6m post2010 on E:FF3 t,1.647374,1.65,0.005000001,True
+Q2 eval only,FF3-hedged Pure 6m post2010 on E:FF5UC alpha %,1.3467091,1.35,0.005000001,True
+Q2 eval only,FF3-hedged Pure 6m post2010 on E:FF5UC t,1.7419141,1.74,0.005000001,True
+Q2 eval only,FF3-hedged Pure 6m post2010 on E:FF5UC+cmdty alpha %,1.3376638,1.34,0.005000001,True
+Q2 eval only,FF3-hedged Pure 6m post2010 on E:FF5UC+cmdty t,1.7516231,1.75,0.005000001,True
+Q2 robustness,team baseline post2010 alpha range end 1,-0.55554447,-0.56,0.005000001,True
+Q2 robustness,team baseline post2010 alpha range end 2,0.99797844,1,0.005000001,True
+Q2 robustness,team baseline holdout alpha range end 1,-0.6629675,-0.66,0.005000001,True
+Q2 robustness,team baseline holdout alpha range end 2,-3.6133663,-3.61,0.005000001,True
+Q2 robustness,8/8 legs post2010 alpha range end 1,-0.11811675,-0.12,0.005000001,True
+Q2 robustness,8/8 legs post2010 alpha range end 2,0.60936498,0.61,0.005000001,True
+Q2 robustness,8/8 legs holdout alpha range end 1,-0.33948834,-0.34,0.005000001,True
+Q2 robustness,8/8 legs holdout alpha range end 2,-2.7043677,-2.7,0.005000001,True
+Q2 robustness,COMEQ ex-Gold post2010 alpha range end 1,-0.58120798,-0.58,0.005000001,True
+Q2 robustness,COMEQ ex-Gold post2010 alpha range end 2,0.3439182,0.34,0.005000001,True
+Q2 robustness,COMEQ ex-Gold holdout alpha range end 1,-0.80200194,-0.8,0.005000001,True
+Q2 robustness,COMEQ ex-Gold holdout alpha range end 2,-3.54598,-3.55,0.005000001,True
+Q2 robustness,team baseline post2010 max t,1.4014533,1.4,0.005000001,True
+Q2 robustness,WTI/IMF eval post2010 max t,0.79972614,0.8,0.005000001,True
+Q3 decomposition,FF5U post2010 Brown side,-0.31618329,-0.316,0.000500001,True
+Q3 decomposition,FF5U post2010 Green side,0.076189078,0.076,0.000500001,True
+Q3 decomposition,FF5U post2010 total,-0.23999421,-0.24,0.000500001,True
+Q3 decomposition,FF3 holdout Brown side,-0.5180456,-0.518,0.000500001,True
+Q3 decomposition,FF3 holdout Green side,0.39191143,0.392,0.000500001,True
+Q3 decomposition,FF3 holdout total,-0.12613418,-0.126,0.000500001,True
+Q3 decomposition,FF3 full_1970 Brown side,-0.4189517,-0.419,0.000500001,True
+Q3 decomposition,FF3 full_1970 Green side,0.18584027,0.186,0.000500001,True
+Q3 decomposition,FF3 full_1970 total,-0.23311144,-0.233,0.000500001,True
+Q3 decomposition,FF3 post2010 Brown side,-0.43722046,-0.437,0.000500001,True
+Q3 decomposition,FF3 post2010 Green side,0.13879543,0.139,0.000500001,True
+Q3 decomposition,FF3 post2010 total,-0.29842503,-0.298,0.000500001,True
+Q3 decomposition,post2010 FF3 contribution Steel,-0.13451258,-0.135,0.000500001,True
+Q3 decomposition,post2010 FF3 contribution Ships,-0.10474021,-0.105,0.000500001,True
+Q3 decomposition,post2010 FF3 contribution Aero,-0.088827548,-0.089,0.000500001,True
+Q3 decomposition,post2010 FF3 contribution BldMt,-0.071232372,-0.071,0.000500001,True
+Q3 decomposition,post2010 FF3 contribution Util,-0.03790775,-0.038,0.000500001,True
+Q3 decomposition,post2010 FF3 contribution RlEst,0.090458566,0.09,0.000500001,True
+Q3 decomposition,post2010 FF3 contribution Fin,0.079685256,0.08,0.000500001,True
+Q3 decomposition,post2010 FF3 contribution Telcm,0.053596696,0.054,0.000500001,True
+Q3 decomposition,post2010 FF3 contribution Drugs,-0.017903672,-0.018,0.000500001,True
+Q3 decomposition,post2010 FF3 contribution Fun,-0.06704142,-0.067,0.000500001,True
+Q3 decomposition,Steel + Ships,-0.23925279,-0.239,0.000500001,True
+Q3 industry,Fun post2010 FF3 b_HML,-0.3352071,-0.34,0.005000001,True
+Q3 industry,Fun post2010 FF3 t_HML,-3.0924597,-3.1,0.050000001,True
+Q3 industry,RlEst post2010 FF3 b_HML,0.45229283,0.45,0.005000001,True
+Q3 industry,RlEst post2010 FF3 t_HML,4.7550939,4.8,0.050000001,True
+Q3 industry,Drugs post2010 FF3 b_HML,-0.089518362,-0.09,0.005000001,True
+Q3 industry,Drugs post2010 FF3 t_HML,-1.0310185,-1,0.050000001,True
+Q3 industry,Telcm post2010 FF3 b_HML,0.26798348,0.27,0.005000001,True
+Q3 industry,Telcm post2010 FF3 t_HML,4.0159885,4,0.050000001,True
+Q3 industry,Fin post2010 FF3 b_HML,0.39842628,0.4,0.005000001,True
+Q3 industry,Fin post2010 FF3 t_HML,4.9466652,4.9,0.050000001,True
+Q3 industry,Util post2010 FF3 b_HML,0.18953875,0.19,0.005000001,True
+Q3 industry,Util post2010 FF3 t_HML,2.7296748,2.7,0.050000001,True
+Q3 industry,Ships post2010 FF3 b_HML,0.52370103,0.52,0.005000001,True
+Q3 industry,Ships post2010 FF3 t_HML,6.7550019,6.8,0.050000001,True
+Q3 industry,Aero post2010 FF3 b_HML,0.44413774,0.44,0.005000001,True
+Q3 industry,Aero post2010 FF3 t_HML,3.5866434,3.6,0.050000001,True
+Q3 industry,Steel post2010 FF3 b_HML,0.67256288,0.67,0.005000001,True
+Q3 industry,Steel post2010 FF3 t_HML,4.6313995,4.6,0.050000001,True
+Q3 industry,BldMt post2010 FF3 b_HML,0.35616186,0.36,0.005000001,True
+Q3 industry,BldMt post2010 FF3 t_HML,6.0320078,6,0.050000001,True
+Q3 industry,full Brown b_HML min,0.31832107,0.32,0.005000001,True
+Q3 industry,full Brown b_HML max,0.47500166,0.48,0.005000001,True
+Q3 industry,full Brown t_HML min > 3.8 (1=yes),1,1,0.5,True
+Q3 industry,full RlEst b_HML,0.70362759,0.7,0.005000001,True
+Q3 industry,full Fin b_HML,0.29396893,0.29,0.005000001,True
+Q3 industry,full Drugs b_HML,-0.25680588,-0.26,0.005000001,True
+Q3 industry,holdout Telcm b_HML,0.64606942,0.65,0.005000001,True
+Q3 industry,holdout RlEst b_HML,0.5416312,0.54,0.005000001,True
+Q3 industry,holdout Drugs b_HML,0.5247635,0.52,0.005000001,True
+Q3 industry,holdout Fin b_HML,0.45600793,0.46,0.005000001,True
+Q3 8/8,8/8 post2010 FF3 GB loading,-0.34679797,-0.35,0.005000001,True
+Q3 8/8,Autos contribution post2010,-0.059614412,-0.06,0.000500001,True
+Q3 8/8,Autos contribution holdout,-0.21892361,-0.219,0.000500001,True
+Q3 rolling,GB share neg 1975-2026 %,77.544426,78,0.5,True
+Q3 rolling,GB mean 1975-2026,-0.19429513,-0.19,0.005000001,True
+Q3 rolling,GB share neg 2010-2026 %,76.38191,76,0.5,True
+Q3 rolling,GB share neg holdout %,100,100,0.5,True
+Q3 rolling,GB mean holdout,-0.31272143,-0.31,0.005000001,True
+Q3 rolling,GB max 1975-2026,0.53133848,0.53,0.005000001,True
+Q3 rolling,Brown leg mean,0.29087496,0.29,0.005000001,True
+Q3 rolling,Brown leg share neg %,9.2084006,9,0.5,True
+Q3 rolling,Green leg mean,0.096579831,0.1,0.005000001,True
+Q3 rolling,FF5U GB share neg 1975-2026 %,62.681745,63,0.5,True
+Q3 rolling,FF5U GB share neg 2010-2026 %,75.376884,75,0.5,True
+Q3 rolling,run 2008-02..2013-10 dates and peak month (1=yes),1,1,0.5,True
+Q3 rolling,run 2008-02..2013-10 n windows,69,69,0.5,True
+Q3 rolling,run 2008-02..2013-10 peak,0.53133848,0.53,0.005000001,True
+Q3 rolling,run 2008-02..2013-10 Brown leg beta at peak,-0.12141514,-0.12,0.005000001,True
+Q3 rolling,run 1983-12..1987-03 dates and peak month (1=yes),1,1,0.5,True
+Q3 rolling,run 1983-12..1987-03 n windows,40,40,0.5,True
+Q3 rolling,run 1983-12..1987-03 peak,0.24549738,0.25,0.005000001,True
+Q3 rolling,run 1983-12..1987-03 Brown leg beta at peak,-0.037695791,-0.04,0.005000001,True
+Q3 rolling,other FF3 runs max n windows,9,9,0.5,True
+Q3 rolling,other FF3 runs max peak,0.10264297,0.1,0.005000001,True
+Q3 rolling,GB 1975-2026 max beta equals 2008-12 peak,0.53133848,0.53,0.005000001,True
+Q3 BE/ME,GB share negative %,88.461538,88.5,0.050000001,True
+Q3 BE/ME,GB mean rel log BE/ME,-0.25498382,-0.255,0.000500001,True
+Q3 BE/ME,cross-section mean Spearman,0.46759995,0.468,0.000500001,True
+Q3 BE/ME,cross-section t,10.480404,10.5,0.050000001,True
+Q3 BE/ME,GB beta vs BE/ME corr,-0.083866922,-0.08,0.005000001,True
+Q3 BE/ME,GB beta vs BE/ME t,-0.33935929,-0.34,0.005000001,True
+Q4 break-even,corr FF3 Original 3m validation bp,42.389711,42,0.5,True
+Q4 break-even,corr FF3 Pure 3m validation bp,40.488183,40,0.5,True
+Q4 break-even,corr FF3 Original 6m validation bp,93.421657,93,0.5,True
+Q4 break-even,corr FF3 Pure 6m validation bp,100.15203,100,0.5,True
+Q4 break-even,corr FF3 Continuous raw validation bp,45.89741,46,0.5,True
+Q4 break-even,corr FF3 Continuous pure validation bp,46.959386,47,0.5,True
+Q4 break-even,corr FF3 Always-short Brown validation bp,211.08307,211,0.5,True
+Q4 break-even,team FF3 Original 3m validation bp,36.727369,37,0.5,True
+Q4 break-even,team FF3 Pure 3m validation bp,36.748686,37,0.5,True
+Q4 break-even,team FF3 Original 6m validation bp,111.40085,111,0.5,True
+Q4 break-even,team FF3 Pure 6m validation bp,108.4329,108,0.5,True
+Q4 break-even,team FF3 Continuous raw validation bp,52.500778,53,0.5,True
+Q4 break-even,team FF3 Continuous pure validation bp,53.348573,53,0.5,True
+Q4 break-even,team FF3 Always-short Brown validation bp,211.08307,211,0.5,True
+Q4 turnover,corr FF3 Original 3m validation turnover,5.1160864,5.1,0.050000001,True
+Q4 turnover,corr FF3 Pure 3m validation turnover,5.7616052,5.8,0.050000001,True
+Q4 turnover,corr FF3 Original 6m validation turnover,2.3707858,2.4,0.050000001,True
+Q4 turnover,corr FF3 Pure 6m validation turnover,2.4961008,2.5,0.050000001,True
+Q4 turnover,corr FF3 Continuous raw validation turnover,1.3227981,1.3,0.050000001,True
+Q4 turnover,corr FF3 Continuous pure validation turnover,1.459629,1.5,0.050000001,True
+Q4 turnover,corr FF3 Always-short Brown validation turnover,0.72035032,0.7,0.050000001,True
+Q4 break-even,corr FF5UC validation min bp,19.438239,19,0.5,True
+Q4 break-even,corr FF5UC validation max bp,49.504027,50,0.5,True
+Q4 break-even,team FF5UC validation min bp,15.518858,16,0.5,True
+Q4 break-even,team FF5UC validation max bp,68.115412,68,0.5,True
+Q4 break-even,corr FF3 post2010 min bp (signal rules),27.239684,27,0.5,True
+Q4 break-even,corr FF3 post2010 max bp (signal rules),60.154946,60,0.5,True
+Q4 break-even,corr FF3 post2010 always-short bp,124.00796,124,0.5,True
+Q4 break-even,corr FF3 full_live min bp (signal rules),9.9099949,10,0.5,True
+Q4 break-even,corr FF3 full_live max bp (signal rules),60.556766,61,0.5,True
+Q4 break-even,corr FF3 full_live always-short bp,130.99305,131,0.5,True
+Q4 gross holdout,corr FF3 Original 3m gross holdout alpha %,-1.6665659,-1.67,0.005000001,True
+Q4 gross holdout,corr FF3 Always-short gross holdout alpha %,-1.6466652,-1.65,0.005000001,True
+Q4 gross holdout,"max gross holdout alpha over both baselines x {FF3, FF5UC} x 7 (<0)",-0.0039494409,-0.0039,5.0001e-05,True
+Q4 last18,corr FF3 u5 last18: all alphas negative (1=yes),1,1,0.5,True
+Q4 last18,Always-short last18 alpha %,-6.1873808,-6.19,0.005000001,True
+Q4 last18,Always-short last18 t,-1.8552642,-1.86,0.005000001,True
+Q4 last12,Original 3m last12 alpha %,1.1491332,1.15,0.005000001,True
+Q4 last12,Original 3m last12 t,0.28497038,0.28,0.005000001,True
+Q4 last12,Original 6m last12 alpha %,1.5118703,1.51,0.005000001,True
+Q4 last12,Original 6m last12 t,0.27821351,0.28,0.005000001,True
+Q4 last12,Pure 3m last12 alpha == Original 3m,0.011491332,0.011491332,1.0005e-09,True
+Q4 last12,Pure 3m last12 t == Original 3m,0.28497038,0.28497038,1.0005e-09,True
+Q4 last12,Pure 6m last12 alpha == Original 6m,0.015118703,0.015118703,1.0005e-09,True
+Q4 last12,Pure 6m last12 t == Original 6m,0.27821351,0.27821351,1.0005e-09,True
+Q4 last12,continuous rules and always-short negative (1=yes),1,1,0.5,True
+grid,n grid,8091,8091,0.5,True
+grid,positive p<0.05,368,368,0.5,True
+grid,negative p<0.05,531,531,0.5,True
+grid,min Holm,0.081813314,0.082,0.000500001,True
+grid,best positive p,0.00035295295,0.00035,5.001e-06,True
+grid,best positive BH,0.062081355,0.062,0.000500001,True
+grid,best post2010/holdout positive p,0.04938935,0.049,0.000500001,True
+grid,best post2010 Original 6m alpha %,1.3550387,1.36,0.005000001,True
+grid,best post2010 Original 6m t,1.9778002,1.98,0.005000001,True
+ledger,n tests,13482,13482,0.5,True
+ledger,n primary,46,46,0.5,True
+ledger,n robustness,5562,5562,0.5,True
+ledger,n exploratory,7874,7874,0.5,True
+grid,raw-spread alphas in family,153,153,0.5,True
+grid,strategy alphas in family,7938,7938,0.5,True
+grid,key_numbers n_grid_strategy_alphas_net_of_cost,7938,7938,0.5,True
+grid,key_numbers n_grid_raw_spread_alphas,153,153,0.5,True
+ledger,comeq rows,42,42,0.5,True
+best case,Original 3m best any alpha %,6.1531677,6.15,0.005000001,True
+best case,Original 3m best any t,4.3595287,4.36,0.005000001,True
+best case,Original 3m best any is COVID (1=yes),1,1,0.5,True
+best case,Pure 3m best any alpha %,6.4751768,6.48,0.005000001,True
+best case,Pure 3m best any t,4.3344782,4.33,0.005000001,True
+best case,Pure 3m best any is COVID (1=yes),1,1,0.5,True
+best case,Original 6m best any alpha %,4.4104679,4.41,0.005000001,True
+best case,Original 6m best any t,3.0520546,3.05,0.005000001,True
+best case,Original 6m best any is COVID (1=yes),1,1,0.5,True
+best case,Pure 6m best any alpha %,4.2732355,4.27,0.005000001,True
+best case,Pure 6m best any t,2.9343205,2.93,0.005000001,True
+best case,Pure 6m best any is COVID (1=yes),1,1,0.5,True
+best case,Continuous raw best any alpha %,1.9937418,1.99,0.005000001,True
+best case,Continuous raw best any t,3.4839633,3.48,0.005000001,True
+best case,Continuous raw best any is COVID (1=yes),1,1,0.5,True
+best case,Continuous pure best any alpha %,1.9902153,1.99,0.005000001,True
+best case,Continuous pure best any t,3.462866,3.46,0.005000001,True
+best case,Continuous pure best any is COVID (1=yes),1,1,0.5,True
+best case,Always-short Brown best any alpha %,3.8697904,3.87,0.005000001,True
+best case,Always-short Brown best any t,2.7551231,2.76,0.005000001,True
+best case,Always-short Brown best any is COVID (1=yes),1,1,0.5,True
+best case,Always-short best holdout alpha %,0.41982019,0.42,0.005000001,True
+full_live,team Original 3m start == 1993-01 (1=yes),1,1,0.5,True
+full_live,team Always-short Brown start == 1993-01 (1=yes),1,1,0.5,True
+full_live,team Continuous raw start == 1992-12 (1=yes),1,1,0.5,True
+full_live,team Pure 3m start == 1999-02 (1=yes),1,1,0.5,True
+full_live,team Continuous pure start == 1999-01 (1=yes),1,1,0.5,True
+full_live,corr Original 3m start == 1993-02 (1=yes),1,1,0.5,True
+full_live,corr Always-short Brown start == 1993-02 (1=yes),1,1,0.5,True
+full_live,corr Continuous raw start == 1993-01 (1=yes),1,1,0.5,True
+full_live,corr Pure 3m start == 1999-03 (1=yes),1,1,0.5,True
+full_live,corr Continuous pure start == 1999-02 (1=yes),1,1,0.5,True
+census,holdout_net_regressions,1050,1050,0.5,True
+census,holdout_net_positive,24,24,0.5,True
+census,holdout_net_positive_signal_rules,0,0,0.5,True
+census,holdout_net_max_alpha %,0.41982019,0.42,0.005000001,True
+census,holdout_net_max_alpha_t,0.22353274,0.22,0.005000001,True
+census,holdout_net_max_signal_rule_alpha %,-0.029734328,-0.03,0.005000001,True
+census,holdout_gross_regressions,28,28,0.5,True
+census,holdout_gross_positive,0,0,0.5,True
+census,holdout_gross_max_alpha %,-0.39494409,-0.39,0.005000001,True
+census,holdout_gross_max_alpha_t,-1.3518487,-1.35,0.005000001,True
+census,gross max config is Continuous pure|L5|team|FF3 (1=yes),1,1,0.5,True
+census,net max config is Always-short|L8H|team|FF5U|team|E:FF5UC+cmdty (1=yes),1,1,0.5,True
+census,signal-rule max config is Continuous pure|L8H|team|FF3|team|E:FF5UC+cmdty (1=yes),1,1,0.5,True
+census,signal-rule max t,-0.082451322,-0.08,0.005000001,True
+census,always-short 5/5 max holdout alpha %,-0.91456661,-0.91,0.005000001,True
+census,always-short 8/8 net rows,92,92,0.5,True
+census,KN n_ledger_primary,46,46,0.5,True
+census,KN n_ledger_robustness,5562,5562,0.5,True
+census,KN n_ledger_exploratory,7874,7874,0.5,True
+census,KN n_pipeline_runs,46,46,0.5,True
+census,KN n_strategy_regressions,8050,8050,0.5,True
+grid,BH negatives by period string,1,1,0.5,True
+COMEQ,COMEQ corr_WTI,0.23035917,0.23,0.005000001,True
+COMEQ,COMEQ corr_WTI_lead,0.3966875,0.4,0.005000001,True
+COMEQ,COMEQ corr_IMF,0.33394732,0.33,0.005000001,True
+COMEQ,COMEQ corr_IMF_lead,0.4659492,0.47,0.005000001,True
+COMEQ,COMEQ corr_brown,0.6567432,0.66,0.005000001,True
+COMEQ,COMEQ corr_Mkt-RF,0.54563689,0.55,0.005000001,True
+COMEQ,COMEQ ff5u_r2,0.37256522,0.37,0.005000001,True
+COMEQ,COMEQ ff5u_t_alpha,-0.24049239,-0.24,0.005000001,True
+COMEQ,COMEQ ff5u_p_alpha,0.81006965,0.81,0.005000001,True
+COMEQ,COMEQ ff5u alpha %,-0.89321565,-0.89,0.005000001,True
+COMEQ,corr n,413,413,0.5,True
+COMEQ,ff5u n,414,414,0.5,True
+COMEQ,corr end 2026-06 (1=yes),1,1,0.5,True
+COMEQ,ff5u end 2026-07 (1=yes),1,1,0.5,True
+COMEQ,COMEQx R2,0.4508779,0.45,0.005000001,True
+COMEQ,COMEQx alpha %,-1.4222047,-1.42,0.005000001,True
+COMEQ,COMEQx t,-0.35391047,-0.35,0.005000001,True
+COMEQ,Gold corr WTI,0.060951401,0.06,0.005000001,True
+COMEQ,"tex caption states 1992-02 to 2026-06, n = 413 and 2026-07, n = 414 (1=yes)",1,1,0.5,True
+Q1 primary,post2010 alpha min %,0.16644893,0.17,0.005000001,True
+Q1 primary,post2010 alpha max %,1.5628273,1.56,0.005000001,True
+Q1 primary,post2010 t min,0.56486228,0.56,0.005000001,True
+Q1 primary,post2010 t max,1.6659671,1.67,0.005000001,True
+Q1 primary,holdout alpha min %,-2.5084651,-2.51,0.005000001,True
+Q1 primary,holdout alpha max %,-0.38908438,-0.39,0.005000001,True
+Q1 primary,holdout t min,-1.8084876,-1.81,0.005000001,True
+Q1 primary,holdout t max,-0.1939368,-0.19,0.005000001,True
+Q1 primary,post2010 all positive (1=yes),1,1,0.5,True
+Q1 primary,min raw p,0.077367747,0.077,0.000500001,True
+Q1 primary,min-p test negative (1=yes),1,1,0.5,True
+Q1 primary,min Holm p,1,1,0.005000001,True
+Q1 bootstrap,8/8 corr Pure 6m CI low,1.9499793e-06,0,0.000500001,True
+Q1 bootstrap,8/8 corr Pure 6m CI high,0.036511123,0.037,0.000500001,True
+Q1 flags,old column absent from q1/q2 comparison (1=yes),1,1,0.5,True
+Q1 flags,renamed active-months column present (1=yes),1,1,0.5,True
+Q1 flags,"True rows are exactly L5 team {Original 3m, Continuous raw} and L5 corr {Original 3m, Pure 3m} (1=yes)",1,1,0.5,True
+Q1 flags,no True in q2_comparison,0,0,0.5,True
+Q1 team anchors,team 5/5 Pure 6m validation alpha,2.5080806,2.51,0.005000001,True
+Q1 team anchors,team 5/5 Original 3m holdout t,-2.1873481,-2.19,0.005000001,True
+Implications,6m rules validation FF3 alpha min (q1_table1),1.7975808,1.8,0.005000001,True
+Implications,6m rules validation FF3 alpha max,2.5991873,2.6,0.005000001,True
+Q2 strategies,Original 3m FF3 post2010 t,1.0364322,1.04,0.005000001,True
+Q2 strategies,Original 3m FF5UC post2010 t,0.39111196,0.39,0.005000001,True
+Q2 strategies,Pure 3m FF3 post2010 t,1.1036086,1.1,0.005000001,True
+Q2 strategies,Pure 3m FF5UC post2010 t,0.082459814,0.08,0.005000001,True
+Q2 strategies,Original 6m FF3 post2010 t,1.3620373,1.36,0.005000001,True
+Q2 strategies,Original 6m FF5UC post2010 t,0.83328883,0.83,0.005000001,True
+Q2 strategies,Pure 6m FF3 post2010 t,1.647374,1.65,0.005000001,True
+Q2 strategies,Pure 6m FF5UC post2010 t,0.75032355,0.75,0.005000001,True
+Q2 strategies,Continuous raw FF3 post2010 t,0.83106642,0.83,0.005000001,True
+Q2 strategies,Continuous raw FF5UC post2010 t,0.33546582,0.34,0.005000001,True
+Q2 strategies,Continuous pure FF3 post2010 t,0.92884901,0.93,0.005000001,True
+Q2 strategies,Continuous pure FF5UC post2010 t,0.29156743,0.29,0.005000001,True
+Q2 strategies,Always-short Brown FF3 post2010 t,0.67181879,0.67,0.005000001,True
+Q2 strategies,Always-short Brown FF5UC post2010 t,-0.0049803151,-0,0.005000001,True
+Q2 strategies,holdout alpha max across 4 hedge sets %,-0.57526563,-0.58,0.005000001,True
+Q2 strategies,holdout alpha min across 4 hedge sets %,-3.4363749,-3.44,0.005000001,True
+Q2 strategies,holdout t max,-1.0114312,-1.01,0.005000001,True
+Q2 strategies,holdout t min,-2.2745876,-2.27,0.005000001,True
+Q2 primary,post2010 positive point estimates,6,6,0.5,True
+Q2 primary,post2010 min %,-0.0050721608,-0.005,0.000500001,True
+Q2 primary,post2010 max %,0.59163321,0.59,0.005000001,True
+Q2 primary,post2010 max t,0.83328883,0.83,0.005000001,True
+Q2 primary,holdout max %,-0.60999134,-0.61,0.005000001,True
+Q2 primary,holdout min %,-3.2822188,-3.28,0.005000001,True
+Q2 primary,holdout t max,-1.2789593,-1.28,0.005000001,True
+Q2 primary,holdout t min,-2.2745876,-2.27,0.005000001,True
+Q2 primary,min p,0.028366564,0.028,0.000500001,True
+Q2 primary,Holm of min p,0.39713189,0.397,0.000500001,True
+Q2 residual HML,team FF3 hedge post2010 b_HML max (least negative),-0.018499101,-0.019,0.000500001,False
+Q2 residual HML,team FF3 hedge post2010 b_HML min,-0.061259436,-0.061,0.000500001,True
+Q2 residual HML,team FF3 hedge post2010 t_HML max,-1.3472896,-1.35,0.005000001,True
+Q2 residual HML,team FF3 hedge post2010 t_HML min,-2.3568237,-2.36,0.005000001,True
+Q2 residual HML,FF5UC corr post2010 t_HML max,-0.77959597,-0.78,0.005000001,True
+Q2 residual HML,FF5UC corr post2010 t_HML min,-1.6906736,-1.69,0.005000001,True
+Q3 BE/ME,Util above (1 - share negative if above) %,100,100,0.5,True
+Q3 BE/ME,Steel above (1 - share negative if above) %,100,100,0.5,True
+Q3 BE/ME,Ships above (1 - share negative if above) %,94.230769,94,0.5,True
+Q3 BE/ME,Drugs below (1 - share negative if above) %,98.076923,98,0.5,True
+Q3 BE/ME,Fun below (1 - share negative if above) %,69.230769,69,0.5,True
+Q3 BE/ME,Fin above (1 - share negative if above) %,96.153846,96,0.5,True
+Q3 BE/ME,RlEst above (1 - share negative if above) %,86.538462,87,0.5,True
+Q3 BE/ME,Telcm above (1 - share negative if above) %,84.615385,85,0.5,True
+Q3 primary,largest Holm p within 4,0.017378949,0.017,0.000500001,True
+Q4 table,Original 3m validation u5 alpha %,1.9207968,1.92,0.005000001,True
+Q4 table,Original 3m validation u5 t,2.3117243,2.31,0.005000001,True
+Q4 table,Original 3m holdout u5 alpha %,-1.8718874,-1.87,0.005000001,True
+Q4 table,Original 3m validation u10 alpha %,1.6639351,1.66,0.005000001,True
+Q4 table,Original 3m validation u10 t,2.0174908,2.02,0.005000001,True
+Q4 table,Original 3m holdout u10 alpha %,-2.077209,-2.08,0.005000001,True
+Q4 table,Original 3m validation u25 alpha %,0.89335006,0.89,0.005000001,True
+Q4 table,Original 3m validation u25 t,1.0895222,1.09,0.005000001,True
+Q4 table,Original 3m holdout u25 alpha %,-2.6931736,-2.69,0.005000001,True
+Q4 table,Pure 3m validation u5 alpha %,2.0471266,2.05,0.005000001,True
+Q4 table,Pure 3m validation u5 t,2.3696629,2.37,0.005000001,True
+Q4 table,Pure 3m holdout u5 alpha %,-1.8718874,-1.87,0.005000001,True
+Q4 table,Pure 3m validation u10 alpha %,1.7587029,1.76,0.005000001,True
+Q4 table,Pure 3m validation u10 t,2.0610322,2.06,0.005000001,True
+Q4 table,Pure 3m holdout u10 alpha %,-2.077209,-2.08,0.005000001,True
+Q4 table,Pure 3m validation u25 alpha %,0.89343179,0.89,0.005000001,True
+Q4 table,Pure 3m validation u25 t,1.0703136,1.07,0.005000001,True
+Q4 table,Pure 3m holdout u25 alpha %,-2.6931736,-2.69,0.005000001,True
+Q4 table,Original 6m validation u5 alpha %,2.2516337,2.25,0.005000001,True
+Q4 table,Original 6m validation u5 t,2.3571342,2.36,0.005000001,True
+Q4 table,Original 6m holdout u5 alpha %,-1.7003258,-1.7,0.005000001,True
+Q4 table,Original 6m validation u10 alpha %,2.12431,2.12,0.005000001,True
+Q4 table,Original 6m validation u10 t,2.2179911,2.22,0.005000001,True
+Q4 table,Original 6m holdout u10 alpha %,-1.8937345,-1.89,0.005000001,True
+Q4 table,Original 6m validation u25 alpha %,1.742339,1.74,0.005000001,True
+Q4 table,Original 6m validation u25 t,1.7998996,1.8,0.005000001,True
+Q4 table,Original 6m holdout u25 alpha %,-2.4739606,-2.47,0.005000001,True
+Q4 table,Pure 6m validation u5 alpha %,2.5056653,2.51,0.005000001,True
+Q4 table,Pure 6m validation u5 t,2.8039981,2.8,0.005000001,True
+Q4 table,Pure 6m holdout u5 alpha %,-1.7003258,-1.7,0.005000001,True
+Q4 table,Pure 6m validation u10 alpha %,2.3739989,2.37,0.005000001,True
+Q4 table,Pure 6m validation u10 t,2.6312751,2.63,0.005000001,True
+Q4 table,Pure 6m holdout u10 alpha %,-1.8937345,-1.89,0.005000001,True
+Q4 table,Pure 6m validation u25 alpha %,1.9789996,1.98,0.005000001,True
+Q4 table,Pure 6m validation u25 t,2.1259211,2.13,0.005000001,True
+Q4 table,Pure 6m holdout u25 alpha %,-2.4739606,-2.47,0.005000001,True
+Q4 table,Continuous raw validation u5 alpha %,0.53756726,0.54,0.005000001,True
+Q4 table,Continuous raw holdout u5 alpha %,-0.50921284,-0.51,0.005000001,True
+Q4 table,Continuous raw validation u10 alpha %,0.47184583,0.47,0.005000001,True
+Q4 table,Continuous raw holdout u10 alpha %,-0.55768253,-0.56,0.005000001,True
+Q4 table,Continuous raw validation u25 alpha %,0.27468154,0.27,0.005000001,True
+Q4 table,Continuous raw holdout u25 alpha %,-0.7030916,-0.7,0.005000001,True
+Q4 table,Continuous pure validation u5 alpha %,0.59709545,0.6,0.005000001,True
+Q4 table,Continuous pure holdout u5 alpha %,-0.5161945,-0.52,0.005000001,True
+Q4 table,Continuous pure validation u10 alpha %,0.52594386,0.53,0.005000001,True
+Q4 table,Continuous pure holdout u10 alpha %,-0.56797143,-0.57,0.005000001,True
+Q4 table,Continuous pure validation u25 alpha %,0.31248907,0.31,0.005000001,True
+Q4 table,Continuous pure holdout u25 alpha %,-0.7233022,-0.72,0.005000001,True
+Q4 table,Always-short Brown validation u5 alpha %,1.470157,1.47,0.005000001,True
+Q4 table,Always-short Brown validation u5 t,1.1778504,1.18,0.005000001,True
+Q4 table,Always-short Brown holdout u5 alpha %,-1.6725955,-1.67,0.005000001,True
+Q4 table,Always-short Brown validation u10 alpha %,1.434488,1.43,0.005000001,True
+Q4 table,Always-short Brown holdout u10 alpha %,-1.6985257,-1.7,0.005000001,True
+Q4 table,Always-short Brown validation u25 alpha %,1.3274809,1.33,0.005000001,True
+Q4 table,Always-short Brown holdout u25 alpha %,-1.7763165,-1.78,0.005000001,True
+Q4 primary,best Holm p,0.83759129,0.838,0.000500001,True
+Q4 primary,best is Pure 6m post2010 (1=yes),1,1,0.5,True
+Q4 primary,raw p of best,0.05982795,0.06,0.000500001,True
+Q4 primary,holdout u5 max %,-0.50921284,-0.51,0.005000001,True
+best case,Original 3m best post2010 alpha %,1.0843531,1.08,0.005000001,True
+best case,Original 3m best post2010 t,1.4121078,1.41,0.005000001,True
+best case,Original 3m Q2 post2010 Holm,1,1,0.005000001,True
+best case,Original 3m Q2 holdout Holm,0.39713189,0.397,0.005000001,True
+best case,Original 3m best any Holm grid,1,1,0.005000001,True
+best case,Pure 3m best post2010 alpha %,1.1986503,1.2,0.005000001,True
+best case,Pure 3m best post2010 t,1.4987278,1.5,0.005000001,True
+best case,Pure 3m Q2 post2010 Holm,1,1,0.005000001,True
+best case,Pure 3m Q2 holdout Holm,0.39713189,0.397,0.005000001,True
+best case,Pure 3m best any Holm grid,1,1,0.005000001,True
+best case,Original 6m best post2010 alpha %,1.3550387,1.36,0.005000001,True
+best case,Original 6m best post2010 t,1.9778002,1.98,0.005000001,True
+best case,Original 6m Q2 post2010 Holm,1,1,0.005000001,True
+best case,Original 6m Q2 holdout Holm,0.7516439,0.752,0.005000001,True
+best case,Original 6m best any Holm grid,1,1,0.005000001,True
+best case,Pure 6m best post2010 alpha %,1.4069198,1.41,0.005000001,True
+best case,Pure 6m best post2010 t,1.9759794,1.98,0.005000001,True
+best case,Pure 6m Q2 post2010 Holm,1,1,0.005000001,True
+best case,Pure 6m Q2 holdout Holm,0.7516439,0.752,0.005000001,True
+best case,Pure 6m best any Holm grid,1,1,0.005000001,True
+best case,Continuous raw best post2010 alpha %,0.32348546,0.32,0.005000001,True
+best case,Continuous raw best post2010 t,1.0902399,1.09,0.005000001,True
+best case,Continuous raw Q2 post2010 Holm,1,1,0.005000001,True
+best case,Continuous raw Q2 holdout Holm,1,1,0.005000001,True
+best case,Continuous raw best any Holm grid,1,1,0.005000001,True
+best case,Continuous pure best post2010 alpha %,0.40265811,0.4,0.005000001,True
+best case,Continuous pure best post2010 t,1.5644043,1.56,0.005000001,True
+best case,Continuous pure Q2 post2010 Holm,1,1,0.005000001,True
+best case,Continuous pure Q2 holdout Holm,1,1,0.005000001,True
+best case,Continuous pure best any Holm grid,1,1,0.005000001,True
+best case,Always-short Brown best post2010 alpha %,1.2917358,1.29,0.005000001,True
+best case,Always-short Brown best post2010 t,1.3605835,1.36,0.005000001,True
+best case,Always-short Brown Q2 post2010 Holm,1,1,0.005000001,True
+best case,Always-short Brown Q2 holdout Holm,1,1,0.005000001,True
+best case,Always-short Brown best any Holm grid,1,1,0.005000001,True
+best case,raw GB best any %,2.5249259,2.52,0.005000001,True
+best case,raw GB best any t,2.5719169,2.57,0.005000001,True
+best case,raw GB best post2010 %,1.7052387,1.71,0.005000001,True
+best case,raw GB best post2010 t,1.1671068,1.17,0.005000001,True
+best case,raw GB best holdout %,1.5508015,1.55,0.005000001,True
+best case,raw GB best holdout t,0.32594628,0.33,0.005000001,True
+best case,Always-short best holdout t,0.22353274,0.22,0.005000001,True
+best case,no row survives Holm (1=yes),1,1,0.5,True

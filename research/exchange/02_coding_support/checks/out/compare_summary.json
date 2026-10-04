@@ -1,0 +1,44 @@
+{
+ "reference_rebuild_vs_published_maxdiff": {
+  "net_primary": 9.974659986866641e-17,
+  "net_always": 9.974659986866641e-17,
+  "D_primary": 9.974659986866641e-17,
+  "share_z": 4.440892098500626e-16,
+  "coef": 9.16692936836494e-17,
+  "t_nw6": 5.551115123125783e-17
+ },
+ "asis_first_signal": "1994-12-31",
+ "A_first_signal": "1994-01-31",
+ "B_first_signal": "1994-12-31",
+ "AB_first_signal": "1994-01-31",
+ "attribution_max_absdiff_by_variant": {
+  "A": {
+   "coef_absdiff": 0.003972085823831767,
+   "t6_absdiff": 0.08291357026132662,
+   "t12_absdiff": 0.07597447843464478,
+   "p6_absdiff": 0.025222785143984877,
+   "contrib_ann_absdiff": 0.00017104219671779976
+  },
+  "AB": {
+   "coef_absdiff": 3.815697757758585e-14,
+   "t6_absdiff": 3.3217872896784684e-13,
+   "t12_absdiff": 3.282929483816588e-13,
+   "p6_absdiff": 1.875721800104202e-13,
+   "contrib_ann_absdiff": 1.5998487257196103e-15
+  },
+  "B": {
+   "coef_absdiff": 0.08889775044520733,
+   "t6_absdiff": 1.7004536659470275,
+   "t12_absdiff": 2.5166198743903774,
+   "p6_absdiff": 0.7685035985711788,
+   "contrib_ann_absdiff": 0.004011573252968801
+  },
+  "asis": {
+   "coef_absdiff": 0.09228597895020743,
+   "t6_absdiff": 1.6618702402031416,
+   "t12_absdiff": 2.4213708659606077,
+   "p6_absdiff": 0.7974296373713178,
+   "contrib_ann_absdiff": 0.004285072467199601
+  }
+ }
+}

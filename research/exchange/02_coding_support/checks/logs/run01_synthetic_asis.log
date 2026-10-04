@@ -1,0 +1,416 @@
+
+====================================================================================================
+LOOK-AHEAD TEST (synthetic)
+====================================================================================================
+          cut  max_abs_diff  nan_mismatch    ok
+0  1995-05-31             0         False  True
+1  1996-11-30             0         False  True
+2  1998-11-30             0         False  True
+3  1999-04-30             0         False  True
+4  1999-05-31             0         False  True
+5  1999-06-30             0         False  True
+6  1999-11-30             0         False  True
+7  1999-12-31             0         False  True
+8  2000-03-31             0         False  True
+9  2000-04-30             0         False  True
+10 2001-12-31             0         False  True
+11 2002-08-31             0         False  True
+12 2002-09-30             0         False  True
+13 2003-10-31             0         False  True
+14 2004-03-31             0         False  True
+15 2005-01-31             0         False  True
+16 2005-02-28             0         False  True
+17 2006-03-31             0         False  True
+18 2006-04-30             0         False  True
+19 2006-07-31             0         False  True
+20 2006-08-31             0         False  True
+21 2008-05-31             0         False  True
+22 2008-06-30             0         False  True
+23 2009-08-31             0         False  True
+24 2010-05-31             0         False  True
+25 2010-06-30             0         False  True
+26 2010-07-31             0         False  True
+27 2010-08-31             0         False  True
+28 2010-11-30             0         False  True
+29 2010-12-31             0         False  True
+30 2011-02-28             0         False  True
+31 2011-03-31             0         False  True
+32 2012-04-30             0         False  True
+33 2012-05-31             0         False  True
+34 2012-06-30             0         False  True
+35 2012-10-31             0         False  True
+36 2012-11-30             0         False  True
+37 2013-02-28             0         False  True
+38 2013-03-31             0         False  True
+39 2013-07-31             0         False  True
+40 2015-04-30             0         False  True
+41 2015-08-31             0         False  True
+42 2015-09-30             0         False  True
+43 2018-03-31             0         False  True
+44 2018-06-30             0         False  True
+45 2018-07-31             0         False  True
+46 2019-02-28             0         False  True
+47 2019-03-31             0         False  True
+48 2019-08-31             0         False  True
+49 2019-12-31             0         False  True
+50 2020-03-31             0         False  True
+51 2021-07-31             0         False  True
+52 2021-08-31             0         False  True
+53 2022-10-31             0         False  True
+54 2024-07-31             0         False  True
+55 2024-08-31             0         False  True
+56 2024-12-31             0         False  True
+57 2025-01-31             0         False  True
+58 2025-05-31             0         False  True
+
+====================================================================================================
+1. PASS / FAIL
+====================================================================================================
+                     component                              statistic                   bar                                          value  pass
+0             (i) timing alpha    alpha/month, NW(6) t, p from t(n-k)  alpha > 0 and t >= 2  alpha=0.000178, t=0.414, p2=0.6796, p1=0.3398  FAIL
+1        (ii) calendar shuffle                 one-sided p, 500 draws             p <= 0.05                                         0.3054  FAIL
+2   (iii) independent episodes             merged hold runs in window                  >= 8                                              5  FAIL
+3  (iv) leave one industry out  LOO alphas with the full alpha's sign                   5/5                                            3/5  FAIL
+4                      OVERALL                      all four required                   4/4                                            0/4  FAIL
+
+====================================================================================================
+2a. ATTRIBUTION (D_t on FF5+UMD, BOND, WTI, dVIX, dlogEMV, I_{t-1} x F)
+====================================================================================================
+                 coef    t NW(6)   p NW(6)   t NW(12)   p NW(12)
+alpha     0.000177732   0.413705  0.679641   0.400018   0.689674
+Mkt-RF   -0.000434547 -0.0523422  0.958321 -0.0550838    0.95614
+SMB        0.00355019    0.28507  0.775957   0.310872     0.7563
+HML         0.0180756    1.87314 0.0628615    2.15585  0.0325801
+RMW         0.0161407   0.616805  0.538235   0.611908   0.541462
+CMA         0.0341418    1.39536  0.164829    1.37852   0.169957
+UMD        -0.0159563   -1.30645  0.193261   -1.27607    0.20377
+BOND      -0.00507869  -0.207204  0.836113  -0.195633   0.845144
+WTI        -0.0088538   -1.42157  0.157085   -1.33193   0.184766
+dVIX     -0.000189572  -0.855187  0.393719  -0.876748    0.38193
+dlogEMV    0.00201221    2.01444 0.0456282    1.94468  0.0535567
+I*Mkt-RF    0.0431913    0.84001  0.402149   0.753592   0.452195
+I*HML       0.0998028    1.76826 0.0789115    1.68396   0.094127
+I*BOND      -0.296876  -0.412038  0.680859  -0.388506   0.698155
+I*dVIX     0.00200483    2.32456 0.0213444     2.9777 0.00335331
+
+====================================================================================================
+2b. REGRESSION FACTS
+====================================================================================================
+                                                                value
+n                                                                 176
+k                                                                  15
+n - k                                                             161
+R-squared                                                    0.194582
+adj. R-squared                                               0.124546
+pi                                                           0.256401
+window start                                                  1995-05
+window end                                                    2009-12
+HAC             Bartlett, maxlags 6 (12 check), no small-sample corr.
+
+====================================================================================================
+3. DECOMPOSITION OF mean(D)
+====================================================================================================
+                            value
+mean(D)               0.000715843
+alpha                 0.000177732
+beta*mean(Mkt-RF)     1.32952e-07
+beta*mean(SMB)        8.30061e-06
+beta*mean(HML)        0.000101922
+beta*mean(RMW)        3.86985e-05
+beta*mean(CMA)         6.3031e-05
+beta*mean(UMD)       -0.000210479
+beta*mean(BOND)        8.7782e-06
+beta*mean(WTI)         4.6403e-06
+beta*mean(dVIX)      -2.18624e-07
+beta*mean(dlogEMV)    8.91278e-07
+gamma*mean(I*Mkt-RF) -1.62789e-05
+gamma*mean(I*HML)     0.000335547
+gamma*mean(I*BOND)    0.000191732
+gamma*mean(I*dVIX)    1.14135e-05
+sum of terms          0.000715843
+identity gap         -3.25261e-19
+
+====================================================================================================
+4a. DIAGNOSTICS
+====================================================================================================
+                                                                                                                 value
+first signal month with a defined flag                                                                         1995-03
+first month a position can be set (end of)                                                                     1995-04
+first return month the rule can affect                                                                         1995-05
+test window (return months)                                                                         1995-05 to 2009-12
+n return months                                                                                                    176
+EMVENRGYENVREG zero months, whole file                                                                               8
+signal months feeding the window                                                                    1995-03 to 2009-10
+  zero months among them                                                                                             1
+  signal-off months (>10% zeros in trailing 60)                                                                      0
+  months with a defined flag                                                                                       175
+  extreme months                                                                                                    36
+crossings affecting the window                                                                                       8
+hold months (position months in window)                                                                             44
+independent episodes                                                                                                 5
+pi                                                                                                            0.256401
+mean m_t in hold months                                                                                       0.813418
+min # Brown industries available (hedge history + window)                                                            5
+cfg.test_start                                                                                                 1993-01
+cfg.test_end                                                                                                   2009-12
+cfg.brown                                                                            (Util, Ships, Aero, Steel, BldMt)
+cfg.hedge_factors                                                                                   (Mkt-RF, SMB, HML)
+cfg.hedge_window                                                                                                    60
+cfg.vol_window                                                                                                      36
+cfg.vol_target                                                                                                    0.05
+cfg.cost_w                                                                                                       0.001
+cfg.cost_mkt                                                                                                    0.0005
+cfg.cost_smb                                                                                                    0.0025
+cfg.cost_hml                                                                                                    0.0025
+cfg.hold_months                                                                                                      6
+cfg.pub_lag                                                                                                          1
+cfg.z_window                                                                                                        60
+cfg.z_min_nonzero                                                                                                   48
+cfg.max_zero_share                                                                                                 0.1
+cfg.pct                                                                                                             80
+cfg.min_pct_history                                                                                                 60
+cfg.attr_factors                                           (Mkt-RF, SMB, HML, RMW, CMA, UMD, BOND, WTI, dVIX, dlogEMV)
+cfg.interact                                                                                 (Mkt-RF, HML, BOND, dVIX)
+cfg.nw_lags                                                                                                          6
+cfg.nw_lags_check                                                                                                   12
+cfg.t_bar                                                                                                            2
+cfg.p_bar                                                                                                         0.05
+cfg.min_episodes                                                                                                     8
+cfg.bridge_missing                                                                                                True
+cfg.bridge_limit                                                                                                     6
+cfg.end_policy                                                                                                truncate
+cfg.shuffle_draws                                                                                                  500
+cfg.shuffle_min_gap                                                                                                  1
+cfg.shuffle_recompute_pi_I                                                                                        True
+cfg.seed                                                                                                           230
+
+====================================================================================================
+4b. CROSSINGS AFFECTING THE WINDOW
+====================================================================================================
+  signal_month       z  threshold position_from position_to
+0   1999-05-31 1.09725   0.567471    1999-06-30  1999-11-30
+1   1999-11-30 0.71686   0.630585    1999-12-31  2000-05-31
+2   2000-03-31 1.15516    0.63316    2000-04-30  2000-09-30
+3   2002-08-31 1.24341    1.01141    2002-09-30  2003-02-28
+4   2005-01-31 1.16501   0.927274    2005-02-28  2005-07-31
+5   2006-03-31 1.72854   0.959044    2006-04-30  2006-09-30
+6   2006-07-31 1.22727   0.996235    2006-08-31  2007-01-31
+7   2008-05-31  1.0763   0.947484    2008-06-30  2008-11-30
+
+====================================================================================================
+4c. EPISODES
+====================================================================================================
+  position_from position_to  months return_from  return_to  open_before_window  open_after_window
+0    1999-06-30  2000-09-30      16  1999-07-31 2000-10-31               False              False
+1    2002-09-30  2003-02-28       6  2002-10-31 2003-03-31               False              False
+2    2005-02-28  2005-07-31       6  2005-03-31 2005-08-31               False              False
+3    2006-04-30  2007-01-31      10  2006-05-31 2007-02-28               False              False
+4    2008-06-30  2008-11-30       6  2008-07-31 2008-12-31               False              False
+
+====================================================================================================
+4d. LEAVE ONE INDUSTRY OUT
+====================================================================================================
+  dropped        alpha    t NW(6)        p       pi  same_sign
+0    Util -6.48349e-05  -0.173365 0.862583  0.25144      False
+1   Ships  0.000357975   0.826679 0.409642 0.255735       True
+2    Aero  0.000147225   0.360051 0.719281 0.245724       True
+3   Steel -2.53222e-05 -0.0539843 0.957015 0.256489      False
+4   BldMt  0.000399266   0.881546 0.379337 0.264417       True
+
+====================================================================================================
+5. CALENDAR SHUFFLE
+====================================================================================================
+                     value
+actual alpha   0.000177732
+null mean     -6.21701e-05
+null sd        0.000481176
+null q01       -0.00119462
+null q05        -0.0008242
+null q10      -0.000665083
+null q50      -7.47535e-05
+null q90       0.000567528
+null q95       0.000739449
+null q99        0.00114355
+p (one-sided)     0.305389
+draws                  500
+episodes K               5
+hold months             44
+seed                   230
+
+====================================================================================================
+1. PASS / FAIL
+====================================================================================================
+                     component                              statistic                   bar                                          value  pass
+0             (i) timing alpha    alpha/month, NW(6) t, p from t(n-k)  alpha > 0 and t >= 2  alpha=0.000309, t=0.984, p2=0.3266, p1=0.1633  FAIL
+1        (ii) calendar shuffle                 one-sided p, 500 draws             p <= 0.05                                         0.2934  FAIL
+2   (iii) independent episodes             merged hold runs in window                  >= 8                                              5  FAIL
+3  (iv) leave one industry out  LOO alphas with the full alpha's sign                   5/5                                            5/5  PASS
+4                      OVERALL                      all four required                   4/4                                            1/4  FAIL
+
+====================================================================================================
+2a. ATTRIBUTION (D_t on FF5+UMD, BOND, WTI, dVIX, dlogEMV, I_{t-1} x F)
+====================================================================================================
+                 coef   t NW(6)     p NW(6)  t NW(12)    p NW(12)
+alpha     0.000309128  0.983985    0.326599  0.932245    0.352606
+Mkt-RF     0.00111737   0.16655    0.867933  0.174538    0.861662
+SMB        0.00293747  0.300229     0.76439  0.333742    0.739008
+HML         0.0214421   2.80811   0.0056001   3.22656  0.00151787
+RMW        0.00719459  0.398713    0.690633  0.392881    0.694927
+CMA         0.0254468   1.23597     0.21827   1.19458    0.234008
+UMD        -0.0189638  -2.08622    0.038535  -2.00142    0.047027
+BOND      -0.00780717  -0.38528    0.700538 -0.368036     0.71333
+WTI       -0.00799511  -1.68268   0.0943748  -1.50444    0.134427
+dVIX     -0.000148556 -0.842776    0.400604  -0.86056     0.39076
+dlogEMV    0.00134282   1.74815   0.0823439   1.69901   0.0912487
+I*Mkt-RF    0.0292121   0.78595    0.433052  0.706835    0.480691
+I*HML       0.0420872   1.01674    0.310802     1.005    0.316404
+I*BOND        -5.5454  -10.8392 6.67286e-21   -10.714 1.47069e-20
+I*dVIX     0.00169976   2.33377   0.0208437   3.21412  0.00158097
+
+====================================================================================================
+2b. REGRESSION FACTS
+====================================================================================================
+                                                                value
+n                                                                 176
+k                                                                  15
+n - k                                                             161
+R-squared                                                    0.676007
+adj. R-squared                                               0.647833
+pi                                                           0.230074
+window start                                                  1995-05
+window end                                                    2009-12
+HAC             Bartlett, maxlags 6 (12 check), no small-sample corr.
+
+====================================================================================================
+3. DECOMPOSITION OF mean(D)
+====================================================================================================
+                            value
+mean(D)                0.00399032
+alpha                 0.000309128
+beta*mean(Mkt-RF)    -3.41865e-07
+beta*mean(SMB)        6.86803e-06
+beta*mean(HML)        0.000120905
+beta*mean(RMW)        1.72495e-05
+beta*mean(CMA)        4.69786e-05
+beta*mean(UMD)       -0.000250149
+beta*mean(BOND)       1.34942e-05
+beta*mean(WTI)        4.19026e-06
+beta*mean(dVIX)      -1.71323e-07
+beta*mean(dlogEMV)    5.94782e-07
+gamma*mean(I*Mkt-RF) -1.10101e-05
+gamma*mean(I*HML)     0.000141502
+gamma*mean(I*BOND)      0.0035814
+gamma*mean(I*dVIX)    9.67671e-06
+sum of terms           0.00399032
+identity gap         -1.73472e-18
+
+====================================================================================================
+4a. DIAGNOSTICS
+====================================================================================================
+                                                                                                                 value
+first signal month with a defined flag                                                                         1995-03
+first month a position can be set (end of)                                                                     1995-04
+first return month the rule can affect                                                                         1995-05
+test window (return months)                                                                         1995-05 to 2009-12
+n return months                                                                                                    176
+EMVENRGYENVREG zero months, whole file                                                                               8
+signal months feeding the window                                                                    1995-03 to 2009-10
+  zero months among them                                                                                             1
+  signal-off months (>10% zeros in trailing 60)                                                                      0
+  months with a defined flag                                                                                       175
+  extreme months                                                                                                    36
+crossings affecting the window                                                                                       8
+hold months (position months in window)                                                                             44
+independent episodes                                                                                                 5
+pi                                                                                                            0.230074
+mean m_t in hold months                                                                                       0.608819
+min # Brown industries available (hedge history + window)                                                            5
+cfg.test_start                                                                                                 1993-01
+cfg.test_end                                                                                                   2009-12
+cfg.brown                                                                            (Util, Ships, Aero, Steel, BldMt)
+cfg.hedge_factors                                                                                   (Mkt-RF, SMB, HML)
+cfg.hedge_window                                                                                                    60
+cfg.vol_window                                                                                                      36
+cfg.vol_target                                                                                                    0.05
+cfg.cost_w                                                                                                       0.001
+cfg.cost_mkt                                                                                                    0.0005
+cfg.cost_smb                                                                                                    0.0025
+cfg.cost_hml                                                                                                    0.0025
+cfg.hold_months                                                                                                      6
+cfg.pub_lag                                                                                                          1
+cfg.z_window                                                                                                        60
+cfg.z_min_nonzero                                                                                                   48
+cfg.max_zero_share                                                                                                 0.1
+cfg.pct                                                                                                             80
+cfg.min_pct_history                                                                                                 60
+cfg.attr_factors                                           (Mkt-RF, SMB, HML, RMW, CMA, UMD, BOND, WTI, dVIX, dlogEMV)
+cfg.interact                                                                                 (Mkt-RF, HML, BOND, dVIX)
+cfg.nw_lags                                                                                                          6
+cfg.nw_lags_check                                                                                                   12
+cfg.t_bar                                                                                                            2
+cfg.p_bar                                                                                                         0.05
+cfg.min_episodes                                                                                                     8
+cfg.bridge_missing                                                                                                True
+cfg.bridge_limit                                                                                                     6
+cfg.end_policy                                                                                                truncate
+cfg.shuffle_draws                                                                                                  500
+cfg.shuffle_min_gap                                                                                                  1
+cfg.shuffle_recompute_pi_I                                                                                        True
+cfg.seed                                                                                                           230
+
+====================================================================================================
+4b. CROSSINGS AFFECTING THE WINDOW
+====================================================================================================
+  signal_month       z  threshold position_from position_to
+0   1999-05-31 1.09725   0.567471    1999-06-30  1999-11-30
+1   1999-11-30 0.71686   0.630585    1999-12-31  2000-05-31
+2   2000-03-31 1.15516    0.63316    2000-04-30  2000-09-30
+3   2002-08-31 1.24341    1.01141    2002-09-30  2003-02-28
+4   2005-01-31 1.16501   0.927274    2005-02-28  2005-07-31
+5   2006-03-31 1.72854   0.959044    2006-04-30  2006-09-30
+6   2006-07-31 1.22727   0.996235    2006-08-31  2007-01-31
+7   2008-05-31  1.0763   0.947484    2008-06-30  2008-11-30
+
+====================================================================================================
+4c. EPISODES
+====================================================================================================
+  position_from position_to  months return_from  return_to  open_before_window  open_after_window
+0    1999-06-30  2000-09-30      16  1999-07-31 2000-10-31               False              False
+1    2002-09-30  2003-02-28       6  2002-10-31 2003-03-31               False              False
+2    2005-02-28  2005-07-31       6  2005-03-31 2005-08-31               False              False
+3    2006-04-30  2007-01-31      10  2006-05-31 2007-02-28               False              False
+4    2008-06-30  2008-11-30       6  2008-07-31 2008-12-31               False              False
+
+====================================================================================================
+4d. LEAVE ONE INDUSTRY OUT
+====================================================================================================
+  dropped       alpha  t NW(6)        p       pi  same_sign
+0    Util 8.91424e-05  0.30213 0.762943 0.234129       True
+1   Ships 0.000439329  1.33207 0.184719 0.235244       True
+2    Aero 0.000271518 0.843946 0.399952 0.226257       True
+3   Steel 9.27105e-05 0.249666 0.803164 0.234102       True
+4   BldMt 0.000474288  1.39334 0.165437 0.236632       True
+
+====================================================================================================
+5. CALENDAR SHUFFLE
+====================================================================================================
+                     value
+actual alpha   0.000309128
+null mean     -0.000186611
+null sd         0.00080984
+null q01       -0.00176354
+null q05       -0.00146971
+null q10       -0.00125376
+null q50       -0.00017171
+null q90       0.000881834
+null q95        0.00113547
+null q99        0.00158183
+p (one-sided)     0.293413
+draws                  500
+episodes K               5
+hold months             44
+seed                   230
+
+real	0m13.082s
+user	0m14.397s
+sys	0m0.120s

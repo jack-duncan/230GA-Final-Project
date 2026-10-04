@@ -1,0 +1,1 @@
+{'mutant': "M4 size m_t uses next month's sd", 'audit_rows': 91, 'rows_flagged': 49, 'detected': True, 'flagged_by_test': "{'f_perturb': 24, 'post_window': 1, 'rb_perturb': 24}", 'truncate_flags': 0, 'synthetic_alpha': -0.00027095586993458094, 'seconds': 96}

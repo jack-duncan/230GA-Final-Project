@@ -1,0 +1,1 @@
+{'mutant': 'M6 position earns its own month', 'audit_rows': 91, 'rows_flagged': 59, 'detected': True, 'flagged_by_test': "{'f_perturb': 24, 'rb_perturb': 24, 'signal_perturb': 11}", 'truncate_flags': 0, 'synthetic_alpha': -0.0006051292907730343, 'seconds': 95}

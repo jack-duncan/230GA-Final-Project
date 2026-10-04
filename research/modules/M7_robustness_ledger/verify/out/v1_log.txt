@@ -1,0 +1,100 @@
+rows 23923 exact dups (9 std cols) 0
+mod   M1  M1b    M2    M3   M4   M5   M6  M8
+fam                                         
+F      0    0     0     0    0    0    0   1
+P      0   24    42    12    1    2    0   0
+D     15   16     4    21    0    2    8   7
+X      0  170     0     0    0    0    0   0
+L      0    0  2231  2527    0   56   36   0
+R      0  736  8161   156  282    0    2   0
+E    652  954  3044  3644  519  356  228  14 
+ {'F': 1, 'P': 81, 'D': 73, 'X': 170, 'L': 4850, 'R': 9337, 'E': 9411}
+family-by-module diff vs M7: 0
+primary_or_exploratory  exploratory  placebo  primary  reference  robustness
+mod                                                                         
+M1                              435        0       15          0         217
+M1b                             588       88       40         82        1102
+M2                             7874        0       46          0        5562
+M3                             5590        0       33          0         737
+M4                              426        0        1          0         375
+M5                              412        0        4          0           0
+M6                              146        0        8          0         120
+M8                               14        0        8          0           0 
+label diff vs M7: 0
+R-M2 8161 R-other 1176 {'M1b': 736, 'M3': 156, 'M4': 282, 'M6': 2}
+D by module {'M1': 15, 'M1b': 16, 'M2': 4, 'M3': 21, 'M5': 2, 'M6': 8, 'M8': 7}
+P by module {'M1b': 24, 'M2': 42, 'M3': 12, 'M4': 1, 'M5': 2}
+nominal 4184 {'alpha': 1624, 'loading': 1325, 'mean': 561, 'other': 536, 'beta-timing': 138} alpha+ 783 alpha- 841 loading share 0.3166826003824092
+family D: rows 73, p2<0.05 15
+family X: rows 170, p2<0.05 33
+family L: rows 4850, p2<0.05 1452
+family E: rows 9411, p2<0.05 1636
+P rows 81 unique 73 dups by module {'M2': 6, 'M3': 2}
+P holm: min adj p 1.0000, survivors 0
+P bh: min adj p 0.7181, survivors 0
+P by: min adj p 1.0000, survivors 0
+best P: strat|L5|corr|FF3|u5|Pure 6m|post2010|E:FF3|alpha 1.8930825 0.029913975 Sidak N 1.6889169005777607
+P max abs diff p1/holm/bh/by: 1.1102230246251565e-16 0.0 1.1102230246251565e-16 0.0
+F: raw [0.60475906 0.00737446] holm [0.60475906 0.01474891] survivors [False  True]
+all primaries 155 with p 154 missing: ['M8_share_iii_episodes']
+all-primaries holm: survivors 4; alpha-type 0
+                               test_id      typ                                             statistic_name  p_value_two_sided
+10         Q2_joint_team_signal_z_full    other  HAC Wald F, z_EMV_env on z_VIX + z_EMV_overall (R2=0.169)       8.760810e-12
+80             Q3_fisher_zero_pre_post    other  Fisher exact odds ratio (zero month, post-2021-10 vs pre)       1.347955e-32
+14984  spread|L5|full_1970|E:FF3|b_HML  loading                                                t_b_HML_NW6       4.469108e-06
+14998   spread|L5|post2010|E:FF3|b_HML  loading                                                t_b_HML_NW6       3.500132e-08
+all-primaries fdr_bh: survivors 6; alpha-type 0
+                                                     test_id          typ                                                 statistic_name  p_value_two_sided
+10                               Q2_joint_team_signal_z_full        other      HAC Wald F, z_EMV_env on z_VIX + z_EMV_overall (R2=0.169)       8.760810e-12
+80                                   Q3_fisher_zero_pre_post        other      Fisher exact odds ratio (zero month, post-2021-10 vs pre)       1.347955e-32
+14984                        spread|L5|full_1970|E:FF3|b_HML      loading                                                    t_b_HML_NW6       4.469108e-06
+14998                         spread|L5|post2010|E:FF3|b_HML      loading                                                    t_b_HML_NW6       3.500132e-08
+15002                        spread|L5|post2010|E:FF5U|b_HML      loading                                                    t_b_HML_NW6       1.573666e-03
+20563  Q3b.ln_timing.Pure 3m|corrected|36m-backward|post2010  beta-timing  beta-timing component sum_k cov(beta_k,t, f_k,t) (annualized)       8.000000e-04
+all-primaries fdr_by: survivors 4; alpha-type 0
+                               test_id      typ                                             statistic_name  p_value_two_sided
+10         Q2_joint_team_signal_z_full    other  HAC Wald F, z_EMV_env on z_VIX + z_EMV_overall (R2=0.169)       8.760810e-12
+80             Q3_fisher_zero_pre_post    other  Fisher exact odds ratio (zero month, post-2021-10 vs pre)       1.347955e-32
+14984  spread|L5|full_1970|E:FF3|b_HML  loading                                                t_b_HML_NW6       4.469108e-06
+14998   spread|L5|post2010|E:FF3|b_HML  loading                                                t_b_HML_NW6       3.500132e-08
+           family     m  share_pos    min_p1    min_bh    min_by  bh_surv  by_surv    by_div
+0            R-M2  8161   0.540375  0.000176  0.475463  1.000000        0        0  9.584399
+1     R-other M1b   736   0.407609  0.000066  0.048627  0.349099        1        0  7.179125
+2      R-other M3   156   0.250000  0.011560  0.804075  1.000000        0        0  5.630273
+3      R-other M4   282   0.592199  0.000623  0.124889  0.776920        0        0  6.220895
+4      R-other M6     2   0.000000  0.641367  0.928762  1.000000        0        0  1.500000
+5  R-other pooled  1176   0.430272  0.000066  0.077697  0.594191        0        0  7.647515
+6        R pooled  9337   0.526507  0.000066  0.466131  1.000000        0        0  9.719009
+R BH survivors:         family                       bh_surv_ids
+1  R-other M1b  CPU_realtime_none_O3_covid_alpha
+R diffs: min_bh 9.71445146547012e-17 min_by 1.1102230246251565e-16 bh surv 0 by surv 0
+                               test_id                 statistic_name  statistic  p_value_two_sided  n_obs                                                note
+1591  CPU_realtime_none_O3_covid_alpha  FF3 alpha NW(6) t (O3, covid)   4.716905           0.000132     24  alpha_ann=0.06829; window 2020-01-31 to 2021-12-31
+kinds {'strat': 8008, 'spread': 153}
+all 
+                       n     pos     med
+w                                      
+covid            1071.0  0.7068  0.4377
+full_1970          21.0  1.0000  1.4527
+full_live        1078.0  0.7505  0.5153
+holdout          1078.0  0.0269 -1.3157
+inflation_rates  1071.0  0.1391 -0.7282
+last12            297.0  0.2020 -1.1101
+last18            297.0  0.0000 -2.3500
+post2010         1078.0  0.7644  0.6041
+pre_covid        1071.0  0.7320  0.5024
+validation       1099.0  0.8890  1.1419
+ALL              8161.0  0.5404  0.1257
+strat 
+                       n     pos     med
+w                                      
+covid            1050.0  0.7048  0.4375
+full_live        1078.0  0.7505  0.5153
+holdout          1057.0  0.0227 -1.3389
+inflation_rates  1050.0  0.1333 -0.7404
+last12            294.0  0.2041 -1.1101
+last18            294.0  0.0000 -2.3500
+post2010         1057.0  0.7663  0.6087
+pre_covid        1050.0  0.7286  0.4927
+validation       1078.0  0.8887  1.1478
+ALL              8008.0  0.5377  0.1182

@@ -1,0 +1,16 @@
+{
+ "observed_by": "adversarial verifier, this session, about 05:45-05:50 PDT 2026-09-26, before the pyc was recompiled at 05:50:24 by another process that imported run.py",
+ "pyc_file": "modules/M8_frozen_pre2010/__pycache__/run.cpython-314.pyc (written 03:37:28 when verify_signal.py imported run)",
+ "pyc_header_source_mtime": "2026-09-26 03:36:21",
+ "pyc_header_source_size": 43737,
+ "current_run_py": {"mtime": "2026-09-26 03:41:13", "size": 44443},
+ "primary_run_time": "2026-09-26 03:37:46 PDT",
+ "method": "marshal-load the pyc code objects, compile current run.py, compare normalized bytecode (opcode + resolved argument) per function",
+ "functions_changed": {
+  "fmt": "LaTeX escaping only: new constants '^', '|', '>=', '<=', '>', '<' and their escaped forms",
+  "main": "two blocks only: (a) crossings-table caption string now built from the window years; (b) meta table adds first_run_time (read from first_run_record.json), this_run_time and prereg_written columns",
+  "make_figure": "set_ylim calls with constants -5.0, 3.6, -3.9, 6.0 added"
+ },
+ "functions_unchanged": "all others, including share_signal, team_signal, decision_hold, brown_model, run_strategy, FastEngine, nw_numpy, attribution, runs, shuffle_test, count_episodes, evaluate, build_bond, par_bond_dc, exact_par_return, bond_checks, load_inputs, monthly_grid, to_tex, _t_mean",
+ "module_level_constants": "identical"
+}

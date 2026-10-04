@@ -1,0 +1,29 @@
+% Re-wrapped by report/make_tables.py from outputs/tables/M1_signal_audit_decomposition_team_signal.tex (content unchanged).
+\begin{table}[H]
+\centering\small
+\caption{How much of the team signal $z_t$, the rolling 60-month z-score of $\log(1+\text{EMV env.})$, is explained by rolling z-scores of $\log(1+\text{VIX})$ and $\log(1+\text{overall EMV})$. OLS, Newey-West (6) t-statistics.}
+\label{tab:m1_decomp}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lllrlrrrrr}
+\toprule
+Sample & Start & End & $n$ & Regressors & $R^2$ & Slope 1 & $t$ 1 & Slope 2 & $t$ 2 \\
+\midrule
+Full sample & 1992-12 & 2026-08 & 405 & $z$ VIX & 0.083 & 0.25 & 4.3 &  &  \\
+Full sample & 1992-12 & 2026-08 & 405 & $z$ overall EMV & 0.168 & 0.40 & 7.3 &  &  \\
+Full sample & 1992-12 & 2026-08 & 405 & $z$ VIX + $z$ overall EMV & 0.169 & -0.03 & -0.4 & 0.43 & 5.1 \\
+Before 2021-10 & 1992-12 & 2021-09 & 346 & $z$ VIX & 0.102 & 0.26 & 4.4 &  &  \\
+Before 2021-10 & 1992-12 & 2021-09 & 346 & $z$ overall EMV & 0.161 & 0.38 & 6.6 &  &  \\
+Before 2021-10 & 1992-12 & 2021-09 & 346 & $z$ VIX + $z$ overall EMV & 0.161 & 0.02 & 0.2 & 0.36 & 4.1 \\
+From 2021-10 & 2021-10 & 2026-08 & 59 & $z$ VIX & 0.000 & -0.00 & -0.0 &  &  \\
+From 2021-10 & 2021-10 & 2026-08 & 59 & $z$ overall EMV & 0.245 & 0.58 & 4.0 &  &  \\
+From 2021-10 & 2021-10 & 2026-08 & 59 & $z$ VIX + $z$ overall EMV & 0.281 & -0.28 & -1.9 & 0.67 & 3.8 \\
+Validation & 2010-01 & 2022-07 & 151 & $z$ VIX & 0.021 & 0.14 & 1.5 &  &  \\
+Validation & 2010-01 & 2022-07 & 151 & $z$ overall EMV & 0.126 & 0.37 & 4.9 &  &  \\
+Validation & 2010-01 & 2022-07 & 151 & $z$ VIX + $z$ overall EMV & 0.166 & -0.30 & -2.5 & 0.62 & 5.4 \\
+Holdout & 2022-08 & 2026-07 & 48 & $z$ VIX & 0.011 & 0.16 & 0.6 &  &  \\
+Holdout & 2022-08 & 2026-07 & 48 & $z$ overall EMV & 0.250 & 0.55 & 3.6 &  &  \\
+Holdout & 2022-08 & 2026-07 & 48 & $z$ VIX + $z$ overall EMV & 0.267 & -0.22 & -1.1 & 0.63 & 3.2 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table}

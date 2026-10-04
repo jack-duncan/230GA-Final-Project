@@ -1,0 +1,24 @@
+% Re-wrapped by report/make_tables.py from outputs/tables/M1b_alt_signals_primary.tex (content unchanged).
+\begin{table}[H]
+\centering\footnotesize
+\caption{Primary test: team machinery fed a climate-concern measure, corrected-baseline timing (inputs lagged one month, CPI gap interpolated). FF3 alpha in \% per year with NW(6) t in parentheses; IC is the slope of $z(\varepsilon_{t+1})$ on $z(\text{signal}_t)$ (negative favors Short-Brown). Holdout ends 2025-07 for MCCC (36 months) and 2025-10 for CPU (39 months); 2026-07 for EMV env. (48 months). Smallest Holm-adjusted p across the 40 primary tests: 1.00.}
+\label{tab:m1b_primary}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lrrrrrr}
+\toprule
+Strategy & EMV env. Val. & EMV env. Hold. & MCCC Val. & MCCC Hold. & CPU Val. & CPU Hold. \\
+\midrule
+Original 3m & 1.62 (1.97) & -2.16 (-1.90) & 0.44 (0.53) & -2.91 (-1.88) & 1.50 (1.44) & 0.36 (0.37) \\
+Pure 3m & 1.70 (2.01) & -2.16 (-1.90) & 0.37 (0.40) & -2.19 (-1.95) & -0.11 (-0.11) & -0.61 (-0.52) \\
+Original 6m & 2.09 (2.18) & -1.97 (-1.30) & 1.05 (0.93) & -2.70 (-1.70) & 1.81 (1.73) & -1.62 (-0.98) \\
+Pure 6m & 2.33 (2.59) & -1.97 (-1.30) & 0.04 (0.05) & -1.66 (-1.31) & 1.37 (1.28) & 0.20 (0.20) \\
+Continuous raw & 0.46 (1.40) & -0.58 (-1.33) & 0.25 (0.53) & -0.95 (-1.55) & 0.41 (0.87) & -0.56 (-0.91) \\
+Continuous pure & 0.51 (1.46) & -0.59 (-1.33) & -0.12 (-0.22) & -0.56 (-1.39) & 0.28 (0.88) & -0.30 (-0.56) \\
+IC: raw attention z & -0.02 (-0.23) & 0.02 (0.27) & 0.04 (0.55) & 0.13 (1.31) & 0.02 (0.25) & 0.07 (0.48) \\
+IC: purified attention & -0.05 (-0.41) & 0.03 (0.33) & 0.03 (0.47) & 0.16 (2.22) & 0.02 (0.31) & 0.02 (0.12) \\
+IC: continuous weight (raw) & -0.15 (-2.16) & 0.06 (0.56) & 0.04 (0.45) & 0.21 (1.90) & -0.00 (-0.02) & 0.03 (0.29) \\
+IC: continuous weight (pure) & -0.16 (-2.19) & 0.06 (0.57) & 0.09 (1.07) & 0.10 (0.90) & -0.00 (-0.08) & -0.03 (-0.29) \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table}

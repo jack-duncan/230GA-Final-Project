@@ -1,0 +1,1 @@
+{'mutant': "M3 signal uses next month's EMV", 'audit_rows': 91, 'rows_flagged': 10, 'detected': True, 'flagged_by_test': "{'signal_perturb': 10}", 'truncate_flags': 0, 'synthetic_alpha': -0.0008378439796672932, 'seconds': 85}

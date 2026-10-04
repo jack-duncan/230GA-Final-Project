@@ -1,0 +1,20 @@
+\begin{table}[htbp]\centering\small
+\caption{Frozen rule scored once, 2010-01 to 2022-07. Primary: EMV-share rule; secondary: team signal lagged one month.}
+\label{tab:m8_passbar}
+\begin{tabular}{lrrrrr}
+\toprule
+signal & component & statistic & p & bar & pass \\
+\midrule
+primary & (i) timing alpha, NW(6) & alpha -0.0012/yr, t -0.19 & 0.851 & alpha > 0 and t >= 2 & no \\
+primary & (ii) calendar shuffle & 5000 draws, 6 blocks & 0.510 & one-sided p <= 0.05 & no \\
+primary & (iii) independent episodes & 6 &  & >= 8 & no \\
+primary & (iv) drop-one Brown industry & alphas Util -0.0016, Ships +0.0031, Aero -0.0045, Steel +0.0011, BldMt -0.0015 &  & all five alphas > 0 & no \\
+primary & VERDICT &  &  & all four & no \\
+secondary & (i) timing alpha, NW(6) & alpha 0.0111/yr, t 2.03 & 0.044 & alpha > 0 and t >= 2 & yes \\
+secondary & (ii) calendar shuffle & 5000 draws, 7 blocks & 0.036 & one-sided p <= 0.05 & yes \\
+secondary & (iii) independent episodes & 7 &  & >= 8 & no \\
+secondary & (iv) drop-one Brown industry & alphas Util +0.0110, Ships +0.0060, Aero +0.0061, Steel +0.0138, BldMt +0.0137 &  & all five alphas > 0 & yes \\
+secondary & VERDICT &  &  & all four & no \\
+\bottomrule
+\end{tabular}
+\end{table}

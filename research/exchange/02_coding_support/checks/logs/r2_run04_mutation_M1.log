@@ -1,0 +1,1 @@
+{'mutant': 'M1 publication lag dropped', 'audit_rows': 91, 'rows_flagged': 10, 'detected': True, 'flagged_by_test': "{'signal_perturb': 10}", 'truncate_flags': 0, 'synthetic_alpha': -0.0006880746710232651, 'seconds': 84}

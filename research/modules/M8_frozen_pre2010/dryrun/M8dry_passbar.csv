@@ -1,0 +1,11 @@
+signal,role,component,statistic,p_value,bar,pass
+Frozen EMV-share rule (primary),primary,"(i) timing alpha, NW(6)","alpha -0.0012/yr, t -0.19",0.8513451541017792,alpha > 0 and t >= 2,False
+Frozen EMV-share rule (primary),primary,(ii) calendar shuffle,"5000 draws, 6 blocks",0.5100979804039192,one-sided p <= 0.05,False
+Frozen EMV-share rule (primary),primary,(iii) independent episodes,6,,>= 8,False
+Frozen EMV-share rule (primary),primary,(iv) drop-one Brown industry,"alphas Util -0.0016, Ships +0.0031, Aero -0.0045, Steel +0.0011, BldMt -0.0015",,all five alphas > 0,False
+Frozen EMV-share rule (primary),primary,VERDICT,,,all four,False
+"Team EMV_env level, lagged 1m (secondary)",secondary,"(i) timing alpha, NW(6)","alpha 0.0111/yr, t 2.03",0.04413490780978261,alpha > 0 and t >= 2,True
+"Team EMV_env level, lagged 1m (secondary)",secondary,(ii) calendar shuffle,"5000 draws, 7 blocks",0.03579284143171366,one-sided p <= 0.05,True
+"Team EMV_env level, lagged 1m (secondary)",secondary,(iii) independent episodes,7,,>= 8,False
+"Team EMV_env level, lagged 1m (secondary)",secondary,(iv) drop-one Brown industry,"alphas Util +0.0110, Ships +0.0060, Aero +0.0061, Steel +0.0138, BldMt +0.0137",,all five alphas > 0,True
+"Team EMV_env level, lagged 1m (secondary)",secondary,VERDICT,,,all four,False

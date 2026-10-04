@@ -1,0 +1,5 @@
+{'seed': 6, 'alpha': np.float64(0.0003033923286500059), 't6': np.float64(0.6225969533529722), 'p2': np.float64(0.5344302368309365), 'shuffle_p': np.float64(0.13572854291417166), 'episodes': 7, 'verdict': 'FAIL'}
+{'seed': 7, 'alpha': np.float64(0.0002581499766940782), 't6': np.float64(0.5545074352985212), 'p2': np.float64(0.5800010790809808), 'shuffle_p': np.float64(0.3313373253493014), 'episodes': 4, 'verdict': 'FAIL'}
+{'seed': 8, 'alpha': np.float64(0.0005343285839755441), 't6': np.float64(0.8284895815844497), 'p2': np.float64(0.40861222845833345), 'shuffle_p': np.float64(0.08982035928143713), 'episodes': 7, 'verdict': 'FAIL'}
+{'seed': 9, 'alpha': np.float64(-0.00035839849605489687), 't6': np.float64(-0.663201489272777), 'p2': np.float64(0.5081499579066185), 'shuffle_p': np.float64(0.6626746506986028), 'episodes': 6, 'verdict': 'FAIL'}
+{'seed': 10, 'alpha': np.float64(0.00029635849365182), 't6': np.float64(0.5655389672322501), 'p2': np.float64(0.5724896694839373), 'shuffle_p': np.float64(0.2634730538922156), 'episodes': 8, 'verdict': 'FAIL'}

@@ -1,0 +1,704 @@
+# =============================================================================
+# Replacements. Everything not defined here is unchanged from the earlier script.
+# =============================================================================
+import os
+import sys
+import tempfile
+
+import numpy as np
+import pandas as pd
+
+# Constants (already in the script; repeated so this block stands alone)
+BROWN = ["Util", "Ships", "Aero", "Steel", "BldMt"]
+HEDGE_COLS = ["Mkt-RF", "SMB", "HML"]
+FRED_IDS = ["EMVENRGYENVREG", "EMVOVERALLEMV", "GS10", "MCOILWTICO", "VIXCLS"]
+FF49_NAMES = [
+    "Agric", "Food", "Soda", "Beer", "Smoke", "Toys", "Fun", "Books", "Hshld", "Clths",
+    "Hlth", "MedEq", "Drugs", "Chems", "Rubbr", "Txtls", "BldMt", "Cnstr", "Steel", "FabPr",
+    "Mach", "ElcEq", "Autos", "Aero", "Ships", "Guns", "Gold", "Mines", "Coal", "Oil",
+    "Util", "Telcm", "PerSv", "BusSv", "Hardw", "Softw", "Chips", "LabEq", "Paper", "Boxes",
+    "Trans", "Whlsl", "Rtail", "Meals", "Banks", "Insur", "RlEst", "Fin", "Other",
+]
+LATE_START = {"Soda": "1963-07-31", "Hlth": "1969-07-31", "Rubbr": "1963-07-31", "FabPr": "1963-07-31",
+              "Guns": "1963-07-31", "Gold": "1963-07-31", "Softw": "1965-07-31"}
+STATE_COLS = ["w", "w_ao", "m", "hold"] + [f"b_{k}" for k in HEDGE_COLS]
+POS_OF = {"RT": "w", "RAO": "w_ao"}          # return column -> the position that earns it
+TEST_WINDOW = ("1993-01-31", "2009-12-31")
+SEEN_WINDOW = ("2010-01-31", "2022-07-31")   # the holdout starts 2022-08
+MONTH_END = pd.offsets.MonthEnd()
+
+
+# -----------------------------------------------------------------------------
+# Raw-input helpers. Checks and tests work on `raw` (the files as read from disk),
+# so synthetic, perturbed and truncated data all pass through your unchanged loader.
+# -----------------------------------------------------------------------------
+def read_raw(paths, fac, hedge_fac):
+    """Inputs: dict of CSV paths (keys 'ff49' and the FRED ids), fac (FF5+UMD), hedge_fac (team FF3).
+    Output: dict of raw frames exactly as on disk plus the two factor frames. Timing: none."""
+    raw = {"ff49": pd.read_csv(paths["ff49"], parse_dates=["date"], float_precision="round_trip"),
+           "fac": fac, "hedge_fac": hedge_fac}
+    for sid in FRED_IDS:
+        df = pd.read_csv(paths[sid], parse_dates=["observation_date"], float_precision="round_trip")
+        df[sid] = pd.to_numeric(df[sid], errors="coerce")        # FRED blanks -> NaN
+        raw[sid] = df
+    return raw
+
+
+def write_raw_csvs(raw, folder):
+    """Inputs: raw dict, folder. Output: dict of paths in the same layout as the real files. Timing: none."""
+    paths = {"ff49": os.path.join(folder, "ff49_industry_monthly.csv")}
+    raw["ff49"].to_csv(paths["ff49"], index=False, date_format="%Y-%m-%d")
+    for sid in FRED_IDS:
+        paths[sid] = os.path.join(folder, f"{sid}.csv")
+        raw[sid].to_csv(paths[sid], index=False, date_format="%Y-%m-%d")
+    return paths
+
+
+def truncate_raw(raw, cut_to):
+    """Inputs: raw dict, month-end cut_to. Output: copy with every row dated after cut_to removed
+    (FRED monthly rows are dated the 1st, so month cut_to itself is kept). Timing: nothing after cut_to survives."""
+    cut = pd.Timestamp(cut_to)
+    out = {}
+    for k, v in raw.items():
+        if not isinstance(v, pd.DataFrame):
+            out[k] = v
+        elif "date" in v.columns:
+            out[k] = v[v["date"] <= cut].copy()
+        elif "observation_date" in v.columns:
+            out[k] = v[v["observation_date"] <= cut].copy()
+        else:
+            out[k] = v.loc[v.index <= cut].copy()
+    return out
+
+
+def _last_date(raw):
+    dates = []
+    for v in raw.values():
+        if isinstance(v, pd.DataFrame) and len(v):
+            col = "date" if "date" in v.columns else ("observation_date" if "observation_date" in v.columns else None)
+            dates.append(v[col].max() if col else v.index.max())
+    return max(dates)
+
+
+def _bump(raw, key, T, cols, fn):
+    """Copy of raw with fn applied to `cols` of frame `key` in the calendar month of T."""
+    r = dict(raw)
+    df = raw[key].copy()
+    p = pd.Timestamp(T).to_period("M")
+    if "date" in df.columns:
+        rows = (df["date"].dt.to_period("M") == p).to_numpy()
+    elif "observation_date" in df.columns:
+        rows = (df["observation_date"].dt.to_period("M") == p).to_numpy()
+    else:
+        rows = df.index.to_period("M") == p
+    df.loc[rows, cols] = fn(df.loc[rows, cols])
+    r[key] = df
+    return r
+
+
+def _maxdiff(a, b, cols):
+    """Max |a - b| over cols on a's rows; NaN vs NaN counts as equal, NaN vs number as inf."""
+    av = a[cols].astype(float).to_numpy()
+    bv = b.reindex(a.index)[cols].astype(float).to_numpy()
+    if (np.isnan(av) ^ np.isnan(bv)).any():
+        return np.inf
+    d = np.abs(av - bv)[~(np.isnan(av) & np.isnan(bv))]
+    return float(d.max()) if d.size else 0.0
+
+
+def _ret_err(base, pert, T, expected):
+    errs = []
+    for col, e in expected.items():
+        d = pert.at[T, col] - base.at[T, col] - e if T in pert.index else np.nan
+        errs.append(abs(d) if np.isfinite(d) else np.inf)
+    return max(errs)
+
+
+def run_panel(raw, start, end, z_burn_in="nonzero", n_shuffle=0, loo=False, verbose=False):
+    """
+    ADAPTER to the unchanged driver: the only place the tests touch it. Edit names here if yours differ.
+    Inputs : raw dict; window; burn-in reading; shuffle draws (0 = skip); leave-one-out on/off.
+    Output : (panel, out).
+             panel, indexed by month-end t: w, w_ao (positions set at end of t), RT, RAO (net returns earned
+             in t), m, hold, b_Mkt-RF, b_SMB, b_HML (end-of-t states), I (1 if a timed position was held
+             entering t).
+             out: D (Series), X (design DataFrame incl. constant), alpha, alpha_t (NW(6)), plus the
+             driver's printed tables.
+    Timing : the window end is clipped to the last month in raw, so truncated inputs run cleanly.
+    """
+    end = min(pd.Timestamp(end), pd.Timestamp(raw["ff49"]["date"].max()))
+    with tempfile.TemporaryDirectory() as d:
+        paths = write_raw_csvs(raw, d)
+        out = run_backtest(paths, raw["fac"], start, end, hedge_fac=raw["hedge_fac"],   # noqa: F821
+                           z_burn_in=z_burn_in, n_shuffle=n_shuffle, run_loo=loo, verbose=verbose)
+    return out["panel"], out
+
+
+# =============================================================================
+# 1. make_synthetic_inputs
+# =============================================================================
+def make_synthetic_inputs(seed=0, out_dir=None, plant=0.0, plant_months=None, end="2026-06-30"):
+    """
+    Synthetic stand-ins for every input, shaped exactly like the real files.
+
+    Inputs
+      seed         : fixed RNG seed (nothing is tuned on it).
+      out_dir      : if given, also write the six CSVs there; their paths are returned under 'paths'.
+      plant        : positive-control effect (decimal). Every Brown industry return is lowered by `plant`
+                     in each month of `plant_months`, so the short Brown leg gains there.
+      plant_months : month-ends t whose return is earned by a timed position (I_{t-1} = 1) in an unplanted
+                     run with the same seed. The signal files do not depend on returns and the plant draws
+                     no random numbers, so the hold schedule and all other data are identical with and without it.
+    Outputs
+      dict: 'ff49' (date column + 49 industries, NaN before an industry starts), 'fac' (Mkt-RF, SMB, HML,
+      RMW, CMA, RF, UMD from 1963-07), 'hedge_fac' (FF3: Mkt-RF, SMB, HML, RF from 1926-07; its SMB differs
+      from fac's, as in the real files), one frame per FRED id (observation_date + id).
+    Timing
+      Returns at month-ends. FRED monthly rows dated the 1st. GS10 from 1953-04, EMV from 1985-01,
+      WTI from 1986-01, VIXCLS daily business days from 1990-01-02 with ~3% blanks.
+    Fix
+      GS10 used to be a random walk clipped at 0.5, so it could sit on the clip and make BOND constant.
+      log(GS10) is now a stationary AR(1): always positive, never clipped, and it moves every month.
+    """
+    rng = np.random.default_rng(seed)
+    idx = pd.date_range("1926-07-31", end, freq=MONTH_END)
+    n = len(idx)
+
+    def ar1(nobs, mu, phi, sig, x0):
+        eps = rng.standard_normal(nobs)
+        x = np.empty(nobs)
+        x[0] = x0
+        for i in range(1, nobs):
+            x[i] = mu + phi * (x[i - 1] - mu) + sig * eps[i]
+        return x
+
+    y10 = np.exp(ar1(n, np.log(5.0), 0.985, 0.045, np.log(3.5)))            # percent, roughly 2-11
+    rf = y10 * 0.6 * np.exp(ar1(n, 0.0, 0.9, 0.05, 0.0)) / 1200.0              # monthly decimal
+
+    zf = rng.standard_normal((n, 7))
+    mkt, smb3, hml = 0.006 + 0.045 * zf[:, 0], 0.002 + 0.030 * zf[:, 1], 0.003 + 0.030 * zf[:, 2]
+    rmw, cma, umd = 0.003 + 0.020 * zf[:, 3], 0.003 + 0.020 * zf[:, 4], 0.006 + 0.040 * zf[:, 5]
+    smb5 = smb3 + 0.004 * zf[:, 6]
+    hedge_fac = pd.DataFrame({"Mkt-RF": mkt, "SMB": smb3, "HML": hml, "RF": rf}, index=idx)
+    fac = pd.DataFrame({"Mkt-RF": mkt, "SMB": smb5, "HML": hml, "RMW": rmw, "CMA": cma,
+                        "RF": rf, "UMD": umd}, index=idx).loc["1963-07-31":]
+
+    brown_common = 0.015 * rng.standard_normal(n)
+    rets = {}
+    for name in FF49_NAMES:
+        bm, bs, bh = rng.normal(1.0, 0.2), rng.normal(0.2, 0.3), rng.normal(0.2, 0.3)
+        r = rf + bm * mkt + bs * smb3 + bh * hml + 0.05 * rng.standard_normal(n)
+        if name in BROWN:
+            r = r + brown_common
+        if name in LATE_START:
+            r = np.where(idx < pd.Timestamp(LATE_START[name]), np.nan, r)
+        rets[name] = r
+    if plant != 0.0:
+        if plant_months is None:
+            raise ValueError("plant != 0 needs plant_months")
+        hit = idx.to_period("M").isin(pd.DatetimeIndex(plant_months).to_period("M"))
+        for name in BROWN:
+            rets[name] = np.where(hit, rets[name] - plant, rets[name])
+    ff49 = pd.DataFrame(rets, index=idx)[FF49_NAMES]
+    ff49.insert(0, "date", idx)
+    ff49 = ff49.reset_index(drop=True)
+
+    def fred(mask, values, sid):
+        return pd.DataFrame({"observation_date": idx[mask].to_period("M").to_timestamp(), sid: values})
+
+    g = idx >= pd.Timestamp("1953-04-30")
+    e = idx >= pd.Timestamp("1985-01-31")
+    o = idx >= pd.Timestamp("1986-01-31")
+    ne = int(e.sum())
+    overall = np.exp(ar1(ne, np.log(25.0), 0.8, 0.15, np.log(25.0)))            # never zero
+    env = overall * np.exp(ar1(ne, np.log(0.02), 0.6, 0.35, np.log(0.02)))
+    p_zero = np.where(idx[e] < pd.Timestamp("1995-01-01"), 0.05, 0.01)          # zeros cluster early
+    env = np.where(rng.random(ne) < p_zero, 0.0, env)
+    wti = np.exp(ar1(int(o.sum()), np.log(40.0), 0.98, 0.09, np.log(22.0)))
+    days = pd.bdate_range("1990-01-02", end)
+    vix = np.round(np.exp(ar1(len(days), np.log(19.0), 0.98, 0.06, np.log(19.0))), 2)
+    vix[rng.random(len(days)) < 0.03] = np.nan
+
+    raw = {"ff49": ff49, "fac": fac, "hedge_fac": hedge_fac,
+           "GS10": fred(g, y10[g], "GS10"),
+           "EMVOVERALLEMV": fred(e, overall, "EMVOVERALLEMV"),
+           "EMVENRGYENVREG": fred(e, env, "EMVENRGYENVREG"),
+           "MCOILWTICO": fred(o, wti, "MCOILWTICO"),
+           "VIXCLS": pd.DataFrame({"observation_date": days, "VIXCLS": vix})}
+    if out_dir is not None:
+        os.makedirs(out_dir, exist_ok=True)
+        raw["paths"] = write_raw_csvs(raw, out_dir)
+    return raw
+
+
+def positive_control(seed=0, plant=0.03, window=TEST_WINDOW):
+    """
+    Check (b)10. Inputs: seed, plant (Brown leg lower by `plant` in every held month), window.
+    Output: dict with the planted shift = mean(D_planted) - mean(D_unplanted), the share of it in alpha,
+    and the planted run's alpha and NW(6) t. Timing: the plant sits in month t when I_{t-1} = 1.
+    """
+    raw0 = make_synthetic_inputs(seed)
+    p0, o0 = run_panel(raw0, *window)
+    w0 = p0.loc[window[0]:window[1]]
+    held = w0.index[(w0["I"] == 1).to_numpy()]
+    raw1 = make_synthetic_inputs(seed, plant=plant, plant_months=held)
+    p1, o1 = run_panel(raw1, *window)
+    shift = o1["D"].mean() - o0["D"].mean()
+    return dict(seed=seed, same_I=bool(p1["I"].equals(p0["I"])), n_held=len(held), shift=shift,
+                share=(o1["alpha"] - o0["alpha"]) / shift, alpha=o1["alpha"], t=o1["alpha_t"])
+
+
+def test_make_synthetic_inputs(seeds=range(21), pc_seeds=(0, 1, 2)):
+    for seed in seeds:
+        raw = make_synthetic_inputs(seed)
+        g = raw["GS10"]["GS10"]
+        assert g.notna().all() and g.min() > 0.5, (seed, g.min())               # no floor
+        assert (g.diff().iloc[1:] != 0).all(), seed                              # moves every month
+        assert g.diff().rolling(24).std().dropna().min() > 0.02, seed            # and in every window
+        for start, end in (TEST_WINDOW, SEEN_WINDOW):
+            panel, out = run_panel(raw, start, end)
+            X = out["X"]
+            I = panel["I"].reindex(X.index).astype(float)
+            assert np.linalg.matrix_rank(X.to_numpy()) == X.shape[1], (seed, start)   # seed 16 crashed here
+            assert (X.std() < 1e-12).sum() == 1, (seed, start)                         # only the constant
+            coef = np.linalg.lstsq(X.to_numpy(), I.to_numpy(), rcond=None)[0]
+            r2 = 1 - ((I - X @ coef) ** 2).sum() / ((I - I.mean()) ** 2).sum()
+            assert r2 < 0.5, (seed, start, r2)          # no regressor combination can stand in for I itself
+    for seed in pc_seeds:
+        r = positive_control(seed)
+        assert r["same_I"] and r["n_held"] > 0 and r["shift"] > 0, r
+        assert r["share"] >= 0.8 and r["t"] > 2, r
+
+
+# =============================================================================
+# 2. attention_signal
+# =============================================================================
+def attention_signal(env, overall, z_burn_in="nonzero", window=60, min_nonzero=48,
+                     max_zero_frac=0.10, pct=0.80, min_prior_z=60):
+    """
+    Rule steps 1-3: ratio, zero handling, rolling z, past-only percentile threshold, extreme flag.
+
+    Inputs
+      env, overall : Series of EMVENRGYENVREG and EMVOVERALLEMV indexed by data month (month-end).
+                     Months before the first observation do not exist: unavailable, not zero.
+      z_burn_in    : "nonzero"  (default, your reading): z_t exists once the trailing 60 months hold
+                                 >= 48 nonzero months, counting only months inside the sample.
+                     "calendar" (my previous hard-coded reading): also require 60 calendar months since
+                                 the first observation.
+      Rules shared by both readings: a zero month has no z and cannot be extreme; the month is "off"
+      (no z) when the trailing 60 calendar months contain more than 6 zeros (10% of 60) or fewer than
+      48 nonzero months; the z window and the percentile history use only months with a z.
+    Outputs
+      DataFrame by data month t: s, zero, n_nonzero, n_zero, on, z, n_prior_z, thr, extreme.
+      z_t = (log s_t - mean) / std(ddof=1) over nonzero months t-59..t.
+      thr_t = 80th percentile (linear) of all z before t, needing >= 60 of them. extreme_t = on_t and z_t > thr_t.
+    Timing
+      Row t uses EMV data for months <= t only. Publication lag: row t is usable at the end of t+1.
+      The lag is applied in the hold step (unchanged), which reads extreme[t-1] at the end of t.
+    """
+    if z_burn_in not in ("nonzero", "calendar"):
+        raise ValueError("z_burn_in must be 'nonzero' or 'calendar'")
+    env, overall = env.copy(), overall.copy()
+    env.index = pd.DatetimeIndex(env.index) + pd.offsets.MonthEnd(0)
+    overall.index = pd.DatetimeIndex(overall.index) + pd.offsets.MonthEnd(0)
+    df = pd.concat({"env": env, "overall": overall}, axis=1).sort_index()
+    idx = pd.date_range(df.dropna().index.min(), df.index.max(), freq=MONTH_END)
+    df = df.reindex(idx)
+
+    avail = df["env"].notna() & df["overall"].notna() & (df["overall"] > 0)
+    zero = avail & (df["env"] == 0)
+    good = avail & (df["env"] > 0)
+    s = (df["env"] / df["overall"]).where(good)
+    x = np.log(s)
+
+    n_nonzero = good.astype(int).rolling(window, min_periods=1).sum()
+    n_zero = zero.astype(int).rolling(window, min_periods=1).sum()
+    max_zero = int(np.floor(max_zero_frac * window + 1e-9))
+    on = good & (n_nonzero >= min_nonzero) & (n_zero <= max_zero)
+    if z_burn_in == "calendar":
+        on &= pd.Series(np.arange(len(idx)) >= window - 1, index=idx)
+
+    roll = x.rolling(window, min_periods=min_nonzero)
+    z = ((x - roll.mean()) / roll.std(ddof=1)).where(on)
+
+    zv = z.to_numpy()
+    thr = np.full(len(zv), np.nan)
+    n_prior = np.zeros(len(zv), dtype=int)
+    hist = []
+    for i, zi in enumerate(zv):
+        n_prior[i] = len(hist)
+        if len(hist) >= min_prior_z:
+            thr[i] = np.quantile(hist, pct)
+        if np.isfinite(zi):
+            hist.append(zi)
+    thr = pd.Series(thr, index=idx)
+    extreme = on & (z > thr)
+    return pd.DataFrame({"s": s, "zero": zero, "n_nonzero": n_nonzero, "n_zero": n_zero, "on": on,
+                         "z": z, "n_prior_z": n_prior, "thr": thr, "extreme": extreme})
+
+
+def test_attention_signal():
+    idx = pd.date_range("1985-01-31", "2005-12-31", freq=MONTH_END)
+    rng = np.random.default_rng(1)
+    overall = pd.Series(100 * np.exp(rng.normal(0, 0.2, len(idx))), idx)
+    env = overall * np.exp(rng.normal(np.log(0.01), 0.3, len(idx)))
+    a = attention_signal(env, overall, z_burn_in="nonzero")
+    b = attention_signal(env, overall, z_burn_in="calendar")
+    assert a["z"].first_valid_index() == idx[47]           # month 48
+    assert b["z"].first_valid_index() == idx[59]           # month 60
+    assert a["thr"].first_valid_index() == idx[107] and b["thr"].first_valid_index() == idx[119]
+    assert np.allclose(a["z"].iloc[59:], b["z"].iloc[59:], rtol=0, atol=0)   # same z once the window is full
+    t = 100                                                                    # hand-checked z
+    x = np.log(env / overall).iloc[t - 59:t + 1]
+    assert abs(a["z"].iloc[t] - (x.iloc[-1] - x.mean()) / x.std(ddof=1)) < 1e-10
+    h = a["z"].iloc[:150].dropna().to_numpy()                                  # past-only threshold
+    assert a["thr"].iloc[150] == np.quantile(h, 0.8) and a["n_prior_z"].iloc[150] == len(h)
+    env4 = env.copy(); env4.iloc[150] *= 10
+    a4 = attention_signal(env4, overall)
+    pd.testing.assert_series_equal(a["thr"].iloc[:151], a4["thr"].iloc[:151])
+    env2 = env.copy(); env2.iloc[[100, 101]] = 0.0                              # zeros dropped, not low
+    c = attention_signal(env2, overall)
+    assert c["z"].iloc[100:102].isna().all() and not c["extreme"].iloc[100:102].any()
+    x2 = np.log((env2 / overall).where(env2 > 0)).iloc[102 - 59:103]
+    assert abs(c["z"].iloc[102] - (x2.iloc[-1] - x2.mean()) / x2.std(ddof=1)) < 1e-10
+    env3 = env.copy(); env3.iloc[150:157] = 0.0                                 # 7 zeros in 60 -> off
+    d = attention_signal(env3, overall)
+    assert not d["on"].iloc[150:210].any() and d["on"].iloc[210]
+    assert (a["extreme"] == (a["z"] > a["thr"])).all()
+
+
+# =============================================================================
+# 3. leg_pipeline
+# =============================================================================
+def leg_pipeline(ff49, hedge_fac, brown=BROWN, beta_window=60, sd_window=36, vol_target=0.05):
+    """
+    Brown leg, rolling hedge, out-of-sample residual, sizing.
+
+    Inputs
+      ff49      : industry returns (decimal), month-end DatetimeIndex or a 'date' column.
+      hedge_fac : the team's FF3 frame (Mkt-RF, SMB, HML, RF; decimal; month-end). It supplies R^B's RF,
+                  the hedge regressors and the overlay factor returns. The attribution's `fac` (FF5+UMD)
+                  never enters this function. An FF5 frame is refused.
+      brown     : industries in the leg (pass four names for a leave-one-out rebuild).
+    Outputs (DataFrame by month-end t)
+      RB = mean(brown_t) - RF_t; f_<k> = hedge factor returns in t; a, b_<k> = OLS of RB on [1, f] over
+      t-59..t; e = RB_t - a_{t-1} - b_{t-1}'f_t; sd = std(e_{t-35..t}, ddof=1);
+      m = min(1, vol_target / (sqrt(12) sd_t)).
+    Timing
+      Row t uses data through t only; nothing is shifted forward. A position set at the end of t
+      (size m_t, hedge b_t) earns in t+1: w_t RB_{t+1} - w_t b_t' f_{t+1}, with f_{t+1} from THIS frame.
+    """
+    if "date" in ff49.columns:
+        ff49 = ff49.set_index("date")
+    ff49 = ff49.copy()
+    ff49.index = pd.DatetimeIndex(ff49.index)
+    missing = [c for c in HEDGE_COLS + ["RF"] if c not in hedge_fac.columns]
+    if missing:
+        raise ValueError(f"hedge_fac lacks {missing}")
+    if {"RMW", "CMA"} & set(hedge_fac.columns):
+        raise ValueError("hedge_fac has RMW/CMA: that is the FF5 file; the team hedge uses its FF3 file")
+    idx = ff49.index.intersection(hedge_fac.index).sort_values()
+    per = idx.to_period("M").asi8
+    if len(per) > 1 and (np.diff(per) != 1).any():
+        raise ValueError("gaps in the monthly overlap of ff49 and hedge_fac")
+
+    F = hedge_fac.loc[idx, HEDGE_COLS].astype(float)
+    rb = ff49.loc[idx, list(brown)].mean(axis=1, skipna=False) - hedge_fac.loc[idx, "RF"]
+    y = rb.to_numpy(float)
+    X = np.column_stack([np.ones(len(idx)), F.to_numpy()])
+    usable = np.isfinite(y) & np.isfinite(X).all(axis=1)
+    coef = np.full((len(idx), 1 + len(HEDGE_COLS)), np.nan)
+    for i in range(beta_window - 1, len(idx)):
+        lo = i - beta_window + 1
+        if usable[lo:i + 1].all():
+            coef[i] = np.linalg.lstsq(X[lo:i + 1], y[lo:i + 1], rcond=None)[0]
+
+    out = pd.DataFrame(index=idx)
+    out["RB"] = rb
+    for k in HEDGE_COLS:
+        out[f"f_{k}"] = F[k]
+    out["a"] = coef[:, 0]
+    for j, k in enumerate(HEDGE_COLS):
+        out[f"b_{k}"] = coef[:, j + 1]
+    fit_prev = out["a"].shift(1) + sum(out[f"b_{k}"].shift(1) * out[f"f_{k}"] for k in HEDGE_COLS)
+    out["e"] = out["RB"] - fit_prev
+    out["sd"] = out["e"].rolling(sd_window, min_periods=sd_window).std(ddof=1)
+    out["m"] = np.minimum(1.0, vol_target / (np.sqrt(12.0) * out["sd"]))
+    return out
+
+
+def test_leg_pipeline():
+    raw = make_synthetic_inputs(seed=3)
+    ff49, hf = raw["ff49"].set_index("date"), raw["hedge_fac"]
+    leg = leg_pipeline(ff49, hf)
+    T = pd.Timestamp("2000-06-30"); i = leg.index.get_loc(T); Tm1 = leg.index[i - 1]
+    win = leg.index[i - 59:i + 1]
+    Xw = np.column_stack([np.ones(60), hf.loc[win, HEDGE_COLS].to_numpy()])
+    yw = (ff49.loc[win, BROWN].mean(axis=1) - hf.loc[win, "RF"]).to_numpy()
+    bh = np.linalg.lstsq(Xw, yw, rcond=None)[0]
+    assert np.allclose(leg.loc[T, ["a"] + [f"b_{k}" for k in HEDGE_COLS]].to_numpy(float), bh, rtol=0, atol=1e-12)
+    e_hand = leg.at[T, "RB"] - leg.at[Tm1, "a"] - sum(leg.at[Tm1, f"b_{k}"] * hf.at[T, k] for k in HEDGE_COLS)
+    assert abs(leg.at[T, "e"] - e_hand) < 1e-12                                 # residual uses t-1 coefficients
+    ff49b, hfb = ff49.copy(), hf.copy()                                          # month T+1 cannot reach row T
+    ff49b.loc[leg.index[i + 1], BROWN] += 0.2
+    hfb.loc[leg.index[i + 1], HEDGE_COLS] += 0.2
+    pd.testing.assert_frame_equal(leg.iloc[:i + 1], leg_pipeline(ff49b, hfb).iloc[:i + 1])
+    hf2 = hf.copy()                                                              # hedge SMB moves b, not X
+    hf2["SMB"] = hf2["SMB"] + 0.01 * np.random.default_rng(0).standard_normal(len(hf2))
+    assert (leg_pipeline(ff49, hf2)["b_SMB"] - leg["b_SMB"]).abs().max() > 1e-3
+    _, o1 = run_panel(raw, *TEST_WINDOW)
+    _, o2 = run_panel(dict(raw, hedge_fac=hf2), *TEST_WINDOW)
+    pd.testing.assert_frame_equal(o1["X"], o2["X"])
+    try:
+        leg_pipeline(ff49, raw["fac"])
+    except ValueError:
+        pass
+    else:
+        raise AssertionError("FF5 frame accepted as hedge_fac")
+
+
+# =============================================================================
+# 4. pass_fail_table
+# =============================================================================
+def _fin(v):
+    try:
+        return v is not None and bool(np.isfinite(float(v)))
+    except (TypeError, ValueError):
+        return False
+
+
+def _fmt(v, spec=".6f"):
+    return format(float(v), spec) if _fin(v) else "nan"
+
+
+def pass_fail_table(alpha, t_alpha, p_alpha, shuffle_p, n_episodes, loo_alpha,
+                    t_bar=2.0, p_bar=0.05, min_episodes=8, n_brown=5):
+    """
+    Inputs : alpha, t_alpha, p_alpha (NW(6) fit; p from t(n-k)), shuffle_p, n_episodes (merged holds),
+             loo_alpha (Series of drop-one alphas indexed by the dropped industry).
+    Output : DataFrame indexed (i), (ii), (iii), (iv), overall; columns name, statistic, bar, value,
+             passed, result, detail.
+    Timing : ex post summary of the single run.
+    (iv)   : "keeps its sign" is read as "stays positive": the full alpha and all five drop-one alphas
+             must be > 0. A negative alpha whose drop-one alphas are also negative fails. So does a
+             missing or NaN drop-one alpha.
+    """
+    loo = pd.Series(loo_alpha, dtype=float)
+    all_a = pd.concat([pd.Series({"full": alpha}, dtype=float), loo])
+    ok1 = _fin(alpha) and _fin(t_alpha) and alpha > 0 and t_alpha >= t_bar
+    ok2 = _fin(shuffle_p) and shuffle_p <= p_bar
+    ok3 = _fin(n_episodes) and n_episodes >= min_episodes
+    ok4 = len(loo) == n_brown and bool(all_a.notna().all()) and bool((all_a > 0).all())
+    rows = [
+        ("(i)", "timing alpha", "NW(6) t of alpha", f"alpha > 0 and t >= {t_bar:g}", t_alpha, ok1,
+         f"alpha = {_fmt(alpha)}/month, p = {_fmt(p_alpha, '.4f')} (t, n-k df)"),
+        ("(ii)", "calendar shuffle", "shuffle p", f"<= {p_bar:g}", shuffle_p, ok2, ""),
+        ("(iii)", "independent episodes", "merged hold episodes", f">= {min_episodes}", n_episodes, ok3, ""),
+        ("(iv)", "drop each Brown industry", "min(full, drop-one alphas)", f"> 0, all {n_brown + 1}",
+         all_a.min() if len(all_a) else np.nan, ok4, ", ".join(f"{k}: {_fmt(v)}" for k, v in all_a.items())),
+    ]
+    n_pass = int(sum(r[5] for r in rows))
+    rows.append(("overall", "verdict", "components passed", "4 of 4", n_pass, n_pass == 4, f"{n_pass} of 4"))
+    t = pd.DataFrame(rows, columns=["component", "name", "statistic", "bar", "value", "passed", "detail"])
+    t = t.set_index("component")
+    t["result"] = np.where(t["passed"], "PASS", "FAIL")
+    return t[["name", "statistic", "bar", "value", "passed", "result", "detail"]]
+
+
+def test_pass_fail_table():
+    pos, neg = pd.Series(0.002, index=BROWN), pd.Series(-0.001, index=BROWN)
+    t = pass_fail_table(-0.002, -1.0, 0.3, 0.5, 5, neg)
+    assert t.at["(iv)", "result"] == "FAIL" and t.at["overall", "result"] == "FAIL"   # the reported bug
+    t = pass_fail_table(0.004, 2.0, 0.05, 0.05, 8, pos)                                # boundaries pass
+    assert (t["result"] == "PASS").all()
+    t = pass_fail_table(0.004, 2.5, 0.01, 0.01, 9, pd.Series([0.002] * 4 + [-1e-5], index=BROWN))
+    assert t.at["(iv)", "result"] == "FAIL" and t.at["overall", "value"] == 3
+    t = pass_fail_table(0.004, 2.5, 0.01, np.nan, 9, pos.iloc[:4])
+    assert t.at["(ii)", "result"] == "FAIL" and t.at["(iv)", "result"] == "FAIL"
+    t = pass_fail_table(0.004, 1.99, 0.05, 0.01, 7, pos)
+    assert t.at["(i)", "result"] == "FAIL" and t.at["(iii)", "result"] == "FAIL"
+
+
+# =============================================================================
+# 5. check_no_lookahead
+# =============================================================================
+def check_no_lookahead(raw, run_fn, start, end, cut_to=None, delta=0.05, n_months=8, min_obs=48,
+                       seed=0, tol=1e-10, state_cols=STATE_COLS, pos_of=POS_OF, brown=BROWN):
+    """
+    Look-ahead audit on both the state side and the return side.
+
+    Inputs
+      raw      : raw dict (read_raw / make_synthetic_inputs).
+      run_fn   : raw -> panel by month-end t with w, w_ao (positions set at end of t), RT, RAO (net returns
+                 earned in t), m, hold, b_<k> (end-of-t states).
+      start,end: window audited.
+      cut_to   : if given, every input is cut at this month BEFORE anything runs, so later data are never
+                 loaded (seen mode: 2022-07-31).
+    Tests (one report row per test and month T)
+      post_window    inputs cut at `end`: all states and returns in the window identical.
+      truncate       inputs cut at T: states through T-1 identical (the old check; T >= start + min_obs).
+      rb_perturb     every Brown industry +delta in T: states and returns before T identical, and
+                     RT_T moves by exactly w_{T-1}*delta (RAO_T by w_ao_{T-1}*delta).
+      f_perturb      hedge-file Mkt-RF, SMB, HML +delta in T: same, with move -w_{T-1}*delta*sum_k b_{T-1,k}.
+      signal_perturb EMVENRGYENVREG for T spiked: states through T and returns through T+1 identical,
+                     because the value for T is usable only at the end of T+1.
+      A month-t return hedged with b_t, or a position earning its own month, leaves every end-of-month
+      state unchanged. Both do change how RT_T and RAO_T respond to month-T data, and the two perturb
+      tests measure that response. D and alpha are not compared: pi is an ex post window constant by design.
+    Months T : fixed-seed draw of up to n_months each from hold entries/exits, held months (w_{T-1} != 0)
+               and flat months (w_{T-1} = w_T = 0) inside the window.
+    Output   : (report DataFrame, ok). Stop if ok is False.
+    """
+    start, end = pd.Timestamp(start), pd.Timestamp(end)
+    if cut_to is not None:
+        raw = truncate_raw(raw, cut_to)
+        end = min(end, pd.Timestamp(cut_to))
+    rows = []
+
+    def add(test, T, pre, err):
+        rows.append(dict(test=test, month=T, pre_diff=pre, ret_err=err, passed=bool(pre <= tol and err <= tol)))
+
+    ret_cols = list(pos_of)
+    all_cols = state_cols + ret_cols
+    base = run_fn(raw)
+    if _last_date(raw) > end:
+        add("post_window", end, _maxdiff(base.loc[start:end], run_fn(truncate_raw(raw, end)), all_cols), 0.0)
+
+    w, wprev = base["w"], base["w"].shift(1)
+    inwin = base.index.to_series().between(start, end)
+    groups = {
+        "change": inwin & (w != wprev) & ((w == 0) | (wprev == 0)) & wprev.notna(),
+        "held": inwin & (wprev != 0) & wprev.notna(),
+        "flat": inwin & (wprev == 0) & (w == 0),
+    }
+    rng = np.random.default_rng(seed)
+    months = pd.DatetimeIndex([])
+    for mask in groups.values():
+        ix = base.index[mask.to_numpy()]
+        if len(ix) > n_months:
+            ix = ix[np.sort(rng.choice(len(ix), n_months, replace=False))]
+        months = months.union(ix)
+    if len(months) == 0:
+        add("coverage", pd.NaT, np.inf, 0.0)
+
+    for T in months:
+        pos = base.index.get_loc(T)
+        Tm1, Tp1 = base.index[pos - 1], base.index[min(pos + 1, len(base) - 1)]
+        before = base.loc[start:Tm1]
+        if T >= start + pd.DateOffset(months=min_obs):
+            add("truncate", T, _maxdiff(before, run_fn(truncate_raw(raw, T)), state_cols), 0.0)
+
+        p = run_fn(_bump(raw, "ff49", T, list(brown), lambda v: v + delta))
+        exp = {r: base.at[Tm1, c] * delta for r, c in pos_of.items()}
+        add("rb_perturb", T, _maxdiff(before, p, all_cols), _ret_err(base, p, T, exp))
+
+        p = run_fn(_bump(raw, "hedge_fac", T, HEDGE_COLS, lambda v: v + delta))
+        bsum = sum(base.at[Tm1, f"b_{k}"] for k in HEDGE_COLS)
+        exp = {r: -base.at[Tm1, c] * delta * bsum for r, c in pos_of.items()}
+        add("f_perturb", T, _maxdiff(before, p, all_cols), _ret_err(base, p, T, exp))
+
+        p = run_fn(_bump(raw, "EMVENRGYENVREG", T, ["EMVENRGYENVREG"], lambda v: 5.0 * v + 0.5))
+        pre = max(_maxdiff(base.loc[start:T], p, state_cols), _maxdiff(base.loc[start:Tp1], p, ret_cols))
+        add("signal_perturb", T, pre, 0.0)
+
+    rep = pd.DataFrame(rows)
+    return rep, bool(len(rep)) and bool(rep["passed"].all())
+
+
+def _fred_month_end(df, sid):
+    s = df.set_index("observation_date")[sid].astype(float)
+    s.index = pd.DatetimeIndex(s.index) + pd.offsets.MonthEnd(0)
+    return s
+
+
+def _toy_run(raw, bug=None):
+    """Minimal pipeline used only to test the auditor. bug: None, 'hedge_bt' (month-t return hedged with b_t),
+    'own_month' (position set at end of t earns month t), 'signal_lag' (extreme flag of t used at end of t)."""
+    leg = leg_pipeline(raw["ff49"], raw["hedge_fac"])
+    sig = attention_signal(_fred_month_end(raw["EMVENRGYENVREG"], "EMVENRGYENVREG"),
+                           _fred_month_end(raw["EMVOVERALLEMV"], "EMVOVERALLEMV"))
+    ext = sig["extreme"].reindex(leg.index, fill_value=False).astype(bool)
+    cross = ext & ~ext.shift(1, fill_value=False)
+    usable = cross if bug == "signal_lag" else cross.shift(1, fill_value=False)
+    hold = usable.astype(float).rolling(6, min_periods=1).max().astype(bool)
+    m = leg["m"].fillna(0.0)
+    B = leg[[f"b_{k}" for k in HEDGE_COLS]].fillna(0.0)
+    F = leg[[f"f_{k}" for k in HEDGE_COLS]].to_numpy()
+    panel = pd.DataFrame({"m": leg["m"], "hold": hold}, index=leg.index)
+    for k in HEDGE_COLS:
+        panel[f"b_{k}"] = leg[f"b_{k}"]
+    for wcol, rcol, wpos in (("w", "RT", -m.where(hold, 0.0)), ("w_ao", "RAO", -m)):
+        panel[wcol] = wpos
+        if bug == "own_month":
+            p, bb = wpos, B.shift(1)
+        elif bug == "hedge_bt":
+            p, bb = wpos.shift(1), B
+        else:
+            p, bb = wpos.shift(1), B.shift(1)
+        gross = p * (leg["RB"] - (bb.to_numpy() * F).sum(axis=1))
+        ov = B.mul(wpos, axis=0)
+        trade = (0.0010 * wpos.diff().abs() + 0.0005 * ov["b_Mkt-RF"].diff().abs()
+                 + 0.0025 * (ov["b_SMB"].diff().abs() + ov["b_HML"].diff().abs()))
+        panel[rcol] = gross - trade.shift(1)                  # trade at end of t pays in t+1
+    return panel
+
+
+def test_check_no_lookahead():
+    raw = make_synthetic_inputs(seed=0)
+    kw = dict(start="1995-01-31", end="2009-12-31", n_months=4)
+    rep, ok = check_no_lookahead(raw, _toy_run, **kw)
+    assert ok, rep.loc[~rep["passed"]]
+    for bug, must_fail in (("hedge_bt", {"rb_perturb", "f_perturb"}),
+                           ("own_month", {"rb_perturb", "f_perturb"}),
+                           ("signal_lag", {"signal_perturb"})):
+        rep, ok = check_no_lookahead(raw, lambda r, b=bug: _toy_run(r, bug=b), **kw)
+        failed = set(rep.loc[~rep["passed"], "test"])
+        assert not ok and must_fail <= failed, (bug, failed)
+        assert rep.loc[rep["test"] == "truncate", "passed"].all(), bug   # the old state-only check misses all three
+
+
+def test_seen_cut():
+    raw = make_synthetic_inputs(seed=0)
+    assert _last_date(raw) > pd.Timestamp("2022-12-31")
+    assert _last_date(truncate_raw(raw, SEEN_WINDOW[1])) <= pd.Timestamp("2022-07-31")
+
+
+def run_unit_tests():
+    for f in (test_attention_signal, test_pass_fail_table, test_seen_cut, test_leg_pipeline,
+              test_check_no_lookahead, test_make_synthetic_inputs):
+        f()
+        print(f"{f.__name__}: ok")
+
+
+# =============================================================================
+# 6. __main__
+# =============================================================================
+if __name__ == "__main__":
+    MODE = "synthetic"                 # "synthetic" -> "seen" -> "test"
+    Z_BURN_IN = "nonzero"              # your reading; "calendar" reproduces my previous version
+    WINDOWS = {"synthetic": TEST_WINDOW, "seen": SEEN_WINDOW, "test": TEST_WINDOW}
+    PATHS = {"ff49": "ff49_industry_monthly.csv", **{sid: f"{sid}.csv" for sid in FRED_IDS}}
+    fac = None                         # <- your FF5+UMD frame, as before
+    hedge_fac = None                   # <- NEW: the team's FF3 frame (Mkt-RF, SMB, HML, RF), decimals
+
+    start, end = WINDOWS[MODE]
+    if MODE == "synthetic":
+        run_unit_tests()
+        raw = make_synthetic_inputs(seed=0)
+    else:
+        if fac is None or hedge_fac is None:
+            sys.exit("Set `fac` (FF5+UMD) and `hedge_fac` (team FF3) first.")
+        raw = read_raw(PATHS, fac, hedge_fac)
+
+    cut_to = end if MODE == "seen" else None
+    if cut_to is not None:
+        raw = truncate_raw(raw, cut_to)            # nothing after 2022-07 reaches the audit or the run
+
+    rep, ok = check_no_lookahead(raw, lambda r: run_panel(r, start, end, z_burn_in=Z_BURN_IN)[0],
+                                 start, end, cut_to=cut_to)
+    print(rep.groupby("test")["passed"].agg(["size", "sum"]).to_string())
+    if not ok:
+        print(rep.loc[~rep["passed"]].to_string())
+        sys.exit("STOP: look-ahead audit failed.")
+
+    run_panel(raw, start, end, z_burn_in=Z_BURN_IN, n_shuffle=5000, loo=True, verbose=True)  # prints the five tables

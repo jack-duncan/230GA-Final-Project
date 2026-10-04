@@ -1,0 +1,2 @@
+mutant,audit_rows,rows_flagged,detected,flagged_by_test,truncate_flags,synthetic_alpha,seconds
+M1 publication lag dropped,91,10,True,{'signal_perturb': 10},0,-0.0006880746710232651,84

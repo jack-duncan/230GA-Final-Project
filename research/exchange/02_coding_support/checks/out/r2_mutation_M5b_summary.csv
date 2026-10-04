@@ -1,0 +1,2 @@
+mutant,audit_rows,rows_flagged,detected,flagged_by_test,truncate_flags,synthetic_alpha,seconds
+"M5b centered hedge betas, tail filled",91,67,True,"{'f_perturb': 24, 'post_window': 1, 'rb_perturb': 24, 'truncate': 18}",18,-0.0005239102909219084,55

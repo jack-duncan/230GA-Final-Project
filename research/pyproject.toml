@@ -1,0 +1,23 @@
+[project]
+name = "ga-final-research"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "cvxpy>=1.9.3",
+    "ipython>=9.17.1",
+    "jinja2>=3.1.6",
+    "matplotlib>=3.11.2",
+    "numpy>=2.5.3",
+    "openpyxl>=3.1.5",
+    "pandas>=3.0.6",
+    "requests>=2.34.2",
+    "scikit-learn>=1.9.1",
+    "scipy>=1.18.1",
+    "statsmodels>=0.15.0",
+    "xlrd>=2.0.2",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+]

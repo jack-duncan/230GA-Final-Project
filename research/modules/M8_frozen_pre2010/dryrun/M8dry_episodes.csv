@@ -1,0 +1,14 @@
+signal,first_decision_month,last_decision_month,months,in_window_months
+Frozen EMV-share rule (primary),2010-05-31,2015-07-31,63,63
+Frozen EMV-share rule (primary),2015-11-30,2016-07-31,9,9
+Frozen EMV-share rule (primary),2016-12-31,2017-05-31,6,6
+Frozen EMV-share rule (primary),2017-11-30,2018-11-30,13,13
+Frozen EMV-share rule (primary),2019-05-31,2020-07-31,15,15
+Frozen EMV-share rule (primary),2021-06-30,2021-11-30,6,6
+"Team EMV_env level, lagged 1m (secondary)",2010-05-31,2011-01-31,9,9
+"Team EMV_env level, lagged 1m (secondary)",2011-09-30,2012-02-29,6,6
+"Team EMV_env level, lagged 1m (secondary)",2012-11-30,2013-09-30,11,11
+"Team EMV_env level, lagged 1m (secondary)",2015-02-28,2016-07-31,18,18
+"Team EMV_env level, lagged 1m (secondary)",2016-12-31,2017-05-31,6,6
+"Team EMV_env level, lagged 1m (secondary)",2018-01-31,2021-04-30,40,40
+"Team EMV_env level, lagged 1m (secondary)",2021-06-30,2021-11-30,6,6

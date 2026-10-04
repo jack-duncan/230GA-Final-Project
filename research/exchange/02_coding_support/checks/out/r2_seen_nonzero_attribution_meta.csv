@@ -1,0 +1,10 @@
+,value
+n,151
+k,15
+n - k,136
+R-squared,0.11565452930722919
+adj. R-squared,0.024618966147679222
+pi,0.7628392276533738
+window start,2010-01
+window end,2022-07
+HAC,"Bartlett, maxlags 6 (12 check), no small-sample corr."

@@ -1,0 +1,437 @@
+{
+ "A_sandbox_0341_vs_snapshot": {
+  "M8_preregistration_hash.csv": {
+   "byte_identical": false,
+   "added": [],
+   "removed": [],
+   "old_columns_keep_positions": true,
+   "rows": [
+    1,
+    1
+   ],
+   "numeric_maxdiff": 0.0,
+   "numeric_nan_pattern_same": true,
+   "text_cells_changed": {
+    "this_run_time": 1,
+    "prereg_file": 1
+   }
+  },
+  "M8_share_signal.pdf": {
+   "byte_identical": false,
+   "identical_except_CreationDate": true
+  }
+ },
+ "A_byte_identical": "20 of 22",
+ "A_sandbox_source_is_run_0341": true,
+ "B_manifest_all_sha_match": true,
+ "B_manifest_all_mtime_preserved": true,
+ "B_manifest_n": 25,
+ "B_manifest_run_py_birth": "2026-09-26 03:35:43.583464239 -0700",
+ "B_run_0341_matches_round1_observation": true,
+ "C_rerun_vs_0605_not_identical": {
+  "M8_preregistration_hash.csv": {
+   "byte_identical": false,
+   "added": [],
+   "removed": [],
+   "old_columns_keep_positions": true,
+   "rows": [
+    1,
+    1
+   ],
+   "numeric_maxdiff": 0.0,
+   "numeric_nan_pattern_same": true,
+   "text_cells_changed": {
+    "this_run_time": 1
+   }
+  },
+  "M8_share_signal.pdf": {
+   "byte_identical": false,
+   "identical_except_CreationDate": true
+  }
+ },
+ "C_byte_identical": "20 of 22",
+ "D_current_vs_0341_changed": {
+  "M8_attribution.csv": {
+   "byte_identical": false,
+   "added": [
+    "p_upper_nw6_t(n-k)",
+    "p_upper_nw12_t(n-k)"
+   ],
+   "removed": [],
+   "old_columns_keep_positions": true,
+   "rows": [
+    30,
+    30
+   ],
+   "numeric_maxdiff": 0.0,
+   "numeric_nan_pattern_same": true,
+   "text_cells_changed": {}
+  },
+  "M8_crossings.tex": {
+   "byte_identical": false
+  },
+  "M8_preregistration_hash.csv": {
+   "byte_identical": false,
+   "added": [
+    "prereg_file_mtime"
+   ],
+   "removed": [],
+   "old_columns_keep_positions": true,
+   "rows": [
+    1,
+    1
+   ],
+   "numeric_maxdiff": 0.0,
+   "numeric_nan_pattern_same": true,
+   "text_cells_changed": {
+    "this_run_time": 1
+   }
+  },
+  "M8_tests_ledger.csv": {
+   "byte_identical": false,
+   "added": [],
+   "removed": [],
+   "old_columns_keep_positions": true,
+   "rows": [
+    22,
+    22
+   ],
+   "numeric_maxdiff": 0.0,
+   "numeric_nan_pattern_same": true,
+   "text_cells_changed": {
+    "note": 4
+   }
+  },
+  "M8_share_signal.pdf": {
+   "byte_identical": false,
+   "identical_except_CreationDate": true
+  }
+ },
+ "D_tables_byte_identical": "16 of 20",
+ "D_shared_numeric_maxdiff_all_csv": 0.0,
+ "D_rerun_comparison_csv_agrees": true,
+ "E_code_objects": [
+  33,
+  33
+ ],
+ "E_changed_functions": [
+  "main",
+  "to_tex"
+ ],
+ "E_module_level_same": false,
+ "E_module_level_diff": [
+  "-LOAD_CONST (None, 2, None, None)",
+  "+LOAD_CONST (None, 2, None, None, '\\\\small', None)"
+ ],
+ "E_statistical_and_figure_functions_identical": true,
+ "E_missing_names_checked": [],
+ "F_one_sided": {
+  "primary": {
+   "const_p_upper_nw6": 0.6047590564148697,
+   "const_p_upper_nw12": 0.6128412225491275,
+   "own_const_p_upper_nw6": 0.6047590564148919,
+   "own_const_p_upper_nw12": 0.6128412225491513,
+   "max_abs_diff_all_terms_nw6": 9.514611321037592e-14,
+   "p_upper_eq_sf_of_published_t_nw12": 1.1102230246251565e-16,
+   "two_sided_consistency": 1.6653345369377348e-16
+  },
+  "secondary": {
+   "const_p_upper_nw6": 0.1588221652841776,
+   "const_p_upper_nw12": 0.1236810871495419,
+   "own_const_p_upper_nw6": 0.15882216528428394,
+   "own_const_p_upper_nw12": 0.12368108714966808,
+   "max_abs_diff_all_terms_nw6": 2.666755705149626e-13,
+   "p_upper_eq_sf_of_published_t_nw12": 1.1102230246251565e-16,
+   "two_sided_consistency": 2.7755575615628914e-16
+  }
+ },
+ "F_attribution_old_columns_keep_positions": true,
+ "G_ledger_rows": 22,
+ "G_ledger_primary_rows": null,
+ "G_i_alpha_notes": {
+  "M8_share_i_alpha_nw6": [
+   "0.6048"
+  ],
+  "M8_share_i_alpha_nw12": [
+   "0.6128"
+  ],
+  "M8_team_i_alpha_nw6": [
+   "0.1588"
+  ],
+  "M8_team_i_alpha_nw12": [
+   "0.1237"
+  ]
+ },
+ "H_prereg_written_col": "2026-09-26 03:29:54 PDT",
+ "H_prereg_stamp_in_file": "2026-09-26 03:29:54 PDT",
+ "H_prereg_file_mtime_col": "2026-09-26 03:30:46 PDT",
+ "H_statx": {
+  "modules/M8_frozen_pre2010": {
+   "birth": "2026-09-26 03:29:54.463455228 -0700",
+   "modify": "2026-09-26 06:05:07.839463524 -0700"
+  },
+  "modules/M8_frozen_pre2010/PREREGISTRATION.md": {
+   "birth": "2026-09-26 03:30:46.443458278 -0700",
+   "modify": "2026-09-26 03:30:46.447458277 -0700"
+  },
+  "modules/M8_frozen_pre2010/run.py": {
+   "birth": "2026-09-26 06:05:07.823463526 -0700",
+   "modify": "2026-09-26 06:05:07.827931225 -0700"
+  },
+  "modules/M8_frozen_pre2010/first_run_record.json": {
+   "birth": "2026-09-26 03:38:18.667452979 -0700",
+   "modify": "2026-09-26 03:38:18.670665887 -0700"
+  },
+  "modules/M8_frozen_pre2010/dryrun/first_run_record.json": {
+   "birth": "2026-09-26 03:36:51.092139965 -0700",
+   "modify": "2026-09-26 03:36:51.092651064 -0700"
+  },
+  "modules/M8_frozen_pre2010/verify_signal.py": {
+   "birth": "2026-09-26 03:37:23.735457006 -0700",
+   "modify": "2026-09-26 03:37:23.738874806 -0700"
+  },
+  "outputs/tables/M8_passbar.csv": {
+   "birth": "2026-09-26 03:38:13.195452656 -0700",
+   "modify": "2026-09-26 06:10:07.263354350 -0700"
+  },
+  "outputs/tables/M8_attribution.csv": {
+   "birth": "2026-09-26 03:38:13.211452656 -0700",
+   "modify": "2026-09-26 06:10:07.271354465 -0700"
+  },
+  "outputs/figures/M8_share_signal.png": {
+   "birth": "2026-09-26 03:38:18.295452665 -0700",
+   "modify": "2026-09-26 06:10:09.407370487 -0700"
+  }
+ },
+ "H_prereg_sha": "e926c3aeef48555d3b895243cfeeb2007a356654207eb10ed8a630de2f270b51",
+ "H_first_run_record_sha": "74d2c238c2d878d199a05de052a2883ec398d7c5eb1a0afcb113ab46b322628d",
+ "I_free_primary": {
+  "N": 190,
+  "in_position": 142,
+  "flat": 48,
+  "separators": 9,
+  "free": 39
+ },
+ "I_free_secondary": {
+  "N": 190,
+  "in_position": 104,
+  "flat": 86,
+  "separators": 9,
+  "free": 77
+ },
+ "I_engine_check_maxdiff": [
+  4.336808689942019e-19,
+  4.336808689942019e-19
+ ],
+ "J": {
+  "primary_two_sided_nw6": 0.7904818871702161,
+  "primary_upper_nw6": 0.6047590564148919,
+  "primary_two_sided_nw12": 0.7743175549016973,
+  "primary_upper_nw12": 0.6128412225491513,
+  "bar_t2_one_sided": 0.02352348207593376,
+  "secondary_two_sided_nw6": 0.3176443305685679,
+  "secondary_upper_nw6": 0.15882216528428394,
+  "secondary_t_nw12": 1.1606572302722826,
+  "secondary_upper_nw12": 0.12368108714966808
+ },
+ "J_passbar_rows": [
+  {
+   "signal": "Frozen EMV-share rule (primary)",
+   "role": "primary",
+   "component": "(i) timing alpha, NW(6)",
+   "statistic": "alpha -0.0018/yr, t -0.27",
+   "p_value": 0.7904818871702605,
+   "bar": "alpha > 0 and t >= 2",
+   "pass": false
+  },
+  {
+   "signal": "Frozen EMV-share rule (primary)",
+   "role": "primary",
+   "component": "(ii) calendar shuffle",
+   "statistic": "5000 draws, 10 blocks",
+   "p_value": 0.4779044191161767,
+   "bar": "one-sided p <= 0.05",
+   "pass": false
+  },
+  {
+   "signal": "Frozen EMV-share rule (primary)",
+   "role": "primary",
+   "component": "(iii) independent episodes",
+   "statistic": "10",
+   "p_value": NaN,
+   "bar": ">= 8",
+   "pass": true
+  },
+  {
+   "signal": "Frozen EMV-share rule (primary)",
+   "role": "primary",
+   "component": "(iv) drop-one Brown industry",
+   "statistic": "alphas Util -0.0061, Ships +0.0003, Aero +0.0001, Steel -0.0019, BldMt -0.0011",
+   "p_value": NaN,
+   "bar": "all five alphas > 0",
+   "pass": false
+  },
+  {
+   "signal": "Frozen EMV-share rule (primary)",
+   "role": "primary",
+   "component": "VERDICT",
+   "statistic": NaN,
+   "p_value": NaN,
+   "bar": "all four",
+   "pass": false
+  },
+  {
+   "signal": "Team EMV_env level, lagged 1m (secondary)",
+   "role": "secondary",
+   "component": "(i) timing alpha, NW(6)",
+   "statistic": "alpha 0.0069/yr, t 1.00",
+   "p_value": 0.3176443305683553,
+   "bar": "alpha > 0 and t >= 2",
+   "pass": false
+  },
+  {
+   "signal": "Team EMV_env level, lagged 1m (secondary)",
+   "role": "secondary",
+   "component": "(ii) calendar shuffle",
+   "statistic": "5000 draws, 10 blocks",
+   "p_value": 0.1281743651269746,
+   "bar": "one-sided p <= 0.05",
+   "pass": false
+  },
+  {
+   "signal": "Team EMV_env level, lagged 1m (secondary)",
+   "role": "secondary",
+   "component": "(iii) independent episodes",
+   "statistic": "10",
+   "p_value": NaN,
+   "bar": ">= 8",
+   "pass": true
+  },
+  {
+   "signal": "Team EMV_env level, lagged 1m (secondary)",
+   "role": "secondary",
+   "component": "(iv) drop-one Brown industry",
+   "statistic": "alphas Util +0.0004, Ships +0.0068, Aero +0.0135, Steel +0.0034, BldMt +0.0082",
+   "p_value": NaN,
+   "bar": "all five alphas > 0",
+   "pass": true
+  },
+  {
+   "signal": "Team EMV_env level, lagged 1m (secondary)",
+   "role": "secondary",
+   "component": "VERDICT",
+   "statistic": NaN,
+   "p_value": NaN,
+   "bar": "all four",
+   "pass": false
+  }
+ ],
+ "L_damodaran_corr_1993_2025": {
+  "n_years": 33,
+  "corr": 0.9870294248315272,
+  "dam_1994_2008_2022": [
+   -0.08036655550998592,
+   0.20101279926977011,
+   -0.1782817153825067
+  ]
+ },
+ "K_all_compiled": true,
+ "K_overfull": [
+  {
+   "file": "current/M8_passbar.tex",
+   "geometry": "portrait_1in_10pt",
+   "compiled": true,
+   "overfull_pt_max": 216.16008
+  },
+  {
+   "file": "current/M8_passbar.tex",
+   "geometry": "portrait_1in_11pt",
+   "compiled": true,
+   "overfull_pt_max": 265.82066
+  },
+  {
+   "file": "current/M8_passbar.tex",
+   "geometry": "landscape_1in_10pt",
+   "compiled": true,
+   "overfull_pt_max": 35.48509
+  },
+  {
+   "file": "current/M8_strategy_summary.tex",
+   "geometry": "portrait_1in_10pt",
+   "compiled": true,
+   "overfull_pt_max": 216.16216
+  },
+  {
+   "file": "current/M8_strategy_summary.tex",
+   "geometry": "portrait_1in_11pt",
+   "compiled": true,
+   "overfull_pt_max": 263.02513
+  },
+  {
+   "file": "current/M8_strategy_summary.tex",
+   "geometry": "landscape_1in_10pt",
+   "compiled": true,
+   "overfull_pt_max": 35.48717
+  },
+  {
+   "file": "0341/M8_crossings.tex",
+   "geometry": "portrait_1in_10pt",
+   "compiled": true,
+   "overfull_pt_max": 258.60318
+  },
+  {
+   "file": "0341/M8_crossings.tex",
+   "geometry": "portrait_1in_11pt",
+   "compiled": true,
+   "overfull_pt_max": 306.93515
+  },
+  {
+   "file": "0341/M8_crossings.tex",
+   "geometry": "landscape_1in_10pt",
+   "compiled": true,
+   "overfull_pt_max": 77.92819
+  },
+  {
+   "file": "0341/M8_crossings.tex",
+   "geometry": "landscape_0.5in_10pt",
+   "compiled": true,
+   "overfull_pt_max": 5.6582
+  },
+  {
+   "file": "0341/M8_passbar.tex",
+   "geometry": "portrait_1in_10pt",
+   "compiled": true,
+   "overfull_pt_max": 216.16008
+  },
+  {
+   "file": "0341/M8_passbar.tex",
+   "geometry": "portrait_1in_11pt",
+   "compiled": true,
+   "overfull_pt_max": 265.82066
+  },
+  {
+   "file": "0341/M8_passbar.tex",
+   "geometry": "landscape_1in_10pt",
+   "compiled": true,
+   "overfull_pt_max": 35.48509
+  },
+  {
+   "file": "0341/M8_strategy_summary.tex",
+   "geometry": "portrait_1in_10pt",
+   "compiled": true,
+   "overfull_pt_max": 216.16216
+  },
+  {
+   "file": "0341/M8_strategy_summary.tex",
+   "geometry": "portrait_1in_11pt",
+   "compiled": true,
+   "overfull_pt_max": 263.02513
+  },
+  {
+   "file": "0341/M8_strategy_summary.tex",
+   "geometry": "landscape_1in_10pt",
+   "compiled": true,
+   "overfull_pt_max": 35.48717
+  }
+ ]
+}

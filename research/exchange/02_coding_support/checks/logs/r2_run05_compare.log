@@ -1,0 +1,188 @@
+{
+ "reference_rebuild_vs_published_maxdiff": {
+  "primary": {
+   "net_primary": 9.974659986866641e-17,
+   "net_always": 9.974659986866641e-17,
+   "D_primary": 9.974659986866641e-17,
+   "coef": 9.16692936836494e-17,
+   "t_nw6": 5.551115123125783e-17
+  },
+  "dry": {
+   "net_primary": 9.324138683375338e-17,
+   "net_always": 9.324138683375338e-17,
+   "D_primary": 9.71445146547012e-17,
+   "coef": 8.673617379884035e-17,
+   "t_nw6": 2.220446049250313e-16
+  }
+ },
+ "calendar_run_vs_round1_final_B_maxdiff": {
+  "D": 1.0061396160665481e-16,
+  "X": 0.0,
+  "null_alphas": 1.0018028073766061e-16,
+  "attribution": 1.0658141036401503e-14,
+  "leave_one_out_alpha": 3.6591823321385775e-19
+ },
+ "attribution_max_absdiff_by_run": {
+  "r2_seen_nonzero": {
+   "coef_absdiff": 2.4216739724636227e-14,
+   "t6_absdiff": 8.322231792590173e-13,
+   "t12_absdiff": 8.759659664292485e-13,
+   "p6_absdiff": 2.4974466938942896e-13,
+   "contrib_absdiff": 8.333448948266708e-17
+  },
+  "r2_test_calendar": {
+   "coef_absdiff": 0.08889775044520738,
+   "t6_absdiff": 1.7004536659470266,
+   "t12_absdiff": 2.516619874390388,
+   "p6_absdiff": 0.7685035985711788,
+   "contrib_absdiff": 0.00033429777108073334
+  },
+  "r2_test_nonzero": {
+   "coef_absdiff": 3.805289416902724e-14,
+   "t6_absdiff": 3.304023721284466e-13,
+   "t12_absdiff": 3.2662761384472105e-13,
+   "p6_absdiff": 1.8668400159072007e-13,
+   "contrib_absdiff": 1.333297621614049e-16
+  }
+ },
+ "component_max_absdiff_by_run": {
+  "r2_seen_nonzero": 8.865685963144188e-13,
+  "r2_test_calendar": 11.0,
+  "r2_test_nonzero": 4.150013666048835e-13
+ }
+}
+
+==== r2_test_nonzero
+                                           component         chatgpt_v2          reference         diff                                                                                                                                note
+                             first data month with z            1989-01            1989-01                                                                                                                                                 
+                         max |z diff|, common months                  0                  0            0                                                                                                                   384 common months
+                     first data month with threshold            1994-01            1994-01                                                                                                                                                 
+       max |threshold diff|, common months 1985-2026                  0                  0            0                                                                                                                                    
+             crossings over 1985-01..2026-08 (count)                 58                 58            0                                                                                                     only v2: []; only reference: []
+hold months differing, decision months of the window                  0                  0            0                                                                                                                                    
+                                              window 1994-03 to 2009-12 1994-03 to 2009-12                                                                                                                                                 
+                                                   n                190                190            0                                                                                                                                    
+                max |b_t diff| (hedge betas), window        2.22045e-16                  0  2.22045e-16                                                                                                                                    
+            max |m_t diff| (vol-target size), window        1.66533e-15                  0  1.66533e-15                                                                                                                                    
+                          max |net R^T diff|, window        1.04083e-16                  0  1.04083e-16                                                                                                                                    
+                         max |net R^AO diff|, window        1.21431e-16                  0  1.21431e-16                                                                                                                                    
+                                                  pi           0.729434           0.729434  1.11022e-16                                                                                                                                    
+                                max |D diff|, window        1.14492e-16                  0  1.14492e-16                                                                                                                                    
+                            months in position (I=1)                142                142            0                                                                                                                                    
+     max |regressor diff| (10 unconditional factors)        4.44089e-16                  0  4.44089e-16                                                                                                                                    
+                                                   k                 15                 15            0                                                                                                                                    
+                                         alpha, %/yr          -0.181833          -0.181833 -1.00198e-14                                                                                                                                    
+                                       alpha NW(6) t          -0.266092          -0.266092 -7.70495e-14                                                                                                                                    
+                                      alpha NW(12) t          -0.287176          -0.287176 -8.29892e-14                                                                                                                                    
+                           alpha two-sided p, t(n-k)           0.790482           0.790482 -5.91749e-14                                                                                                                                    
+                             alpha one-sided upper p           0.604759           0.604759   2.9643e-14                                                                                                                                    
+                                 shuffle one-sided p           0.477904           0.477904            0                                                                                                                                    
+                           shuffle null median, %/yr          -0.220699          -0.220699 -4.15001e-13                                                                                                                                    
+      max |null alpha diff| draw by draw (same seed)        8.33334e-15                  0  8.33334e-15                                                                                                                                    
+                                            episodes                 10                 10            0                                   v2 lengths [6, 6, 16, 6, 11, 25, 14, 25, 23, 10]; reference [6, 6, 16, 6, 11, 25, 14, 25, 23, 10]
+                               drop Util: alpha %/yr          -0.607959          -0.607959 -4.00791e-14                                                                                                                                    
+                                        drop Util: t          -0.871084          -0.871084  -1.2923e-13                                                                                                                                    
+                              drop Ships: alpha %/yr           0.031769           0.031769 -4.18762e-14                                                                                                                                    
+                                       drop Ships: t          0.0413865          0.0413865 -6.48995e-14                                                                                                                                    
+                               drop Aero: alpha %/yr         0.00911121         0.00911121 -3.06352e-15                                                                                                                                    
+                                        drop Aero: t          0.0123962          0.0123962 -3.59955e-15                                                                                                                                    
+                              drop Steel: alpha %/yr          -0.192859          -0.192859  -1.9984e-14                                                                                                                                    
+                                       drop Steel: t          -0.336683          -0.336683 -1.05804e-13                                                                                                                                    
+                              drop BldMt: alpha %/yr          -0.108215          -0.108215 -4.61992e-14                                                                                                                                    
+                                       drop BldMt: t          -0.165774          -0.165774 -7.82985e-14                                                                                                                                    
+                          decomposition identity gap        1.17229e-18        8.99888e-18 -7.82658e-18                                                                                                                                    
+                                   pass/fail row (i)               FAIL               FAIL                                                                    v2 value -0.2660916237195144; alpha = -0.000152/month, p = 0.7905 (t, n-k df)
+                                  pass/fail row (ii)               FAIL               FAIL                                                                                                                 v2 value 0.4779044191161767; nan
+                                 pass/fail row (iii)               PASS               PASS                                                                                                                               v2 value 10.0; nan
+                                  pass/fail row (iv)               FAIL               FAIL              v2 value -0.0005066328967135; full: -0.000152, Util: -0.000507, Ships: 0.000026, Aero: 0.000008, Steel: -0.000161, BldMt: -0.000090
+                               pass/fail row overall               FAIL               FAIL                                                                                                                             v2 value 1.0; 1 of 4
+
+==== r2_test_calendar
+                                           component         chatgpt_v2          reference         diff                                                                                                                                 note
+                             first data month with z            1989-12            1989-01                                                                                                                                                  
+                         max |z diff|, common months                  0                  0            0                                                                                                                    373 common months
+                     first data month with threshold            1994-12            1994-01                                                                                                                                                  
+       max |threshold diff|, common months 1985-2026          0.0756485                  0    0.0756485                                                                                                                                     
+             crossings over 1985-01..2026-08 (count)                 60                 58            2                                                              only v2: ['1997-04', '2002-12', '2007-07']; only reference: ['1997-05']
+hold months differing, decision months of the window                  6                  0            6                                                                                 2003-01, 2003-02, 2003-03, 2003-04, 2003-05, 2003-06
+                                              window 1995-02 to 2009-12 1994-03 to 2009-12                                                                                                                                                  
+                                                   n                179                190          -11                                                                                                                                     
+                max |b_t diff| (hedge betas), window        2.22045e-16                  0  2.22045e-16                                                                                                                                     
+            max |m_t diff| (vol-target size), window        1.66533e-15                  0  1.66533e-15                                                                                                                                     
+                          max |net R^T diff|, window          0.0140695                  0    0.0140695                                                                                                                                     
+                         max |net R^AO diff|, window        1.04083e-16                  0  1.04083e-16                                                                                                                                     
+                                                  pi           0.808556           0.729434    0.0791219                                                                                                                                     
+                                max |D diff|, window          0.0129563                  0    0.0129563                                                                                                                                     
+                            months in position (I=1)                148                142            6                                                                                                                                     
+     max |regressor diff| (10 unconditional factors)        4.44089e-16                  0  4.44089e-16                                                                                                                                     
+                                                   k                 15                 15            0                                                                                                                                     
+                                         alpha, %/yr          -0.186157          -0.181833  -0.00432426                                                                                                                                     
+                                       alpha NW(6) t          -0.248744          -0.266092    0.0173478                                                                                                                                     
+                                      alpha NW(12) t          -0.273154          -0.287176    0.0140213                                                                                                                                     
+                           alpha two-sided p, t(n-k)            0.80387           0.790482    0.0133883                                                                                                                                     
+                             alpha one-sided upper p           0.598065           0.604759  -0.00669413                                                                                                                                     
+                                 shuffle one-sided p           0.530294           0.477904    0.0523895                                                                                                                                     
+                           shuffle null median, %/yr          -0.147628          -0.220699    0.0730714                                                                                                                                     
+      max |null alpha diff| draw by draw (same seed)          0.0028132                  0    0.0028132                                                                                                                                     
+                                            episodes                 10                 10            0                                    v2 lengths [6, 6, 16, 6, 11, 25, 20, 25, 23, 10]; reference [6, 6, 16, 6, 11, 25, 14, 25, 23, 10]
+                               drop Util: alpha %/yr          -0.535024          -0.607959    0.0729359                                                                                                                                     
+                                        drop Util: t          -0.719103          -0.871084     0.151981                                                                                                                                     
+                              drop Ships: alpha %/yr          0.0345665           0.031769   0.00279752                                                                                                                                     
+                                       drop Ships: t          0.0409868          0.0413865 -0.000399734                                                                                                                                     
+                               drop Aero: alpha %/yr          -0.115023         0.00911121    -0.124134                                                                                                                                     
+                                        drop Aero: t          -0.151166          0.0123962    -0.163562                                                                                                                                     
+                              drop Steel: alpha %/yr          -0.245681          -0.192859   -0.0528222                                                                                                                                     
+                                       drop Steel: t          -0.406428          -0.336683   -0.0697451                                                                                                                                     
+                              drop BldMt: alpha %/yr          -0.084212          -0.108215    0.0240028                                                                                                                                     
+                                       drop BldMt: t          -0.116611          -0.165774    0.0491638                                                                                                                                     
+                          decomposition identity gap        1.21973e-18        8.99888e-18 -7.77915e-18                                                                                                                                     
+                                   pass/fail row (i)               FAIL               FAIL                                                                     v2 value -0.2487438707918238; alpha = -0.000155/month, p = 0.8039 (t, n-k df)
+                                  pass/fail row (ii)               FAIL               FAIL                                                                                                                  v2 value 0.5302939412117577; nan
+                                 pass/fail row (iii)               PASS               PASS                                                                                                                                v2 value 10.0; nan
+                                  pass/fail row (iv)               FAIL               FAIL              v2 value -0.0004458529469382; full: -0.000155, Util: -0.000446, Ships: 0.000029, Aero: -0.000096, Steel: -0.000205, BldMt: -0.000070
+                               pass/fail row overall               FAIL               FAIL                                                                                                                              v2 value 1.0; 1 of 4
+
+==== r2_seen_nonzero
+                                           component         chatgpt_v2          reference         diff                                                                                                                                note
+                             first data month with z            1989-01            1989-01                                                                                                                                                 
+                         max |z diff|, common months                  0                  0            0                                                                                                                   384 common months
+                     first data month with threshold            1994-01            1994-01                                                                                                                                                 
+       max |threshold diff|, common months 1985-2026                  0                  0            0                                                                                                                                    
+             crossings over 1985-01..2026-08 (count)                 58                 58            0                                                                                                     only v2: []; only reference: []
+hold months differing, decision months of the window                  0                  0            0                                                                                                                                    
+                                              window 2010-01 to 2022-07 2010-01 to 2022-07                                                                                                                                                 
+                                                   n                151                151            0                                                                                                                                    
+                max |b_t diff| (hedge betas), window        2.22045e-16                  0  2.22045e-16                                                                                                                                    
+            max |m_t diff| (vol-target size), window        6.66134e-16                  0  6.66134e-16                                                                                                                                    
+                          max |net R^T diff|, window        1.00614e-16                  0  1.00614e-16                                                                                                                                    
+                         max |net R^AO diff|, window        1.00614e-16                  0  1.00614e-16                                                                                                                                    
+                                                  pi           0.762839           0.762839 -1.11022e-16                                                                                                                                    
+                                max |D diff|, window         1.0018e-16                  0   1.0018e-16                                                                                                                                    
+                            months in position (I=1)                112                112            0                                                                                                                                    
+     max |regressor diff| (10 unconditional factors)        8.88178e-16                  0  8.88178e-16                                                                                                                                    
+                                                   k                 15                 15            0                                                                                                                                    
+                                         alpha, %/yr          -0.120695          -0.120695  1.04056e-13                                                                                                                                    
+                                       alpha NW(6) t          -0.187759          -0.187759 -3.28904e-14                                                                                                                                    
+                                      alpha NW(12) t          -0.207399          -0.207399 -3.88023e-14                                                                                                                                    
+                           alpha two-sided p, t(n-k)           0.851345           0.851345 -2.57572e-14                                                                                                                                    
+                             alpha one-sided upper p           0.574327           0.574327  1.28786e-14                                                                                                                                    
+                                 shuffle one-sided p           0.510098           0.510098            0                                                                                                                                    
+                           shuffle null median, %/yr          -0.106342          -0.106342  8.86569e-13                                                                                                                                    
+      max |null alpha diff| draw by draw (same seed)        5.74161e-15                  0  5.74161e-15                                                                                                                                    
+                                            episodes                  6                  6            0                                                                   v2 lengths [63, 9, 6, 13, 15, 6]; reference [63, 9, 6, 13, 15, 6]
+                               drop Util: alpha %/yr           -0.15724           -0.15724  1.50019e-13                                                                                                                                    
+                                        drop Util: t          -0.248158          -0.248158  9.00946e-14                                                                                                                                    
+                              drop Ships: alpha %/yr           0.309355           0.309355 -6.99996e-14                                                                                                                                    
+                                       drop Ships: t           0.515262           0.515262 -1.04028e-13                                                                                                                                    
+                               drop Aero: alpha %/yr          -0.449966          -0.449966   1.9984e-14                                                                                                                                    
+                                        drop Aero: t          -0.721916          -0.721916 -7.21645e-14                                                                                                                                    
+                              drop Steel: alpha %/yr           0.108996           0.108996  9.89764e-14                                                                                                                                    
+                                       drop Steel: t           0.170759           0.170759  1.49408e-13                                                                                                                                    
+                              drop BldMt: alpha %/yr          -0.148383          -0.148383 -1.09995e-13                                                                                                                                    
+                                       drop BldMt: t          -0.231292          -0.231292 -1.81993e-13                                                                                                                                    
+                          decomposition identity gap       -4.06576e-19       -2.24972e-18  1.84314e-18                                                                                                                                    
+                                   pass/fail row (i)               FAIL               FAIL                                                                    v2 value -0.1877593451238836; alpha = -0.000101/month, p = 0.8513 (t, n-k df)
+                                  pass/fail row (ii)               FAIL               FAIL                                                                                                                 v2 value 0.5100979804039192; nan
+                                 pass/fail row (iii)               FAIL               FAIL                                                                                                                                v2 value 6.0; nan
+                                  pass/fail row (iv)               FAIL               FAIL              v2 value -0.0003749718481728; full: -0.000101, Util: -0.000131, Ships: 0.000258, Aero: -0.000375, Steel: 0.000091, BldMt: -0.000124
+                               pass/fail row overall               FAIL               FAIL                                                                                                                             v2 value 0.0; 0 of 4

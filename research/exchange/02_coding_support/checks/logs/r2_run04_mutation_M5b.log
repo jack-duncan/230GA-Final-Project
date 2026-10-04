@@ -1,0 +1,1 @@
+{'mutant': 'M5b centered hedge betas, tail filled', 'audit_rows': 91, 'rows_flagged': 67, 'detected': True, 'flagged_by_test': "{'f_perturb': 24, 'post_window': 1, 'rb_perturb': 24, 'truncate': 18}", 'truncate_flags': 18, 'synthetic_alpha': -0.0005239102909219084, 'seconds': 55}

@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "/home/hashim/projects/GA/project/research/exchange/02_coding_support/checks/null_seeds.py", line 19, in <module>
+    out = mod.run_backtest(mod.make_synthetic_inputs(seed=sd), cfg, verbose=False)
+  File "/home/hashim/projects/GA/project/research/exchange/02_coding_support/checks/chatgpt_code_v1.py", line 811, in run_backtest
+    coef, f6, f12 = attribution_regression(D, X, cfg)
+                    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/home/hashim/projects/GA/project/research/exchange/02_coding_support/checks/chatgpt_code_v1.py", line 521, in attribution_regression
+    raise ValueError("design matrix is rank deficient (e.g. I_{t-1} never or always 1)")
+ValueError: design matrix is rank deficient (e.g. I_{t-1} never or always 1)

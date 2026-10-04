@@ -1,0 +1,26 @@
+% Re-wrapped by report/make_tables.py from outputs/tables/M4_emissions_aero_ships_calibration.tex (content unchanged).
+\begin{table}[H]
+\centering\small
+\caption{Leave-two-out calibration: regress log team intensity on log measure over the other 39 industries, then predict Aero and Ships using their own manufacturing NAICS or the air/water transportation NAICS. Team/predicted is the team value over the predicted value, and Holm $p$ is adjusted over these 12 tests.}
+\label{tab:m4_calibration}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lllrrrrrrr}
+\toprule
+Measure & Industry & Codes & Measure value & Team value & Predicted team value & Team/predicted & $t$ & $p$ & Holm $p$ \\
+\midrule
+EPA supply chain & Aero & manufacturing & 0.155 & 0.531 & 0.025 & 21.377 & 2.882 & 0.007 & 0.052 \\
+EPA supply chain & Aero & transport & 0.644 & 0.531 & 0.192 & 2.757 & 0.936 & 0.355 & 1.000 \\
+EPA supply chain & Ships & manufacturing & 0.320 & 1.019 & 0.070 & 14.465 & 2.516 & 0.016 & 0.114 \\
+EPA supply chain & Ships & transport & 0.816 & 1.019 & 0.271 & 3.765 & 1.210 & 0.234 & 1.000 \\
+USEEIO direct & Aero & manufacturing & 0.008 & 0.531 & 0.014 & 38.817 & 2.984 & 0.005 & 0.050 \\
+USEEIO direct & Aero & transport & 0.726 & 0.531 & 0.211 & 2.518 & 0.742 & 0.463 & 1.000 \\
+USEEIO direct & Ships & manufacturing & 0.018 & 1.019 & 0.022 & 47.027 & 3.177 & 0.003 & 0.036 \\
+USEEIO direct & Ships & transport & 0.516 & 1.019 & 0.171 & 5.961 & 1.446 & 0.157 & 0.940 \\
+USEEIO direct CO$_2$ & Aero & manufacturing & 0.008 & 0.531 & 0.014 & 36.902 & 2.989 & 0.005 & 0.050 \\
+USEEIO direct CO$_2$ & Aero & transport & 0.719 & 0.531 & 0.286 & 1.853 & 0.496 & 0.623 & 1.000 \\
+USEEIO direct CO$_2$ & Ships & manufacturing & 0.018 & 1.019 & 0.024 & 42.362 & 3.138 & 0.003 & 0.037 \\
+USEEIO direct CO$_2$ & Ships & transport & 0.443 & 1.019 & 0.207 & 4.912 & 1.298 & 0.202 & 1.000 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table}

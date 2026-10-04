@@ -1,0 +1,14 @@
+% Written by report/make_tables.py from outputs/tables/M7_dsr.tex (tabular and note only).
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{llrrrrrrrrrrrr}
+\toprule
+Candidate & Window & AR & t NW & N Nyholt & V x1000 & SR0 x sqrt12 & DSR iid & DSR NW & DSR (gov.) & Li-Ji & Raw M & V floor & Max N \\
+\midrule
+book (unconstrained) & 1970-2026 & 0.40 & 3.07 & 42.4 & 2.46 & 0.38 & 0.559 & 0.563 & 0.559 & 0.776 & 0.497 & 0.786 & 3 \\
+EPA 5v5 spread & 1970-2026 & 0.38 & 2.58 & 42.4 & 2.46 & 0.38 & 0.488 & 0.488 & 0.488 & 0.709 & 0.427 & 0.720 & 2 \\
+book (unconstrained) & 2010-2026 & 0.56 & 2.18 & 74.8 & 5.83 & 0.64 & 0.363 & 0.362 & 0.362 & 0.533 & 0.336 & 0.433 & 2 \\
+EPA 5v5 spread & 2010-2026 & 0.41 & 1.52 & 74.8 & 5.83 & 0.64 & 0.171 & 0.182 & 0.171 & 0.302 & 0.155 & 0.222 & 0 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\par\smallskip{\scriptsize AR: annualized FF5+UMD appraisal ratio. N: Nyholt effective number of trials from the family's residual correlations (S-full, 58 series; S-post, 89). V: cross-trial variance of the monthly AR over K = round(N) clusters, floored at 1/(T-1). SR0: expected maximum AR under the null. Governing DSR: the smaller of the iid DSR and the DSR with z scaled by t(NW)/t(OLS). The last four columns: governing DSR with N = Li--Ji, N = raw M, V = 1/(T-1); and the largest N that still passes at the step-3 V.}

@@ -1,0 +1,5 @@
+test,result,seconds,message
+test_attention_signal,ok,0.1,
+test_pass_fail_table,ok,0.0,
+test_seen_cut,ok,0.1,
+test_leg_pipeline,ok,0.9,

@@ -1,0 +1,85 @@
+KF3+UMD (np.float64(0.020243721023867765), np.float64(2.8592708167945053))
+FF5file MKT SMB HML + UMD (np.float64(0.020101361713670204), np.float64(2.840457675701278))
+FF5U 2010-01-31 2022-07-31 (np.float64(0.02985999626531259), np.float64(1.7810544084070823))
+FF5U 2010-01-31 2026-07-31 (np.float64(0.031236398252189844), np.float64(2.180166401862239))
+FF5U 1970-01-31 2009-12-31 (np.float64(0.019873533840226332), np.float64(2.307568474952399))
+eval_end MCCC 2025-07-31 CPU 2025-10-31
+                                                   test_id                                                duplicate_of
+73  strat|L5|corr|FF5UC|team|Pure 3m|holdout|E:FF5UC|alpha  strat|L5|corr|FF5UC|team|Original 3m|holdout|E:FF5UC|alpha
+74  strat|L5|corr|FF5UC|team|Pure 6m|holdout|E:FF5UC|alpha  strat|L5|corr|FF5UC|team|Original 6m|holdout|E:FF5UC|alpha
+75     strat|L8H|corr|FF3|team|Pure 3m|holdout|E:FF3|alpha     strat|L8H|corr|FF3|team|Original 3m|holdout|E:FF3|alpha
+76     strat|L8H|corr|FF3|team|Pure 6m|holdout|E:FF3|alpha     strat|L8H|corr|FF3|team|Original 6m|holdout|E:FF3|alpha
+77        strat|L5|corr|FF3|u5|Pure 3m|holdout|E:FF3|alpha        strat|L5|corr|FF3|u5|Original 3m|holdout|E:FF3|alpha
+78        strat|L5|corr|FF3|u5|Pure 6m|holdout|E:FF3|alpha        strat|L5|corr|FF3|u5|Original 6m|holdout|E:FF3|alpha
+79           Q2.holdout_alpha_FF3UMDBOND.Pure 3m|corrected               Q2.holdout_alpha_FF3UMDBOND.Orig 3m|corrected
+80           Q2.holdout_alpha_FF3UMDBOND.Pure 6m|corrected               Q2.holdout_alpha_FF3UMDBOND.Orig 6m|corrected
+X_b-1.00 fallback post1970 0 binding share 0.930780559646539
+['gross', 'turnover', 'cost', 'net', 'n_elig', 'exante_te_ann', 'inaccurate', 'fallback', 'net_25bp', 'net_b-1']
+{'robustness': 365, 'descriptive': 86, 'exploratory': 7, 'primary': 1}
+context tags: {'[context: descriptive]': 29, '[context: exploratory]': 1}
+Li-Ji_V []
+LiJi []
+max_N []
+maxN []
+2.01 []
+C9_epa ['M7_C9_epa_FF5pUMD_same_sample', 'M7_C9_epa_FF5pUMD_p_MCCC_shock', 'M7_C9_epa_FF5pUMD_p_MCCC_shock_lag_1', 'M7_C9_epa_FF5pUMD_p_shock_p_lag_1', 'M7_C9_epa_FF5pUMD_p_MCCC_transition_shock', 'M7_C9_epa_FF5pUMD_p_CPU_shock', 'M7_C9_epa_FF3_p_MCCC_shock']
+C6_ ['M7_C6_optimizer_book_(X_unc)_FF5+UMD', 'M7_C6_EW_momentum_book_FF5+UMD', 'M7_C6_EPA_5v5_spread_FF5+UMD', 'M7_C6_team_Original__Short_Brown_hold_3m_FF5+UMD', 'M7_C6_team_Original__Short_Brown_hold_3m_FF3', 'M7_C6_team_Pure__Short_Brown_hold_3m_FF5+UMD', 'M7_C6_team_Pure__Short_Brown_hold_3m_FF3', 'M7_C6_team_Original__Short_Brown_hold_6m_FF5+UMD', 'M7_C6_team_Original__Short_Brown_hold_6m_FF3', 'M7_C6_team_Pure__Short_Brown_hold_6m_FF5+UMD', 'M7_C6_team_Pure__Short_Brown_hold_6m_FF3', 'M7_C6_team_Continuous__raw_attention_FF5+UMD', 'M7_C6_team_Continuous__raw_attention_FF3', 'M7_C6_team_Continuous__pure_attention_FF5+UMD', 'M7_C6_team_Continuous__pure_attention_FF3', 'M7_C6_reference_Always-short_Brown_FF5+UMD']
+C5_ ['M7_C5_S-full_opt:X_unc_dsr', 'M7_C5_S-full_opt:X_unc_psr0', 'M7_C5_S-full_opt:X_unc_dsr_N=Li-Ji', 'M7_C5_S-full_opt:X_unc_dsr_N=rawM', 'M7_C5_S-full_opt:X_unc_dsr_V=1(T-1)_N=Nyholt', 'M7_C5_S-full_opt:X_unc_rawdsr', 'M7_C5_S-full_GB:epa5_dsr', 'M7_C5_S-full_GB:epa5_psr0', 'M7_C5_S-full_GB:epa5_dsr_N=Li-Ji', 'M7_C5_S-full_GB:epa5_dsr_N=rawM', 'M7_C5_S-full_GB:epa5_dsr_V=1(T-1)_N=Nyholt', 'M7_C5_S-full_GB:epa5_rawdsr', 'M7_C5_S-post_opt:X_unc_dsr', 'M7_C5_S-post_opt:X_unc_psr0', 'M7_C5_S-post_opt:X_unc_dsr_N=Li-Ji', 'M7_C5_S-post_opt:X_unc_dsr_N=rawM', 'M7_C5_S-post_opt:X_unc_dsr_V=1(T-1)_N=Nyholt', 'M7_C5_S-post_opt:X_unc_rawdsr', 'M7_C5_S-post_GB:epa5_dsr', 'M7_C5_S-post_GB:epa5_psr0', 'M7_C5_S-post_GB:epa5_dsr_N=Li-Ji', 'M7_C5_S-post_GB:epa5_dsr_N=rawM', 'M7_C5_S-post_GB:epa5_dsr_V=1(T-1)_N=Nyholt', 'M7_C5_S-post_GB:epa5_rawdsr']
+                                                item  months_compared  months_differing                                                                     differing
+0  EMVENRGYENVREG vintage 2024-06-15 vs current file              473               0.0                                                                           NaN
+1  EMVENRGYENVREG vintage 2022-09-15 vs current file              452               2.0                        2022-07 0.63738 vs 0.63729; 2022-08 0.56327 vs 0.54389
+2         CPIAUCSL vintage 2025-12-20: 2025-10 value              946               1.0               2025-10 missing in vintage: True; missing in current file: True
+3                     team emissions_ff_industry.csv               41               NaN  columns ['ff', 'emissions_intensity']; no source, units, scope or date field
+                              spec    n    alpha        t  b_MCCC_shock  t_MCCC_shock  b_MCCC_shock_per_sd  b_MCCC_shock_l1  t_MCCC_shock_l1  b_MCCC_shock_l1_per_sd  b_MCCC_transition_shock  t_MCCC_transition_shock  b_MCCC_transition_shock_per_sd  b_CPU_shock  t_CPU_shock  b_CPU_shock_per_sd
+0             FF5+UMD, same sample  186  0.04872  1.52350           NaN           NaN                  NaN              NaN              NaN                     NaN                      NaN                      NaN                             NaN          NaN          NaN                 NaN
+1             FF5+UMD + MCCC shock  186  0.06664  2.13265      -0.01423      -2.20746             -0.00522              NaN              NaN                     NaN                      NaN                      NaN                             NaN          NaN          NaN                 NaN
+2       FF5+UMD + MCCC shock lag 1  187  0.03385  1.06354           NaN           NaN                  NaN          0.00902          1.42683                 0.00333                      NaN                      NaN                             NaN          NaN          NaN                 NaN
+3          FF5+UMD + shock + lag 1  186  0.06020  1.94930      -0.01291      -1.73069             -0.00474          0.00352          0.49702                 0.00130                      NaN                      NaN                             NaN          NaN          NaN                 NaN
+4  FF5+UMD + MCCC transition shock  186  0.06379  1.94863           NaN           NaN                  NaN              NaN              NaN                     NaN                 -0.01478                 -2.04243                        -0.00408          NaN          NaN                 NaN
+5              FF5+UMD + CPU shock  189  0.06478  1.97147           NaN           NaN                  NaN              NaN              NaN                     NaN                      NaN                      NaN                             NaN     -0.00006     -1.85715            -0.00364
+6                 FF3 + MCCC shock  186  0.05950  1.76408      -0.01176      -1.79624             -0.00431              NaN              NaN                     NaN                      NaN                      NaN                             NaN          NaN          NaN                 NaN
+                                  series    model    alpha  ci90_lo  ci90_hi    delta   mde_80                     reading
+0                 optimizer book (X_unc)  FF5+UMD -0.00341 -0.04159  0.03477  0.01354  0.05748                inconclusive
+1                       EW momentum book  FF5+UMD -0.04482 -0.13506  0.04541  0.02352  0.13584                inconclusive
+2                         EPA 5v5 spread  FF5+UMD  0.03902 -0.05488  0.13293  0.03183  0.14137                inconclusive
+3   team: Original | Short Brown hold 3m  FF5+UMD -0.04407 -0.08001 -0.00814  0.00857  0.05409  rejects a worthwhile alpha
+4   team: Original | Short Brown hold 3m      FF3 -0.04034 -0.07132 -0.00935  0.00843  0.04665  rejects a worthwhile alpha
+5       team: Pure | Short Brown hold 3m  FF5+UMD -0.02091 -0.03837 -0.00345  0.00618  0.02628  rejects a worthwhile alpha
+6       team: Pure | Short Brown hold 3m      FF3 -0.02208 -0.04128 -0.00288  0.00600  0.02891  rejects a worthwhile alpha
+7   team: Original | Short Brown hold 6m  FF5+UMD -0.03182 -0.05849 -0.00515  0.01102  0.04015  rejects a worthwhile alpha
+8   team: Original | Short Brown hold 6m      FF3 -0.02281 -0.04594  0.00032  0.01119  0.03483  rejects a worthwhile alpha
+9       team: Pure | Short Brown hold 6m  FF5+UMD -0.03384 -0.06185 -0.00583  0.01066  0.04217  rejects a worthwhile alpha
+10      team: Pure | Short Brown hold 6m      FF3 -0.02714 -0.05060 -0.00368  0.01061  0.03533  rejects a worthwhile alpha
+11      team: Continuous | raw attention  FF5+UMD -0.00917 -0.01689 -0.00145  0.00282  0.01162  rejects a worthwhile alpha
+12      team: Continuous | raw attention      FF3 -0.00763 -0.01409 -0.00117  0.00280  0.00973  rejects a worthwhile alpha
+13     team: Continuous | pure attention  FF5+UMD -0.00646 -0.01166 -0.00125  0.00271  0.00784  rejects a worthwhile alpha
+14     team: Continuous | pure attention      FF3 -0.00544 -0.01054 -0.00034  0.00264  0.00768  rejects a worthwhile alpha
+15         reference: Always-short Brown  FF5+UMD -0.02367 -0.05438  0.00704  0.01287  0.04623  rejects a worthwhile alpha
+              member   alpha       t  rw_adj_p
+0          opt:X_unc  0.0217  3.0712    0.0166
+1       opt:X_b+1.00  0.0217  3.0706    0.0168
+2       opt:X_b+0.50  0.0219  3.1076    0.0150
+3       opt:X_b+0.25  0.0221  3.1278    0.0142
+4       opt:X_b+0.00  0.0226  3.1990    0.0120
+5       opt:X_b-0.25  0.0232  3.2702    0.0092
+6       opt:X_b-0.50  0.0240  3.3130    0.0090
+7       opt:X_b-0.75  0.0247  3.3293    0.0088
+8       opt:X_b-1.00  0.0252  3.3400    0.0088
+9       opt:X_b-1.25  0.0248  3.2341    0.0106
+10      opt:X_b-1.50  0.0241  3.0044    0.0202
+46           GB:epa8  0.0459  3.1261    0.0142
+48  GB:epa_nomargin5  0.0596  3.2280    0.0106
+49   GB:epa_anylink5  0.0475  2.6646    0.0478
+53    GB:epa_median8  0.0427  2.7613    0.0350
+     family        member   alpha       t  rw_adj_p
+0    S-full     opt:X_unc  0.0217  3.0712    0.0166
+5    S-full  opt:X_b-0.25  0.0232  3.2702    0.0092
+8    S-full  opt:X_b-1.00  0.0252  3.3400    0.0088
+11   S-full  opt:X_b-2.00  0.0168  1.8965    0.1974
+44   S-full       GB:epa5  0.0454  2.5808    0.0580
+58   S-post     opt:X_unc  0.0312  2.1802    0.1994
+63   S-post  opt:X_b-0.25  0.0334  2.3204    0.1496
+66   S-post  opt:X_b-1.00  0.0316  2.1330    0.2194
+69   S-post  opt:X_b-2.00  0.0202  1.3710    0.6343
+102  S-post       GB:epa5  0.0472  1.5164    0.5577
+largest absolute difference 9.71e-17; M1b returns after eval_end set to zero: MCCC:O6 2, MCCC:P6 2, MCCC:CR 2, MCCC:CP 2, CPU:P3 2, CPU:P6 5, CPU:CR 2, CPU:CP 2

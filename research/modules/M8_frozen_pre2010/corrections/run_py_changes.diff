@@ -1,0 +1,84 @@
+--- corrections/pre_correction_0341/run_0341.py	2026-09-26 03:41:13.398379745 -0700
++++ run.py	2026-09-26 06:05:07.827931225 -0700
+@@ -433,16 +433,17 @@
+     return out.replace(">", "$>$").replace("<", "$<$")
+ 
+ 
+-def to_tex(df, path, digits=None, default=2, caption=None, label=None):
++def to_tex(df, path, digits=None, default=2, caption=None, label=None, size="\\small", header=None):
+     digits = digits or {}
++    header = header or {}
+     cols = list(df.columns)
+-    lines = ["\\begin{table}[htbp]\\centering\\small"]
++    lines = ["\\begin{table}[htbp]\\centering" + size]
+     if caption:
+         lines.append(f"\\caption{{{caption}}}")
+     if label:
+         lines.append(f"\\label{{{label}}}")
+     lines += ["\\begin{tabular}{l" + "r" * (len(cols) - 1) + "}", "\\toprule",
+-              " & ".join(fmt(c) for c in cols) + " \\\\", "\\midrule"]
++              " & ".join(fmt(header.get(c, c)) for c in cols) + " \\\\", "\\midrule"]
+     for _, r in df.iterrows():
+         lines.append(" & ".join(fmt(r[c], digits.get(c, default)) for c in cols) + " \\\\")
+     lines += ["\\bottomrule", "\\end{tabular}", "\\end{table}"]
+@@ -534,6 +535,10 @@
+         tb.insert(0, "term", tb.index)
+         tb.insert(0, "signal", R["label"])
+         tb["n"], tb["k"] = R["att"]["n"], R["att"]["k"]
++        # C21: one-sided upper p from t(n-k). Post-verification correction: it was computed but never written out.
++        # Appended after the existing columns so every earlier column keeps its position and values.
++        tb["p_upper_nw6_t(n-k)"] = stats.t.sf(tb["t_nw6"], R["att"]["df"])
++        tb["p_upper_nw12_t(n-k)"] = stats.t.sf(tb["t_nw12"], R["att"]["df"])
+         coef_rows.append(tb)
+     coefs = pd.concat(coef_rows, ignore_index=True)
+     coefs.to_csv(out_t / f"{pre}attribution.csv", index=False)
+@@ -619,9 +624,14 @@
+                       "team_cross_within_1m": any(abs((t - c).days) <= 31 for c in tc)})
+     cr = pd.DataFrame(crows)
+     cr.to_csv(out_t / f"{pre}crossings.csv", index=False)
++    # LaTeX only: short headers and footnotesize so the 11-column table fits a portrait text width (CSV keeps full names)
++    cr_short = {"data_month": "data month", "decision_month": "decision", "share_pct": "share (%)", "threshold": "p80",
++                "EMV_overall": "EMV", "EMV_overall_pctile": "EMV pct", "VIX_mean": "VIX", "VIX_pctile": "VIX pct",
++                "extends_hold": "extends", "team_cross_within_1m": "team $\\pm$1m"}
+     to_tex(cr.drop(columns=["first_return_month", "EMV_env"]), out_t / f"{pre}crossings.tex",
+            digits={"share_pct": 2, "z": 2, "threshold": 2, "EMV_overall": 1, "EMV_overall_pctile": 0, "VIX_mean": 1, "VIX_pctile": 0},
+-           caption=f"Crossings of the frozen EMV-share rule; EMV overall and VIX percentile ranks within the {pd.Timestamp(window[0]):%Y}-{pd.Timestamp(window[1]):%Y} data months.", label="tab:m8_crossings")
++           caption=f"Crossings of the frozen EMV-share rule; EMV overall and VIX percentile ranks within the {pd.Timestamp(window[0]):%Y}-{pd.Timestamp(window[1]):%Y} data months.", label="tab:m8_crossings",
++           size="\\footnotesize\\setlength{\\tabcolsep}{4pt}", header=cr_short)
+ 
+     bchk.to_csv(out_t / f"{pre}bond_check.csv", index=False)
+     to_tex(bchk[["check", "value", "reference"]], out_t / f"{pre}bond_check.tex", default=4,
+@@ -650,9 +660,10 @@
+         q = "Does the frozen EMV-share rule time Short-Brown on 1993-2009?" if tag == "share" else \
+             "Secondary context: does the team signal (lagged 1m) time Short-Brown on the same window?"
+         add(f"M8_{tag}_i_alpha_nw6", q, "timing alpha NW(6) t", a["t6"], a["p6"], a["n"], kind,
+-            f"alpha_ann={a['alpha_ann']:.5f}; k={a['k']}; p from t({a['df']}); window {wtag}; pass(i)={R['passes']['i']}")
++            f"alpha_ann={a['alpha_ann']:.5f}; k={a['k']}; p from t({a['df']}); one-sided upper p={a['p6_upper']:.4f} (C21); "
++            f"window {wtag}; pass(i)={R['passes']['i']}")
+         add(f"M8_{tag}_i_alpha_nw12", q, "timing alpha NW(12) t (check)", a["t12"], a["p12"], a["n"], "exploratory",
+-            f"alpha_ann={a['alpha_ann']:.5f}; lag check only")
++            f"alpha_ann={a['alpha_ann']:.5f}; one-sided upper p={stats.t.sf(a['t12'], a['df']):.4f}; lag check only")
+         add(f"M8_{tag}_ii_shuffle", q, "calendar-shuffle rank of alpha", a["alpha_ann"], sh["p_two"], a["n"], kind,
+             f"one-sided upper p={sh['p_upper']:.4f} (pass bar); {len(sh['draws'])} draws seed {SEED}; blocks={list(map(int, sh['blocks']))}; "
+             f"median shuffled alpha_ann={12 * np.median(sh['draws']) if len(sh['draws']) else np.nan:.5f}; pass(ii)={R['passes']['ii']}")
+@@ -675,7 +686,10 @@
+     meta = pd.DataFrame([{"first_run_time": first_time, "this_run_time": t_start.strftime("%Y-%m-%d %H:%M:%S %Z"),
+                           "prereg_written": "2026-09-26 03:29:54 PDT", "mode": "dry_run" if dry_run else "primary",
+                           "prereg_file": str(PREREG), "prereg_sha256": prereg_hash, "window": wtag, "tau0": tau0.strftime("%Y-%m"),
+-                          "shuffle_reps": N_SHUFFLE, "seed": SEED, "engine_check_team_orig6m": d_team, "engine_check_always": d_ao}])
++                          "shuffle_reps": N_SHUFFLE, "seed": SEED, "engine_check_team_orig6m": d_team, "engine_check_always": d_ao,
++                          # prereg_written is the `date` stamp inside the file (taken when the module folder was made);
++                          # the file itself was saved once, later; its modify time is recorded here.
++                          "prereg_file_mtime": dt.datetime.fromtimestamp(PREREG.stat().st_mtime).astimezone().strftime("%Y-%m-%d %H:%M:%S %Z")}])
+     meta.to_csv(out_t / f"{pre}preregistration_hash.csv", index=False)
+ 
+     # ---- figure (primary only)
+@@ -700,7 +714,7 @@
+         a, sh = R["att"], R["shuffle"]
+         print(f"\n== {R['label']} | {wtag}")
+         print(f"  pi={a['pi']:.3f}  n={a['n']}  k={a['k']}  months in position={int(a['I'].sum())}")
+-        print(f"  (i)   alpha={a['alpha_ann']:+.4f}/yr  t6={a['t6']:.2f}  p6={a['p6']:.3f}  t12={a['t12']:.2f}  -> {R['passes']['i']}")
++        print(f"  (i)   alpha={a['alpha_ann']:+.4f}/yr  t6={a['t6']:.2f}  p6={a['p6']:.3f} (one-sided upper {a['p6_upper']:.3f})  t12={a['t12']:.2f}  -> {R['passes']['i']}")
+         print(f"  (ii)  shuffle p_upper={sh['p_upper']:.4f} (two-sided {sh['p_two']:.4f}), blocks={list(map(int, sh['blocks']))} -> {R['passes']['ii']}")
+         print(f"  (iii) episodes={len(R['episodes'])} -> {R['passes']['iii']}")
+         print(f"  (iv)  drop-one alphas: " + ", ".join(f"{r.dropped} {r.alpha_ann:+.4f} (t {r.t_nw6:.2f})" for r in R["drops"].itertuples()) + f" -> {R['passes']['iv']}")

@@ -1,0 +1,259 @@
+claim,builder,verifier,tol,status,note
+frozen window mean log1p (m*),0.281,0.281,0.0005,match,
+frozen window sd log1p (s*),0.171,0.171,0.0005,match,
+team holdout entries,2023-04 2024-06 2025-02 2025-09 2025-11,2023-04 2024-06 2025-02 2025-09 2025-11,0.0,match,
+team holdout state months,7,7,0.0,match,
+CF frozen_2021-09_scaling holdout entries,2023-04 2024-06 2025-02 2025-09 2025-11,2023-04 2024-06 2025-02 2025-09 2025-11,0.0,match,
+CF frozen_2021-09_scaling holdout n_state,7,7,0.0,match,
+CF frozen_2021-09_scaling holdout state months differ,0,0,0.0,match,
+CF frozen_2021-09_scaling post_2021-10 entries,2022-07 2023-04 2024-06 2025-02 2025-09 2025-11,2022-07 2023-04 2024-06 2025-02 2025-09 2025-11,0.0,match,
+CF frozen_2021-09_scaling post_2021-10 n_state,8,8,0.0,match,
+CF frozen_2021-09_scaling post_2021-10 state months differ,0,0,0.0,match,
+CF frozen_2021-09_scaling validation entries,2010-04 2010-07 2011-08 2012-10 2013-03 2015-01 2015-07 2015-09 2016-01 2016-11 2017-12 2018-05 2018-10 2018-12 2019-04 2019-09 2019-12 2020-05 2020-10 2021-05 2022-07,2010-04 2010-07 2011-08 2012-10 2013-03 2015-01 2015-07 2015-09 2016-01 2016-11 2017-12 2018-05 2018-10 2018-12 2019-04 2019-09 2019-12 2020-05 2020-10 2021-05 2022-07,0.0,match,
+CF frozen_2021-09_scaling validation n_state,27,27,0.0,match,
+CF frozen_2021-09_scaling validation state months differ,0,0,0.0,match,
+CF frozen_2021-09_scaling_team_threshold holdout entries,2023-04 2024-06 2025-02 2025-09 2025-11,2023-04 2024-06 2025-02 2025-09 2025-11,0.0,match,
+CF frozen_2021-09_scaling_team_threshold holdout n_state,7,7,0.0,match,
+CF frozen_2021-09_scaling_team_threshold holdout state months differ,0,0,0.0,match,
+CF frozen_2021-09_scaling_team_threshold post_2021-10 entries,2022-07 2023-04 2024-06 2025-02 2025-09 2025-11,2022-07 2023-04 2024-06 2025-02 2025-09 2025-11,0.0,match,
+CF frozen_2021-09_scaling_team_threshold post_2021-10 n_state,8,8,0.0,match,
+CF frozen_2021-09_scaling_team_threshold post_2021-10 state months differ,0,0,0.0,match,
+CF frozen_2021-09_scaling_team_threshold validation entries,2010-04 2010-07 2011-08 2012-10 2013-03 2015-01 2015-07 2015-09 2016-01 2016-11 2017-12 2018-05 2018-10 2018-12 2019-04 2019-09 2019-12 2020-05 2020-10 2021-05 2022-07,2010-04 2010-07 2011-08 2012-10 2013-03 2015-01 2015-07 2015-09 2016-01 2016-11 2017-12 2018-05 2018-10 2018-12 2019-04 2019-09 2019-12 2020-05 2020-10 2021-05 2022-07,0.0,match,
+CF frozen_2021-09_scaling_team_threshold validation n_state,27,27,0.0,match,
+CF frozen_2021-09_scaling_team_threshold validation state months differ,0,0,0.0,match,
+CF zeros_missing_60m_calendar holdout entries,2023-04 2024-06 2025-02 2025-09 2025-11,2023-04 2024-06 2025-02 2025-09 2025-11,0.0,match,
+CF zeros_missing_60m_calendar holdout n_state,6,6,0.0,match,
+CF zeros_missing_60m_calendar holdout state months differ,1,1,0.0,match,
+CF zeros_missing_60m_calendar post_2021-10 entries,2022-07 2023-04 2024-06 2025-02 2025-09 2025-11,2022-07 2023-04 2024-06 2025-02 2025-09 2025-11,0.0,match,
+CF zeros_missing_60m_calendar post_2021-10 n_state,7,7,0.0,match,
+CF zeros_missing_60m_calendar post_2021-10 state months differ,1,1,0.0,match,
+CF zeros_missing_60m_calendar validation entries,2010-04 2010-07 2011-08 2012-10 2013-03 2015-01 2015-09 2016-01 2016-11 2017-12 2018-05 2018-10 2018-12 2019-04 2019-09 2019-12 2020-05 2020-10 2021-05 2022-07,2010-04 2010-07 2011-08 2012-10 2013-03 2015-01 2015-09 2016-01 2016-11 2017-12 2018-05 2018-10 2018-12 2019-04 2019-09 2019-12 2020-05 2020-10 2021-05 2022-07,0.0,match,
+CF zeros_missing_60m_calendar validation n_state,26,26,0.0,match,
+CF zeros_missing_60m_calendar validation state months differ,1,1,0.0,match,
+CF zeros_missing_last60_nonzero holdout entries,2023-04 2024-06 2025-02 2025-09 2025-11,2023-04 2024-06 2025-02 2025-09 2025-11,0.0,match,
+CF zeros_missing_last60_nonzero holdout n_state,7,7,0.0,match,
+CF zeros_missing_last60_nonzero holdout state months differ,0,0,0.0,match,
+CF zeros_missing_last60_nonzero post_2021-10 entries,2022-07 2023-04 2024-06 2025-02 2025-09 2025-11,2022-07 2023-04 2024-06 2025-02 2025-09 2025-11,0.0,match,
+CF zeros_missing_last60_nonzero post_2021-10 n_state,8,8,0.0,match,
+CF zeros_missing_last60_nonzero post_2021-10 state months differ,0,0,0.0,match,
+CF zeros_missing_last60_nonzero validation entries,2010-04 2010-07 2011-08 2012-10 2013-03 2015-01 2015-09 2016-01 2016-11 2017-12 2018-05 2018-10 2018-12 2019-04 2019-09 2019-12 2020-05 2020-10 2021-05 2022-07,2010-04 2010-07 2011-08 2012-10 2013-03 2015-01 2015-09 2016-01 2016-11 2017-12 2018-05 2018-10 2018-12 2019-04 2019-09 2019-12 2020-05 2020-10 2021-05 2022-07,0.0,match,
+CF zeros_missing_last60_nonzero validation n_state,26,26,0.0,match,
+CF zeros_missing_last60_nonzero validation state months differ,1,1,0.0,match,
+zeros-missing 60m calendar: holdout state month that drops out,2022-08,2022-08,0.0,match,
+2015-07 team z (marginal validation crossing),0.801,0.801,0.0005,match,
+2015-07 team threshold,0.798,0.798,0.0005,match,
+2015-07 crossing under both zeros-missing variants,dropped,"cal False, obs False",,info,
+max |team bar - builder|,0.0,1.5543122344752192e-15,1e-06,match,
+max |frozen bar - builder|,0.0,1.1102230246251565e-16,1e-09,match,
+team bar range (text 0.37 to 0.53),0.37-0.53,0.37-0.53,0.0,match,
+frozen bar range (text 0.518 to 0.521),0.518-0.521,0.518-0.521,0.0,match,
+holdout readings between the two bars,0,0,0.0,match,
+entry readings range (text 0.64 to 0.94),0.64-0.94,0.64-0.94,0.0,match,
+nonzero-after-zero holdout months,11,11,0.0,match,
+of which no entry,6,6,0.0,match,
+no-entry readings range (text 0.16 to 0.36),0.16-0.36,0.16-0.36,0.0,match,
+base rate nonzero-after-zero among 17 holdout nonzero months,0.6470588235294118,0.6470588235294118,1e-12,match,
+P(5 of 5) one-sided,0.113,0.113,0.0005,match,
+binomial two-sided p (text 0.169),0.169,0.169,0.0005,match,
+state after zero 5/11 vs after nonzero 2/6,5/11 vs 2/6,5/11 vs 2/6,0.0,match,
+Fisher p state|prev zero (text 1.0),1.0,1.0,0.0005,match,
+window 2021-09 zero share,0.033,0.033,0.0005,match,
+window 2021-09 mean log1p,0.281,0.281,0.0005,match,
+window 2021-09 sd log1p,0.171,0.171,0.0005,match,
+window 2021-09 z of a zero month,-1.58,-1.58,0.005,match,
+window 2021-09 threshold,0.809,0.809,0.0005,match,
+window 2021-09 min EMV_env to cross (builder CSV),0.526,0.526,0.0005,match,
+window 2026-07 zero share,0.633,0.633,0.0005,match,
+window 2026-07 mean log1p,0.142,0.142,0.0005,match,
+window 2026-07 sd log1p,0.241,0.241,0.0005,match,
+window 2026-07 z of a zero month,-0.59,-0.59,0.005,match,
+window 2026-07 threshold,0.8,0.8,0.0005,match,
+window 2026-07 min EMV_env to cross (builder CSV),0.406,0.406,0.0005,match,
+threshold range over threshold sample (text 0.61 to 0.99),0.61-0.99,0.61-0.99,0.0,match,1992-12..
+zero months in threshold sample,50,50,0.0,match,
+zero months above threshold,0,0,0.0,match,
+"corr(z, 1{nonzero}) holdout",0.79,0.79,0.005,match,
+"corr(z, 1{nonzero}) validation",0.42,0.42,0.005,match,
+"decomposition_correlations: max relative diff of HAC t (mine, ddof=1 scaling, vs builder)",0.0,3.3974602709708463e-13,1e-06,match,55 rows; without the n/(n-1) scaling the gap is exactly 1/n (largest 0.059 at n = 17)
+"EMV_env vs VIX level, direction-free p (text 0.0035)",0.0035,0.0035,0.0001,match,r=0.205 n=440
+corr z_EMV_env vs z_EMV_overall,0.39,0.39,0.005,match,n=465
+n z_EMV_env vs z_EMV_overall,465,465,0.0,match,
+HAC p z_EMV_env vs z_EMV_overall (order of magnitude),-12,-12,0.5,match,p=9.9e-13
+corr z_EMV_env vs z_VIX,0.29,0.29,0.005,match,n=405
+n z_EMV_env vs z_VIX,405,405,0.0,match,
+HAC p z_EMV_env vs z_VIX (order of magnitude),-4,-4,0.5,match,p=7.4e-05
+"corr z_EMV_env vs z_VIX after 2021-10 (text -0.001, n 59)",-0.001,-0.001,0.0005,match,n=59
+share z vs z_VIX r,-0.05,-0.05,0.005,match,
+share z vs z_VIX HAC p,0.36,0.36,0.0051,match,
+share z vs z_EMV_overall r,-0.03,-0.03,0.005,match,
+share z vs z_EMV_overall HAC p,0.56,0.56,0.0051,match,
+ledger correlation pairs recorded more than once (excluding Q5 primary robustness family),0,0,0.0,match,
+decomposition_correlations: every row has a ledger row,0,0,0.0,match,55 rows
+decomposition_correlations: ledger p = table p (max abs diff),0.0,0.0,1e-12,match,
+measure_correlations: every row has a ledger row,0,0,0.0,match,92 rows
+measure_correlations: ledger p = table p (max abs diff),0.0,1.0018028073766061e-16,1e-12,match,
+predictive_ic: ledger p = table p via ledger_test_id,0.0,0.0,1e-12,match,"306 rows, 0 missing"
+ledger Q4 Fisher p = table,0.0,0.0,1e-12,match,
+ledger Q4_circshift p = table,0.0,0.0,1e-12,match,
+ledger Q4_lpm_nw12 p = table,0.0,0.0,1e-12,match,
+ledger rows,667,667,0.0,match,
+ledger unique ids,True,True,0.0,match,
+ledger primary / robustness / exploratory,15/217/435,15/217/435,0.0,match,
+merged duplicates (corr + IC),17+4,17+4,0.0,match,
+ledger rows for share vs MCCC / CPU / MCCC_transition,6,6,0.0,match,
+rows added in fix round (text lists 6+8+40+2),56,56,0.0,match,text says '35 rows were added'; 35 is the net change after 21 merges
+632 + added - merged,667,667,0.0,match,
+"MCCC primary p (slope, measure on EMV_env)",0.996233335936098,0.9962333359360978,1e-06,match,
+MCCC reverse-direction p,0.9962339836573756,0.9962339836573751,1e-06,match,
+MCCC NW(24) p,0.9963499234237024,0.9963499234237022,1e-06,match,
+MCCC direction-free p,0.996,0.996,0.002,match,
+MCCC partial r | z_EMV_overall,0.0248162677582988,0.024816267758298857,1e-09,match,n=235
+MCCC partial HAC p,0.72,0.72,0.011,match,
+"CPU primary p (slope, measure on EMV_env)",0.0371579601963534,0.037157960196351585,1e-06,match,
+CPU reverse-direction p,0.0483121834713895,0.048312183471386896,1e-06,match,
+CPU NW(24) p,0.0503946462407669,0.05039464624076498,1e-06,match,
+CPU direction-free p,0.04,0.04,0.002,match,
+CPU partial r | z_EMV_overall,0.0505693854245381,0.0505693854245396,1e-09,match,n=427
+CPU partial HAC p,0.36,0.36,0.011,match,
+Holm CPU (text 0.074),0.074,0.074,0.0005,match,
+Holm MCCC (text 0.996),0.996,0.996,0.0005,match,
+CPU direction-free p (text 0.040),0.04,0.04,0.0005,match,
+"CPU partial r (text 0.05, p 0.36)",0.05/0.36,0.05/0.36,0.0,match,
+Q5 MCCC level vs EMV_env r,-0.04,-0.04,0.0051,match,n=270
+Q5 MCCC level vs EMV_env HAC p,0.67,0.67,0.011,match,
+Q5 MCCC shock vs EMV_env r,-0.15,-0.15,0.0051,match,n=233
+Q5 MCCC shock vs EMV_env HAC p,0.006,0.006,0.002,match,
+Q5 CPU level vs EMV_env r,0.15,0.15,0.0051,match,n=462
+Q5 CPU level vs EMV_env HAC p,0.15,0.15,0.011,match,
+Q5 CPU shock vs EMV_env r,0.13,0.13,0.0051,match,n=425
+Q5 CPU shock vs EMV_env HAC p,0.042,0.042,0.002,match,
+Q5 MCCC_transition level vs EMV_env r,-0.0,-0.0,0.0051,match,n=270
+Q5 MCCC_transition z vs EMV_env r,0.07,0.07,0.0051,match,n=235
+Q5 MCCC_transition z vs EMV_env HAC p,0.29,0.29,0.011,match,
+Q5 MCCC_transition shock vs EMV_env r,-0.1,-0.1,0.0051,match,n=233
+Q5 MCCC_transition shock vs EMV_env HAC p,0.03,0.03,0.002,match,
+Q5 MCCC level vs VIX r,-0.04,-0.04,0.0051,match,n=270
+Q5 MCCC z vs VIX r,-0.07,-0.07,0.0051,match,n=235
+Q5 MCCC shock vs VIX r,-0.1,-0.1,0.0051,match,n=233
+Q5 CPU level vs VIX r,0.07,0.07,0.0051,match,n=429
+Q5 CPU z vs VIX r,0.15,0.15,0.0051,match,n=394
+Q5 CPU shock vs VIX r,0.09,0.09,0.0051,match,n=392
+share vs z_MCCC common r,-0.01,-0.01,0.0051,match,n=233
+share vs z_MCCC common p,0.89,0.89,0.011,match,
+share vs z_CPU common r,0.01,0.01,0.0051,match,n=233
+share vs z_CPU common p,0.94,0.94,0.011,match,
+share vs z_MCCC_transition common r,0.03,0.03,0.0051,match,n=233
+share vs z_MCCC_transition common p,0.66,0.66,0.011,match,
+share vs z_MCCC own overlap r,-0.004,-0.004,0.0005,match,n=235
+share vs z_MCCC own overlap p,0.96,0.96,0.011,match,
+share vs z_CPU own overlap r,0.03,0.03,0.0051,match,n=427
+share vs z_CPU own overlap p,0.62,0.62,0.011,match,
+"common-sample corr z_MCCC, z_CPU",0.16,0.16,0.005,match,
+"common-sample corr z_MCCC, z_MCCC_tr",0.88,0.88,0.005,match,
+shock MCCC vs RATE r,-0.12,-0.12,0.0051,match,
+shock MCCC vs RATE HAC p,0.031,0.031,0.002,match,
+shock MCCC vs RATE t,-2.16,-2.16,0.02,match,
+shock MCCC_transition vs RATE r,-0.12,-0.12,0.0051,match,
+shock MCCC_transition vs RATE HAC p,0.063,0.063,0.002,match,
+shock CPU vs RATE r,0.04,0.04,0.0051,match,
+shock CPU vs RATE HAC p,0.38,0.38,0.002,match,
+"shock MCCC vs Mkt-RF r / p (text 0.14, 0.010)",0.14/0.010,0.14/0.010,0.0,match,
+Q2 full t(z_VIX),-0.35,-0.35,0.005,match,"n=405, t(z_EMV_overall)=5.07"
+Q2 full joint R2,0.169,0.169,0.0005,match,
+Q2 pre_2021-10 t(z_VIX),0.16,0.16,0.005,match,"n=346, t(z_EMV_overall)=4.09"
+Q2 pre_2021-10 joint R2,0.161,0.161,0.0005,match,
+Q2 validation t(z_VIX),-2.51,-2.51,0.005,match,"n=151, t(z_EMV_overall)=5.44"
+Q2 validation b(z_VIX),-0.3,-0.3,0.005,match,
+Q2 validation R2 EMV-only -> joint,0.126->0.166,0.126->0.166,0.0,match,
+Q2 validation joint R2,0.166,0.166,0.0005,match,
+Q2 post_2021-10 t(z_VIX),-1.92,-1.92,0.005,match,"n=59, t(z_EMV_overall)=3.81"
+Q2 post_2021-10 b(z_VIX),-0.28,-0.28,0.005,match,
+Q2 post_2021-10 R2 EMV-only -> joint,0.245->0.281,0.245->0.281,0.0,match,
+Q2 post_2021-10 joint R2,0.281,0.281,0.0005,match,
+Q2 holdout t(z_VIX),-1.13,-1.13,0.005,match,"n=48, t(z_EMV_overall)=3.20"
+Q2 holdout joint R2,0.267,0.267,0.0005,match,
+z_EMV_overall t across subsamples (text 3.2 to 5.4),3.2-5.4,3.2-5.4,0.0,match,
+"level R2 (text 0.110, 0.042, 0.113; n 440)",0.110/0.042/0.113/440,0.110/0.042/0.113/440,0.0,match,
+"log nonzero R2 (text 0.136, 0.066, 0.137; n 390)",0.136/0.066/0.137/390,0.136/0.066/0.137/390,0.0,match,
+share z R2 on both (text 0.005),0.005,0.005,0.0005,match,
+Q4 20 rows: max |Fisher p diff|,0.0,9.183192400952223e-17,1e-10,match,
+Q4 20 rows: max |circular-shift p diff| (same rotation set 12..n-12),0.0,9.84455572616838e-17,1e-10,match,
+Q4 20 rows: max |LPM NW(12) p diff|,0.0,1.887379141862766e-15,1e-08,match,
+Q4 high_VIX/crossing/all_threshold_sample Fisher p (text),0.097,0.0967118966382725,0.00485,match,
+Q4 high_VIX/crossing/all_threshold_sample circ p (text),0.113,0.1128608923884514,0.0056500000000000005,match,
+Q4 high_VIX/crossing/all_threshold_sample LPM p (text),0.049,0.0489725150143198,0.0024500000000000004,match,
+Q4 high_EMV_overall/crossing/all_threshold_sample Fisher p (text),0.0006,0.0006105368540243,5e-05,match,
+Q4 high_EMV_overall/crossing/all_threshold_sample circ p (text),0.0,0.0,1e-12,match,
+Q4 high_EMV_overall/crossing/all_threshold_sample LPM p (text),0.0003,0.0002523541414355,5e-05,match,
+Q4 high_VIX/state/all_threshold_sample Fisher p (text),1.3e-05,1.2863213227850395e-05,5e-05,match,
+Q4 high_VIX/state/all_threshold_sample circ p (text),0.0026,0.0026246719160104,0.00013,match,
+Q4 high_VIX/state/all_threshold_sample LPM p (text),0.0001,0.0001207604382851,5e-05,match,
+Q4 high_EMV_overall/crossing/since_2010 Fisher p (text),0.0012,0.0011841118098317,5.9999999999999995e-05,match,
+Q4 high_EMV_overall/crossing/since_2010 circ p (text),0.0,0.0,1e-12,match,
+Q4 high_EMV_overall/crossing/since_2010 LPM p (text),0.0001,0.0001248467256828,5e-05,match,
+Q4 high_VIX/crossing/since_2010 Fisher p (text),0.52,0.5243162115108437,0.026000000000000002,match,
+Q4 high_VIX/crossing/since_2010 circ p (text),0.53,0.5340909090909091,0.026500000000000003,match,
+Q4 high_VIX/crossing/since_2010 LPM p (text),0.34,0.3372152709923929,0.017,match,
+Q4 high_EMV_overall/crossing/holdout Fisher p (text),0.57,0.5730197441575795,0.028499999999999998,match,
+Q4 high_EMV_overall/crossing/holdout circ p (text),0.72,0.72,0.036,match,
+Q4 high_EMV_overall/crossing/holdout LPM p (text),0.023,0.0231135115372798,0.00115,match,
+Q4 primary odds ratio (text 1.71),1.71,1.71,0.005,match,
+"zeros excluded, min 3: range",-0.23/1.20,-0.23/1.20,0.0,match,24 of 36 months
+"zeros excluded, min 3: months with a value",24,24,0.0,match,
+"zeros excluded, min 6: range",-0.05/0.35,-0.05/0.35,0.0,match,
+"zeros excluded, min 6: months with a value",5,5,0.0,match,
+11 nonzero months of 2022-2024: mean std reading,0.37,0.37,0.005,match,n=11
+median nonzero EMV_env 2022-2024,0.36,0.36,0.005,match,
+median nonzero EMV_env 60m to 2021-09,0.306,0.306,0.0005,match,
+median nonzero EMV_env 1985-01 to 2021-09,0.24,0.24,0.005,match,
+MCCC 12m std 2022-2024 range,1.19/1.49,1.19/1.49,0.0,match,
+CPU 12m std 2022-2024 range,0.88/1.39,0.88/1.39,0.0,match,
+EMV_env 12m std 2022-2024 (with zeros),-1.16/-0.08,-1.16/-0.08,0.0,match,
+EMV_env 12m std peak and month,0.96 2009-08,0.96 2009-08,0.0,match,
+figure table min3 series = mine,0.0,2.220446049250313e-16,1e-09,match,
+Q6a MCCC FF3 full slope,-0.049,-0.049,0.0005,match,
+Q6a MCCC FF3 full t,-0.3,-0.3,0.005,match,
+Q6a CPU FF3 full slope,-0.177,-0.177,0.0005,match,
+Q6a CPU FF3 full t,-1.4,-1.4,0.005,match,
+Q6a MCCC FF3_RATE full slope,-0.024,-0.024,0.0005,match,
+Q6a MCCC FF3_RATE full t,-0.14,-0.14,0.005,match,
+Q6a CPU FF3_RATE full slope,-0.182,-0.182,0.0005,match,
+Q6a CPU FF3_RATE full t,-1.43,-1.43,0.005,match,
+Q6a MCCC_fullAR1 none full slope,-0.074,-0.074,0.0005,match,
+Q6a MCCC_fullAR1 none full t,-0.47,-0.47,0.005,match,
+Q6a MCCC_fullAR1 n,269,269,0.0,match,
+Q6a MCCC_transition none full slope,-0.082,-0.082,0.0005,match,
+Q6a MCCC_transition none full t,-0.43,-0.43,0.005,match,
+Q6a MCCC none 2020-01 slope,0.53,0.53,0.005,match,
+Q6a MCCC none 2020-01 t,0.96,0.96,0.005,match,
+Q6a CPU none 2020-01 slope,0.28,0.28,0.005,match,
+Q6a CPU none 2020-01 t,0.84,0.84,0.005,match,
+Q6a CPU none full slope,-0.16,-0.16,0.0005,match,
+Q6a CPU none full t,-1.23,-1.23,0.005,match,
+Q6a CPU n,425,425,0.0,match,
+max |t_RATE| in GB regressions (text <= 1.69),1.69,1.69,0.005,match,
+IC z_CPU on Brown resid FF3+RATE,-0.069/-1.46,-0.069/-1.46,0.0,match,
+IC shock_CPU on Brown resid FF3+RATE,-0.070/-1.59,-0.070/-1.59,0.0,match,
+IC z_MCCC on Brown resid FF3+RATE,0.079/1.40,0.079/1.40,0.0,match,
+IC shock_MCCC on Brown resid FF3+RATE,0.034/0.50,0.034/0.50,0.0,match,
+IC z_MCCC -> GB validation / holdout,+0.006/+0.114,+0.006/+0.114,0.0,match,t 0.08/0.63
+IC z_MCCC -> BR validation / holdout,+0.058/+0.016,+0.058/+0.016,0.0,match,t 0.81/0.09
+IC shock_MCCC -> GB validation / holdout,-0.015/+0.078,-0.015/+0.078,0.0,match,t -0.19/0.42
+IC shock_MCCC -> BR validation / holdout,+0.042/-0.115,+0.042/-0.115,0.0,match,t 0.47/-0.87
+IC z_CPU -> GB validation / holdout,+0.007/+0.050,+0.007/+0.050,0.0,match,t 0.10/0.57
+IC z_CPU -> BR validation / holdout,-0.067/-0.078,-0.067/-0.078,0.0,match,t -0.99/-0.87
+IC shock_CPU -> GB validation / holdout,+0.025/+0.163,+0.025/+0.163,0.0,match,t 0.48/1.85
+IC shock_CPU -> BR validation / holdout,-0.063/-0.180,-0.063/-0.180,0.0,match,t -0.84/-1.93
+IC z_EMV_env -> GB validation / holdout,+0.182/-0.127,+0.182/-0.127,0.0,match,t 1.81/-1.28
+IC z_EMV_env -> BR validation / holdout,-0.091/+0.123,-0.091/+0.123,0.0,match,t -1.21/1.11
+IC z_EMV_env_share -> GB validation / holdout,+0.218/-0.118,+0.218/-0.118,0.0,match,t 2.62/-1.00
+IC shock_EMV_env -> BR validation / holdout,-0.095/+0.160,-0.095/+0.160,0.0,match,t -1.48/2.38
+"lag1 z_MCCC -> Brown IC / p (text 0.078, 0.12)",0.078/0.12,0.078/0.12,0.0,match,
+"last12 z_VIX -> Brown resid IC (text -0.62, 11 months; outcome not named in text)",-0.62/11,-0.62/11,0.0,match,
+MCCC last18 signal months with a next-month outcome,5,5,0.0,match,
+CPU last18 signal months with a next-month outcome,8,8,0.0,match,
+"MCCC shock -> green excess (%, t)",0.75/2.48,0.75/2.48,0.0,match,
+"MCCC shock -> brown excess (%, t)",0.84/2.22,0.84/2.22,0.0,match,
+Q6a robustness tests with p < 0.05 (text: all 68 have p > 0.05),0/68,0/68,0.0,match,
+Q6b robustness tests with p < 0.05 (text: all 110 have p > 0.05),0/110,0/110,0.0,match,
+Q6b exploratory p < 0.05 (text 26 of 184),26/184,26/184,0.0,match,

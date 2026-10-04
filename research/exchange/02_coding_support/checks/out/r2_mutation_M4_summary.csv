@@ -1,0 +1,2 @@
+mutant,audit_rows,rows_flagged,detected,flagged_by_test,truncate_flags,synthetic_alpha,seconds
+M4 size m_t uses next month's sd,91,49,True,"{'f_perturb': 24, 'post_window': 1, 'rb_perturb': 24}",0,-0.00027095586993458094,96

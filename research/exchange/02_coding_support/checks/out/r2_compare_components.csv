@@ -1,0 +1,127 @@
+run,component,chatgpt_v2,reference,diff,note
+r2_test_nonzero,first data month with z,1989-01,1989-01,,
+r2_test_nonzero,"max |z diff|, common months",0.0,0.0,0.0,384 common months
+r2_test_nonzero,first data month with threshold,1994-01,1994-01,,
+r2_test_nonzero,"max |threshold diff|, common months 1985-2026",0.0,0.0,0.0,
+r2_test_nonzero,crossings over 1985-01..2026-08 (count),58,58,0,only v2: []; only reference: []
+r2_test_nonzero,"hold months differing, decision months of the window",0,0,0,
+r2_test_nonzero,window,1994-03 to 2009-12,1994-03 to 2009-12,,
+r2_test_nonzero,n,190,190,0,
+r2_test_nonzero,"max |b_t diff| (hedge betas), window",2.220446049250313e-16,0.0,2.220446049250313e-16,
+r2_test_nonzero,"max |m_t diff| (vol-target size), window",1.6653345369377348e-15,0.0,1.6653345369377348e-15,
+r2_test_nonzero,"max |net R^T diff|, window",1.0408340855860843e-16,0.0,1.0408340855860843e-16,
+r2_test_nonzero,"max |net R^AO diff|, window",1.214306433183765e-16,0.0,1.214306433183765e-16,
+r2_test_nonzero,pi,0.729434123857354,0.7294341238573538,1.1102230246251565e-16,
+r2_test_nonzero,"max |D diff|, window",1.1449174941446927e-16,0.0,1.1449174941446927e-16,
+r2_test_nonzero,months in position (I=1),142,142,0,
+r2_test_nonzero,max |regressor diff| (10 unconditional factors),4.440892098500626e-16,0.0,4.440892098500626e-16,
+r2_test_nonzero,k,15,15,0,
+r2_test_nonzero,"alpha, %/yr",-0.18183312826056,-0.18183312826054998,-1.0019762797242038e-14,
+r2_test_nonzero,alpha NW(6) t,-0.2660916237195144,-0.26609162371943734,-7.704947790898586e-14,
+r2_test_nonzero,alpha NW(12) t,-0.2871756881576783,-0.2871756881575953,-8.298917109073045e-14,
+r2_test_nonzero,"alpha two-sided p, t(n-k)",0.7904818871702013,0.7904818871702605,-5.917488721252084e-14,
+r2_test_nonzero,alpha one-sided upper p,0.6047590564148994,0.6047590564148697,2.964295475749168e-14,
+r2_test_nonzero,shuffle one-sided p,0.4779044191161767,0.4779044191161767,0.0,
+r2_test_nonzero,"shuffle null median, %/yr",-0.22069914320766001,-0.220699143207245,-4.150013666048835e-13,
+r2_test_nonzero,max |null alpha diff| draw by draw (same seed),8.33334052804946e-15,0.0,8.33334052804946e-15,
+r2_test_nonzero,episodes,10,10,0,"v2 lengths [6, 6, 16, 6, 11, 25, 14, 25, 23, 10]; reference [6, 6, 16, 6, 11, 25, 14, 25, 23, 10]"
+r2_test_nonzero,drop Util: alpha %/yr,-0.6079594760562,-0.60795947605616,-4.007905118896815e-14,
+r2_test_nonzero,drop Util: t,-0.8710837473654756,-0.8710837473653463,-1.2922996006636822e-13,
+r2_test_nonzero,drop Ships: alpha %/yr,0.03176897639656812,0.03176897639661,-4.1876224710080123e-14,
+r2_test_nonzero,drop Ships: t,0.0413865196429459,0.0413865196430108,-6.489947468324431e-14,
+r2_test_nonzero,drop Aero: alpha %/yr,0.009111211491530128,0.009111211491533192,-3.0635216585750413e-15,
+r2_test_nonzero,drop Aero: t,0.0123962351858379,0.0123962351858415,-3.599551212651875e-15,
+r2_test_nonzero,drop Steel: alpha %/yr,-0.19285879211315998,-0.19285879211314,-1.9984014443252818e-14,
+r2_test_nonzero,drop Steel: t,-0.3366829992466993,-0.3366829992465935,-1.0580425424677742e-13,
+r2_test_nonzero,drop BldMt: alpha %/yr,-0.1082147879553962,-0.10821478795535,-4.6199155612214327e-14,
+r2_test_nonzero,drop BldMt: t,-0.1657744909324111,-0.1657744909323328,-7.829847881168917e-14,
+r2_test_nonzero,decomposition identity gap,1.1722935989999517e-18,8.998878031629687e-18,-7.826584432629735e-18,
+r2_test_nonzero,pass/fail row (i),FAIL,FAIL,,"v2 value -0.2660916237195144; alpha = -0.000152/month, p = 0.7905 (t, n-k df)"
+r2_test_nonzero,pass/fail row (ii),FAIL,FAIL,,v2 value 0.4779044191161767; nan
+r2_test_nonzero,pass/fail row (iii),PASS,PASS,,v2 value 10.0; nan
+r2_test_nonzero,pass/fail row (iv),FAIL,FAIL,,"v2 value -0.0005066328967135; full: -0.000152, Util: -0.000507, Ships: 0.000026, Aero: 0.000008, Steel: -0.000161, BldMt: -0.000090"
+r2_test_nonzero,pass/fail row overall,FAIL,FAIL,,v2 value 1.0; 1 of 4
+r2_test_calendar,first data month with z,1989-12,1989-01,,
+r2_test_calendar,"max |z diff|, common months",0.0,0.0,0.0,373 common months
+r2_test_calendar,first data month with threshold,1994-12,1994-01,,
+r2_test_calendar,"max |threshold diff|, common months 1985-2026",0.07564846054226937,0.0,0.07564846054226937,
+r2_test_calendar,crossings over 1985-01..2026-08 (count),60,58,2,"only v2: ['1997-04', '2002-12', '2007-07']; only reference: ['1997-05']"
+r2_test_calendar,"hold months differing, decision months of the window",6,0,6,"2003-01, 2003-02, 2003-03, 2003-04, 2003-05, 2003-06"
+r2_test_calendar,window,1995-02 to 2009-12,1994-03 to 2009-12,,
+r2_test_calendar,n,179,190,-11,
+r2_test_calendar,"max |b_t diff| (hedge betas), window",2.220446049250313e-16,0.0,2.220446049250313e-16,
+r2_test_calendar,"max |m_t diff| (vol-target size), window",1.6653345369377348e-15,0.0,1.6653345369377348e-15,
+r2_test_calendar,"max |net R^T diff|, window",0.0140694952693979,0.0,0.0140694952693979,
+r2_test_calendar,"max |net R^AO diff|, window",1.0408340855860843e-16,0.0,1.0408340855860843e-16,
+r2_test_calendar,pi,0.8085560676291694,0.7294341238573538,0.07912194377181558,
+r2_test_calendar,"max |D diff|, window",0.012956289455794806,0.0,0.012956289455794806,
+r2_test_calendar,months in position (I=1),148,142,6,
+r2_test_calendar,max |regressor diff| (10 unconditional factors),4.440892098500626e-16,0.0,4.440892098500626e-16,
+r2_test_calendar,k,15,15,0,
+r2_test_calendar,"alpha, %/yr",-0.18615739118256,-0.18183312826054998,-0.004324262922010019,
+r2_test_calendar,alpha NW(6) t,-0.2487438707918238,-0.26609162371943734,0.017347752927613536,
+r2_test_calendar,alpha NW(12) t,-0.2731543382901594,-0.2871756881575953,0.014021349867435917,
+r2_test_calendar,"alpha two-sided p, t(n-k)",0.8038701376834523,0.7904818871702605,0.013388250513191813,
+r2_test_calendar,alpha one-sided upper p,0.5980649311582739,0.6047590564148697,-0.006694125256595851,
+r2_test_calendar,shuffle one-sided p,0.5302939412117577,0.4779044191161767,0.052389522095580954,
+r2_test_calendar,"shuffle null median, %/yr",-0.14762778934937998,-0.220699143207245,0.07307135385786503,
+r2_test_calendar,max |null alpha diff| draw by draw (same seed),0.0028131974608725666,0.0,0.0028131974608725666,
+r2_test_calendar,episodes,10,10,0,"v2 lengths [6, 6, 16, 6, 11, 25, 20, 25, 23, 10]; reference [6, 6, 16, 6, 11, 25, 14, 25, 23, 10]"
+r2_test_calendar,drop Util: alpha %/yr,-0.53502353632584,-0.60795947605616,0.07293593973031998,
+r2_test_calendar,drop Util: t,-0.7191028576878831,-0.8710837473653463,0.15198088967746326,
+r2_test_calendar,drop Ships: alpha %/yr,0.03456649142179668,0.03176897639661,0.0027975150251866795,
+r2_test_calendar,drop Ships: t,0.0409867856091437,0.0413865196430108,-0.0003997340338671024,
+r2_test_calendar,drop Aero: alpha %/yr,-0.11502267598226265,0.009111211491533192,-0.12413388747379585,
+r2_test_calendar,drop Aero: t,-0.1511655179348724,0.0123962351858415,-0.16356175312071392,
+r2_test_calendar,drop Steel: alpha %/yr,-0.2456809924326,-0.19285879211314,-0.05282220031946,
+r2_test_calendar,drop Steel: t,-0.4064280912599376,-0.3366829992465935,-0.06974509201334411,
+r2_test_calendar,drop BldMt: alpha %/yr,-0.08421200766946949,-0.10821478795535,0.024002780285880515,
+r2_test_calendar,drop BldMt: t,-0.1166107089671449,-0.1657744909323328,0.04916378196518789,
+r2_test_calendar,decomposition identity gap,1.2197274440461925e-18,8.998878031629687e-18,-7.779150587583494e-18,
+r2_test_calendar,pass/fail row (i),FAIL,FAIL,,"v2 value -0.2487438707918238; alpha = -0.000155/month, p = 0.8039 (t, n-k df)"
+r2_test_calendar,pass/fail row (ii),FAIL,FAIL,,v2 value 0.5302939412117577; nan
+r2_test_calendar,pass/fail row (iii),PASS,PASS,,v2 value 10.0; nan
+r2_test_calendar,pass/fail row (iv),FAIL,FAIL,,"v2 value -0.0004458529469382; full: -0.000155, Util: -0.000446, Ships: 0.000029, Aero: -0.000096, Steel: -0.000205, BldMt: -0.000070"
+r2_test_calendar,pass/fail row overall,FAIL,FAIL,,v2 value 1.0; 1 of 4
+r2_seen_nonzero,first data month with z,1989-01,1989-01,,
+r2_seen_nonzero,"max |z diff|, common months",0.0,0.0,0.0,384 common months
+r2_seen_nonzero,first data month with threshold,1994-01,1994-01,,
+r2_seen_nonzero,"max |threshold diff|, common months 1985-2026",0.0,0.0,0.0,
+r2_seen_nonzero,crossings over 1985-01..2026-08 (count),58,58,0,only v2: []; only reference: []
+r2_seen_nonzero,"hold months differing, decision months of the window",0,0,0,
+r2_seen_nonzero,window,2010-01 to 2022-07,2010-01 to 2022-07,,
+r2_seen_nonzero,n,151,151,0,
+r2_seen_nonzero,"max |b_t diff| (hedge betas), window",2.220446049250313e-16,0.0,2.220446049250313e-16,
+r2_seen_nonzero,"max |m_t diff| (vol-target size), window",6.661338147750939e-16,0.0,6.661338147750939e-16,
+r2_seen_nonzero,"max |net R^T diff|, window",1.0061396160665481e-16,0.0,1.0061396160665481e-16,
+r2_seen_nonzero,"max |net R^AO diff|, window",1.0061396160665481e-16,0.0,1.0061396160665481e-16,
+r2_seen_nonzero,pi,0.7628392276533738,0.7628392276533739,-1.1102230246251565e-16,
+r2_seen_nonzero,"max |D diff|, window",1.0018028073766061e-16,0.0,1.0018028073766061e-16,
+r2_seen_nonzero,months in position (I=1),112,112,0,
+r2_seen_nonzero,max |regressor diff| (10 unconditional factors),8.881784197001252e-16,0.0,8.881784197001252e-16,
+r2_seen_nonzero,k,15,15,0,
+r2_seen_nonzero,"alpha, %/yr",-0.12069478702007999,-0.12069478702018405,1.040556529829928e-13,
+r2_seen_nonzero,alpha NW(6) t,-0.1877593451238836,-0.1877593451238507,-3.289035710452026e-14,
+r2_seen_nonzero,alpha NW(12) t,-0.2073994170747523,-0.2073994170747135,-3.880229471064922e-14,
+r2_seen_nonzero,"alpha two-sided p, t(n-k)",0.8513451541017535,0.8513451541017792,-2.5757174171303632e-14,
+r2_seen_nonzero,alpha one-sided upper p,0.5743274229491233,0.5743274229491104,1.2878587085651816e-14,
+r2_seen_nonzero,shuffle one-sided p,0.5100979804039192,0.5100979804039192,0.0,
+r2_seen_nonzero,"shuffle null median, %/yr",-0.10634186675386342,-0.10634186675474999,8.865685963144188e-13,
+r2_seen_nonzero,max |null alpha diff| draw by draw (same seed),5.741609444831486e-15,0.0,5.741609444831486e-15,
+r2_seen_nonzero,episodes,6,6,0,"v2 lengths [63, 9, 6, 13, 15, 6]; reference [63, 9, 6, 13, 15, 6]"
+r2_seen_nonzero,drop Util: alpha %/yr,-0.15723960225984,-0.15723960225999,1.5001888620247428e-13,
+r2_seen_nonzero,drop Util: t,-0.2481576350811706,-0.2481576350812607,9.009459844833145e-14,
+r2_seen_nonzero,drop Ships: alpha %/yr,0.30935532194724,0.30935532194731,-6.999956170261612e-14,
+r2_seen_nonzero,drop Ships: t,0.5152619894677957,0.5152619894678997,-1.0402789740737717e-13,
+r2_seen_nonzero,drop Aero: alpha %/yr,-0.44996621780736,-0.44996621780738,1.9984014443252818e-14,
+r2_seen_nonzero,drop Aero: t,-0.7219163200098038,-0.7219163200097316,-7.216449660063518e-14,
+r2_seen_nonzero,drop Steel: alpha %/yr,0.10899561535011898,0.10899561535002,9.89763826453327e-14,
+r2_seen_nonzero,drop Steel: t,0.1707587237643972,0.1707587237642478,1.4940826353893044e-13,
+r2_seen_nonzero,drop BldMt: alpha %/yr,-0.14838255922332,-0.14838255922321,-1.0999534616473738e-13,
+r2_seen_nonzero,drop BldMt: t,-0.2312920104473745,-0.2312920104471925,-1.8199330931167879e-13,
+r2_seen_nonzero,decomposition identity gap,-4.0657581468206416e-19,-2.2497195079074217e-18,1.8431436932253575e-18,
+r2_seen_nonzero,pass/fail row (i),FAIL,FAIL,,"v2 value -0.1877593451238836; alpha = -0.000101/month, p = 0.8513 (t, n-k df)"
+r2_seen_nonzero,pass/fail row (ii),FAIL,FAIL,,v2 value 0.5100979804039192; nan
+r2_seen_nonzero,pass/fail row (iii),FAIL,FAIL,,v2 value 6.0; nan
+r2_seen_nonzero,pass/fail row (iv),FAIL,FAIL,,"v2 value -0.0003749718481728; full: -0.000101, Util: -0.000131, Ships: 0.000258, Aero: -0.000375, Steel: 0.000091, BldMt: -0.000124"
+r2_seen_nonzero,pass/fail row overall,FAIL,FAIL,,v2 value 0.0; 0 of 4

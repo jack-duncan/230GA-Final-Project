@@ -1,0 +1,118 @@
+claim,builder,verifier,tol,status,note
+Green leg = 5 lowest-intensity,"Fun,RlEst,Drugs,Telcm,Fin","Fun,RlEst,Drugs,Telcm,Fin",0.0,match,
+Brown leg = 5 highest-intensity,"Util,Ships,Aero,Steel,BldMt","Util,Ships,Aero,Steel,BldMt",0.0,match,
+Q1 overlap months,500,500,0.0,match,
+Q1 months differing,0,0,0.0,match,
+Q1 first/last month,1985-01/2026-08,1985-01/2026-08,0.0,match,
+Q1 months only in one series,0,0,0.0,match,
+Q3 zeros pre-2021-10,12/441,12/441,0.0,match,
+Q3 zeros post-2021-10,39/59,39/59,0.0,match,
+Q3 Fisher p,1.3e-32,1.3e-32,5e-34,match,
+Q3 Fisher odds ratio,69.7,69.7,0.05,match,
+Q3 zeros validation,12/151,12/151,0.0,match,
+Q3 zeros holdout,31/48,31/48,0.0,match,
+Q3 zeros inflation_rates,25/36,25/36,0.0,match,
+Q3 zeros last18,9/18,9/18,0.0,match,
+Q3 zeros last12,8/12,8/12,0.0,match,
+Q3 24m zero share max pre-2021,0.125,0.125,0.0001,match,
+Q3 24m zero share max,0.792,0.792,0.0005,match,at 2024-02 (claim 2024-02)
+EMV_env_share mean,0.0136,0.0136,5e-05,match,
+nonzero share post-2021-10 min,0.006,0.006,0.0005,match,
+nonzero share post-2021-10 max,0.054,0.054,0.0005,match,
+Q2 n,405,405,0.0,match,1992-12..2026-08
+Q2 joint R2,0.169,0.169,0.0005,match,
+Q2 HAC Wald F,27.1,27.1,0.05,match,
+Q2 Wald p,8.8e-12,8.8e-12,5e-14,match,
+Q2 t(z_VIX),-0.35,-0.35,0.005,match,
+Q2 t(z_EMV_overall),5.07,5.07,0.005,match,
+Q2 Wald p with NW(24) (sensitivity),8.8e-12 (NW6),9.88e-09,,info,
+Q2 validation: t(z_VIX) and R2 increment from VIX,headline: 'VIX adds nothing',"t=-2.51, dR2=0.040",,info,
+"Q2 corr(z_share, team z) n=465",0.865,0.865,0.0005,match,
+NW(6) implementation vs statsmodels t(z_EMV_overall),5.0653,5.0653,0.001,match,(statsmodels default: no small-sample correction)
+team p80 months 2010-01..2026-07,34,34,0.0,match,
+Q3 crossings validation,21,21,0.0,match,
+Q3 crossings after zero month validation,2,2,0.0,match,
+Q3 crossings holdout,5,5,0.0,match,
+Q3 crossings after zero month holdout,5,5,0.0,match,
+Q3 holdout mean z | zero,-0.95,-0.95,0.005,match,
+Q3 holdout mean z | nonzero,0.95,0.95,0.005,match,
+Q3 holdout nonzero months above threshold,7/17,7/17,0.0,match,
+Q3 validation mean z | nonzero,0.08,0.08,0.005,match,
+Q3 validation P(state | nonzero),0.19,0.19,0.005,match,
+Q3 hold6 share holdout,0.646,0.646,0.0005,match,
+Q3 hold6 share validation,0.642,0.642,0.0005,match,
+"Q3 Fisher state vs nonzero, holdout",0.00026,0.00026,5e-06,match,
+Holdout nonzero-after-zero months that crossed,'rule collapses to a nonzero reading right after a zero month',5/11,,info,
+Q3 min EMV_env to cross 2021-09,0.526,0.526,0.0015,match,
+Q3 min EMV_env to cross 2026-07,0.406,0.406,0.0015,match,
+Q4 crossings (VIX sample),50,50,0.0,match,
+Q4 share crossings high VIX,0.62,0.62,0.0005,match,
+Q4 share other months high VIX,0.489,0.489,0.0005,match,
+Q4 Fisher p (primary),0.097,0.097,0.0005,match,
+Q4 sample start,1993-01,1993-01,0.0,match,
+Q4 share crossings high EMV_overall,0.88,0.88,0.0005,match,
+Q4 share other high EMV_overall,0.645,0.645,0.0005,match,
+Q4 Fisher p EMV_overall,0.0006,0.0006,5e-05,match,
+"Q4 EMV_overall link, dependence-robust p (circular shift / LPM NW12)","p = 0.0006 (Fisher, iid months)",0.0000 / 0.0003,,info,
+"Q4 VIX link, dependence-robust p (circular shift / LPM NW12)",p = 0.097 (Fisher),0.1132 / 0.0490,,info,
+Q4 state months high-VIX share,0.72,0.72,0.0005,match,n=82 vs other 0.450
+"Q5 corr(z_MCCC, z_EMV_env)",-0.0004,-0.0004,5e-05,match,
+Q5 n MCCC,235,235,0.0,match,
+Q5 NW p MCCC,0.996,0.996,0.0005,match,reverse-direction p=0.996; NW(24) p=0.996
+Q5 MCCC corr p sensitivity,"0.996 (NW6, y=measure)",reverse direction 0.996; NW(24) 0.996,,info,
+"Q5 corr(z_CPU, z_EMV_env)",0.123,0.123,0.0005,match,
+Q5 n CPU,427,427,0.0,match,
+Q5 NW p CPU,0.037,0.037,0.0005,match,reverse-direction p=0.048; NW(24) p=0.050
+Q5 CPU corr p sensitivity,"0.037 (NW6, y=measure)",reverse direction 0.048; NW(24) 0.050,,info,
+"Q5 common-sample corr(z_share, z_MCCC)",-0.01,-0.01,0.005,match,
+"Q5 common-sample corr(z_share, z_CPU)",0.01,0.01,0.005,match,
+Q6a slope GB on 1sd MCCC shock (%/mo),-0.093,-0.093,0.0005,match,2006-02..2025-06
+Q6a t MCCC,-0.49,-0.49,0.005,match,
+Q6a n MCCC,233,233,0.0,match,
+Q6a slope GB on 1sd CPU shock (%/mo),-0.16,-0.16,0.0005,match,1990-05..2025-09
+Q6a t CPU,-1.23,-1.23,0.005,match,
+Q6a n CPU,425,425,0.0,match,
+Q6a Holm p MCCC,0.62,0.62,0.005,match,
+Q6a Holm p CPU,0.43,0.43,0.005,match,
+Team IC validation (Brown resid),-0.0915,-0.0915,5e-05,match,n=151
+Team IC holdout (Brown resid),0.1234,0.1234,5e-05,match,n=47
+Q6b IC z_MCCC -> GB,-0.022,-0.022,0.0005,match,t=-0.36 n=235 start 2005-12
+Q6b IC z_MCCC -> BR,0.074,0.074,0.0005,match,t=1.27 n=235 start 2005-12
+Q6b IC shock_MCCC -> GB,0.001,0.001,0.0005,match,t=0.02 n=233 start 2006-02
+Q6b IC shock_MCCC -> BR,0.02,0.02,0.0005,match,t=0.29 n=233 start 2006-02
+Q6b IC z_CPU -> GB,0.027,0.027,0.0005,match,t=0.58 n=427 start 1990-03
+Q6b IC z_CPU -> BR,-0.073,-0.073,0.0005,match,t=-1.55 n=427 start 1990-03
+Q6b IC shock_CPU -> GB,0.038,0.038,0.0005,match,t=1.02 n=425 start 1990-05
+Q6b IC shock_CPU -> BR,-0.079,-0.079,0.0005,match,t=-1.77 n=425 start 1990-05
+Q6b smallest Holm p,0.62,0.62,0.005,match,
+Q6b smallest raw p (shock_CPU -> Brown),0.077,0.077,0.0005,match,
+Q6b shock_CPU holdout t -> GB,1.85,1.85,0.005,match,IC=0.163 n=38
+Q6b shock_CPU holdout t -> BR,-1.93,-1.93,0.005,match,IC=-0.180 n=38
+Q6b lag1 shock_CPU -> Brown IC,-0.034,-0.034,0.0005,match,p=0.54
+ledger rows,667,667,0.0,match,
+ledger unique ids,True,True,0.0,match,
+ledger primary count,15,15,0.0,match,
+ledger Q6b p = predictive_ic p (max abs diff),0.0,0.0,1e-12,match,"298 rows, missing 0"
+ledger Q6a p = contemporaneous p (max abs diff),0.0,0.0,1e-12,match,"134 rows, missing 0"
+ledger Q4 p = crossings_vix_summary p (max abs diff),0.0,0.0,1e-12,match,20 rows
+ledger summary recount (rows with mismatch),0,0,0.0,match,
+round-1 duplicate pairs still present in ledger,4 pairs (round 1),0,,info,round 2 dedups by hypothesis key; see verify_m1_round2.py
+ledger contains share-vs-MCCC / share-vs-CPU correlation tests (headline numbers),True,True,0.0,match,
+text: EMV_env 12m std peak,0.96,0.96,0.005,match,
+text: joint R2 pre_2021-10,0.161,0.161,0.0005,match,
+text: joint R2 validation,0.166,0.166,0.0005,match,
+text: joint R2 holdout,0.267,0.267,0.0005,match,
+text: joint R2 post_2021-10,0.281,0.281,0.0005,match,
+text: MCCC leg green excess slope,0.75,0.75,0.005,match,
+text: MCCC leg brown excess slope,0.84,0.84,0.005,match,
+sign stability z_MCCC -> GB (text: keeps sign),same,same,0.0,match,"validation +0.006, holdout +0.114"
+sign stability shock_MCCC -> GB (text: flips),flips,flips,0.0,match,"validation -0.015, holdout +0.078"
+sign stability z_MCCC -> brown_resid_FF3 (text: keeps sign),same,same,0.0,match,"validation +0.058, holdout +0.016"
+sign stability shock_MCCC -> brown_resid_FF3 (text: flips),flips,flips,0.0,match,"validation +0.042, holdout -0.115"
+text Q6a CPU t printed as -1.23,-1.23,-1.23,0.005,match,CSV t = -1.2347
+holdout crossings under counterfactual: frozen 2021-09 scaling,"baseline ['2023-04', '2024-06', '2025-02', '2025-09', '2025-11']","['2023-04', '2024-06', '2025-02', '2025-09', '2025-11']",,info,identical
+holdout crossings under counterfactual: zeros as missing,"baseline ['2023-04', '2024-06', '2025-02', '2025-09', '2025-11']","['2023-04', '2024-06', '2025-02', '2025-09', '2025-11']",,info,identical
+base rate: holdout nonzero months that follow a zero month,'all 5 entries followed a zero month',0.647 of 17 -> P(5 of 5) = 0.113,,info,
+"partial corr(z_CPU, z_EMV_env | z_EMV_overall)",raw corr 0.123 (p 0.037),0.051 (n=427),,info,
+std12 EMV_env 2022-2024 min (with zeros),-1.16,-1.16,0.005,match,
+std12 EMV_env 2022-2024 range with zeros excluded,-1.16 to -0.08 sd ('lowest when concern highest'),-0.23 to 1.20 sd,,info,

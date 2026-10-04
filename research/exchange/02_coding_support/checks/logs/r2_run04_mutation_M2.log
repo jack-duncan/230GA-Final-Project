@@ -1,0 +1,1 @@
+{'mutant': 'M2 month-t return hedged with b_t', 'audit_rows': 91, 'rows_flagged': 48, 'detected': True, 'flagged_by_test': "{'f_perturb': 24, 'rb_perturb': 24}", 'truncate_flags': 0, 'synthetic_alpha': -0.0002448409461802505, 'seconds': 85}

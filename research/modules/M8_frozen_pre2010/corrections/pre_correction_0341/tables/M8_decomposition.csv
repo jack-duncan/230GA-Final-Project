@@ -1,0 +1,19 @@
+signal,component,ann_contribution
+Frozen EMV-share rule (primary),alpha,-0.0018183312826055
+Frozen EMV-share rule (primary),FF5+UMD,0.008937223928679742
+Frozen EMV-share rule (primary),BOND (unconditional),0.0027611416401815436
+Frozen EMV-share rule (primary),WTI,-0.00010686778715405485
+Frozen EMV-share rule (primary),"Volatility (dVIX, dlogEMV, I x dVIX)",9.548292326786757e-06
+Frozen EMV-share rule (primary),Conditional Mkt-RF and HML,-0.006897944234197671
+Frozen EMV-share rule (primary),Conditional BOND,-0.0024911486365163096
+Frozen EMV-share rule (primary),sum = mean(D),0.00039362192071453416
+Frozen EMV-share rule (primary),check: 12 x mean(D),0.0003936219207146466
+"Team EMV_env level, lagged 1m (secondary)",alpha,0.006875940365618876
+"Team EMV_env level, lagged 1m (secondary)",FF5+UMD,0.0005101324221492826
+"Team EMV_env level, lagged 1m (secondary)",BOND (unconditional),-0.0003219209650350411
+"Team EMV_env level, lagged 1m (secondary)",WTI,-0.0007690966482151787
+"Team EMV_env level, lagged 1m (secondary)","Volatility (dVIX, dlogEMV, I x dVIX)",0.0003148088053904206
+"Team EMV_env level, lagged 1m (secondary)",Conditional Mkt-RF and HML,0.000777602202298791
+"Team EMV_env level, lagged 1m (secondary)",Conditional BOND,-0.001461894971685569
+"Team EMV_env level, lagged 1m (secondary)",sum = mean(D),0.005925571210521581
+"Team EMV_env level, lagged 1m (secondary)",check: 12 x mean(D),0.005925571210520587

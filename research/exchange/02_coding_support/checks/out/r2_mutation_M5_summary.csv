@@ -1,0 +1,2 @@
+mutant,audit_rows,rows_flagged,detected,flagged_by_test,truncate_flags,synthetic_alpha,seconds
+M5 hedge betas from a centered window,0,0,audit raised ValueError: non-finite strategy values inside the test window,,0,,2

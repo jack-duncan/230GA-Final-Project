@@ -1,0 +1,12 @@
+% Written by report/make_tables.py from outputs/tables/M7_search_summary.tex (tabular and note only).
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lrrlrrrrrrrr}
+\toprule
+Family & Members & Months & Best member & Best t & RW adj. p & RW survivors & SPA p & Max-t 95\% & Nyholt & Li-Ji & Sidak N \\
+\midrule
+S-full & 58 & 679 & optimizer, $b=-$1.00 & 3.34 & 0.009 & 15 & 0.009 & 2.68 & 42.4 & 14.0 & 116 \\
+S-post & 89 & 199 & optimizer, $b=-$0.25 & 2.32 & 0.150 & 0 & 0.150 & 2.78 & 74.8 & 27.0 & 5 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\par\smallskip{\scriptsize Stationary bootstrap, mean block 12, B = 5,000, seed 20260926; returns demeaned by each member's alpha, factors resampled jointly. Nyholt and Li--Ji effective numbers of tests from FF5+UMD residual correlations. Sidak N: number of independent tests at which the best one-sided p stops being significant at 5\%. M2's grid is not in either family (its series are not saved), which makes both tests slightly lenient.}

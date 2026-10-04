@@ -1,0 +1,15 @@
+{'mutant': 'none (as delivered)', 'cuts': 59, 'cuts_flagged': 0, 'detected': False, 'synthetic_alpha': 0.00017773181959506747}
+{'mutant': 'M1 publication lag dropped', 'cuts': 59, 'cuts_flagged': 12, 'detected': True, 'synthetic_alpha': 6.476831804707911e-05}
+{'mutant': 'M2 month-t return hedged with b_t', 'cuts': 59, 'cuts_flagged': 0, 'detected': False, 'synthetic_alpha': 0.0001697948643083306}
+{'mutant': "M3 signal uses next month's EMV", 'cuts': 57, 'cuts_flagged': 12, 'detected': True, 'synthetic_alpha': 6.476831804707911e-05}
+{'mutant': "M4 size m_t uses next month's sd", 'cuts': 59, 'cuts_flagged': 59, 'detected': True, 'synthetic_alpha': 0.0001616101881816865}
+{'mutant': 'M5 hedge betas from a centered window', 'cuts': 59, 'cuts_flagged': 54, 'detected': True, 'synthetic_alpha': 0.0002434476149417685}
+{'mutant': 'M6 position earns its own month', 'cuts': 59, 'cuts_flagged': 0, 'detected': False, 'synthetic_alpha': -0.00043247056912570957}
+                               mutant  cuts  cuts_flagged  detected  synthetic_alpha
+                  none (as delivered)    59             0     False      0.000177732
+           M1 publication lag dropped    59            12      True      6.47683e-05
+    M2 month-t return hedged with b_t    59             0     False      0.000169795
+      M3 signal uses next month's EMV    57            12      True      6.47683e-05
+     M4 size m_t uses next month's sd    59            59      True       0.00016161
+M5 hedge betas from a centered window    59            54      True      0.000243448
+      M6 position earns its own month    59             0     False     -0.000432471

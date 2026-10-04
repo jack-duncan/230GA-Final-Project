@@ -1,0 +1,12 @@
+\begin{tabular}{@{}L{0.19\textwidth}L{0.11\textwidth}L{0.27\textwidth}lL{0.27\textwidth}l@{}}
+\toprule
+Component & Bar & Frozen EMV-share rule & & Team signal, lagged & \\
+\midrule
+(i) Timing alpha, NW(6) & $\alpha>0$, $t\ge2$ & $-$0.18\% a year, $t=-0.27$; one-sided $p=0.605$ & \textsc{fail} & +0.69\% a year, $t=1.00$; one-sided $p=0.159$ & \textsc{fail} \\
+(ii) Calendar shuffle & $p\le0.05$ & $p=0.478$ (5,000 draws) & \textsc{fail} & $p=0.128$ (5,000 draws) & \textsc{fail} \\
+(iii) Episodes & $\ge8$ & 10 merged episodes & \textsc{pass} & 10 merged episodes & \textsc{pass} \\
+(iv) Drop one industry & all five $>0$ & 2 of 5 positive & \textsc{fail} & 5 of 5 positive & \textsc{pass} \\
+\midrule
+Verdict & all four & \textsc{fail}, 1 of 4 & & \textsc{fail}, 2 of 4 & \\
+\bottomrule
+\end{tabular}
