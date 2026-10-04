@@ -1,0 +1,20 @@
+\begin{table}
+\caption{Exploratory industry rotation: pooled ridge on own characteristics and macro interactions, long top 8 / short bottom 8 of 49 industries, vs plain 12-1 industry momentum. Net of 10 bp. Percent per year.}
+\label{tab:m6_rotation}
+\begin{tabular}{llrlllllll}
+\toprule
+strategy & period & n & ann\_ret\_net & ann\_vol & sharpe\_net & t\_mean\_net & alpha\_ff6\_net & t\_alpha\_ff6\_net & turnover\_ann \\
+\midrule
+rotation\_ridge & full\_oos & 439 & 5.47 & 16.92 & 0.32 & 2.06 & 1.39 & 0.57 & 10.95 \\
+rotation\_ridge & post2010 & 199 & 2.93 & 15.60 & 0.19 & 0.72 & -0.55 & -0.19 & 10.68 \\
+rotation\_ridge & holdout & 48 & 0.21 & 15.66 & 0.01 & 0.03 & -7.97 & -1.51 & 10.02 \\
+rotation\_ridge & last18 & 18 & 5.28 & 19.61 & 0.27 & 0.40 &  &  & 10.43 \\
+rotation\_ridge & last12 & 12 & 10.63 & 22.54 & 0.47 & 0.66 &  &  & 11.20 \\
+industry\_mom\_12\_1 & full\_oos & 439 & 7.46 & 18.45 & 0.40 & 2.37 & 1.65 & 0.94 & 12.48 \\
+industry\_mom\_12\_1 & post2010 & 199 & 6.87 & 15.70 & 0.44 & 1.77 & 1.81 & 0.70 & 12.56 \\
+industry\_mom\_12\_1 & holdout & 48 & 2.33 & 16.45 & 0.14 & 0.31 & -4.10 & -0.82 & 13.45 \\
+industry\_mom\_12\_1 & last18 & 18 & 5.40 & 19.34 & 0.28 & 0.42 &  &  & 12.56 \\
+industry\_mom\_12\_1 & last12 & 12 & 11.60 & 23.00 & 0.51 & 0.72 &  &  & 11.87 \\
+\bottomrule
+\end{tabular}
+\end{table}

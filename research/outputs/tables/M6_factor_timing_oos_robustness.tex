@@ -1,0 +1,68 @@
+\begin{table}
+\caption{Robustness and exploratory out-of-sample comparisons. Fixed-penalty rows are a sensitivity path, not selectable specifications. CV-design and team-target rows are in separate tables.}
+\label{tab:m6_oos_robustness}
+\begin{tabular}{lllllrllll}
+\toprule
+model & benchmark & period & start & end & n & r2\_oos\_pct & cw\_t & cw\_p\_one\_sided & label \\
+\midrule
+B0\_noATTN\_1990\_ridgecv & histmean & full\_oos & 2000-01 & 2026-07 & 319 & 0.000 & 0.00 & 0.500 & robustness \\
+B0\_noATTN\_1990\_ridgecv & histmean & post2010 & 2010-01 & 2026-07 & 199 & 0.000 & 0.00 & 0.500 & robustness \\
+C\_mccc\_2003\_ridgecv & C0\_macro\_2003\_ridgecv & full\_oos & 2013-01 & 2025-07 & 151 & 0.000 & 0.00 & 0.500 & exploratory \\
+C\_mccc\_2003\_ridgecv & histmean & full\_oos & 2013-01 & 2025-07 & 151 & 0.000 & 0.00 & 0.500 & exploratory \\
+C\_attn\_2003\_ridgecv & C0\_macro\_2003\_ridgecv & full\_oos & 2013-01 & 2025-07 & 151 & 0.000 & 0.00 & 0.500 & exploratory \\
+C\_attn\_2003\_ridgecv & histmean & full\_oos & 2013-01 & 2025-07 & 151 & 0.000 & 0.00 & 0.500 & exploratory \\
+A\_wti\_1987\_ridgecv & histmean & full\_oos & 1997-01 & 2026-07 & 355 & -0.059 & -0.87 & 0.808 & robustness \\
+A\_wti\_1987\_ridgecv & histmean & post2010 & 2010-01 & 2026-07 & 199 & 0.000 & 0.00 & 0.500 & robustness \\
+A\_vsm\_1970\_ridgecv & histmean & full\_oos & 1990-01 & 2026-07 & 439 & 0.000 & 0.00 & 0.500 & robustness \\
+A\_vsm\_1970\_ridgecv & histmean & post2010 & 2010-01 & 2026-07 & 199 & 0.000 & 0.00 & 0.500 & robustness \\
+B\_vsm\_1990\_ridgecv & histmean & full\_oos & 2000-01 & 2026-07 & 319 & 0.000 & 0.00 & 0.500 & robustness \\
+B\_vsm\_1990\_ridgecv & histmean & post2010 & 2010-01 & 2026-07 & 199 & 0.000 & 0.00 & 0.500 & robustness \\
+B\_attnlag\_1990\_ridgecv & histmean & full\_oos & 2000-01 & 2026-07 & 319 & 0.000 & 0.00 & 0.500 & robustness \\
+B\_attnlag\_1990\_ridgecv & histmean & post2010 & 2010-01 & 2026-07 & 199 & 0.000 & 0.00 & 0.500 & robustness \\
+A\_noVIX\_1970\_fixed\_lambda\_0 & histmean & full\_oos & 1990-01 & 2026-07 & 439 & -2.581 & -1.40 & 0.920 & robustness \\
+A\_noVIX\_1970\_fixed\_lambda\_0 & histmean & post2010 & 2010-01 & 2026-07 & 199 & -0.201 & 0.24 & 0.404 & robustness \\
+A\_noVIX\_1970\_fixed\_lambda\_0.01 & histmean & full\_oos & 1990-01 & 2026-07 & 439 & -2.527 & -1.39 & 0.918 & robustness \\
+A\_noVIX\_1970\_fixed\_lambda\_0.01 & histmean & post2010 & 2010-01 & 2026-07 & 199 & -0.192 & 0.25 & 0.403 & robustness \\
+A\_noVIX\_1970\_fixed\_lambda\_0.1 & histmean & full\_oos & 1990-01 & 2026-07 & 439 & -2.150 & -1.33 & 0.908 & robustness \\
+A\_noVIX\_1970\_fixed\_lambda\_0.1 & histmean & post2010 & 2010-01 & 2026-07 & 199 & -0.123 & 0.28 & 0.391 & robustness \\
+A\_noVIX\_1970\_fixed\_lambda\_1 & histmean & full\_oos & 1990-01 & 2026-07 & 439 & -0.911 & -1.18 & 0.881 & robustness \\
+A\_noVIX\_1970\_fixed\_lambda\_1 & histmean & post2010 & 2010-01 & 2026-07 & 199 & 0.069 & 0.37 & 0.356 & robustness \\
+A\_noVIX\_1970\_fixed\_lambda\_10 & histmean & full\_oos & 1990-01 & 2026-07 & 439 & -0.123 & -1.08 & 0.860 & robustness \\
+A\_noVIX\_1970\_fixed\_lambda\_10 & histmean & post2010 & 2010-01 & 2026-07 & 199 & 0.049 & 0.45 & 0.327 & robustness \\
+A\_noVIX\_1970\_combination & histmean & full\_oos & 1990-01 & 2026-07 & 439 & -0.208 & -1.06 & 0.855 & robustness \\
+A\_noVIX\_1970\_combination & histmean & post2010 & 2010-01 & 2026-07 & 199 & 0.076 & 0.47 & 0.320 & robustness \\
+B\_full\_1990\_fixed\_lambda\_0 & histmean & full\_oos & 2000-01 & 2026-07 & 319 & -7.766 & 0.67 & 0.252 & robustness \\
+B\_full\_1990\_fixed\_lambda\_0 & histmean & post2010 & 2010-01 & 2026-07 & 199 & -8.283 & 0.17 & 0.432 & robustness \\
+B\_full\_1990\_fixed\_lambda\_0.01 & histmean & full\_oos & 2000-01 & 2026-07 & 319 & -7.364 & 0.66 & 0.256 & robustness \\
+B\_full\_1990\_fixed\_lambda\_0.01 & histmean & post2010 & 2010-01 & 2026-07 & 199 & -7.858 & 0.18 & 0.429 & robustness \\
+B\_full\_1990\_fixed\_lambda\_0.1 & histmean & full\_oos & 2000-01 & 2026-07 & 319 & -5.024 & 0.54 & 0.293 & robustness \\
+B\_full\_1990\_fixed\_lambda\_0.1 & histmean & post2010 & 2010-01 & 2026-07 & 199 & -5.188 & 0.23 & 0.409 & robustness \\
+B\_full\_1990\_fixed\_lambda\_1 & histmean & full\_oos & 2000-01 & 2026-07 & 319 & -0.990 & 0.21 & 0.417 & robustness \\
+B\_full\_1990\_fixed\_lambda\_1 & histmean & post2010 & 2010-01 & 2026-07 & 199 & -0.394 & 0.48 & 0.314 & robustness \\
+B\_full\_1990\_fixed\_lambda\_10 & histmean & full\_oos & 2000-01 & 2026-07 & 319 & -0.017 & 0.14 & 0.446 & robustness \\
+B\_full\_1990\_fixed\_lambda\_10 & histmean & post2010 & 2010-01 & 2026-07 & 199 & 0.180 & 0.66 & 0.254 & robustness \\
+B\_full\_1990\_combination & histmean & full\_oos & 2000-01 & 2026-07 & 319 & -0.027 & 0.15 & 0.440 & robustness \\
+B\_full\_1990\_combination & histmean & post2010 & 2010-01 & 2026-07 & 199 & 0.221 & 0.69 & 0.245 & robustness \\
+B\_full\_1990\_fixed\_lambda\_0 & B0\_noATTN\_1990\_fixed\_lambda\_0 & full\_oos & 2000-01 & 2026-07 & 319 & -1.069 & -0.68 & 0.753 & robustness \\
+B\_full\_1990\_fixed\_lambda\_0 & B0\_noATTN\_1990\_fixed\_lambda\_0 & post2010 & 2010-01 & 2026-07 & 199 & -1.554 & -1.89 & 0.971 & robustness \\
+C\_mccc\_2003\_fixed\_lambda\_0 & C0\_macro\_2003\_fixed\_lambda\_0 & full\_oos & 2013-01 & 2025-07 & 151 & -0.417 & 0.29 & 0.387 & exploratory \\
+C\_attn\_2003\_fixed\_lambda\_0 & C0\_macro\_2003\_fixed\_lambda\_0 & full\_oos & 2013-01 & 2025-07 & 151 & -1.695 & -1.05 & 0.852 & exploratory \\
+B\_full\_1990\_fixed\_lambda\_0.01 & B0\_noATTN\_1990\_fixed\_lambda\_0.01 & full\_oos & 2000-01 & 2026-07 & 319 & -1.040 & -0.70 & 0.758 & robustness \\
+B\_full\_1990\_fixed\_lambda\_0.01 & B0\_noATTN\_1990\_fixed\_lambda\_0.01 & post2010 & 2010-01 & 2026-07 & 199 & -1.490 & -1.86 & 0.969 & robustness \\
+C\_mccc\_2003\_fixed\_lambda\_0.01 & C0\_macro\_2003\_fixed\_lambda\_0.01 & full\_oos & 2013-01 & 2025-07 & 151 & -0.271 & 0.34 & 0.365 & exploratory \\
+C\_attn\_2003\_fixed\_lambda\_0.01 & C0\_macro\_2003\_fixed\_lambda\_0.01 & full\_oos & 2013-01 & 2025-07 & 151 & -1.679 & -1.07 & 0.857 & exploratory \\
+B\_full\_1990\_fixed\_lambda\_0.1 & B0\_noATTN\_1990\_fixed\_lambda\_0.1 & full\_oos & 2000-01 & 2026-07 & 319 & -0.879 & -0.82 & 0.795 & robustness \\
+B\_full\_1990\_fixed\_lambda\_0.1 & B0\_noATTN\_1990\_fixed\_lambda\_0.1 & post2010 & 2010-01 & 2026-07 & 199 & -1.082 & -1.66 & 0.951 & robustness \\
+C\_mccc\_2003\_fixed\_lambda\_0.1 & C0\_macro\_2003\_fixed\_lambda\_0.1 & full\_oos & 2013-01 & 2025-07 & 151 & 0.322 & 0.72 & 0.236 & exploratory \\
+C\_attn\_2003\_fixed\_lambda\_0.1 & C0\_macro\_2003\_fixed\_lambda\_0.1 & full\_oos & 2013-01 & 2025-07 & 151 & -1.522 & -1.18 & 0.880 & exploratory \\
+B\_full\_1990\_fixed\_lambda\_1 & B0\_noATTN\_1990\_fixed\_lambda\_1 & full\_oos & 2000-01 & 2026-07 & 319 & -0.474 & -1.33 & 0.909 & robustness \\
+B\_full\_1990\_fixed\_lambda\_1 & B0\_noATTN\_1990\_fixed\_lambda\_1 & post2010 & 2010-01 & 2026-07 & 199 & -0.258 & -1.08 & 0.860 & robustness \\
+C\_mccc\_2003\_fixed\_lambda\_1 & C0\_macro\_2003\_fixed\_lambda\_1 & full\_oos & 2013-01 & 2025-07 & 151 & 0.171 & 0.45 & 0.327 & exploratory \\
+C\_attn\_2003\_fixed\_lambda\_1 & C0\_macro\_2003\_fixed\_lambda\_1 & full\_oos & 2013-01 & 2025-07 & 151 & -0.618 & -1.20 & 0.886 & exploratory \\
+B\_full\_1990\_fixed\_lambda\_10 & B0\_noATTN\_1990\_fixed\_lambda\_10 & full\_oos & 2000-01 & 2026-07 & 319 & -0.085 & -1.50 & 0.934 & robustness \\
+B\_full\_1990\_fixed\_lambda\_10 & B0\_noATTN\_1990\_fixed\_lambda\_10 & post2010 & 2010-01 & 2026-07 & 199 & -0.015 & -0.37 & 0.643 & robustness \\
+C\_mccc\_2003\_fixed\_lambda\_10 & C0\_macro\_2003\_fixed\_lambda\_10 & full\_oos & 2013-01 & 2025-07 & 151 & -0.011 & -0.04 & 0.517 & exploratory \\
+C\_attn\_2003\_fixed\_lambda\_10 & C0\_macro\_2003\_fixed\_lambda\_10 & full\_oos & 2013-01 & 2025-07 & 151 & -0.061 & -0.82 & 0.794 & exploratory \\
+\bottomrule
+\end{tabular}
+\end{table}

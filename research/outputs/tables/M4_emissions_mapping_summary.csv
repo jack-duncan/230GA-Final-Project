@@ -1,0 +1,13 @@
+item,value,note
+epa_naics_codes,1016.0,6-digit 2017 NAICS codes in EPA v1.3 (electricity 2211xx excluded by EPA)
+epa_codes_mapped_primary,1015.0,EPA codes assigned to at least one FF49 industry
+epa_codes_unmapped,1.0,codes with no SIC predecessor: 551114
+electricity_codes_patched,10.0,221111-221122 added with the patched factor
+primary_ties,115.0,NAICS codes whose SIC links tie between FF49 industries (included in each tied industry)
+manual_links,2.0,112130: Dual-purpose cattle ranching: Census lists no SIC; SIC 0212 beef cattle except feedlots (Agric); 541120: Offices of notaries: Census lists no SIC; SIC 7389 business services NEC (BusSv)
+overrides,3.0,541713->BusSv; 541714->BusSv; 541715->BusSv
+elec_patch_kg_per_2022usd,2.6422160140270656,USEEIO v2.0.1 N(221100) x median ratio
+elec_useeio_total_2012usd,4.490753360397243,"USEEIO v2.0.1 total GHG per 2012 USD, electricity"
+scale_median_epa13_over_useeio,0.5883680981743652,median over 1016 EPA codes; IQR 0.459-0.690
+epa_naics_min,0.029,"lowest with-margins factor, kg CO2e/2022 USD"
+epa_naics_max,3.924,highest with-margins factor (327310 cement)

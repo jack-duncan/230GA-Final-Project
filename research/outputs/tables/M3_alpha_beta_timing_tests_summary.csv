@@ -1,0 +1,14 @@
+spec,factor,test,n_tests,n_p_below_05,n_positive_sig,n_negative_sig,n_bh_q05
+multifactor,BOND,HM,90,7,6,1,0
+multifactor,BOND,TM,90,7,6,1,0
+multifactor,HML,HM,90,21,21,0,16
+multifactor,HML,TM,90,28,28,0,21
+multifactor,Mkt-RF,HM,90,2,1,1,0
+multifactor,Mkt-RF,TM,90,3,3,0,0
+single,BOND,HM,90,5,4,1,0
+single,BOND,TM,90,5,4,1,0
+single,HML,HM,90,20,20,0,15
+single,HML,TM,90,30,30,0,23
+single,Mkt-RF,HM,90,0,0,0,0
+single,Mkt-RF,TM,90,1,1,0,0
+all,all,all,1080,129,124,5,48

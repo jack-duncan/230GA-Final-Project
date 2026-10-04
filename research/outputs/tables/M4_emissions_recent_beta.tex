@@ -1,0 +1,22 @@
+\begin{table}
+\caption{Raw Green-minus-Brown return = CAPM alpha + CAPM beta x mean market excess return (annualized). FF5+UMD market beta shown for comparison; last18 and last12 have 18 and 12 observations for 7 parameters and are descriptive only.}
+\label{tab:m4_recent_beta}
+\begin{tabular}{llrrrrrrrr}
+\toprule
+spec & period & n & ann\_ret & ann\_mkt\_excess & capm\_beta & capm\_beta\_x\_mkt & capm\_alpha\_ann & share\_of\_ret\_from\_beta & ff5umd\_beta\_mkt \\
+\midrule
+epa5 & post2010 & 199 & 0.064 & 0.130 & 0.059 & 0.008 & 0.056 & 0.120 & 0.108 \\
+epa5 & holdout & 48 & 0.096 & 0.129 & 0.262 & 0.034 & 0.062 & 0.353 & 0.294 \\
+epa5 & last18 & 18 & 0.132 & 0.119 & 0.909 & 0.108 & 0.024 & 0.820 & 1.199 \\
+epa5 & last12 & 12 & 0.140 & 0.146 & 1.370 & 0.199 & -0.060 & 1.427 & 1.383 \\
+team5 & post2010 & 199 & -0.018 & 0.130 & -0.080 & -0.010 & -0.007 & 0.585 & -0.089 \\
+team5 & holdout & 48 & -0.054 & 0.129 & -0.105 & -0.014 & -0.040 & 0.252 & -0.078 \\
+team5 & last18 & 18 & -0.147 & 0.119 & -0.220 & -0.026 & -0.121 & 0.177 & 0.153 \\
+team5 & last12 & 12 & -0.199 & 0.146 & -0.354 & -0.052 & -0.148 & 0.258 & 0.180 \\
+epa5\_minus\_team5 & post2010 & 199 & 0.082 & 0.130 & 0.139 & 0.018 & 0.064 & 0.221 & 0.197 \\
+epa5\_minus\_team5 & holdout & 48 & 0.150 & 0.129 & 0.367 & 0.047 & 0.102 & 0.317 & 0.372 \\
+epa5\_minus\_team5 & last18 & 18 & 0.279 & 0.119 & 1.129 & 0.134 & 0.145 & 0.481 & 1.047 \\
+epa5\_minus\_team5 & last12 & 12 & 0.339 & 0.146 & 1.724 & 0.251 & 0.088 & 0.740 & 1.203 \\
+\bottomrule
+\end{tabular}
+\end{table}

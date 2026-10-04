@@ -1,0 +1,49 @@
+key,value
+n_pipeline_runs,46
+n_strategy_regressions,8050
+n_ledger_tests,13482
+n_grid_alpha_family,8091
+grid_holm_survivors_positive,0
+grid_bh_survivors_positive,0
+grid_holm_survivors_negative,0
+grid_bh_survivors_negative,27
+min_grid_p,1.011164435443616e-05
+min_grid_holm,0.08181331447174296
+q1_primary_survivors,0
+q2_primary_survivors,0
+q4_primary_survivors,0
+q3_drivers,"Steel, Ships"
+tie_warning,Green leg boundary tie at n=8: Hardw and MedEq share intensity 0.0126581
+grid_bh_negative_by_period,last18:23; holdout:4
+best_positive_grid_test,strat|L5|corr|FF3|u5|Pure 3m|covid|E:FF3|alpha
+best_positive_grid_p,0.00035295295313827167
+best_positive_grid_holm,1.0
+best_positive_grid_bh,0.06208135530090774
+best_positive_post2010_or_holdout_test,strat|L5|team|FF5UC|u5|Original 6m|post2010|E:FF5UC|alpha
+best_positive_post2010_or_holdout_p,0.04938935029027698
+best_positive_post2010_or_holdout_holm,1.0
+n_grid_positive_p_below_05,368
+n_grid_negative_p_below_05,531
+n_grid_strategy_alphas_net_of_cost,7938
+n_grid_raw_spread_alphas_unhedged_cost_free,153
+holdout_net_regressions,1050
+holdout_net_positive,24
+holdout_net_positive_signal_rules,0
+holdout_net_positive_strategies,Always-short Brown
+holdout_net_positive_legs,"L8H, L8M"
+holdout_net_positive_hedges,"FF3, FF3U, FF5U, FF5UC, FF5UCx"
+holdout_net_positive_evals,"E:FF5UC, E:FF5UC+cmdty"
+holdout_net_max_alpha,0.004198201852634562
+holdout_net_max_alpha_t,0.2235327395055936
+holdout_net_max_alpha_config,Always-short Brown|L8H|team|FF5U|team|E:FF5UC+cmdty
+holdout_net_max_signal_rule_alpha,-0.0002973432810325378
+holdout_net_max_signal_rule_config,Continuous pure|L8H|team|FF3|team|E:FF5UC+cmdty
+holdout_gross_regressions,28
+holdout_gross_configs,L5|FF3; L5|FF5UC
+holdout_gross_positive,0
+holdout_gross_max_alpha,-0.003949440941022089
+holdout_gross_max_alpha_config,Continuous pure|L5|team|FF3|E:FF3
+holdout_gross_max_alpha_t,-1.3518487033492497
+n_ledger_exploratory,7874
+n_ledger_robustness,5562
+n_ledger_primary,46

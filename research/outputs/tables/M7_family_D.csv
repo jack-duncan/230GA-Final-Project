@@ -1,0 +1,74 @@
+test_id,module,type,statistic_name,statistic,p_value_two_sided,n_obs
+Q3_fisher_zero_pre_post,M1_signal_audit,other,"Fisher exact odds ratio (zero month, post-2021-10 vs pre)",69.7125,1.347955324669806e-32,500
+Q2_joint_team_signal_z_full,M1_signal_audit,other,"HAC Wald F, z_EMV_env on z_VIX + z_EMV_overall (R2=0.169)",27.143592035465893,8.760809817278987e-12,405
+spread|L5|post2010|E:FF3|b_HML,M2_christhian_tests,loading,t_b_HML_NW6,-5.7443533,3.5001323e-08,199
+spread|L5|full_1970|E:FF3|b_HML,M2_christhian_tests,loading,t_b_HML_NW6,-4.6260255,4.469108e-06,679
+Q3b.ln_timing.Pure 3m|corrected|36m-backward|post2010,M3_alpha_beta,beta-timing,"beta-timing component sum_k cov(beta_k,t, f_k,t) (annualized)",-0.0105636333723162,0.0008,199
+spread|L5|post2010|E:FF5U|b_HML,M2_christhian_tests,loading,t_b_HML_NW6,-3.2065725,0.0015736658,199
+Q3b.ln_timing.Orig 3m|corrected|36m-backward|post2010,M3_alpha_beta,beta-timing,"beta-timing component sum_k cov(beta_k,t, f_k,t) (annualized)",-0.0099202152049441,0.0024,199
+Q3b.ln_timing.Cont pure|corrected|36m-backward|post2010,M3_alpha_beta,beta-timing,"beta-timing component sum_k cov(beta_k,t, f_k,t) (annualized)",-0.0060158677472977,0.0028,199
+Q3b.ln_timing.Cont raw|corrected|36m-backward|post2010,M3_alpha_beta,beta-timing,"beta-timing component sum_k cov(beta_k,t, f_k,t) (annualized)",-0.0056557433488199,0.0032,199
+Q1.bond.GB|legs|FF5+UMD+BOND|full_1970,M3_alpha_beta,loading,BOND loading,0.1318951613012778,0.009458578436926,679
+spread|L5|full_1970|E:FF5U|b_HML,M2_christhian_tests,loading,t_b_HML_NW6,-2.3844962,0.017378949,679
+Q3b.ln_timing.Orig 6m|corrected|36m-backward|post2010,M3_alpha_beta,beta-timing,"beta-timing component sum_k cov(beta_k,t, f_k,t) (annualized)",-0.0103636570077394,0.0296,199
+Q3b.ln_timing.Pure 6m|corrected|36m-backward|post2010,M3_alpha_beta,beta-timing,"beta-timing component sum_k cov(beta_k,t, f_k,t) (annualized)",-0.0106675205401699,0.0316,199
+Q1_MCCC_realtime_pure_holdout_IC,M1b_alt_signals,other,"IC IC NW(6) t (pure, holdout)",2.218277994954947,0.0333179664151034,36
+Q5_corr_CPU_z_EMV_env_overlap,M1_signal_audit,other,"Pearson r (z) CPU vs EMV_env (pre-specified NW(6) slope test, measure on EMV_env)",0.122784557316318,0.0371579601963534,427
+M5-Q4-PRIMARY,M5_industry_momentum,loading,t_NW6_b_INDMOM,-1.9362414408412036,0.0528381371450207,679
+Q1_MCCC_realtime_w_raw_holdout_IC,M1b_alt_signals,other,"IC IC NW(6) t (w_raw, holdout)",1.90020498968926,0.0659135878656875,36
+Q6b_shock_CPU_brown_resid_FF3_full_overlap,M1_signal_audit,other,"IC: slope of z(outcome t+1) on z(signal t), brown_resid_FF3",-0.0785039153259328,0.0770435680443229,425
+Q4_high_VIX_crossing_all_threshold_sample,M1_signal_audit,other,"Fisher exact odds ratio (high_VIX share, crossing months vs other months)",1.7070276848189838,0.0967118966382725,404
+Q6b_z_CPU_brown_resid_FF3_full_overlap,M1_signal_audit,other,"IC: slope of z(outcome t+1) on z(signal t), brown_resid_FF3",-0.0728511744354044,0.1205473093634864,427
+Q3b.ln_timing.GB|legs|36m-backward|post2010,M3_alpha_beta,beta-timing,"beta-timing component sum_k cov(beta_k,t, f_k,t) (annualized)",-0.017241360901557,0.1456,199
+Q1_MCCC_realtime_raw_holdout_IC,M1b_alt_signals,other,"IC IC NW(6) t (raw, holdout)",1.3062390259929682,0.2002394560345822,36
+Q6b_z_MCCC_brown_resid_FF3_full_overlap,M1_signal_audit,other,"IC: slope of z(outcome t+1) on z(signal t), brown_resid_FF3",0.0744664254537393,0.2057131412292492,235
+Q6a_CPU_none_full,M1_signal_audit,other,"slope of GB on 1-sd CPU shock (%/month), NW t",-0.1595331690350976,0.2169528251843742,425
+PORT_A_noVIX_1970_timing_minus_static_net_full,M6_factor_timing,mean,NW6 t on mean difference,1.1694719100578148,0.2422135521956254,439
+Q2.holdout_wald_UMD_BOND.Orig 6m|team,M3_alpha_beta,other,Wald F: b_UMD = b_BOND = 0 (holdout),1.441880879336488,0.2479481545300604,48
+Q2.holdout_wald_UMD_BOND.Pure 6m|team,M3_alpha_beta,other,Wald F: b_UMD = b_BOND = 0 (holdout),1.3832620707372267,0.2619474757393835,48
+Q1_MCCC_realtime_w_pure_validation_IC,M1b_alt_signals,other,"IC IC NW(6) t (w_pure, validation)",1.0747163725347566,0.2825017312685763,79
+Q6b_shock_CPU_GB_full_overlap,M1_signal_audit,other,"IC: slope of z(outcome t+1) on z(signal t), GB",0.0378790026826927,0.3069012578701867,425
+M5-Q3-PRIMARY,M5_industry_momentum,other,d_IR_boot,0.0102251247480332,0.3284,679
+Q2.holdout_wald_UMD_BOND.Orig 3m|team,M3_alpha_beta,other,Wald F: b_UMD = b_BOND = 0 (holdout),1.100908206416105,0.3419736571902544,48
+Q2.holdout_wald_UMD_BOND.Cont raw|corrected,M3_alpha_beta,other,Wald F: b_UMD = b_BOND = 0 (holdout),1.100427722475267,0.3421298225003845,48
+Q1_MCCC_realtime_w_pure_holdout_IC,M1b_alt_signals,other,"IC IC NW(6) t (w_pure, holdout)",0.9003554177353419,0.3742644496864749,36
+Q2.holdout_wald_UMD_BOND.Cont pure|corrected,M3_alpha_beta,other,Wald F: b_UMD = b_BOND = 0 (holdout),0.9992519470880624,0.3767376336816994,48
+M8_share_iv_drop_Util,M8_frozen_pre2010,alpha,"timing alpha NW(6) t, Util dropped",-0.8710837473653463,0.3849018276289952,190
+Q2.holdout_wald_UMD_BOND.Cont raw|team,M3_alpha_beta,other,Wald F: b_UMD = b_BOND = 0 (holdout),0.9514908018979942,0.3943308626974977,48
+Q2.holdout_wald_UMD_BOND.Pure 3m|team,M3_alpha_beta,other,Wald F: b_UMD = b_BOND = 0 (holdout),0.9112773203901048,0.4098109731791375,48
+Q2.holdout_wald_UMD_BOND.Orig 3m|corrected,M3_alpha_beta,other,Wald F: b_UMD = b_BOND = 0 (holdout),0.6907171779140069,0.5068191824725279,48
+Q2.holdout_wald_UMD_BOND.Pure 3m|corrected,M3_alpha_beta,other,Wald F: b_UMD = b_BOND = 0 (holdout),0.6907171779140069,0.5068191824725279,48
+Q1.bond.GB|legs|FF5+UMD+BOND|post2010,M3_alpha_beta,loading,BOND loading,0.0884072325835325,0.5489109128795913,199
+Q6b_z_CPU_GB_full_overlap,M1_signal_audit,other,"IC: slope of z(outcome t+1) on z(signal t), GB",0.0271070446645913,0.5605183906585355,427
+Q1_MCCC_realtime_raw_validation_IC,M1b_alt_signals,other,"IC IC NW(6) t (raw, validation)",0.5497625829722605,0.5824822256289707,151
+Q6a_MCCC_none_full,M1_signal_audit,other,"slope of GB on 1-sd MCCC shock (%/month), NW t",-0.0925207036531628,0.6226456354524978,233
+Q1_CPU_realtime_raw_holdout_IC,M1b_alt_signals,other,"IC IC NW(6) t (raw, holdout)",0.4798374777965413,0.634167446620141,39
+Q1_MCCC_realtime_pure_validation_IC,M1b_alt_signals,other,"IC IC NW(6) t (pure, validation)",0.4723962423431909,0.6366439859940283,138
+Q1_MCCC_realtime_w_raw_validation_IC,M1b_alt_signals,other,"IC IC NW(6) t (w_raw, validation)",0.4533593822551478,0.6502899793630426,139
+PORT_B_full_1990_timing_minus_static_net_full,M6_factor_timing,mean,NW6 t on mean difference,0.4504122822027794,0.6524131904585838,319
+Q2.holdout_wald_UMD_BOND.Cont pure|team,M3_alpha_beta,other,Wald F: b_UMD = b_BOND = 0 (holdout),0.388696924536016,0.6803530413419516,48
+Q6b_z_MCCC_GB_full_overlap,M1_signal_audit,other,"IC: slope of z(outcome t+1) on z(signal t), GB",-0.022081494642394,0.7170519245363463,235
+Q2.holdout_wald_UMD_BOND.Pure 6m|corrected,M3_alpha_beta,other,Wald F: b_UMD = b_BOND = 0 (holdout),0.3194466303090175,0.7283006596419789,48
+Q2.holdout_wald_UMD_BOND.Orig 6m|corrected,M3_alpha_beta,other,Wald F: b_UMD = b_BOND = 0 (holdout),0.3194466303090175,0.7283006596419789,48
+M8_share_iv_drop_Steel,M8_frozen_pre2010,alpha,"timing alpha NW(6) t, Steel dropped",-0.3366829992465935,0.7367592851495499,190
+Q1_CPU_realtime_pure_validation_IC,M1b_alt_signals,other,"IC IC NW(6) t (pure, validation)",0.3142621364796432,0.7533219531891104,151
+Q1_CPU_realtime_w_raw_holdout_IC,M1b_alt_signals,other,"IC IC NW(6) t (w_raw, holdout)",0.2916303770888538,0.7721980831011546,39
+Q1_CPU_realtime_w_pure_holdout_IC,M1b_alt_signals,other,"IC IC NW(6) t (w_pure, holdout)",-0.2892055914483598,0.7740383927242707,39
+Q6b_shock_MCCC_brown_resid_FF3_full_overlap,M1_signal_audit,other,"IC: slope of z(outcome t+1) on z(signal t), brown_resid_FF3",0.0201232098558008,0.7741488351968554,233
+Q1_CPU_realtime_raw_validation_IC,M1b_alt_signals,other,"IC IC NW(6) t (raw, validation)",0.2453892601501884,0.8061550440058624,151
+M8_share_iv_drop_BldMt,M8_frozen_pre2010,alpha,"timing alpha NW(6) t, BldMt dropped",-0.1657744909323328,0.8685257800435963,190
+Q1_CPU_realtime_pure_holdout_IC,M1b_alt_signals,other,"IC IC NW(6) t (pure, holdout)",0.1222852319251706,0.9033349137303434,39
+Q1_CPU_realtime_w_pure_validation_IC,M1b_alt_signals,other,"IC IC NW(6) t (w_pure, validation)",-0.0798558282994669,0.9363519214915892,151
+M8_share_ii_shuffle,M8_frozen_pre2010,alpha,calendar-shuffle rank of alpha,-0.0018183312826055,0.9558088382323536,190
+M8_share_iv_drop_Ships,M8_frozen_pre2010,alpha,"timing alpha NW(6) t, Ships dropped",0.0413865196430108,0.9670349395095856,190
+Q1_CPU_realtime_w_raw_validation_IC,M1b_alt_signals,other,"IC IC NW(6) t (w_raw, validation)",-0.0213890416328771,0.982935315077596,151
+Q6b_shock_MCCC_GB_full_overlap,M1_signal_audit,other,"IC: slope of z(outcome t+1) on z(signal t), GB",0.001324728542517,0.9856537699508242,233
+M8_share_iv_drop_Aero,M8_frozen_pre2010,alpha,"timing alpha NW(6) t, Aero dropped",0.0123962351858415,0.9901236092236484,190
+Q5_corr_MCCC_z_EMV_env_overlap,M1_signal_audit,other,"Pearson r (z) MCCC vs EMV_env (pre-specified NW(6) slope test, measure on EMV_env)",-0.000350387614526,0.996233335936098,235
+ATTN_increment_ridgecv_vs_B0_noATTN_1990_ridgecv_post2010,M6_factor_timing,other,Clark-West adjusted-MSPE t (NW6),0.0,1.0,199
+ATTN_increment_ridgecv_vs_B0_noATTN_1990_ridgecv_full_oos,M6_factor_timing,other,Clark-West adjusted-MSPE t (NW6),0.0,1.0,319
+A_noVIX_1970_ridgecv_vs_histmean_post2010,M6_factor_timing,other,Clark-West adjusted-MSPE t (NW6),0.0,1.0,199
+A_noVIX_1970_ridgecv_vs_histmean_full_oos,M6_factor_timing,other,Clark-West adjusted-MSPE t (NW6),0.0,1.0,439
+B_full_1990_ridgecv_vs_histmean_post2010,M6_factor_timing,other,Clark-West adjusted-MSPE t (NW6),0.0,1.0,199
+B_full_1990_ridgecv_vs_histmean_full_oos,M6_factor_timing,other,Clark-West adjusted-MSPE t (NW6),0.0,1.0,319
+M8_share_iii_episodes,M8_frozen_pre2010,other,independent episodes (merged holds),10.0,,190

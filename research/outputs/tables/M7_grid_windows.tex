@@ -1,0 +1,24 @@
+\begin{table}[htbp]
+\centering
+\footnotesize
+\caption{Christhian's robustness grid (family R-M2) as a distribution: share of positive alpha t-statistics and median t by evaluation window (spec check 3).}
+\label{tab:m7_grid_windows}
+\begin{tabular}{lrrrrrr}
+\toprule
+Window & Rows & Positive \% & Median t & Strategy rows & Positive \% (strat.) & Median t (strat.) \\
+\midrule
+all & 8161 & 54.0 & 0.13 & 8008 & 53.8 & 0.12 \\
+full\_1970 & 21 & 100.0 & 1.45 & 0 &  &  \\
+full\_live & 1078 & 75.0 & 0.52 & 1078 & 75.0 & 0.52 \\
+post2010 & 1078 & 76.4 & 0.60 & 1057 & 76.6 & 0.61 \\
+validation & 1099 & 88.9 & 1.14 & 1078 & 88.9 & 1.15 \\
+pre\_covid & 1071 & 73.2 & 0.50 & 1050 & 72.9 & 0.49 \\
+covid & 1071 & 70.7 & 0.44 & 1050 & 70.5 & 0.44 \\
+holdout & 1078 & 2.7 & -1.32 & 1057 & 2.3 & -1.34 \\
+inflation\_rates & 1071 & 13.9 & -0.73 & 1050 & 13.3 & -0.74 \\
+last18 & 297 & 0.0 & -2.35 & 294 & 0.0 & -2.35 \\
+last12 & 297 & 20.2 & -1.11 & 294 & 20.4 & -1.11 \\
+\bottomrule
+\end{tabular}
+\par\smallskip{\scriptsize Window is the third-from-last field of the test id. Strategy rows exclude the 153 Green-minus-Brown spread rows. One-sided BH and BY at 5\%: 0 and 0 positive survivors in R-M2; 0 and 0 in R pooled.}
+\end{table}

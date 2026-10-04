@@ -1,0 +1,13 @@
+Family,Tests,Method,Smallest adjusted p,Survivors at 5%
+"F (frozen, hash-verified)",2,"Holm, one-sided",0.015,1
+P (module primary alphas),73,"Holm, one-sided",1.000,0
+P (module primary alphas),73,"BH, one-sided",0.718,0
+R-M2,8161,"BH / BY, one-sided",0.475 / 1.000,0 / 0
+R-other M1b,736,"BH / BY, one-sided",0.049 / 0.349,1 / 0
+R-other M3,156,"BH / BY, one-sided",0.804 / 1.000,0 / 0
+R-other M4,282,"BH / BY, one-sided",0.125 / 0.777,0 / 0
+R-other M6,2,"BH / BY, one-sided",0.929 / 1.000,0 / 0
+R-other pooled,1176,"BH / BY, one-sided",0.078 / 0.594,0 / 0
+R pooled,9337,"BH / BY, one-sided",0.466 / 1.000,0 / 0
+S-full (search),58,Romano-Wolf; SPA,0.009; 0.009,15
+S-post (search),89,Romano-Wolf; SPA,0.150; 0.150,0

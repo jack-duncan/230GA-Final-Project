@@ -1,0 +1,2 @@
+window,n_nonzero,n_nonzero_prev_zero,n_nonzero_prev_nonzero,base_rate,n_state_prev_zero,n_state_prev_nonzero,fisher_odds_ratio,fisher_p,n_entries,n_entries_prev_zero,binom_p_one_sided,binom_p_two_sided
+holdout nonzero months,17,11,6,0.6470588235294118,5,2,1.6666666666666667,1.0,5,5,0.11342761982368649,0.16910646635541465

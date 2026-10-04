@@ -1,0 +1,3 @@
+candidate,a_confirmatory,a_detail,b_rw,rw_p_full,rw_p_post,c_dsr,dsr_full,dsr_post,d_holdout,holdout_alpha,holdout_reading,verdict
+Optimizer book (X_unc),True,check 7 PASS,False,0.016596680663867228,0.1993601279744051,False,0.5586169094828002,0.3616793332575948,False,-0.0034072252352396184,inconclusive,Paper-trade (report verdict stays Do not implement)
+EPA 5v5 spread,False,no confirmatory test exists,False,0.05798840231953609,0.5576884623075385,False,0.48774041816902297,0.17120438511444974,True,0.039023356569893926,inconclusive,Do not implement

@@ -1,0 +1,8 @@
+source,what_it_says,construction_documented,units_documented,vintage_documented,n_mentions_emission,keyword_hits
+/home/hashim/projects/GA/Emissions_FF_Industry.csv,PS1 course file; identical to the team file,no,no,no,,
+/home/hashim/projects/GA/230GA__PS1.ipynb,"reads EM_PATH='Emissions_FF_Industry.csv' and sorts on emissions_intensity; no text on construction, units, scope or year",no,no,no,2.0,
+/home/hashim/projects/GA/HW1_merged.tex,"describes it only as emissions per unit of output, a single snapshot covering 41 of 49 industries; no source, units, scope or year",no,no,no,22.0,emissions per; snapshot; unit; units
+/home/hashim/projects/GA/Q5_answer.md,"describes it only as emissions per unit of output, a single snapshot covering 41 of 49 industries; no source, units, scope or year",no,no,no,18.0,emissions/output; snapshot; unit; units
+/home/hashim/projects/GA/Q4_corrections.md,no mention of the emissions file,no,no,no,0.0,
+/home/hashim/projects/GA/project/230GA-Final-Project/writeup.pdf,'a single snapshot of emissions intensity by industry... 41 of the 49'; no source or units,no,no,no,,
+/home/hashim/projects/GA/project/230GA-Final-Project/notebooks/climate_alpha_analysis.py,loads the CSV and ranks it; attributes the 8 gaps to the underlying data,no,no,no,,

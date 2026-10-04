@@ -1,0 +1,11 @@
+month,net,long,short,Mkt-RF,HML,UMD,long_leg,short_leg
+2009-04,-0.38754526611054846,0.008050000000000014,0.3940375,0.1017,0.0537,-0.3436,"Food,Beer,Smoke,Drugs,Gold,PerSv,Rtail,Meals","Fun,Txtls,Steel,FabPr,Autos,Coal,Banks,RlEst"
+1970-09,-0.17777781519792588,0.056487499999999996,0.23328750000000004,0.0418,-0.054400000000000004,-0.0864,"Soda,Beer,Smoke,Drugs,ElcEq,Coal,Util,Paper","Hlth,Cnstr,Aero,PerSv,Softw,LabEq,Meals,Other"
+2001-01,-0.17076368737706812,-0.04632499999999999,0.12257499999999998,0.0325,-0.0506,-0.2536,"Soda,Smoke,Hlth,Drugs,Ships,Guns,Coal,Util","Rubbr,Autos,Gold,Telcm,Softw,Chips,Boxes,Rtail"
+2002-11,-0.15269552968457595,0.002300000000000012,0.153675,0.0596,-0.0123,-0.16449999999999998,"Soda,Fun,Hshld,Cnstr,Guns,Gold,PerSv,Boxes","Steel,FabPr,Coal,Telcm,Hardw,Softw,Chips,LabEq"
+2001-11,-0.14570756334629745,-0.01600000000000002,0.12873749999999995,0.0753,0.0217,-0.0862,"Agric,Smoke,Hlth,Ships,Guns,Gold,Coal,PerSv","Steel,FabPr,ElcEq,Aero,Hardw,Softw,Chips,LabEq"
+2026-07,-0.14183631197702007,-0.10136249999999997,0.0400875,-0.0060999999999999995,0.021099999999999997,-0.122,"Steel,Mach,ElcEq,Gold,Mines,Coal,Hardw,Chips","Food,Fun,Hshld,Clths,MedEq,PerSv,BusSv,Paper"
+1975-01,-0.1257193901639947,0.1349125,0.2598,0.1367,0.08259999999999999,-0.1379,"Agric,Smoke,Steel,Aero,Guns,Gold,Coal,Telcm","Soda,Beer,Hlth,FabPr,ElcEq,Ships,Meals,RlEst"
+2000-11,-0.11835696294754369,-0.108525,0.0081875,-0.107,0.1225,-0.0218,"Hlth,Steel,Guns,Hardw,LabEq,Whlsl,Fin,Other","Agric,Soda,Hshld,Gold,Telcm,Paper,Boxes,Meals"
+1973-07,-0.1173970641240076,0.04485,0.161625,0.0504,-0.0526,-0.1166,"Drugs,Ships,Gold,Mines,Oil,Util,Telcm,Paper","Toys,Clths,Hlth,PerSv,Softw,Trans,RlEst,Other"
+2023-01,-0.1165686770521848,0.044125,0.15979999999999997,0.066,-0.0394,-0.16210000000000002,"Agric,Soda,Steel,Ships,Guns,Coal,Oil,Insur","Toys,Fun,Clths,Rubbr,Txtls,Autos,Softw,RlEst"

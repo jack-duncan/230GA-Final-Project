@@ -1,0 +1,5 @@
+item,months_compared,months_differing,differing
+EMVENRGYENVREG vintage 2024-06-15 vs current file,473,0.0,
+EMVENRGYENVREG vintage 2022-09-15 vs current file,452,2.0,2022-07 0.63738 vs 0.63729; 2022-08 0.56327 vs 0.54389
+CPIAUCSL vintage 2025-12-20: 2025-10 value,946,1.0,2025-10 missing in vintage: True; missing in current file: True
+team emissions_ff_industry.csv,41,,"columns ['ff', 'emissions_intensity']; no source, units, scope or date field"

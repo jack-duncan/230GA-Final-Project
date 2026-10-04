@@ -1,0 +1,48 @@
+\begin{table}
+\caption{Cross-validation design sensitivity. Primary: validate on all expanding 12-month blocks after the first 60 training rows. recent120/recent60: only blocks ending in the last 120/60 training months. first120: first fold trains on 120 rows. grid\_max1e3: grid without the 1e6 point. Share of monthly refits at the largest grid penalty, median penalty, $R^2_{OOS}$ (percent) and Clark-West t.}
+\label{tab:m6_cv_design}
+\begin{tabular}{llllrlllll}
+\toprule
+model & benchmark & cv\_design & period & n & share\_lambda\_at\_max & median\_lambda & r2\_oos\_pct & cw\_t & cw\_p\_one\_sided \\
+\midrule
+A\_noVIX\_1970\_ridgecv & histmean & expanding\_all\_blocks (primary) & full\_oos & 439 & 1.00 & 1000000 & 0.000 & 0.00 & 0.500 \\
+A\_noVIX\_1970\_ridgecv & histmean & expanding\_all\_blocks (primary) & post2010 & 199 & 1.00 & 1000000 & 0.000 & 0.00 & 0.500 \\
+B\_full\_1990\_ridgecv & histmean & expanding\_all\_blocks (primary) & full\_oos & 319 & 1.00 & 1000000 & 0.000 & 0.00 & 0.500 \\
+B\_full\_1990\_ridgecv & histmean & expanding\_all\_blocks (primary) & post2010 & 199 & 1.00 & 1000000 & 0.000 & 0.00 & 0.500 \\
+B\_full\_1990\_ridgecv & B0\_noATTN\_1990\_ridgecv & expanding\_all\_blocks (primary) & full\_oos & 319 &  &  & 0.000 & 0.00 & 0.500 \\
+B\_full\_1990\_ridgecv & B0\_noATTN\_1990\_ridgecv & expanding\_all\_blocks (primary) & post2010 & 199 &  &  & 0.000 & 0.00 & 0.500 \\
+A\_noVIX\_1970\_ridgecv\_recent120 & histmean & recent120 & full\_oos & 439 & 0.86 & 1000000 & -0.206 & -1.30 & 0.903 \\
+A\_noVIX\_1970\_ridgecv\_recent120 & histmean & recent120 & post2010 & 199 & 0.86 & 1000000 & -0.410 & -1.11 & 0.866 \\
+A\_noVIX\_1970\_ridgecv\_recent60 & histmean & recent60 & full\_oos & 439 & 0.80 & 1000000 & -0.542 & -0.63 & 0.735 \\
+A\_noVIX\_1970\_ridgecv\_recent60 & histmean & recent60 & post2010 & 199 & 0.80 & 1000000 & -0.325 & -0.18 & 0.570 \\
+A\_noVIX\_1970\_ridgecv\_first120 & histmean & first120 & full\_oos & 439 & 1.00 & 1000000 & 0.000 & 0.00 & 0.500 \\
+A\_noVIX\_1970\_ridgecv\_first120 & histmean & first120 & post2010 & 199 & 1.00 & 1000000 & 0.000 & 0.00 & 0.500 \\
+A\_noVIX\_1970\_ridgecv\_grid\_max1e3 & histmean & grid\_max1e3 & full\_oos & 439 & 1.00 & 1000 & -0.001 & -1.06 & 0.855 \\
+A\_noVIX\_1970\_ridgecv\_grid\_max1e3 & histmean & grid\_max1e3 & post2010 & 199 & 1.00 & 1000 & 0.001 & 0.47 & 0.320 \\
+B\_full\_1990\_ridgecv\_recent120 & histmean & recent120 & full\_oos & 319 & 0.81 & 1000000 & 0.070 & 0.50 & 0.307 \\
+B\_full\_1990\_ridgecv\_recent120 & histmean & recent120 & post2010 & 199 & 0.81 & 1000000 & 0.130 & 0.50 & 0.307 \\
+B\_full\_1990\_ridgecv\_recent60 & histmean & recent60 & full\_oos & 319 & 0.52 & 1000000 & -0.343 & 0.34 & 0.366 \\
+B\_full\_1990\_ridgecv\_recent60 & histmean & recent60 & post2010 & 199 & 0.52 & 1000000 & -0.327 & 0.10 & 0.461 \\
+B\_full\_1990\_ridgecv\_first120 & histmean & first120 & full\_oos & 319 & 0.99 & 1000000 & -0.596 & -1.04 & 0.850 \\
+B\_full\_1990\_ridgecv\_first120 & histmean & first120 & post2010 & 199 & 0.99 & 1000000 & 0.000 & 0.00 & 0.500 \\
+B\_full\_1990\_ridgecv\_grid\_max1e3 & histmean & grid\_max1e3 & full\_oos & 319 & 1.00 & 1000 & 0.000 & 0.15 & 0.440 \\
+B\_full\_1990\_ridgecv\_grid\_max1e3 & histmean & grid\_max1e3 & post2010 & 199 & 1.00 & 1000 & 0.003 & 0.69 & 0.245 \\
+B0\_noATTN\_1990\_ridgecv\_recent120 & histmean & recent120 & full\_oos & 319 & 0.80 & 1000000 & 0.006 & 0.41 & 0.342 \\
+B0\_noATTN\_1990\_ridgecv\_recent120 & histmean & recent120 & post2010 & 199 & 0.80 & 1000000 & 0.011 & 0.41 & 0.342 \\
+B0\_noATTN\_1990\_ridgecv\_recent60 & histmean & recent60 & full\_oos & 319 & 0.52 & 1000000 & -0.389 & 0.31 & 0.377 \\
+B0\_noATTN\_1990\_ridgecv\_recent60 & histmean & recent60 & post2010 & 199 & 0.52 & 1000000 & -0.476 & 0.06 & 0.477 \\
+B0\_noATTN\_1990\_ridgecv\_first120 & histmean & first120 & full\_oos & 319 & 0.84 & 1000000 & -0.498 & -1.45 & 0.926 \\
+B0\_noATTN\_1990\_ridgecv\_first120 & histmean & first120 & post2010 & 199 & 0.84 & 1000000 & -0.138 & -1.97 & 0.975 \\
+B0\_noATTN\_1990\_ridgecv\_grid\_max1e3 & histmean & grid\_max1e3 & full\_oos & 319 & 1.00 & 1000 & 0.001 & 0.51 & 0.306 \\
+B0\_noATTN\_1990\_ridgecv\_grid\_max1e3 & histmean & grid\_max1e3 & post2010 & 199 & 1.00 & 1000 & 0.003 & 0.75 & 0.226 \\
+B\_full\_1990\_ridgecv\_recent120 & B0\_noATTN\_1990\_ridgecv\_recent120 & recent120 & full\_oos & 319 &  &  & 0.064 & 0.73 & 0.233 \\
+B\_full\_1990\_ridgecv\_recent120 & B0\_noATTN\_1990\_ridgecv\_recent120 & recent120 & post2010 & 199 &  &  & 0.120 & 0.73 & 0.232 \\
+B\_full\_1990\_ridgecv\_recent60 & B0\_noATTN\_1990\_ridgecv\_recent60 & recent60 & full\_oos & 319 &  &  & 0.045 & 0.38 & 0.353 \\
+B\_full\_1990\_ridgecv\_recent60 & B0\_noATTN\_1990\_ridgecv\_recent60 & recent60 & post2010 & 199 &  &  & 0.148 & 0.73 & 0.232 \\
+B\_full\_1990\_ridgecv\_first120 & B0\_noATTN\_1990\_ridgecv\_first120 & first120 & full\_oos & 319 &  &  & -0.098 & -0.33 & 0.631 \\
+B\_full\_1990\_ridgecv\_first120 & B0\_noATTN\_1990\_ridgecv\_first120 & first120 & post2010 & 199 &  &  & 0.138 & 1.99 & 0.024 \\
+B\_full\_1990\_ridgecv\_grid\_max1e3 & B0\_noATTN\_1990\_ridgecv\_grid\_max1e3 & grid\_max1e3 & full\_oos & 319 &  &  & -0.001 & -1.47 & 0.929 \\
+B\_full\_1990\_ridgecv\_grid\_max1e3 & B0\_noATTN\_1990\_ridgecv\_grid\_max1e3 & grid\_max1e3 & post2010 & 199 &  &  & 0.000 & -0.14 & 0.554 \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -1,0 +1,21 @@
+\begin{table}
+\caption{Exact zeros in EMV\_env (FRED EMVENRGYENVREG) by period. Fisher exact test of the zero rate 2021-10 to 2026-08 versus 1985-01 to 2021-09.}
+\label{tab:m1_zeros}
+\begin{tabular}{lllrrr}
+\toprule
+period & start & end & n\_months & n\_zero & zero\_share \\
+\midrule
+full\_1985 & 1985-01 & 2026-08 & 500 & 51 & 0.10 \\
+pre\_2021-10 & 1985-01 & 2021-09 & 441 & 12 & 0.03 \\
+post\_2021-10 & 2021-10 & 2026-08 & 59 & 39 & 0.66 \\
+post2010 & 2010-01 & 2026-07 & 199 & 43 & 0.22 \\
+validation & 2010-01 & 2022-07 & 151 & 12 & 0.08 \\
+holdout & 2022-08 & 2026-07 & 48 & 31 & 0.65 \\
+pre\_covid & 2010-01 & 2019-12 & 120 & 4 & 0.03 \\
+covid & 2020-01 & 2021-12 & 24 & 4 & 0.17 \\
+inflation\_rates & 2022-01 & 2024-12 & 36 & 25 & 0.69 \\
+last18 & 2025-02 & 2026-07 & 18 & 9 & 0.50 \\
+last12 & 2025-08 & 2026-07 & 12 & 8 & 0.67 \\
+\bottomrule
+\end{tabular}
+\end{table}

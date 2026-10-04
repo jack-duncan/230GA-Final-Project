@@ -1,0 +1,4 @@
+item,path,source,sha256,first_written_utc,this_run_utc,matches_first,pre1970_returns_existed_at_first_write,source_this_run
+adopted_checks.md,exchange/03_robustness_design/adopted_checks.md,workflow journal wf_c1f5d333-469 (file not yet on disk; hash equals the saved file),15fdce70e29e57a0fdf922ca20a8a6db16d0b2a0407eb58a09d390888af8e70b,2026-09-26 15:49:39 UTC,2026-10-02 11:41:04 UTC,True,False,file exchange/03_robustness_design/adopted_checks.md
+optimizer.py,modules/M5_industry_momentum/optimizer.py,file,adbc414568aec1363c026252c677af9b4bcb8e196aa6fb8066b98a85abfd306b,2026-09-26 15:49:39 UTC,2026-10-02 11:41:04 UTC,True,False,file
+m5lib.py,modules/M5_industry_momentum/m5lib.py,file,952961a93c717a667d7b404219f1b343f487c02ec66630be3584f9517e1c5e2f,2026-09-26 15:49:39 UTC,2026-10-02 11:41:04 UTC,True,False,file

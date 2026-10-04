@@ -1,0 +1,34 @@
+\begin{table}
+\caption{Out-of-sample predictability of next-month Green-minus-Brown. Campbell-Thompson $R^2_{OOS}$ (percent) vs the expanding historical mean (or vs the nested no-attention model) and Clark-West t (NW6). Ridge penalty chosen each month by expanding-fold time-series CV. When CV picks the maximum penalty in every month the forecast equals the benchmark and the CW statistic is set to 0.}
+\label{tab:m6_oos_primary}
+\begin{tabular}{lllllrlllll}
+\toprule
+model & benchmark & period & start & end & n & r2\_oos\_pct & cw\_t & cw\_p\_one\_sided & share\_lambda\_at\_max & label \\
+\midrule
+A\_noVIX\_1970\_ridgecv & histmean & full\_oos & 1990-01 & 2026-07 & 439 & 0.000 & 0.00 & 0.500 & 1.00 & primary \\
+A\_noVIX\_1970\_ridgecv & histmean & post2010 & 2010-01 & 2026-07 & 199 & 0.000 & 0.00 & 0.500 & 1.00 & primary \\
+A\_noVIX\_1970\_ridgecv & histmean & validation & 2010-01 & 2022-07 & 151 & 0.000 & 0.00 & 0.500 & 1.00 & exploratory \\
+A\_noVIX\_1970\_ridgecv & histmean & holdout & 2022-08 & 2026-07 & 48 & 0.000 & 0.00 & 0.500 & 1.00 & exploratory \\
+A\_noVIX\_1970\_ridgecv & histmean & covid & 2020-01 & 2021-12 & 24 & 0.000 & 0.00 & 0.500 & 1.00 & exploratory \\
+A\_noVIX\_1970\_ridgecv & histmean & inflation\_rates & 2022-01 & 2024-12 & 36 & 0.000 & 0.00 & 0.500 & 1.00 & exploratory \\
+A\_noVIX\_1970\_ridgecv & histmean & last18 & 2025-02 & 2026-07 & 18 & 0.000 & 0.00 & 0.500 & 1.00 & exploratory \\
+A\_noVIX\_1970\_ridgecv & histmean & last12 & 2025-08 & 2026-07 & 12 & 0.000 & 0.00 & 0.500 & 1.00 & exploratory \\
+B\_full\_1990\_ridgecv & histmean & full\_oos & 2000-01 & 2026-07 & 319 & 0.000 & 0.00 & 0.500 & 1.00 & primary \\
+B\_full\_1990\_ridgecv & histmean & post2010 & 2010-01 & 2026-07 & 199 & 0.000 & 0.00 & 0.500 & 1.00 & primary \\
+B\_full\_1990\_ridgecv & histmean & validation & 2010-01 & 2022-07 & 151 & 0.000 & 0.00 & 0.500 & 1.00 & exploratory \\
+B\_full\_1990\_ridgecv & histmean & holdout & 2022-08 & 2026-07 & 48 & 0.000 & 0.00 & 0.500 & 1.00 & exploratory \\
+B\_full\_1990\_ridgecv & histmean & covid & 2020-01 & 2021-12 & 24 & 0.000 & 0.00 & 0.500 & 1.00 & exploratory \\
+B\_full\_1990\_ridgecv & histmean & inflation\_rates & 2022-01 & 2024-12 & 36 & 0.000 & 0.00 & 0.500 & 1.00 & exploratory \\
+B\_full\_1990\_ridgecv & histmean & last18 & 2025-02 & 2026-07 & 18 & 0.000 & 0.00 & 0.500 & 1.00 & exploratory \\
+B\_full\_1990\_ridgecv & histmean & last12 & 2025-08 & 2026-07 & 12 & 0.000 & 0.00 & 0.500 & 1.00 & exploratory \\
+B\_full\_1990\_ridgecv & B0\_noATTN\_1990\_ridgecv & full\_oos & 2000-01 & 2026-07 & 319 & 0.000 & 0.00 & 0.500 &  & primary \\
+B\_full\_1990\_ridgecv & B0\_noATTN\_1990\_ridgecv & post2010 & 2010-01 & 2026-07 & 199 & 0.000 & 0.00 & 0.500 &  & primary \\
+B\_full\_1990\_ridgecv & B0\_noATTN\_1990\_ridgecv & validation & 2010-01 & 2022-07 & 151 & 0.000 & 0.00 & 0.500 &  & exploratory \\
+B\_full\_1990\_ridgecv & B0\_noATTN\_1990\_ridgecv & holdout & 2022-08 & 2026-07 & 48 & 0.000 & 0.00 & 0.500 &  & exploratory \\
+B\_full\_1990\_ridgecv & B0\_noATTN\_1990\_ridgecv & covid & 2020-01 & 2021-12 & 24 & 0.000 & 0.00 & 0.500 &  & exploratory \\
+B\_full\_1990\_ridgecv & B0\_noATTN\_1990\_ridgecv & inflation\_rates & 2022-01 & 2024-12 & 36 & 0.000 & 0.00 & 0.500 &  & exploratory \\
+B\_full\_1990\_ridgecv & B0\_noATTN\_1990\_ridgecv & last18 & 2025-02 & 2026-07 & 18 & 0.000 & 0.00 & 0.500 &  & exploratory \\
+B\_full\_1990\_ridgecv & B0\_noATTN\_1990\_ridgecv & last12 & 2025-08 & 2026-07 & 12 & 0.000 & 0.00 & 0.500 &  & exploratory \\
+\bottomrule
+\end{tabular}
+\end{table}

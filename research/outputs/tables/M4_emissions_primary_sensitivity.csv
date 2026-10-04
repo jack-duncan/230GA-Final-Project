@@ -1,0 +1,17 @@
+variant,kind,green,brown,period,n,ann_ret,alpha_ann,t_alpha,p_alpha
+epa5 (primary),"primary spec, reference row","Banks, Insur, Softw, Hardw, Smoke","Util, Chems, Other, Agric, Coal",post2010,199,0.06399075376884421,0.047215478576935456,1.5164186316677917,0.1294135307942902
+epa5 (primary),"primary spec, reference row","Banks, Insur, Softw, Hardw, Smoke","Util, Chems, Other, Agric, Coal",holdout,48,0.09606499999999997,0.039023356569894,0.6993189790564528,0.48435270874009784
+epa5 (primary),"primary spec, reference row","Banks, Insur, Softw, Hardw, Smoke","Util, Chems, Other, Agric, Coal",full_1970,679,0.025272459499263614,0.0454053815083086,2.580775208432404,0.009857874800043747
+Chips replaces Smoke in Green,6th-lowest EPA industry in place of the 5th,"Banks, Insur, Softw, Hardw, Chips","Util, Chems, Other, Agric, Coal",post2010,199,0.08005869346733668,0.050430248612609335,1.6837686914494847,0.09222638011239798
+Chips replaces Smoke in Green,6th-lowest EPA industry in place of the 5th,"Banks, Insur, Softw, Hardw, Chips","Util, Chems, Other, Agric, Coal",holdout,48,0.11851,0.04636270452157024,0.8741465799756404,0.38203843343504873
+Chips replaces Smoke in Green,6th-lowest EPA industry in place of the 5th,"Banks, Insur, Softw, Hardw, Chips","Util, Chems, Other, Agric, Coal",full_1970,679,0.02203829160530192,0.0521378059498678,2.908325574007809,0.0036336981974111906
+"drop Banks (Green, 4 industries)",drop-one,"Insur, Softw, Hardw, Smoke","Util, Chems, Other, Agric, Coal",post2010,199,0.06768150753768842,0.050139644665763164,1.6531154373405783,0.09830737211626484
+"drop Insur (Green, 4 industries)",drop-one,"Banks, Softw, Hardw, Smoke","Util, Chems, Other, Agric, Coal",post2010,199,0.06826341708542712,0.046981114020970764,1.4657675731408117,0.1427116179642466
+"drop Softw (Green, 4 industries)",drop-one,"Banks, Insur, Hardw, Smoke","Util, Chems, Other, Agric, Coal",post2010,199,0.06099407035175876,0.047994048967656314,1.472211426788168,0.14096379266534415
+"drop Hardw (Green, 4 industries)",drop-one,"Banks, Insur, Softw, Smoke","Util, Chems, Other, Agric, Coal",post2010,199,0.05923778894472359,0.04825544051241437,1.45235410635398,0.14640317019856472
+"drop Smoke (Green, 4 industries)",drop-one,"Banks, Insur, Softw, Hardw","Util, Chems, Other, Agric, Coal",post2010,199,0.0637769849246231,0.04270714471787264,1.3964182498301951,0.1625885825984129
+"drop Util (Brown, 4 industries)",drop-one,"Banks, Insur, Softw, Hardw, Smoke","Chems, Other, Agric, Coal",post2010,199,0.06751778894472359,0.05568317234743682,1.5299700626902226,0.12602413934760584
+"drop Chems (Brown, 4 industries)",drop-one,"Banks, Insur, Softw, Hardw, Smoke","Util, Other, Agric, Coal",post2010,199,0.06751025125628138,0.04116106240467909,1.1163086118224872,0.2642900566031934
+"drop Other (Brown, 4 industries)",drop-one,"Banks, Insur, Softw, Hardw, Smoke","Util, Chems, Agric, Coal",post2010,199,0.0709534673366834,0.053986905003010274,1.3792014785444489,0.16783264233870954
+"drop Agric (Brown, 4 industries)",drop-one,"Banks, Insur, Softw, Hardw, Smoke","Util, Chems, Other, Coal",post2010,199,0.0688142713567839,0.05401621633939682,1.5623224352759604,0.1182120493385638
+"drop Coal (Brown, 4 industries)",drop-one,"Banks, Insur, Softw, Hardw, Smoke","Util, Chems, Other, Agric",post2010,199,0.045157989949748734,0.031230036790154243,1.7093132777194555,0.08739293512155032

@@ -1,0 +1,25 @@
+\begin{table}
+\caption{Attention and the team's own target: next-month FF3 residual of the Brown leg (60-month rolling hedge, alpha and betas lagged one month). Out-of-sample $R^2$ (percent) and Clark-West t (NW6, one-sided p).}
+\label{tab:m6_team_target}
+\begin{tabular}{lllllrlll}
+\toprule
+model & benchmark & period & start & end & n & r2\_oos\_pct & cw\_t & cw\_p\_one\_sided \\
+\midrule
+TEAMTGT\_ATTN\_ols & histmean & full\_oos & 2000-01 & 2026-07 & 319 & -0.738 & -1.98 & 0.976 \\
+TEAMTGT\_ATTN\_ols & histmean & post2010 & 2010-01 & 2026-07 & 199 & -0.253 & -0.61 & 0.730 \\
+TEAMTGT\_ATTN\_ols & histmean & holdout & 2022-08 & 2026-07 & 48 & -0.778 & -0.82 & 0.793 \\
+TEAMTGT\_B\_full\_1990\_ridgecv & histmean & full\_oos & 2000-01 & 2026-07 & 319 & -0.017 & -1.10 & 0.865 \\
+TEAMTGT\_B\_full\_1990\_ridgecv & histmean & post2010 & 2010-01 & 2026-07 & 199 & -0.046 & -2.00 & 0.977 \\
+TEAMTGT\_B\_full\_1990\_ridgecv & histmean & holdout & 2022-08 & 2026-07 & 48 & 0.000 & 0.00 & 0.500 \\
+TEAMTGT\_B\_full\_1990\_ridgecv & TEAMTGT\_B0\_noATTN\_1990\_ridgecv & full\_oos & 2000-01 & 2026-07 & 319 & 0.072 & 1.25 & 0.105 \\
+TEAMTGT\_B\_full\_1990\_ridgecv & TEAMTGT\_B0\_noATTN\_1990\_ridgecv & post2010 & 2010-01 & 2026-07 & 199 & 0.066 & 1.11 & 0.134 \\
+TEAMTGT\_B\_full\_1990\_ridgecv & TEAMTGT\_B0\_noATTN\_1990\_ridgecv & holdout & 2022-08 & 2026-07 & 48 & 0.000 & 0.00 & 0.500 \\
+TEAMTGT\_B\_full\_1990\_fixed0 & TEAMTGT\_B0\_noATTN\_1990\_fixed0 & full\_oos & 2000-01 & 2026-07 & 319 & -0.565 & -0.60 & 0.726 \\
+TEAMTGT\_B\_full\_1990\_fixed0 & TEAMTGT\_B0\_noATTN\_1990\_fixed0 & post2010 & 2010-01 & 2026-07 & 199 & -0.662 & -0.97 & 0.834 \\
+TEAMTGT\_B\_full\_1990\_fixed0 & TEAMTGT\_B0\_noATTN\_1990\_fixed0 & holdout & 2022-08 & 2026-07 & 48 & 0.238 & 0.83 & 0.204 \\
+TEAMTGT\_B\_full\_1990\_fixed1 & TEAMTGT\_B0\_noATTN\_1990\_fixed1 & full\_oos & 2000-01 & 2026-07 & 319 & -0.264 & -1.82 & 0.966 \\
+TEAMTGT\_B\_full\_1990\_fixed1 & TEAMTGT\_B0\_noATTN\_1990\_fixed1 & post2010 & 2010-01 & 2026-07 & 199 & -0.179 & -1.55 & 0.939 \\
+TEAMTGT\_B\_full\_1990\_fixed1 & TEAMTGT\_B0\_noATTN\_1990\_fixed1 & holdout & 2022-08 & 2026-07 & 48 & -0.133 & -0.81 & 0.790 \\
+\bottomrule
+\end{tabular}
+\end{table}

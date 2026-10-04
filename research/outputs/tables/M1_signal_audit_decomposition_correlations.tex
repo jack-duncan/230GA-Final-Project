@@ -1,0 +1,65 @@
+\begin{table}
+\caption{Correlations of the Energy and Environmental Regulation EMV tracker with overall EMV and monthly average VIX. t is the direction-free delta-method HAC(6) t of the correlation.}
+\label{tab:m1_decomp_corr}
+\begin{tabular}{lllllrrrr}
+\toprule
+series\_a & series\_b & sample & start & end & n & pearson & t (HAC) & spearman \\
+\midrule
+EMV\_env & EMV\_overall & full & 1985-01 & 2026-08 & 500 & 0.32 & 5.2 & 0.25 \\
+EMV\_env & EMV\_overall & pre\_2021-10 & 1985-01 & 2021-09 & 441 & 0.33 & 4.5 & 0.33 \\
+EMV\_env & EMV\_overall & post\_2021-10 & 2021-10 & 2026-08 & 59 & 0.44 & 4.1 & 0.39 \\
+EMV\_env & EMV\_overall & validation & 2010-01 & 2022-07 & 151 & 0.31 & 3.5 & 0.30 \\
+EMV\_env & EMV\_overall & holdout & 2022-08 & 2026-07 & 48 & 0.43 & 4.0 & 0.35 \\
+EMV\_env & VIX & full & 1990-01 & 2026-08 & 440 & 0.20 & 2.9 & 0.20 \\
+EMV\_env & VIX & pre\_2021-10 & 1990-01 & 2021-09 & 381 & 0.25 & 2.9 & 0.24 \\
+EMV\_env & VIX & post\_2021-10 & 2021-10 & 2026-08 & 59 & 0.09 & 1.1 & 0.14 \\
+EMV\_env & VIX & validation & 2010-01 & 2022-07 & 151 & 0.11 & 1.3 & 0.08 \\
+EMV\_env & VIX & holdout & 2022-08 & 2026-07 & 48 & 0.12 & 1.0 & 0.16 \\
+EMV\_overall & VIX & full & 1990-01 & 2026-08 & 440 & 0.72 & 17.4 & 0.71 \\
+EMV\_overall & VIX & pre\_2021-10 & 1990-01 & 2021-09 & 381 & 0.77 & 25.0 & 0.76 \\
+EMV\_overall & VIX & post\_2021-10 & 2021-10 & 2026-08 & 59 & 0.35 & 2.0 & 0.24 \\
+EMV\_overall & VIX & validation & 2010-01 & 2022-07 & 151 & 0.79 & 11.3 & 0.73 \\
+EMV\_overall & VIX & holdout & 2022-08 & 2026-07 & 48 & 0.46 & 2.0 & 0.30 \\
+log\_EMV\_env\_nonzero & log\_EMV\_overall & full & 1985-01 & 2026-04 & 449 & 0.36 & 6.8 & 0.35 \\
+log\_EMV\_env\_nonzero & log\_EMV\_overall & pre\_2021-10 & 1985-01 & 2021-09 & 429 & 0.35 & 6.2 & 0.34 \\
+log\_EMV\_env\_nonzero & log\_EMV\_overall & post\_2021-10 & 2022-02 & 2026-04 & 20 & 0.25 & 1.4 & 0.27 \\
+log\_EMV\_env\_nonzero & log\_EMV\_overall & validation & 2010-01 & 2022-07 & 139 & 0.35 & 4.6 & 0.37 \\
+log\_EMV\_env\_nonzero & log\_EMV\_overall & holdout & 2022-08 & 2026-04 & 17 & 0.25 & 1.4 & 0.28 \\
+log\_EMV\_env\_nonzero & log\_VIX & full & 1990-01 & 2026-04 & 390 & 0.26 & 3.7 & 0.25 \\
+log\_EMV\_env\_nonzero & log\_VIX & pre\_2021-10 & 1990-01 & 2021-09 & 370 & 0.26 & 3.6 & 0.25 \\
+log\_EMV\_env\_nonzero & log\_VIX & post\_2021-10 & 2022-02 & 2026-04 & 20 & 0.02 & 0.2 & -0.02 \\
+log\_EMV\_env\_nonzero & log\_VIX & validation & 2010-01 & 2022-07 & 139 & 0.21 & 2.8 & 0.20 \\
+log\_EMV\_env\_nonzero & log\_VIX & holdout & 2022-08 & 2026-04 & 17 & 0.02 & 0.2 & -0.03 \\
+z\_EMV\_env & z\_EMV\_overall & full & 1987-12 & 2026-08 & 465 & 0.39 & 7.1 & 0.38 \\
+z\_EMV\_env & z\_EMV\_overall & pre\_2021-10 & 1987-12 & 2021-09 & 406 & 0.38 & 6.4 & 0.38 \\
+z\_EMV\_env & z\_EMV\_overall & post\_2021-10 & 2021-10 & 2026-08 & 59 & 0.50 & 3.6 & 0.43 \\
+z\_EMV\_env & z\_EMV\_overall & validation & 2010-01 & 2022-07 & 151 & 0.36 & 4.3 & 0.32 \\
+z\_EMV\_env & z\_EMV\_overall & holdout & 2022-08 & 2026-07 & 48 & 0.50 & 3.5 & 0.49 \\
+z\_EMV\_env & z\_VIX & full & 1992-12 & 2026-08 & 405 & 0.29 & 4.0 & 0.28 \\
+z\_EMV\_env & z\_VIX & pre\_2021-10 & 1992-12 & 2021-09 & 346 & 0.32 & 4.1 & 0.33 \\
+z\_EMV\_env & z\_VIX & post\_2021-10 & 2021-10 & 2026-08 & 59 & -0.00 & -0.0 & -0.11 \\
+z\_EMV\_env & z\_VIX & validation & 2010-01 & 2022-07 & 151 & 0.15 & 1.5 & 0.11 \\
+z\_EMV\_env & z\_VIX & holdout & 2022-08 & 2026-07 & 48 & 0.11 & 0.6 & 0.08 \\
+EMV\_env\_share & EMV\_overall & full & 1985-01 & 2026-08 & 500 & -0.11 & -2.8 & -0.15 \\
+EMV\_env\_share & EMV\_overall & pre\_2021-10 & 1985-01 & 2021-09 & 441 & -0.14 & -3.8 & -0.13 \\
+EMV\_env\_share & EMV\_overall & post\_2021-10 & 2021-10 & 2026-08 & 59 & 0.22 & 1.8 & 0.33 \\
+EMV\_env\_share & EMV\_overall & validation & 2010-01 & 2022-07 & 151 & -0.10 & -2.2 & -0.12 \\
+EMV\_env\_share & EMV\_overall & holdout & 2022-08 & 2026-07 & 48 & 0.20 & 1.5 & 0.28 \\
+EMV\_env\_share & VIX & full & 1990-01 & 2026-08 & 440 & -0.10 & -2.0 & -0.08 \\
+EMV\_env\_share & VIX & pre\_2021-10 & 1990-01 & 2021-09 & 381 & -0.12 & -2.3 & -0.10 \\
+EMV\_env\_share & VIX & post\_2021-10 & 2021-10 & 2026-08 & 59 & 0.03 & 0.3 & 0.12 \\
+EMV\_env\_share & VIX & validation & 2010-01 & 2022-07 & 151 & -0.21 & -3.9 & -0.24 \\
+EMV\_env\_share & VIX & holdout & 2022-08 & 2026-07 & 48 & 0.02 & 0.2 & 0.14 \\
+z\_EMV\_env\_share & z\_EMV\_overall & full & 1987-12 & 2026-08 & 465 & -0.03 & -0.6 & -0.01 \\
+z\_EMV\_env\_share & z\_EMV\_overall & pre\_2021-10 & 1987-12 & 2021-09 & 406 & -0.07 & -1.7 & -0.06 \\
+z\_EMV\_env\_share & z\_EMV\_overall & post\_2021-10 & 2021-10 & 2026-08 & 59 & 0.32 & 2.3 & 0.39 \\
+z\_EMV\_env\_share & z\_EMV\_overall & validation & 2010-01 & 2022-07 & 151 & -0.09 & -1.7 & -0.09 \\
+z\_EMV\_env\_share & z\_EMV\_overall & holdout & 2022-08 & 2026-07 & 48 & 0.31 & 2.0 & 0.44 \\
+z\_EMV\_env\_share & z\_VIX & full & 1992-12 & 2026-08 & 405 & -0.05 & -0.9 & -0.02 \\
+z\_EMV\_env\_share & z\_VIX & pre\_2021-10 & 1992-12 & 2021-09 & 346 & -0.06 & -1.0 & -0.02 \\
+z\_EMV\_env\_share & z\_VIX & post\_2021-10 & 2021-10 & 2026-08 & 59 & -0.06 & -0.6 & -0.13 \\
+z\_EMV\_env\_share & z\_VIX & validation & 2010-01 & 2022-07 & 151 & -0.19 & -2.6 & -0.19 \\
+z\_EMV\_env\_share & z\_VIX & holdout & 2022-08 & 2026-07 & 48 & 0.03 & 0.2 & 0.07 \\
+\bottomrule
+\end{tabular}
+\end{table}

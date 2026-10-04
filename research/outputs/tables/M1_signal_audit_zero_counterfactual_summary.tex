@@ -1,0 +1,20 @@
+\begin{table}
+\caption{Counterfactual versions of the team rule after 2021-10 (validation tail 2021-10 to 2022-07 and holdout; the CSV adds the full validation window). frozen: window mean and sd fixed at the 60 months to 2021-09; zeros missing: zero months dropped before the rolling z-score. Differ = months whose state or crossing flag differs from the team rule.}
+\label{tab:m1_zero_cf}
+\begin{tabular}{llllrrlrr}
+\toprule
+variant & window & start & end & state & crossings & crossing months & state differs & crossing differs \\
+\midrule
+team & validation\_tail & 2021-10 & 2022-07 & 1 & 1 & 2022-07 & 0 & 0 \\
+team & holdout & 2022-08 & 2026-07 & 7 & 5 & 2023-04 2024-06 2025-02 2025-09 2025-11 & 0 & 0 \\
+frozen\_2021-09\_scaling & validation\_tail & 2021-10 & 2022-07 & 1 & 1 & 2022-07 & 0 & 0 \\
+frozen\_2021-09\_scaling & holdout & 2022-08 & 2026-07 & 7 & 5 & 2023-04 2024-06 2025-02 2025-09 2025-11 & 0 & 0 \\
+zeros\_missing\_60m\_calendar & validation\_tail & 2021-10 & 2022-07 & 1 & 1 & 2022-07 & 0 & 0 \\
+zeros\_missing\_60m\_calendar & holdout & 2022-08 & 2026-07 & 6 & 5 & 2023-04 2024-06 2025-02 2025-09 2025-11 & 1 & 0 \\
+zeros\_missing\_last60\_nonzero & validation\_tail & 2021-10 & 2022-07 & 1 & 1 & 2022-07 & 0 & 0 \\
+zeros\_missing\_last60\_nonzero & holdout & 2022-08 & 2026-07 & 7 & 5 & 2023-04 2024-06 2025-02 2025-09 2025-11 & 0 & 0 \\
+frozen\_2021-09\_scaling\_team\_threshold & validation\_tail & 2021-10 & 2022-07 & 1 & 1 & 2022-07 & 0 & 0 \\
+frozen\_2021-09\_scaling\_team\_threshold & holdout & 2022-08 & 2026-07 & 7 & 5 & 2023-04 2024-06 2025-02 2025-09 2025-11 & 0 & 0 \\
+\bottomrule
+\end{tabular}
+\end{table}

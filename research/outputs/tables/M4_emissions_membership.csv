@@ -1,0 +1,33 @@
+n,side,ranking,members,overlap_with_team,in_team_only,new_vs_team
+5,green,team,"Fun, RlEst, Drugs, Telcm, Fin",5,,
+5,green,epa,"Banks, Insur, Softw, Hardw, Smoke",0,"Drugs, Fin, Fun, RlEst, Telcm","Banks, Hardw, Insur, Smoke, Softw"
+5,green,epa_within41,"Banks, Insur, Softw, Hardw, Smoke",0,"Drugs, Fin, Fun, RlEst, Telcm","Banks, Hardw, Insur, Smoke, Softw"
+5,green,epa_median,"Insur, Fin, Hardw, Banks, Telcm",2,"Drugs, Fun, RlEst","Banks, Hardw, Insur"
+5,green,epa_nomargin,"Smoke, Hardw, Softw, Banks, Chips",0,"Drugs, Fin, Fun, RlEst, Telcm","Banks, Chips, Hardw, Smoke, Softw"
+5,green,epa_anylink,"Banks, Softw, Insur, Smoke, Chips",0,"Drugs, Fin, Fun, RlEst, Telcm","Banks, Chips, Insur, Smoke, Softw"
+5,green,direct_ghg,"Rtail, Banks, Hlth, Softw, Smoke",0,"Drugs, Fin, Fun, RlEst, Telcm","Banks, Hlth, Rtail, Smoke, Softw"
+5,green,direct_co2,"Hlth, Rtail, Banks, Softw, Whlsl",0,"Drugs, Fin, Fun, RlEst, Telcm","Banks, Hlth, Rtail, Softw, Whlsl"
+5,brown,team,"Util, Ships, Aero, Steel, BldMt",5,,
+5,brown,epa,"Util, Chems, Other, Agric, Coal",1,"Aero, BldMt, Ships, Steel","Agric, Chems, Coal, Other"
+5,brown,epa_within41,"Util, Chems, Agric, Coal, Food",1,"Aero, BldMt, Ships, Steel","Agric, Chems, Coal, Food"
+5,brown,epa_median,"Util, Other, Chems, Coal, Gold",1,"Aero, BldMt, Ships, Steel","Chems, Coal, Gold, Other"
+5,brown,epa_nomargin,"Util, Chems, Other, Agric, Coal",1,"Aero, BldMt, Ships, Steel","Agric, Chems, Coal, Other"
+5,brown,epa_anylink,"Util, Chems, Agric, Other, Coal",1,"Aero, BldMt, Ships, Steel","Agric, Chems, Coal, Other"
+5,brown,direct_ghg,"Util, Coal, Other, Gold, Agric",1,"Aero, BldMt, Ships, Steel","Agric, Coal, Gold, Other"
+5,brown,direct_co2,"Util, Gold, Chems, Mines, Trans",1,"Aero, BldMt, Ships, Steel","Chems, Gold, Mines, Trans"
+8,green,team,"Fun, RlEst, Drugs, Telcm, Fin, Autos, Insur, Hardw",8,,
+8,green,epa,"Banks, Insur, Softw, Hardw, Smoke, Chips, Fin, Fun",4,"Autos, Drugs, RlEst, Telcm","Banks, Chips, Smoke, Softw"
+8,green,epa_within41,"Banks, Insur, Softw, Hardw, Smoke, Fin, Fun, Hlth",4,"Autos, Drugs, RlEst, Telcm","Banks, Hlth, Smoke, Softw"
+8,green,epa_median,"Insur, Fin, Hardw, Banks, Telcm, Softw, Fun, Chips",5,"Autos, Drugs, RlEst","Banks, Chips, Softw"
+8,green,epa_nomargin,"Smoke, Hardw, Softw, Banks, Chips, Insur, Books, Fin",3,"Autos, Drugs, Fun, RlEst, Telcm","Banks, Books, Chips, Smoke, Softw"
+8,green,epa_anylink,"Banks, Softw, Insur, Smoke, Chips, Fin, Hlth, Fun",3,"Autos, Drugs, Hardw, RlEst, Telcm","Banks, Chips, Hlth, Smoke, Softw"
+8,green,direct_ghg,"Rtail, Banks, Hlth, Softw, Smoke, Whlsl, Aero, Hardw",1,"Autos, Drugs, Fin, Fun, Insur, RlEst, Telcm","Aero, Banks, Hlth, Rtail, Smoke, Softw, Whlsl"
+8,green,direct_co2,"Hlth, Rtail, Banks, Softw, Whlsl, Smoke, Hardw, LabEq",1,"Autos, Drugs, Fin, Fun, Insur, RlEst, Telcm","Banks, Hlth, LabEq, Rtail, Smoke, Softw, Whlsl"
+8,brown,team,"Util, Ships, Aero, Steel, BldMt, Chems, Trans, Mines",8,,
+8,brown,epa,"Util, Chems, Other, Agric, Coal, Gold, Food, Trans",3,"Aero, BldMt, Mines, Ships, Steel","Agric, Coal, Food, Gold, Other"
+8,brown,epa_within41,"Util, Chems, Agric, Coal, Food, Trans, Steel, Paper",4,"Aero, BldMt, Mines, Ships","Agric, Coal, Food, Paper"
+8,brown,epa_median,"Util, Other, Chems, Coal, Gold, Trans, Agric, Boxes",3,"Aero, BldMt, Mines, Ships, Steel","Agric, Boxes, Coal, Gold, Other"
+8,brown,epa_nomargin,"Util, Chems, Other, Agric, Coal, Gold, Trans, Food",3,"Aero, BldMt, Mines, Ships, Steel","Agric, Coal, Food, Gold, Other"
+8,brown,epa_anylink,"Util, Chems, Agric, Other, Coal, Gold, Food, Trans",3,"Aero, BldMt, Mines, Ships, Steel","Agric, Coal, Food, Gold, Other"
+8,brown,direct_ghg,"Util, Coal, Other, Gold, Agric, Chems, Trans, Mines",4,"Aero, BldMt, Ships, Steel","Agric, Coal, Gold, Other"
+8,brown,direct_co2,"Util, Gold, Chems, Mines, Trans, BldMt, Other, Oil",5,"Aero, Ships, Steel","Gold, Oil, Other"

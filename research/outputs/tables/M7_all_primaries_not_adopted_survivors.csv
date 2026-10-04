@@ -1,0 +1,7 @@
+test_id,module,type,family,statistic_name,statistic,p_value_two_sided,n_obs,holm,bh,by
+Q3_fisher_zero_pre_post,M1_signal_audit,other,D,"Fisher exact odds ratio (zero month, post-2021-10 vs pre)",69.7125,1.347955324669806e-32,500,2.0758511999915014e-30,2.0758511999915014e-30,1.1660910417183945e-29
+Q2_joint_team_signal_z_full,M1_signal_audit,other,D,"HAC Wald F, z_EMV_env on z_VIX + z_EMV_overall (R2=0.169)",27.143592035465893,8.760809817278987e-12,405,1.340403902043685e-09,6.745823559304819e-10,3.789406688470951e-09
+spread|L5|post2010|E:FF3|b_HML,M2_christhian_tests,loading,D,t_b_HML_NW6,-5.7443533,3.5001323e-08,199,5.320201095999999e-06,1.7967345806666666e-06,1.0092997508056616e-05
+spread|L5|full_1970|E:FF3|b_HML,M2_christhian_tests,loading,D,t_b_HML_NW6,-4.6260255,4.469108e-06,679,0.000674835308,0.000172060658,0.0009665355201123946
+Q3b.ln_timing.Pure 3m|corrected|36m-backward|post2010,M3_alpha_beta,beta-timing,D,"beta-timing component sum_k cov(beta_k,t, f_k,t) (annualized)",-0.0105636333723162,0.0008,199,0.12000000000000001,0.024640000000000002,0.13841301952692406
+spread|L5|post2010|E:FF5U|b_HML,M2_christhian_tests,loading,D,t_b_HML_NW6,-3.2065725,0.0015736658,199,0.23447620419999998,0.04039075553333333,0.22689149490026309

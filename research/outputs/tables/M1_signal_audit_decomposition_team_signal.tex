@@ -1,0 +1,25 @@
+\begin{table}
+\caption{How much of the team signal $z_t=$ rolling\_z(log1p(EMV\_env)) is explained by rolling z-scores of log1p(VIX) and log1p(overall EMV). OLS, Newey-West (6) t-statistics.}
+\label{tab:m1_decomp}
+\begin{tabular}{lllrlrrrrr}
+\toprule
+sample & start & end & n & regressors & R2 & slope 1 & t 1 & slope 2 & t 2 \\
+\midrule
+full & 1992-12 & 2026-08 & 405 & z\_VIX & 0.083 & 0.25 & 4.3 &  &  \\
+full & 1992-12 & 2026-08 & 405 & z\_EMV\_overall & 0.168 & 0.40 & 7.3 &  &  \\
+full & 1992-12 & 2026-08 & 405 & z\_VIX + z\_EMV\_overall & 0.169 & -0.03 & -0.4 & 0.43 & 5.1 \\
+pre\_2021-10 & 1992-12 & 2021-09 & 346 & z\_VIX & 0.102 & 0.26 & 4.4 &  &  \\
+pre\_2021-10 & 1992-12 & 2021-09 & 346 & z\_EMV\_overall & 0.161 & 0.38 & 6.6 &  &  \\
+pre\_2021-10 & 1992-12 & 2021-09 & 346 & z\_VIX + z\_EMV\_overall & 0.161 & 0.02 & 0.2 & 0.36 & 4.1 \\
+post\_2021-10 & 2021-10 & 2026-08 & 59 & z\_VIX & 0.000 & -0.00 & -0.0 &  &  \\
+post\_2021-10 & 2021-10 & 2026-08 & 59 & z\_EMV\_overall & 0.245 & 0.58 & 4.0 &  &  \\
+post\_2021-10 & 2021-10 & 2026-08 & 59 & z\_VIX + z\_EMV\_overall & 0.281 & -0.28 & -1.9 & 0.67 & 3.8 \\
+validation & 2010-01 & 2022-07 & 151 & z\_VIX & 0.021 & 0.14 & 1.5 &  &  \\
+validation & 2010-01 & 2022-07 & 151 & z\_EMV\_overall & 0.126 & 0.37 & 4.9 &  &  \\
+validation & 2010-01 & 2022-07 & 151 & z\_VIX + z\_EMV\_overall & 0.166 & -0.30 & -2.5 & 0.62 & 5.4 \\
+holdout & 2022-08 & 2026-07 & 48 & z\_VIX & 0.011 & 0.16 & 0.6 &  &  \\
+holdout & 2022-08 & 2026-07 & 48 & z\_EMV\_overall & 0.250 & 0.55 & 3.6 &  &  \\
+holdout & 2022-08 & 2026-07 & 48 & z\_VIX + z\_EMV\_overall & 0.267 & -0.22 & -1.1 & 0.63 & 3.2 \\
+\bottomrule
+\end{tabular}
+\end{table}

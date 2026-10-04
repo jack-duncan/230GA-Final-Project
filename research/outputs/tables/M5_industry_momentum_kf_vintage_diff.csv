@@ -1,0 +1,17 @@
+item,value
+months_differing,54
+first_month_differing,2020-07
+last_month_differing,2026-07
+cells_differing,113
+max_abs_diff_excl_last_month,0.0022000000000000075
+month_of_max_excl_last,2025-01
+last_month_industries_differing,26
+last_month_max_abs_diff,0.07019999999999998
+last_month_max_industry,PerSv
+last_month_changed_in_short_leg,"Clths,PerSv,BusSv"
+last_month_changed_in_long_leg,
+months_with_different_weights,0
+last_month_net_team,-0.14183631197702007
+last_month_net_kf,-0.1395113119770201
+last_month_rank_worst_team,6
+last_month_rank_worst_kf,6

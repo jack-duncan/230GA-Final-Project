@@ -1,0 +1,17 @@
+naics,title,role,sef,sef_nomargin,useeio_direct,useeio_direct_co2
+336411,Aircraft Manufacturing,Aero (mfg),0.139,0.131,0.0054649860910211,0.0053622139144406
+336412,Aircraft Engine and Engine Parts Manufacturing,Aero (mfg),0.156,0.151,0.0067539833779451,0.0066766897694257
+336413,Other Aircraft Parts and Auxiliary Equipment Manufacturing,Aero (mfg),0.17,0.163,0.013142868239628,0.0123347680984433
+336611,Ship Building and Repairing,Ships (mfg),0.196,0.187,0.0172193206355933,0.0169916167013269
+336510,Railroad Rolling Stock Manufacturing,Ships (mfg),0.444,0.413,0.0185319004172409,0.0181067916030697
+336612,Boat Building,boat building (Rubbr/Toys tie),0.182,0.15,0.0133537570041513,0.0132661291052374
+481111,Scheduled Passenger Air Transportation,air transportation (FF49 Trans),0.644,0.644,0.7264213254463139,0.7194953591210738
+481112,Scheduled Freight Air Transportation,air transportation (FF49 Trans),0.644,0.644,0.7264213254463139,0.7194953591210738
+483111,Deep Sea Freight Transportation,water transportation (FF49 Trans),0.816,0.816,0.5161648223200429,0.4434087945565947
+483211,Inland Water Freight Transportation,water transportation (FF49 Trans),0.816,0.816,0.5161648223200429,0.4434087945565947
+482111,Line-Haul Railroads,rail transportation (FF49 Trans),0.466,0.466,0.5761183835152582,0.5695862386633861
+484121,"General Freight Trucking, Long-Distance, Truckload",truck transportation (FF49 Trans),0.595,0.595,1.151750024267311,1.130772301546585
+486110,Pipeline Transportation of Crude Oil,pipeline transportation (FF49 Trans),1.619,1.619,1.779728421866444,1.007147490160116
+331110,Iron and Steel Mills and Ferroalloy Manufacturing,iron and steel mills (Steel),0.787,0.769,0.3842682247962237,0.3838383222590943
+327310,Cement Manufacturing,cement (BldMt),3.924,3.846,7.77545865026463,7.760502023685835
+221112,Fossil Fuel Electric Power Generation,"fossil electric power (Util, patched)",2.6422160140270656,2.6422160140270656,4.02676582071942,3.981025615557736

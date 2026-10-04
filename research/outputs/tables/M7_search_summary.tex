@@ -1,0 +1,17 @@
+\begin{table}[htbp]
+\centering
+\footnotesize
+\caption{Search-adjusted tests of the best FF5+UMD alpha: Romano--Wolf stepdown and Hansen's SPA over every series that could have been presented as the strategy (spec check 4).}
+\label{tab:m7_search}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lrrlrrrrrrrr}
+\toprule
+Family & Members & Months & Best member & Best t & RW adj. p & RW survivors & SPA p & Max-t 95\% & Nyholt & Li-Ji & Sidak N \\
+\midrule
+S-full & 58 & 679 & optimizer X b-1.00 & 3.34 & 0.009 & 15 & 0.009 & 2.68 & 42.4 & 14.0 & 116 \\
+S-post & 89 & 199 & optimizer X b-0.25 & 2.32 & 0.150 & 0 & 0.150 & 2.78 & 74.8 & 27.0 & 5 \\
+\bottomrule
+\end{tabular}%
+}
+\par\smallskip{\scriptsize Stationary bootstrap, mean block 12, B = 5,000, seed 20260926; returns demeaned by each member's alpha, factors resampled jointly. Nyholt and Li--Ji effective numbers of tests from FF5+UMD residual correlations. Sidak N: number of independent tests at which the best one-sided p stops being significant at 5\%. M2's grid is not in either family (its series are not saved), which makes both tests slightly lenient.}
+\end{table}

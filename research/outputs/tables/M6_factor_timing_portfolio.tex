@@ -1,0 +1,45 @@
+\begin{table}
+\caption{Timing portfolio $w_t=\hat{\mu}_t/(\gamma\hat{\sigma}^2_t)$ vs static always-long Green-minus-Brown, both scaled to 5\% annual volatility over the full OOS window; net of 10 bp per unit traded (industry-level turnover incl. leg rebalancing). Returns, vol and FF5+UMD alpha in percent per year.}
+\label{tab:m6_portfolio}
+\begin{tabular}{lllrllllllll}
+\toprule
+strategy & period & start & n & ann\_ret\_net & ann\_vol & sharpe\_net & t\_mean\_net & alpha\_ff6\_net & t\_alpha\_ff6\_net & turnover\_ann & cost\_drag\_bp\_ann \\
+\midrule
+A\_noVIX\_1970:timing\_ridgecv & full\_oos & 1990-01 & 439 & 0.09 & 5.00 & 0.02 & 0.11 & 0.24 & 0.33 & 0.93 & 9.3 \\
+A\_noVIX\_1970:timing\_ridgecv & post2010 & 2010-01 & 199 & -0.31 & 1.42 & -0.22 & -0.94 & -0.27 & -1.13 & 0.53 & 5.3 \\
+A\_noVIX\_1970:timing\_ridgecv & holdout & 2022-08 & 48 & 0.12 & 0.96 & 0.13 & 0.30 & 0.06 & 0.15 & 0.28 & 2.8 \\
+A\_noVIX\_1970:timing\_ridgecv & last18 & 2025-02 & 18 & 0.72 & 1.39 & 0.52 & 0.93 &  &  & 0.30 & 3.0 \\
+A\_noVIX\_1970:timing\_ridgecv & last12 & 2025-08 & 12 & 1.10 & 1.70 & 0.64 & 1.11 &  &  & 0.34 & 3.4 \\
+A\_noVIX\_1970:static\_long & full\_oos & 1990-01 & 439 & -0.75 & 5.00 & -0.15 & -0.87 & 0.58 & 0.71 & 0.60 & 6.0 \\
+A\_noVIX\_1970:static\_long & post2010 & 2010-01 & 199 & -0.94 & 4.86 & -0.19 & -0.73 & -0.14 & -0.13 & 0.63 & 6.3 \\
+A\_noVIX\_1970:static\_long & holdout & 2022-08 & 48 & -2.71 & 5.52 & -0.49 & -1.01 & -2.25 & -0.93 & 0.70 & 7.0 \\
+A\_noVIX\_1970:static\_long & last18 & 2025-02 & 18 & -7.27 & 6.38 & -1.14 & -1.84 &  &  & 0.64 & 6.4 \\
+A\_noVIX\_1970:static\_long & last12 & 2025-08 & 12 & -9.84 & 7.17 & -1.37 & -2.20 &  &  & 0.67 & 6.7 \\
+B\_full\_1990:timing\_ridgecv & full\_oos & 2000-01 & 319 & -0.97 & 5.00 & -0.19 & -1.01 & -0.74 & -0.89 & 1.18 & 11.8 \\
+B\_full\_1990:timing\_ridgecv & post2010 & 2010-01 & 199 & -0.40 & 2.82 & -0.14 & -0.63 & -0.88 & -1.49 & 0.90 & 9.0 \\
+B\_full\_1990:timing\_ridgecv & holdout & 2022-08 & 48 & 1.07 & 3.20 & 0.33 & 0.73 & 0.78 & 0.58 & 0.52 & 5.2 \\
+B\_full\_1990:timing\_ridgecv & last18 & 2025-02 & 18 & 3.42 & 4.08 & 0.84 & 1.40 &  &  & 0.57 & 5.7 \\
+B\_full\_1990:timing\_ridgecv & last12 & 2025-08 & 12 & 4.83 & 4.87 & 0.99 & 1.65 &  &  & 0.60 & 6.0 \\
+B\_full\_1990:static\_long & full\_oos & 2000-01 & 319 & -1.63 & 5.00 & -0.33 & -1.60 & -0.05 & -0.05 & 0.61 & 6.1 \\
+B\_full\_1990:static\_long & post2010 & 2010-01 & 199 & -0.90 & 4.66 & -0.19 & -0.73 & -0.13 & -0.13 & 0.60 & 6.0 \\
+B\_full\_1990:static\_long & holdout & 2022-08 & 48 & -2.60 & 5.30 & -0.49 & -1.01 & -2.16 & -0.93 & 0.67 & 6.7 \\
+B\_full\_1990:static\_long & last18 & 2025-02 & 18 & -6.98 & 6.13 & -1.14 & -1.84 &  &  & 0.62 & 6.2 \\
+B\_full\_1990:static\_long & last12 & 2025-08 & 12 & -9.45 & 6.89 & -1.37 & -2.20 &  &  & 0.64 & 6.4 \\
+A\_noVIX\_1970:lmn\_sign & full\_oos & 1990-01 & 439 & -1.66 & 5.00 & -0.33 & -1.79 & -0.85 & -0.95 & 2.02 & 20.2 \\
+A\_noVIX\_1970:lmn\_sign & post2010 & 2010-01 & 199 & -2.18 & 4.85 & -0.45 & -1.53 & -2.08 & -1.69 & 3.39 & 33.9 \\
+A\_noVIX\_1970:lmn\_sign & holdout & 2022-08 & 48 & 0.69 & 5.58 & 0.12 & 0.22 & 0.41 & 0.15 & 2.08 & 20.8 \\
+A\_noVIX\_1970:lmn\_sign & last18 & 2025-02 & 18 & 4.40 & 6.61 & 0.66 & 0.74 &  &  & 3.13 & 31.3 \\
+A\_noVIX\_1970:lmn\_sign & last12 & 2025-08 & 12 & 11.44 & 6.93 & 1.65 & 2.64 &  &  & 2.48 & 24.8 \\
+B\_full\_1990:lmn\_sign & full\_oos & 2001-01 & 307 & -0.49 & 5.00 & -0.10 & -0.47 & 0.07 & 0.06 & 2.93 & 29.3 \\
+B\_full\_1990:lmn\_sign & post2010 & 2010-01 & 199 & -1.59 & 4.82 & -0.33 & -1.28 & -1.50 & -1.31 & 3.35 & 33.5 \\
+B\_full\_1990:lmn\_sign & holdout & 2022-08 & 48 & -2.00 & 5.51 & -0.36 & -0.94 & -2.69 & -1.13 & 2.56 & 25.6 \\
+B\_full\_1990:lmn\_sign & last18 & 2025-02 & 18 & -5.06 & 6.55 & -0.78 & -1.69 &  &  & 5.73 & 57.3 \\
+B\_full\_1990:lmn\_sign & last12 & 2025-08 & 12 & -5.35 & 7.56 & -0.71 & -1.27 &  &  & 4.49 & 44.9 \\
+B0\_noATTN\_1990:lmn\_sign & full\_oos & 2001-01 & 307 & 0.55 & 5.00 & 0.11 & 0.53 & 0.85 & 0.80 & 3.31 & 33.1 \\
+B0\_noATTN\_1990:lmn\_sign & post2010 & 2010-01 & 199 & -0.66 & 4.84 & -0.14 & -0.54 & -0.57 & -0.49 & 3.49 & 34.9 \\
+B0\_noATTN\_1990:lmn\_sign & holdout & 2022-08 & 48 & 0.17 & 5.54 & 0.03 & 0.09 & 0.21 & 0.09 & 4.01 & 40.1 \\
+B0\_noATTN\_1990:lmn\_sign & last18 & 2025-02 & 18 & -2.02 & 6.69 & -0.31 & -0.52 &  &  & 7.02 & 70.2 \\
+B0\_noATTN\_1990:lmn\_sign & last12 & 2025-08 & 12 & -0.81 & 7.71 & -0.11 & -0.14 &  &  & 6.33 & 63.3 \\
+\bottomrule
+\end{tabular}
+\end{table}

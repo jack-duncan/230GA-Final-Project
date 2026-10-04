@@ -1,0 +1,42 @@
+\begin{table}
+\caption{Green-minus-Brown performance under the team and EPA rankings (annualized; t is Newey-West with 6 lags; turnover is two-way traded notional per year, buys plus sells summed over both legs, from monthly re-equal-weighting; it excludes the initial build and the rebalancing inside the value-weighted industry portfolios). Full sample starts 1970-01; all windows end 2026-07.}
+\label{tab:m4_perf}
+\begin{tabular}{llrrrrrrr}
+\toprule
+spec & period & n & ann\_ret & ann\_vol & sharpe & t\_mean\_nw & max\_dd & ann\_turnover \\
+\midrule
+team5 & full\_1970 & 679 & -0.01 & 0.10 & -0.05 & -0.35 & -0.70 & 0.69 \\
+team5 & post2010 & 199 & -0.02 & 0.10 & -0.18 & -0.68 & -0.51 & 0.69 \\
+team5 & validation & 151 & -0.01 & 0.09 & -0.07 & -0.22 & -0.34 & 0.66 \\
+team5 & holdout & 48 & -0.05 & 0.11 & -0.48 & -0.99 & -0.28 & 0.78 \\
+team5 & covid & 24 & 0.02 & 0.13 & 0.13 & 0.21 & -0.15 & 0.73 \\
+team5 & inflation\_rates & 36 & -0.08 & 0.12 & -0.63 & -0.99 & -0.31 & 0.78 \\
+team5 & last18 & 18 & -0.15 & 0.13 & -1.13 & -1.83 & -0.28 & 0.92 \\
+team5 & last12 & 12 & -0.20 & 0.15 & -1.36 & -2.19 & -0.25 & 0.94 \\
+epa5 & full\_1970 & 679 & 0.03 & 0.13 & 0.20 & 1.40 & -0.71 & 0.84 \\
+epa5 & post2010 & 199 & 0.06 & 0.12 & 0.52 & 1.72 & -0.42 & 0.78 \\
+epa5 & validation & 151 & 0.05 & 0.12 & 0.45 & 1.22 & -0.38 & 0.76 \\
+epa5 & holdout & 48 & 0.10 & 0.14 & 0.70 & 1.61 & -0.19 & 0.85 \\
+epa5 & covid & 24 & -0.01 & 0.11 & -0.09 & -0.14 & -0.16 & 0.88 \\
+epa5 & inflation\_rates & 36 & -0.04 & 0.13 & -0.26 & -0.35 & -0.30 & 0.79 \\
+epa5 & last18 & 18 & 0.13 & 0.18 & 0.71 & 0.96 & -0.19 & 1.01 \\
+epa5 & last12 & 12 & 0.14 & 0.22 & 0.64 & 0.70 & -0.17 & 1.02 \\
+team8 & full\_1970 & 679 & -0.00 & 0.09 & -0.02 & -0.10 & -0.63 & 0.70 \\
+team8 & post2010 & 199 & 0.01 & 0.09 & 0.08 & 0.33 & -0.30 & 0.73 \\
+team8 & validation & 151 & 0.02 & 0.09 & 0.18 & 0.62 & -0.20 & 0.68 \\
+team8 & holdout & 48 & -0.02 & 0.11 & -0.15 & -0.29 & -0.19 & 0.89 \\
+team8 & covid & 24 & 0.08 & 0.11 & 0.71 & 1.10 & -0.13 & 0.84 \\
+team8 & inflation\_rates & 36 & -0.02 & 0.12 & -0.19 & -0.29 & -0.24 & 0.88 \\
+team8 & last18 & 18 & -0.08 & 0.11 & -0.77 & -1.17 & -0.19 & 1.02 \\
+team8 & last12 & 12 & -0.09 & 0.13 & -0.66 & -0.85 & -0.19 & 1.03 \\
+epa8 & full\_1970 & 679 & 0.03 & 0.12 & 0.22 & 1.53 & -0.69 & 0.86 \\
+epa8 & post2010 & 199 & 0.07 & 0.12 & 0.60 & 2.15 & -0.29 & 0.82 \\
+epa8 & validation & 151 & 0.06 & 0.11 & 0.53 & 1.56 & -0.29 & 0.80 \\
+epa8 & holdout & 48 & 0.10 & 0.13 & 0.80 & 1.73 & -0.21 & 0.90 \\
+epa8 & covid & 24 & 0.04 & 0.10 & 0.39 & 1.30 & -0.07 & 0.87 \\
+epa8 & inflation\_rates & 36 & 0.04 & 0.14 & 0.28 & 0.38 & -0.24 & 0.86 \\
+epa8 & last18 & 18 & 0.04 & 0.16 & 0.26 & 0.33 & -0.21 & 1.04 \\
+epa8 & last12 & 12 & 0.02 & 0.18 & 0.13 & 0.13 & -0.18 & 1.08 \\
+\bottomrule
+\end{tabular}
+\end{table}

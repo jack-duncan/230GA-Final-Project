@@ -1,0 +1,18 @@
+\begin{table}
+\caption{Best-case evidence per strategy over the whole M2 grid of 8,091 alpha tests (7,938 net-of-cost strategy alphas and 153 raw-spread alphas, which are unhedged and cost-free), over all leg designs, baselines, hedge sets, evaluation sets, cost levels and windows. Alpha in \% p.a. with NW(6) t in parentheses; grid Holm p is the Holm-adjusted p of the single best test. Q2 primary: corrected baseline, 5-and-5, FF5+UMD+COMEQ hedge and alpha, Holm over 14 tests.}
+\label{tab:m2_summary}
+\begin{tabular}{llllrll}
+\toprule
+Strategy & Best any window & Best post-2010 & Best holdout & Grid Holm p (best) & Q2 primary Holm p (post-2010 / holdout) & Survives \\
+\midrule
+Original 3m & 6.15 (4.36), COVID 2020-21 & 1.08 (1.41) & -- & 1.000 & 1.000 / 0.397 & no \\
+Pure 3m & 6.48 (4.33), COVID 2020-21 & 1.20 (1.50) & -- & 1.000 & 1.000 / 0.397 & no \\
+Original 6m & 4.41 (3.05), COVID 2020-21 & 1.36 (1.98) & -- & 1.000 & 1.000 / 0.752 & no \\
+Pure 6m & 4.27 (2.93), COVID 2020-21 & 1.41 (1.98) & -- & 1.000 & 1.000 / 0.752 & no \\
+Continuous raw & 1.99 (3.48), COVID 2020-21 & 0.32 (1.09) & -- & 1.000 & 1.000 / 1.000 & no \\
+Continuous pure & 1.99 (3.46), COVID 2020-21 & 0.40 (1.56) & -- & 1.000 & 1.000 / 1.000 & no \\
+Always-short Brown & 3.87 (2.76), COVID 2020-21 & 1.29 (1.36) & 0.42 (0.22) & 1.000 & 1.000 / 1.000 & no \\
+Raw GB spread (unhedged) & 2.52 (2.57), 1970-2026 & 1.71 (1.17) & 1.55 (0.33) & 1.000 & -- & no \\
+\bottomrule
+\end{tabular}
+\end{table}

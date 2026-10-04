@@ -1,0 +1,15 @@
+question,config,strat,period,n,k,alpha_ann,t_alpha,p_alpha,holm_p,bh_q,positive_and_holm_sig,b_HML,t_HML,perf_ann_net,perf_sharpe
+Q4,5 and 5 (team); corrected baseline; hedge FF3 (team); uniform 5 bp; eval FF3,Original 3m,post2010,199,4,0.010843531,1.4121078,0.15951205,1,0.31485236,False,-0.029954587,-1.200774,0.010198101,0.29791318
+Q4,5 and 5 (team); corrected baseline; hedge FF3 (team); uniform 5 bp; eval FF3,Pure 3m,post2010,199,4,0.011986503,1.4987278,0.13556137,1,0.31485236,False,-0.034429302,-1.4306842,0.010783607,0.30482338
+Q4,5 and 5 (team); corrected baseline; hedge FF3 (team); uniform 5 bp; eval FF3,Original 6m,post2010,199,4,0.013948894,1.5811846,0.11545647,1,0.31485236,False,-0.049182787,-1.9269239,0.013749806,0.32396791
+Q4,5 and 5 (team); corrected baseline; hedge FF3 (team); uniform 5 bp; eval FF3,Pure 6m,post2010,199,4,0.016127059,1.8930825,0.05982795,0.83759129,0.31485236,False,-0.052841645,-1.9548914,0.015623892,0.35929476
+Q4,5 and 5 (team); corrected baseline; hedge FF3 (team); uniform 5 bp; eval FF3,Continuous raw,post2010,199,4,0.0031625941,1.0891742,0.27742128,1,0.31485236,False,-0.015649758,-1.4904934,0.0039716617,0.2827861
+Q4,5 and 5 (team); corrected baseline; hedge FF3 (team); uniform 5 bp; eval FF3,Continuous pure,post2010,199,4,0.0036781096,1.1912638,0.23499799,1,0.31485236,False,-0.019660934,-1.6694404,0.0046541728,0.30949428
+Q4,5 and 5 (team); corrected baseline; hedge FF3 (team); uniform 5 bp; eval FF3,Always-short Brown,post2010,199,4,0.0079474557,0.73421526,0.46369948,1,0.46369948,False,-0.049661656,-1.347317,0.011165343,0.21518659
+Q4,5 and 5 (team); corrected baseline; hedge FF3 (team); uniform 5 bp; eval FF3,Original 3m,holdout,48,4,-0.018718874,-1.6567512,0.10468478,1,0.31485236,False,-0.0075284065,-0.25575368,-0.02309037,-0.68426554
+Q4,5 and 5 (team); corrected baseline; hedge FF3 (team); uniform 5 bp; eval FF3,Pure 3m,holdout,48,4,-0.018718874,-1.6567512,0.10468478,1,0.31485236,False,-0.0075284065,-0.25575368,-0.02309037,-0.68426554
+Q4,5 and 5 (team); corrected baseline; hedge FF3 (team); uniform 5 bp; eval FF3,Original 6m,holdout,48,4,-0.017003258,-1.124952,0.26670877,1,0.31485236,False,-0.017089694,-0.46830736,-0.015763421,-0.37145346
+Q4,5 and 5 (team); corrected baseline; hedge FF3 (team); uniform 5 bp; eval FF3,Pure 6m,holdout,48,4,-0.017003258,-1.124952,0.26670877,1,0.31485236,False,-0.017089694,-0.46830736,-0.015763421,-0.37145346
+Q4,5 and 5 (team); corrected baseline; hedge FF3 (team); uniform 5 bp; eval FF3,Continuous raw,holdout,48,4,-0.0050921284,-1.192396,0.23949713,1,0.31485236,False,-0.0036449257,-0.34167658,-0.0041111652,-0.3450792
+Q4,5 and 5 (team); corrected baseline; hedge FF3 (team); uniform 5 bp; eval FF3,Continuous pure,holdout,48,4,-0.005161945,-1.1861517,0.24192817,1,0.31485236,False,-0.0042445828,-0.37826548,-0.0042914161,-0.34474397
+Q4,5 and 5 (team); corrected baseline; hedge FF3 (team); uniform 5 bp; eval FF3,Always-short Brown,holdout,48,4,-0.016725955,-1.0657212,0.29236291,1,0.31485236,False,-0.028270309,-0.73557778,-0.0099528806,-0.19873817

@@ -1,0 +1,82 @@
+test_id,module,statistic_name,statistic,p_value_two_sided,n_obs,duplicate_of,p1,holm,bh,by,survives_holm,survives_bh
+strat|L5|corr|FF3|u5|Pure 6m|post2010|E:FF3|alpha,M2_christhian_tests,t_alpha_NW6,1.8930825,0.05982795,199,,0.029913975,1.0,0.7181131261111111,1.0,False,False
+Q1_CPU_realtime_O6_validation_alpha,M1b_alt_signals,"FF3 alpha NW(6) t (O6, validation)",1.7262241986064102,0.0843070862144428,151,,0.0421535431072214,1.0,0.7181131261111111,1.0,False,False
+strat|L8H|corr|FF3|team|Pure 6m|post2010|E:FF3|alpha,M2_christhian_tests,t_alpha_NW6,1.6659671,0.097325539,199,,0.0486627695,1.0,0.7181131261111111,1.0,False,False
+strat|L5|corr|FF3|u5|Original 6m|post2010|E:FF3|alpha,M2_christhian_tests,t_alpha_NW6,1.5811846,0.11545647,199,,0.057728235,1.0,0.7181131261111111,1.0,False,False
+alpha_FF5UMD_epa5_post2010,M4_emissions,NW(6) t of alpha (FF5UMD),1.5164186316677917,0.1294135307942902,199,,0.0647067653971451,1.0,0.7181131261111111,1.0,False,False
+strat|L5|corr|FF3|u5|Pure 3m|post2010|E:FF3|alpha,M2_christhian_tests,t_alpha_NW6,1.4987278,0.13556137,199,,0.067780685,1.0,0.7181131261111111,1.0,False,False
+Q1_CPU_realtime_O3_validation_alpha,M1b_alt_signals,"FF3 alpha NW(6) t (O3, validation)",1.4430321934494212,0.1490114025757454,151,,0.0745057012878727,1.0,0.7181131261111111,1.0,False,False
+strat|L5|corr|FF3|u5|Original 3m|post2010|E:FF3|alpha,M2_christhian_tests,t_alpha_NW6,1.4121078,0.15951205,199,,0.079756025,1.0,0.7181131261111111,1.0,False,False
+strat|L8H|corr|FF3|team|Always-short Brown|post2010|E:FF3|alpha,M2_christhian_tests,t_alpha_NW6,1.3547366,0.17706899,199,,0.088534495,1.0,0.7181131261111111,1.0,False,False
+Q1_CPU_realtime_P6_validation_alpha,M1b_alt_signals,"FF3 alpha NW(6) t (P6, validation)",1.2809129824618088,0.2002242322571867,151,,0.10011211612859335,1.0,0.7232769085714285,1.0,False,False
+strat|L5|corr|FF3|u5|Continuous pure|post2010|E:FF3|alpha,M2_christhian_tests,t_alpha_NW6,1.1912638,0.23499799,199,,0.117498995,1.0,0.7232769085714285,1.0,False,False
+strat|L8H|corr|FF3|team|Original 6m|post2010|E:FF3|alpha,M2_christhian_tests,t_alpha_NW6,1.1825509,0.23842706,199,,0.11921353,1.0,0.7232769085714285,1.0,False,False
+M5-P1,M5_industry_momentum,t_NW6_alpha_FF5+UMD,1.093471544008086,0.2741868162944199,679,,0.13709340814720994,1.0,0.7232769085714285,1.0,False,False
+strat|L5|corr|FF3|u5|Continuous raw|post2010|E:FF3|alpha,M2_christhian_tests,t_alpha_NW6,1.0891742,0.27742128,199,,0.13871064,1.0,0.7232769085714285,1.0,False,False
+Q1_MCCC_realtime_O6_validation_alpha,M1b_alt_signals,"FF3 alpha NW(6) t (O6, validation)",0.9321079162754188,0.3512807573298874,151,,0.1756403786649437,1.0,0.7975971772254464,1.0,False,False
+Q1_CPU_realtime_CP_validation_alpha,M1b_alt_signals,"FF3 alpha NW(6) t (CP, validation)",0.8765920552701847,0.3807082559688984,151,,0.1903541279844492,1.0,0.7975971772254464,1.0,False,False
+Q1_CPU_realtime_CR_validation_alpha,M1b_alt_signals,"FF3 alpha NW(6) t (CR, validation)",0.8742762956910939,0.381967805123336,151,,0.190983902561668,1.0,0.7975971772254464,1.0,False,False
+strat|L5|corr|FF5UC|team|Original 6m|post2010|E:FF5UC|alpha,M2_christhian_tests,t_alpha_NW6,0.83328883,0.40572267,199,,0.202861335,1.0,0.7975971772254464,1.0,False,False
+strat|L8H|corr|FF3|team|Continuous pure|post2010|E:FF3|alpha,M2_christhian_tests,t_alpha_NW6,0.77512924,0.43920223,199,,0.219601115,1.0,0.7975971772254464,1.0,False,False
+strat|L5|corr|FF5UC|team|Pure 6m|post2010|E:FF5UC|alpha,M2_christhian_tests,t_alpha_NW6,0.75032355,0.45398317,199,,0.226991585,1.0,0.7975971772254464,1.0,False,False
+strat|L5|corr|FF3|u5|Always-short Brown|post2010|E:FF3|alpha,M2_christhian_tests,t_alpha_NW6,0.73421526,0.46369948,199,,0.23184974,1.0,0.7975971772254464,1.0,False,False
+M5-P2,M5_industry_momentum,t_NW6_alpha_FF5+UMD,0.7051072355141196,0.480743504081091,199,,0.2403717520405455,1.0,0.7975971772254464,1.0,False,False
+strat|L8H|corr|FF3|team|Continuous raw|post2010|E:FF3|alpha,M2_christhian_tests,t_alpha_NW6,0.62811863,0.53066117,199,,0.265330585,1.0,0.8061352331545005,1.0,False,False
+strat|L8H|corr|FF3|team|Pure 3m|post2010|E:FF3|alpha,M2_christhian_tests,t_alpha_NW6,0.62807831,0.53068753,199,,0.265343765,1.0,0.8061352331545005,1.0,False,False
+strat|L8H|corr|FF3|team|Original 3m|post2010|E:FF3|alpha,M2_christhian_tests,t_alpha_NW6,0.56486228,0.57281668,199,,0.28640834,1.0,0.8061352331545005,1.0,False,False
+Q1_MCCC_realtime_O3_validation_alpha,M1b_alt_signals,"FF3 alpha NW(6) t (O3, validation)",0.5312564977341012,0.5952410466184006,151,,0.2976205233092003,1.0,0.8061352331545005,1.0,False,False
+Q1_MCCC_realtime_CR_validation_alpha,M1b_alt_signals,"FF3 alpha NW(6) t (CR, validation)",0.5297010590450926,0.5963192135663429,151,,0.29815960678317144,1.0,0.8061352331545005,1.0,False,False
+Q1_MCCC_realtime_P3_validation_alpha,M1b_alt_signals,"FF3 alpha NW(6) t (P3, validation)",0.4017239473818514,0.6878871984177266,151,,0.3439435992088633,1.0,0.8685138499999999,1.0,False,False
+strat|L5|corr|FF5UC|team|Original 3m|post2010|E:FF5UC|alpha,M2_christhian_tests,t_alpha_NW6,0.39111196,0.69615042,199,,0.34807521,1.0,0.8685138499999999,1.0,False,False
+Q1_CPU_realtime_O3_holdout_alpha,M1b_alt_signals,"FF3 alpha NW(6) t (O3, holdout)",0.3694491514770179,0.7140188921134325,39,,0.35700944605671625,1.0,0.8685138499999999,1.0,False,False
+strat|L5|corr|FF5UC|team|Continuous raw|post2010|E:FF5UC|alpha,M2_christhian_tests,t_alpha_NW6,0.33546582,0.7376419,199,,0.36882095,1.0,0.8685138499999999,1.0,False,False
+strat|L5|corr|FF5UC|team|Continuous pure|post2010|E:FF5UC|alpha,M2_christhian_tests,t_alpha_NW6,0.29156743,0.77093379,199,,0.385466895,1.0,0.87934635421875,1.0,False,False
+Q1_CPU_realtime_P6_holdout_alpha,M1b_alt_signals,"FF3 alpha NW(6) t (P6, holdout)",0.1998212640242766,0.8427768402718177,39,,0.4213884201359088,1.0,0.9321622627248892,1.0,False,False
+strat|L5|corr|FF5UC|team|Pure 3m|post2010|E:FF5UC|alpha,M2_christhian_tests,t_alpha_NW6,0.082459814,0.93436742,199,,0.46718371,1.0,0.9870564104169645,1.0,False,False
+Q1_MCCC_realtime_P6_validation_alpha,M1b_alt_signals,"FF3 alpha NW(6) t (P6, validation)",0.0476563298859175,0.9619901382332532,151,,0.4809950691166266,1.0,0.9870564104169645,1.0,False,False
+strat|L5|corr|FF5UC|team|Always-short Brown|post2010|E:FF5UC|alpha,M2_christhian_tests,t_alpha_NW6,-0.0049803151,0.9960315,199,,0.50198425,1.0,0.9870564104169645,1.0,False,False
+Q1_CPU_realtime_P3_validation_alpha,M1b_alt_signals,"FF3 alpha NW(6) t (P3, validation)",-0.1125727386488781,0.9103692990406608,151,,0.5448153504796696,1.0,0.9870564104169645,1.0,False,False
+strat|L8H|corr|FF3|team|Always-short Brown|holdout|E:FF3|alpha,M2_christhian_tests,t_alpha_NW6,-0.1939368,0.84711796,48,,0.5764410200000001,1.0,0.9870564104169645,1.0,False,False
+Q1_MCCC_realtime_CP_validation_alpha,M1b_alt_signals,"FF3 alpha NW(6) t (CP, validation)",-0.223190969433136,0.8233868800359936,151,,0.5883065599820032,1.0,0.9870564104169645,1.0,False,False
+Q1_CPU_realtime_P3_holdout_alpha,M1b_alt_signals,"FF3 alpha NW(6) t (P3, holdout)",-0.5216552303561858,0.6051960986937639,39,,0.697401950653118,1.0,0.9870564104169645,1.0,False,False
+Q1_CPU_realtime_CP_holdout_alpha,M1b_alt_signals,"FF3 alpha NW(6) t (CP, holdout)",-0.5622725640729572,0.5775140107470683,39,,0.7112429946264658,1.0,0.9870564104169645,1.0,False,False
+strat|L8H|corr|FF3|team|Original 6m|holdout|E:FF3|alpha,M2_christhian_tests,t_alpha_NW6,-0.5999259,0.55163292,48,,0.7241835400000001,1.0,0.9870564104169645,1.0,False,False
+strat|L8H|corr|FF3|team|Continuous pure|holdout|E:FF3|alpha,M2_christhian_tests,t_alpha_NW6,-0.70384993,0.48523463,48,,0.757382685,1.0,0.9870564104169645,1.0,False,False
+strat|L8H|corr|FF3|team|Continuous raw|holdout|E:FF3|alpha,M2_christhian_tests,t_alpha_NW6,-0.78393958,0.43727555,48,,0.781362225,1.0,0.9870564104169645,1.0,False,False
+Q1_CPU_realtime_CR_holdout_alpha,M1b_alt_signals,"FF3 alpha NW(6) t (CR, holdout)",-0.9139259076725794,0.3670091078700266,39,,0.8164954460649867,1.0,0.9870564104169645,1.0,False,False
+Q1_CPU_realtime_O6_holdout_alpha,M1b_alt_signals,"FF3 alpha NW(6) t (O6, holdout)",-0.9761591084172456,0.335684699566495,39,,0.8321576502167525,1.0,0.9870564104169645,1.0,False,False
+strat|L5|corr|FF3|u5|Always-short Brown|holdout|E:FF3|alpha,M2_christhian_tests,t_alpha_NW6,-1.0657212,0.29236291,48,,0.853818545,1.0,0.9870564104169645,1.0,False,False
+strat|L5|corr|FF3|u5|Original 6m|holdout|E:FF3|alpha,M2_christhian_tests,t_alpha_NW6,-1.124952,0.26670877,48,,0.866645615,1.0,0.9870564104169645,1.0,False,False
+strat|L5|corr|FF3|u5|Continuous pure|holdout|E:FF3|alpha,M2_christhian_tests,t_alpha_NW6,-1.1861517,0.24192817,48,,0.879035915,1.0,0.9870564104169645,1.0,False,False
+strat|L5|corr|FF3|u5|Continuous raw|holdout|E:FF3|alpha,M2_christhian_tests,t_alpha_NW6,-1.192396,0.23949713,48,,0.880251435,1.0,0.9870564104169645,1.0,False,False
+strat|L5|corr|FF5UC|team|Always-short Brown|holdout|E:FF5UC|alpha,M2_christhian_tests,t_alpha_NW6,-1.2789593,0.20828165,48,,0.895859175,1.0,0.9870564104169645,1.0,False,False
+Q1_MCCC_realtime_P6_holdout_alpha,M1b_alt_signals,"FF3 alpha NW(6) t (P6, holdout)",-1.308645120552859,0.1999757738976939,36,,0.900012113051153,1.0,0.9870564104169645,1.0,False,False
+Q2.holdout_alpha_FF3UMDBOND.Cont pure|corrected,M3_alpha_beta,holdout alpha FF3+UMD+BOND (annualized),-0.0063946380723444,0.1920346296428348,48,,0.9039826851785826,1.0,0.9870564104169645,1.0,False,False
+Q2.holdout_alpha_FF3UMDBOND.Cont raw|corrected,M3_alpha_beta,holdout alpha FF3+UMD+BOND (annualized),-0.0064189503517076,0.1808783106738117,48,,0.9095608446630942,1.0,0.9870564104169645,1.0,False,False
+Q1_MCCC_realtime_CP_holdout_alpha,M1b_alt_signals,"FF3 alpha NW(6) t (CP, holdout)",-1.3915027742375012,0.173671527429819,36,,0.9131642362850905,1.0,0.9870564104169645,1.0,False,False
+Q2.holdout_alpha_FF3UMDBOND.Orig 6m|corrected,M3_alpha_beta,holdout alpha FF3+UMD+BOND (annualized),-0.0227280117747931,0.1688133574614114,48,,0.9155933212692943,1.0,0.9870564104169645,1.0,False,False
+strat|L5|corr|FF5UC|team|Continuous pure|holdout|E:FF5UC|alpha,M2_christhian_tests,t_alpha_NW6,-1.5230078,0.13562428,48,,0.93218786,1.0,0.9870564104169645,1.0,False,False
+Q1_MCCC_realtime_CR_holdout_alpha,M1b_alt_signals,"FF3 alpha NW(6) t (CR, holdout)",-1.5522246874338037,0.1304437206336133,36,,0.9347781396831933,1.0,0.9870564104169645,1.0,False,False
+strat|L5|corr|FF3|u5|Original 3m|holdout|E:FF3|alpha,M2_christhian_tests,t_alpha_NW6,-1.6567512,0.10468478,48,,0.94765761,1.0,0.9870564104169645,1.0,False,False
+strat|L5|corr|FF5UC|team|Continuous raw|holdout|E:FF5UC|alpha,M2_christhian_tests,t_alpha_NW6,-1.6667993,0.10336696,48,,0.94831652,1.0,0.9870564104169645,1.0,False,False
+Q1_MCCC_realtime_O6_holdout_alpha,M1b_alt_signals,"FF3 alpha NW(6) t (O6, holdout)",-1.7002026153578578,0.0987940908921691,36,,0.9506029545539154,1.0,0.9870564104169645,1.0,False,False
+strat|L8H|corr|FF3|team|Original 3m|holdout|E:FF3|alpha,M2_christhian_tests,t_alpha_NW6,-1.8084876,0.077367747,48,,0.9613161265,1.0,0.9870564104169645,1.0,False,False
+Q1_MCCC_realtime_O3_holdout_alpha,M1b_alt_signals,"FF3 alpha NW(6) t (O3, holdout)",-1.8776171030459547,0.0695741366176867,36,,0.9652129316911566,1.0,0.9870564104169645,1.0,False,False
+strat|L5|corr|FF5UC|team|Original 6m|holdout|E:FF5UC|alpha,M2_christhian_tests,t_alpha_NW6,-1.9151948,0.062636992,48,,0.968681504,1.0,0.9870564104169645,1.0,False,False
+Q1_MCCC_realtime_P3_holdout_alpha,M1b_alt_signals,"FF3 alpha NW(6) t (P3, holdout)",-1.950275399915284,0.0599490707362583,36,,0.9700254646318709,1.0,0.9870564104169645,1.0,False,False
+Q2.holdout_alpha_FF3UMDBOND.Pure 3m|team,M3_alpha_beta,holdout alpha FF3+UMD+BOND (annualized),-0.0244965743654897,0.0559891877680423,48,,0.9720054061159789,1.0,0.9870564104169645,1.0,False,False
+Q2.holdout_alpha_FF3UMDBOND.Orig 3m|corrected,M3_alpha_beta,holdout alpha FF3+UMD+BOND (annualized),-0.0239677327145013,0.0559353462623446,48,,0.9720323268688277,1.0,0.9870564104169645,1.0,False,False
+Q2.holdout_alpha_FF3UMDBOND.Cont pure|team,M3_alpha_beta,holdout alpha FF3+UMD+BOND (annualized),-0.0061794143817269,0.0520322152053986,48,,0.9739838923973007,1.0,0.9870564104169645,1.0,False,False
+Q2.holdout_alpha_FF3UMDBOND.Orig 6m|team,M3_alpha_beta,holdout alpha FF3+UMD+BOND (annualized),-0.0294068447649288,0.0378640001171232,48,,0.9810679999414385,1.0,0.9870564104169645,1.0,False,False
+Q2.holdout_alpha_FF3UMDBOND.Pure 6m|team,M3_alpha_beta,holdout alpha FF3+UMD+BOND (annualized),-0.0322458605668602,0.0367325668029332,48,,0.9816337165985334,1.0,0.9870564104169645,1.0,False,False
+Q2.holdout_alpha_FF3UMDBOND.Cont raw|team,M3_alpha_beta,holdout alpha FF3+UMD+BOND (annualized),-0.0085628187589321,0.0328487186265539,48,,0.9835756406867231,1.0,0.9870564104169645,1.0,False,False
+strat|L5|corr|FF5UC|team|Original 3m|holdout|E:FF5UC|alpha,M2_christhian_tests,t_alpha_NW6,-2.2745876,0.028366564,48,,0.985816718,1.0,0.9870564104169645,1.0,False,False
+Q2.holdout_alpha_FF3UMDBOND.Orig 3m|team,M3_alpha_beta,holdout alpha FF3+UMD+BOND (annualized),-0.0443334348581153,0.025887179166071,48,,0.9870564104169645,1.0,0.9870564104169645,1.0,False,False
+strat|L5|corr|FF5UC|team|Pure 3m|holdout|E:FF5UC|alpha,M2_christhian_tests,t_alpha_NW6,-2.2745876,0.028366564,48,strat|L5|corr|FF5UC|team|Original 3m|holdout|E:FF5UC|alpha,,,,,,
+strat|L5|corr|FF5UC|team|Pure 6m|holdout|E:FF5UC|alpha,M2_christhian_tests,t_alpha_NW6,-1.9151948,0.062636992,48,strat|L5|corr|FF5UC|team|Original 6m|holdout|E:FF5UC|alpha,,,,,,
+strat|L8H|corr|FF3|team|Pure 3m|holdout|E:FF3|alpha,M2_christhian_tests,t_alpha_NW6,-1.8084876,0.077367747,48,strat|L8H|corr|FF3|team|Original 3m|holdout|E:FF3|alpha,,,,,,
+strat|L8H|corr|FF3|team|Pure 6m|holdout|E:FF3|alpha,M2_christhian_tests,t_alpha_NW6,-0.5999259,0.55163292,48,strat|L8H|corr|FF3|team|Original 6m|holdout|E:FF3|alpha,,,,,,
+strat|L5|corr|FF3|u5|Pure 3m|holdout|E:FF3|alpha,M2_christhian_tests,t_alpha_NW6,-1.6567512,0.10468478,48,strat|L5|corr|FF3|u5|Original 3m|holdout|E:FF3|alpha,,,,,,
+strat|L5|corr|FF3|u5|Pure 6m|holdout|E:FF3|alpha,M2_christhian_tests,t_alpha_NW6,-1.124952,0.26670877,48,strat|L5|corr|FF3|u5|Original 6m|holdout|E:FF3|alpha,,,,,,
+Q2.holdout_alpha_FF3UMDBOND.Pure 3m|corrected,M3_alpha_beta,holdout alpha FF3+UMD+BOND (annualized),-0.0239677327145013,0.0559353462623446,48,Q2.holdout_alpha_FF3UMDBOND.Orig 3m|corrected,,,,,,
+Q2.holdout_alpha_FF3UMDBOND.Pure 6m|corrected,M3_alpha_beta,holdout alpha FF3+UMD+BOND (annualized),-0.0227280117747931,0.1688133574614114,48,Q2.holdout_alpha_FF3UMDBOND.Orig 6m|corrected,,,,,,

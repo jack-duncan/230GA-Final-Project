@@ -1,0 +1,187 @@
+name,value,source
+q1_decision,unchanged,primary.csv (holdout alpha > 0 and Holm p < 0.05)
+q1_min_holm_p,1.0,primary.csv
+q1_min_raw_p,0.033317966415103484,primary.csv
+q1_min_raw_p_test,Q1_MCCC_realtime_pure_holdout_IC,primary.csv
+EMV_env_validation_n_pos_alpha_t_ge_1.96,4,results_long.csv
+EMV_env_validation_n_neg_alpha,0,results_long.csv
+EMV_env_validation_mean_alpha_6strats,0.014524507263739939,results_long.csv
+EMV_env_holdout_n_pos_alpha_t_ge_1.96,0,results_long.csv
+EMV_env_holdout_n_neg_alpha,6,results_long.csv
+EMV_env_holdout_mean_alpha_6strats,-0.015686230889493363,results_long.csv
+MCCC_validation_n_pos_alpha_t_ge_1.96,0,results_long.csv
+MCCC_validation_n_neg_alpha,1,results_long.csv
+MCCC_validation_mean_alpha_6strats,0.0033998290656960107,results_long.csv
+MCCC_holdout_n_pos_alpha_t_ge_1.96,0,results_long.csv
+MCCC_holdout_n_neg_alpha,6,results_long.csv
+MCCC_holdout_mean_alpha_6strats,-0.018273525856854697,results_long.csv
+CPU_validation_n_pos_alpha_t_ge_1.96,0,results_long.csv
+CPU_validation_n_neg_alpha,1,results_long.csv
+CPU_validation_mean_alpha_6strats,0.008789195928871067,results_long.csv
+CPU_holdout_n_pos_alpha_t_ge_1.96,0,results_long.csv
+CPU_holdout_n_neg_alpha,4,results_long.csv
+CPU_holdout_mean_alpha_6strats,-0.004237032778217344,results_long.csv
+VIX_validation_n_pos_alpha_t_ge_1.96,0,results_long.csv
+VIX_validation_n_neg_alpha,0,results_long.csv
+VIX_validation_mean_alpha_6strats,0.004746623899922237,results_long.csv
+VIX_holdout_n_pos_alpha_t_ge_1.96,0,results_long.csv
+VIX_holdout_n_neg_alpha,6,results_long.csv
+VIX_holdout_mean_alpha_6strats,-0.00333795260823244,results_long.csv
+EMV_overall_validation_n_pos_alpha_t_ge_1.96,1,results_long.csv
+EMV_overall_validation_n_neg_alpha,0,results_long.csv
+EMV_overall_validation_mean_alpha_6strats,0.010671730485781674,results_long.csv
+EMV_overall_holdout_n_pos_alpha_t_ge_1.96,0,results_long.csv
+EMV_overall_holdout_n_neg_alpha,5,results_long.csv
+EMV_overall_holdout_mean_alpha_6strats,-0.003530990095710142,results_long.csv
+q2_decision,fails,placebo_covid.csv
+q2_VIX_reproduces_realtime,3,placebo_covid.csv
+q2_VIX_reproduces_same_month,3,placebo_covid.csv
+q2_EMV_overall_reproduces_realtime,4,placebo_covid.csv
+q2_EMV_overall_reproduces_same_month,6,placebo_covid.csv
+EMV_env_crossings,26,crossings.csv
+EMV_env_overlap_pm1,26,crossings.csv
+MCCC_crossings,25,crossings.csv
+MCCC_overlap_pm1,11,crossings.csv
+CPU_crossings,23,crossings.csv
+CPU_overlap_pm1,12,crossings.csv
+VIX_crossings,10,crossings.csv
+VIX_overlap_pm1,4,crossings.csv
+EMV_overall_crossings,14,crossings.csv
+EMV_overall_overlap_pm1,9,crossings.csv
+EMV_env_share_crossings,29,crossings.csv
+EMV_env_share_overlap_pm1,19,crossings.csv
+MCCC_transition_crossings,17,crossings.csv
+MCCC_transition_overlap_pm1,8,crossings.csv
+brown_residual_2020-03,-0.03328715246848893,run.py EPS (Brown-leg FF3 residual)
+brown_residual_2020-04,-0.05914631473692972,run.py EPS (Brown-leg FF3 residual)
+bench_covid_alpha,0.04540413350826655,results_long.csv (measure none)
+bench_covid_t,1.9605368369670924,results_long.csv (measure none)
+EMV_env_O3_covid_share_mar_apr_realtime,0.4928064121278607,covid_decomposition.csv
+EMV_env_O3_covid_months_held_mar_apr_realtime,"2020-03, 2020-04",covid_decomposition.csv
+EMV_env_O3_covid_alpha_ex_mar_apr_realtime,0.034785476560532394,covid_decomposition.csv
+EMV_env_O3_covid_t_ex_mar_apr_realtime,2.67716530553155,covid_decomposition.csv
+CPU_O3_covid_share_mar_apr_realtime,0.535245809378589,covid_decomposition.csv
+CPU_O3_covid_months_held_mar_apr_realtime,"2020-03, 2020-04",covid_decomposition.csv
+CPU_O3_covid_alpha_ex_mar_apr_realtime,0.03807850071502418,covid_decomposition.csv
+CPU_O3_covid_t_ex_mar_apr_realtime,2.442734015176311,covid_decomposition.csv
+VIX_O3_covid_share_mar_apr_realtime,0.6357487520349405,covid_decomposition.csv
+VIX_O3_covid_months_held_mar_apr_realtime,2020-04,covid_decomposition.csv
+VIX_O3_covid_alpha_ex_mar_apr_realtime,0.021993110954427145,covid_decomposition.csv
+VIX_O3_covid_t_ex_mar_apr_realtime,1.2529992470038922,covid_decomposition.csv
+EMV_overall_O3_covid_share_mar_apr_realtime,0.6039248627153754,covid_decomposition.csv
+EMV_overall_O3_covid_months_held_mar_apr_realtime,2020-04,covid_decomposition.csv
+EMV_overall_O3_covid_alpha_ex_mar_apr_realtime,0.011786981684125059,covid_decomposition.csv
+EMV_overall_O3_covid_t_ex_mar_apr_realtime,0.6738539208278854,covid_decomposition.csv
+MCCC_O3_covid_share_mar_apr_realtime,1.2417683342091255,covid_decomposition.csv
+MCCC_O3_covid_months_held_mar_apr_realtime,"2020-03, 2020-04",covid_decomposition.csv
+MCCC_O3_covid_alpha_ex_mar_apr_realtime,0.0002856522150281233,covid_decomposition.csv
+MCCC_O3_covid_t_ex_mar_apr_realtime,0.011855275039999608,covid_decomposition.csv
+EMV_env_O3_minus_always_short_alpha_covid_realtime,0.018408079681854633,covid_decomposition.csv
+EMV_env_O3_minus_always_short_t_covid_realtime,0.8713954542354011,covid_decomposition.csv
+EMV_env_O3_minus_always_short_alpha_ex_mar_apr_realtime,0.004167864970166534,covid_decomposition.csv
+EMV_env_O3_minus_always_short_t_ex_mar_apr_realtime,0.18124121921688713,covid_decomposition.csv
+CPU_O3_minus_always_short_alpha_covid_realtime,0.018977599832892433,covid_decomposition.csv
+CPU_O3_minus_always_short_t_covid_realtime,1.016899458474881,covid_decomposition.csv
+CPU_O3_minus_always_short_alpha_ex_mar_apr_realtime,0.007460889124658315,covid_decomposition.csv
+CPU_O3_minus_always_short_t_ex_mar_apr_realtime,0.4430565593237657,covid_decomposition.csv
+bench_covid_alpha_ex_mar_apr_realtime,0.030617611590365863,"covid_decomposition.csv (signal-free, same in both timings)"
+bench_covid_t_ex_mar_apr_realtime,1.051589323241969,covid_decomposition.csv
+VIX_O3_covid_ratio_to_EMV_env_realtime,0.37826533510881266,placebo_covid.csv
+VIX_P3_covid_ratio_to_EMV_env_realtime,0.08126385824087881,placebo_covid.csv
+EMV_overall_O3_covid_ratio_to_EMV_env_realtime,0.25934139475848716,placebo_covid.csv
+EMV_overall_P3_covid_ratio_to_EMV_env_realtime,0.40412054564201905,placebo_covid.csv
+CPU_O3_covid_ratio_to_EMV_env_realtime,1.0089249396403317,placebo_covid.csv
+CPU_P3_covid_ratio_to_EMV_env_realtime,0.7233630337901252,placebo_covid.csv
+EMV_env_O3_covid_share_mar_apr_same_month,0.2283487840891682,covid_decomposition.csv
+EMV_env_O3_covid_months_held_mar_apr_same_month,2020-03,covid_decomposition.csv
+EMV_env_O3_covid_alpha_ex_mar_apr_same_month,0.04246820291325105,covid_decomposition.csv
+EMV_env_O3_covid_t_ex_mar_apr_same_month,2.406306717775948,covid_decomposition.csv
+CPU_O3_covid_share_mar_apr_same_month,0.6079868095113953,covid_decomposition.csv
+CPU_O3_covid_months_held_mar_apr_same_month,"2020-03, 2020-04",covid_decomposition.csv
+CPU_O3_covid_alpha_ex_mar_apr_same_month,0.04219793639799618,covid_decomposition.csv
+CPU_O3_covid_t_ex_mar_apr_same_month,1.9194517313221855,covid_decomposition.csv
+VIX_O3_covid_share_mar_apr_same_month,1.327398451748919,covid_decomposition.csv
+VIX_O3_covid_months_held_mar_apr_same_month,"2020-03, 2020-04",covid_decomposition.csv
+VIX_O3_covid_alpha_ex_mar_apr_same_month,-0.002317782830327705,covid_decomposition.csv
+VIX_O3_covid_t_ex_mar_apr_same_month,-0.28624082837527715,covid_decomposition.csv
+EMV_overall_O3_covid_share_mar_apr_same_month,0.6728954313281335,covid_decomposition.csv
+EMV_overall_O3_covid_months_held_mar_apr_same_month,"2020-03, 2020-04",covid_decomposition.csv
+EMV_overall_O3_covid_alpha_ex_mar_apr_same_month,0.026407992013650752,covid_decomposition.csv
+EMV_overall_O3_covid_t_ex_mar_apr_same_month,0.9936032512067161,covid_decomposition.csv
+MCCC_O3_covid_share_mar_apr_same_month,1.1150443610915535,covid_decomposition.csv
+MCCC_O3_covid_months_held_mar_apr_same_month,"2020-03, 2020-04",covid_decomposition.csv
+MCCC_O3_covid_alpha_ex_mar_apr_same_month,0.0064023358523554825,covid_decomposition.csv
+MCCC_O3_covid_t_ex_mar_apr_same_month,0.21671615544381648,covid_decomposition.csv
+EMV_env_O3_minus_always_short_alpha_covid_same_month,0.014908685894050746,covid_decomposition.csv
+EMV_env_O3_minus_always_short_t_covid_same_month,0.4530432166856599,covid_decomposition.csv
+EMV_env_O3_minus_always_short_alpha_ex_mar_apr_same_month,0.01185059132288518,covid_decomposition.csv
+EMV_env_O3_minus_always_short_t_ex_mar_apr_same_month,0.3652756752077854,covid_decomposition.csv
+CPU_O3_minus_always_short_alpha_covid_same_month,0.01790689007616586,covid_decomposition.csv
+CPU_O3_minus_always_short_t_covid_same_month,0.9851805133099687,covid_decomposition.csv
+CPU_O3_minus_always_short_alpha_ex_mar_apr_same_month,0.011580324807630323,covid_decomposition.csv
+CPU_O3_minus_always_short_t_ex_mar_apr_same_month,0.7777112394096306,covid_decomposition.csv
+bench_covid_alpha_ex_mar_apr_same_month,0.030617611590365863,"covid_decomposition.csv (signal-free, same in both timings)"
+bench_covid_t_ex_mar_apr_same_month,1.051589323241969,covid_decomposition.csv
+VIX_O3_covid_ratio_to_EMV_env_same_month,0.3231629760567341,placebo_covid.csv
+VIX_P3_covid_ratio_to_EMV_env_same_month,0.11735630716048123,placebo_covid.csv
+EMV_overall_O3_covid_ratio_to_EMV_env_same_month,0.7693529754009806,placebo_covid.csv
+EMV_overall_P3_covid_ratio_to_EMV_env_same_month,0.52738142532112,placebo_covid.csv
+CPU_O3_covid_ratio_to_EMV_env_same_month,1.0497108941652282,placebo_covid.csv
+CPU_P3_covid_ratio_to_EMV_env_same_month,0.6545623743561569,placebo_covid.csv
+q2_VIX_reproduced_strategies_realtime,"P6, CR, CP",placebo_covid.csv
+q2_EMV_overall_reproduced_strategies_realtime,"O6, P6, CR, CP",placebo_covid.csv
+q2_VIX_reproduced_strategies_same_month,"P6, CR, CP",placebo_covid.csv
+q2_EMV_overall_reproduced_strategies_same_month,"O3, P3, O6, P6, CR, CP",placebo_covid.csv
+EMV_env_O3_realtime_return_months_held_2019-10_to_2020-06,"2019-11, 2019-12, 2020-01, 2020-02, 2020-03, 2020-04",run.py (position lagged one month)
+EMV_env_realtime_cross_signal_months_2019-06_to_2020-06,"2019-10, 2020-01, 2020-06",run.py (signal date = data month + 1 under real-time timing)
+EMV_env_O3_covid_cum_net_realtime,0.17093930989631212,covid_paths figure (compounded 2020-01 to 2021-12)
+EMV_env_CR_covid_cum_net_realtime,0.06125015083689522,covid_paths figure (compounded 2020-01 to 2021-12)
+VIX_O3_covid_cum_net_realtime,0.07496527864853308,covid_paths figure (compounded 2020-01 to 2021-12)
+VIX_CR_covid_cum_net_realtime,0.04705213557755061,covid_paths figure (compounded 2020-01 to 2021-12)
+EMV_overall_O3_covid_cum_net_realtime,0.07911342893527729,covid_paths figure (compounded 2020-01 to 2021-12)
+EMV_overall_CR_covid_cum_net_realtime,0.057268357645332335,covid_paths figure (compounded 2020-01 to 2021-12)
+MCCC_O3_covid_cum_net_realtime,0.06185220933774893,covid_paths figure (compounded 2020-01 to 2021-12)
+MCCC_CR_covid_cum_net_realtime,0.04308265290137081,covid_paths figure (compounded 2020-01 to 2021-12)
+CPU_O3_covid_cum_net_realtime,0.15597001688168777,covid_paths figure (compounded 2020-01 to 2021-12)
+CPU_CR_covid_cum_net_realtime,0.06728477304591052,covid_paths figure (compounded 2020-01 to 2021-12)
+bench_covid_cum_net,0.14205632794480083,covid_paths figure
+EMV_env_O3_last18_alpha_ann,-0.04053361358701298,recent.csv
+EMV_env_O3_last18_t,-1.5516785254931733,recent.csv
+EMV_env_O3_last18_p,0.14304650517094714,recent.csv
+EMV_env_O3_last18_ann_net,-0.04510691699297664,recent.csv
+EMV_env_O3_last18_n,18.0,recent.csv
+VIX_O3_last18_alpha_ann,0.00794806947214393,recent.csv
+VIX_O3_last18_t,0.8554881437674577,recent.csv
+VIX_O3_last18_p,0.40668426453458106,recent.csv
+VIX_O3_last18_ann_net,0.024882767515522708,recent.csv
+VIX_O3_last18_n,18.0,recent.csv
+EMV_overall_O3_last18_alpha_ann,-0.015621671968820042,recent.csv
+EMV_overall_O3_last18_t,-0.44807873815946736,recent.csv
+EMV_overall_O3_last18_p,0.6609523594394574,recent.csv
+EMV_overall_O3_last18_ann_net,0.01967274957029742,recent.csv
+EMV_overall_O3_last18_n,18.0,recent.csv
+EMV_env_share_O3_last18_alpha_ann,-0.04053361358701298,recent.csv
+EMV_env_share_O3_last18_t,-1.5516785254931733,recent.csv
+EMV_env_share_O3_last18_p,0.14304650517094714,recent.csv
+EMV_env_share_O3_last18_ann_net,-0.04510691699297664,recent.csv
+EMV_env_share_O3_last18_n,18.0,recent.csv
+EMV_env_O3_last12_alpha_ann,0.011979553602478,recent.csv
+EMV_env_O3_last12_t,0.2958418446216424,recent.csv
+EMV_env_O3_last12_p,0.7748846153581664,recent.csv
+EMV_env_O3_last12_ann_net,-0.05206545965592006,recent.csv
+EMV_env_O3_last12_n,12.0,recent.csv
+VIX_O3_last12_alpha_ann,0.00823942343471129,recent.csv
+VIX_O3_last12_t,0.9035163607924801,recent.csv
+VIX_O3_last12_p,0.39264503568236747,recent.csv
+VIX_O3_last12_ann_net,0.04425206389019567,recent.csv
+VIX_O3_last12_n,12.0,recent.csv
+EMV_overall_O3_last12_alpha_ann,0.012987142130788741,recent.csv
+EMV_overall_O3_last12_t,0.1805164109582814,recent.csv
+EMV_overall_O3_last12_p,0.8612362747257859,recent.csv
+EMV_overall_O3_last12_ann_net,0.04510404018899103,recent.csv
+EMV_overall_O3_last12_n,12.0,recent.csv
+EMV_env_share_O3_last12_alpha_ann,0.011979553602478,recent.csv
+EMV_env_share_O3_last12_t,0.2958418446216424,recent.csv
+EMV_env_share_O3_last12_p,0.7748846153581664,recent.csv
+EMV_env_share_O3_last12_ann_net,-0.05206545965592006,recent.csv
+EMV_env_share_O3_last12_n,12.0,recent.csv

@@ -1,0 +1,16 @@
+\begin{table}
+\caption{Style exposures (net returns, full OOS window of each strategy: 1990-01 on for Spec A and the rotation strategies, 2000-01 on for Spec B) on FF5 + UMD. Timing and static strategies at 5\% volatility; rotation strategies at raw scale. Alpha in percent per year; NW(6) t in parentheses.}
+\label{tab:m6_ff6_loadings}
+\begin{tabular}{lrllllllll}
+\toprule
+strategy & n & alpha (t) & Mkt-RF (t) & SMB (t) & HML (t) & RMW (t) & CMA (t) & UMD (t) & r2 \\
+\midrule
+A\_noVIX\_1970:timing\_ridgecv & 439 & 0.24 (0.33) & 0.018 (1.04) & -0.013 (-0.51) & -0.025 (-1.27) & -0.092 (-4.29) & -0.076 (-1.55) & 0.048 (2.05) & 0.10 \\
+A\_noVIX\_1970:static\_long & 439 & 0.58 (0.71) & -0.031 (-1.94) & -0.055 (-1.98) & -0.066 (-1.99) & -0.124 (-2.90) & -0.102 (-2.05) & -0.032 (-1.41) & 0.14 \\
+B\_full\_1990:timing\_ridgecv & 319 & -0.74 (-0.89) & 0.018 (0.92) & 0.068 (2.03) & -0.057 (-1.60) & -0.110 (-2.62) & -0.002 (-0.03) & 0.058 (2.15) & 0.19 \\
+B\_full\_1990:static\_long & 319 & -0.05 (-0.05) & -0.050 (-2.68) & -0.041 (-1.16) & -0.081 (-2.22) & -0.122 (-2.62) & -0.078 (-1.48) & -0.056 (-2.47) & 0.18 \\
+rotation\_ridge & 439 & 1.39 (0.57) & 0.012 (0.27) & -0.202 (-2.41) & -0.033 (-0.31) & 0.049 (0.52) & 0.018 (0.15) & 0.730 (11.00) & 0.52 \\
+industry\_mom\_12\_1 & 439 & 1.65 (0.94) & 0.106 (3.03) & -0.049 (-0.61) & 0.018 (0.20) & -0.083 (-1.00) & -0.032 (-0.28) & 0.955 (27.29) & 0.67 \\
+\bottomrule
+\end{tabular}
+\end{table}

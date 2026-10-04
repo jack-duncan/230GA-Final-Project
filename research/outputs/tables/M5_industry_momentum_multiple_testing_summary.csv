@@ -1,0 +1,8 @@
+item,value
+n_tests,416
+n_primary,4
+n_exploratory,412
+n_exploratory_loadings,30
+n_primary_holm_lt_0.05,0
+n_exploratory_bh_lt_0.05,37
+n_exploratory_excl_loadings_bh_lt_0.05,26

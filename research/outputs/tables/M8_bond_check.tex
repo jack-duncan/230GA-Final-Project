@@ -1,0 +1,26 @@
+\begin{table}[htbp]\centering\small
+\caption{BOND factor checks (GS10 par bond, duration and convexity).}
+\label{tab:m8_bond}
+\begin{tabular}{lrr}
+\toprule
+check & value & reference \\
+\midrule
+calendar-year total return 1994 & -0.0746 & -0.0804 \\
+calendar-year total return 1999 & -0.0671 & -0.0825 \\
+calendar-year total return 2008 & 0.1940 & 0.2010 \\
+calendar-year total return 2009 & -0.0671 & -0.1112 \\
+calendar-year total return 2022 & -0.1504 & -0.1783 \\
+calendar-year total return 2023 & 0.0052 & 0.0388 \\
+corr(annual BOND, Damodaran) 1993-2025 & 0.9870 &  \\
+mean GS10 1990-1999 (decimal) & 0.0666 &  \\
+modified duration 1990-1999 mean & 7.2232 &  \\
+modified duration 1993-2009 mean & 7.7449 &  \\
+modified duration 2010-2019 mean & 8.8396 &  \\
+max $|$D - closed form (1/y)(1-(1+y/2)\^{}-20)$|$ & 0.0000 & 0.0000 \\
+max $|$monthly BOND total - exact repricing$|$ 1993-2009 & 0.0005 &  \\
+corr(monthly BOND total, exact) 1993-2009 & 1.0000 &  \\
+BOND excess mean 1993-2009, annualized & 0.0329 &  \\
+BOND excess vol 1993-2009, annualized & 0.0643 &  \\
+\bottomrule
+\end{tabular}
+\end{table}
