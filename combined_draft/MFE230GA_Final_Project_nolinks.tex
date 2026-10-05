@@ -1,0 +1,347 @@
+\documentclass[11pt]{article}
+\usepackage[letterpaper,margin=0.95in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{mathpazo}
+\usepackage{microtype}
+\usepackage{booktabs,array,graphicx,amsmath,amssymb,xcolor,url,xurl,tabularx}
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage[round]{natbib}
+\usepackage[hidelinks]{hyperref}
+\usepackage{enumitem}
+\usepackage[export]{adjustbox}
+\usepackage{framed,float}
+\newcommand{\fit}[1]{\adjustbox{max width=\linewidth}{\input{#1}}}
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setlist{nosep,leftmargin=1.4em}
+\setlength{\parskip}{0.45em}
+\setlength{\parindent}{0pt}
+\renewcommand{\arraystretch}{1.1}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+% prompt excerpts in the body and the appendix
+\newenvironment{promptbox}{\begin{quote}\small\sloppy\setlength{\parskip}{0.3em}}{\end{quote}}
+\definecolor{draftbg}{RGB}{255,244,214}
+\newenvironment{draftnote}{\def\FrameCommand{\fboxsep=6pt\colorbox{draftbg}}\MakeFramed{\advance\hsize-\width\FrameRestore}\small}{\endMakeFramed}
+
+\title{\vspace{-1.8em}\textbf{Two Falsification Tests of Industry Alpha:\\ Climate Attention and Analyst Revisions}}
+\author{\small MFE 230GA Active Asset Management, Final Project\\
+\small Group 4: Hashim Almodamagha, Aditya Aryan, Jack Duncan,\\ \small Charishma Takkallapalli, Cristhian Ruiz Cardozo}
+\date{\small October 2026}
+
+\begin{document}
+\maketitle
+\vspace{-1.6em}
+
+\section*{Executive Summary}
+
+We tested two industry-level strategies and recommend \textbf{do not implement} for both. The first, from the Homework~1 emissions exercise, shorts a factor-hedged basket of the five highest-emission Fama--French industries for three or six months after ``climate-transition attention'' spikes. In its design window the 6-month rule earned 2.45\% a year net (FF3 alpha $t=2.23$). It failed every test that was not used to design it: every rule lost money in a 2022--2026 holdout, a cleaner rule frozen before it was run on 1994--2009 had a timing alpha of $-0.18\%$ a year ($t=-0.27$), the ``attention'' series turned out to be a stock-market-volatility news index rather than a climate measure, and most of its one good period (COVID) came from simply being short the same industries. That work kept showing apparent industry alpha to be a known factor in disguise, so we pivoted to a sharper question, with the rejection rule fixed in advance: do industry-level analyst EPS revisions predict next-month returns beyond industry momentum? Momentum has a real signal (IC 0.047, Newey--West $t=3.96$, 1985--2025). Revisions are weak alone (IC 0.010, $t=1.06$) and carry nothing once momentum is removed (IC 0.000, $t=-0.05$). Revision portfolios trade about 174\% of capital a month and lose about 4\% a year after costs. The IC-blended portfolio looks like alpha against FF5 (2.4\% a year, $t=2.21$), but the alpha falls to 0.2\% ($t=0.36$) once UMD is added and is zero after 2010. No robustness setting reaches $t\geq 2$. The blend's performance is momentum exposure, not incremental revision alpha. Each of the five of us ran one facet of the project in conversation with Claude. The conversations found two real bugs and one mislabeled input, and also proposed a sample cutoff, a ``pass'' flag and a replacement sentence that would each have flattered the results, so every output was checked against the data before it was used.
+
+\section{What Did You Try?}
+\label{sec:try}
+
+\subsection{Ideas}
+\label{sec:ideas}
+
+\textbf{Origin.} Homework~1 gave us the risk tools (monthly Ken French returns, a covariance with a 30-month half-life, volatilities and betas) and an AI-generated emissions idea. Our group selected a factor-neutral Green-minus-Brown spread and wrote down its main risk in advance: that a hedged spread might turn out to be ``a growth-minus-value bet with a commodity short attached, not a climate factor.'' Investors with green preferences may accept lower returns on green assets \citep{bk}, but realized green returns can also be high because climate concern rose unexpectedly \citep{pst2021,pst2022}, which suggests timing rather than a permanent tilt. Our first thesis: \emph{the Green-minus-Brown spread has no stable premium, but its factor-neutral Brown leg underperforms in the months after climate-transition attention spikes above its own historical range. If a holdout never used in design shows no such profit, the thesis is wrong.} Homework~2 gave us the alpha and sizing tools used in the second strategy: alphas from IC and residual risk, blending correlated signals with $w\propto R^{-1}\mathrm{IC}$, and holdings $h_n=\alpha_n/(2\lambda\omega_n^2)$.
+
+\textbf{The pivot.} The instructor allowed a change of direction when an idea that passed the smell test did not survive implementation, as long as the first idea is documented. Each apparent alpha in the Climate program was a known factor: the raw spread was a value bet, and an equal-weight industry momentum book built on the same data was essentially UMD (FF5+UMD alpha $t=1.09$, UMD beta 0.99). We did not search for a specification that would rescue the Climate rule. We asked a question the first study had made obvious: \emph{earnings news diffuses slowly, so industries with net upward analyst EPS revisions outperform over the following month, and this signal carries information beyond price momentum.} \textbf{Falsification, fixed before testing:} if the revision signal or the blended strategy has no FF5+UMD alpha with $t\geq 2$ net of costs, particularly after 2010, we report ``do not implement.'' Windows with fewer than 36 months are labeled \emph{low power} and cannot pass or fail.
+
+\textbf{How we worked with Claude.} Each member owned one facet and ran it in a separate conversation with Claude (Anthropic): four as chats with no file access or code execution, which saw only what the prompt contained, and one in Claude Code against the repository (Table~1). Every reply was checked against our data before anything in it was used, and the prompts record who asked what. The brief names ChatGPT. We used ChatGPT in Homework~1 and for the first Climate replication blueprint, and Claude afterwards.
+
+\begin{table}[h]
+\centering\footnotesize
+\caption{Who did what, and the Claude conversation behind it. Prompts are excerpted in Section~\ref{sec:prompts} and reproduced in Appendix~\ref{app:claude}.}
+\label{tab:members}
+\begin{tabularx}{\linewidth}{@{}l Y l l@{}}
+\toprule
+Member & Facet & Brief category & Appendix \\
+\midrule
+Jack Duncan & Built the Climate rule and its macro-state analysis. Asked for a design review of it & Idea generation & D.1 \\
+Hashim Almodamagha & Audited the signal's source. Froze and ran the 1994--2009 test. Commissioned a second implementation & Coding support & D.2 \\
+Cristhian Ruiz Cardozo & Ran the four overlooked tests (legs, controls, HML source, costs). Designed the multiple-testing framework & Robustness design & D.3 \\
+Aditya Aryan & Red-teamed the Climate verdict, two rounds & Critical review & D.4 \\
+Charishma Takkallapalli & Built the analyst-revision strategy, phases 1--9, in Claude Code & Coding and robustness & D.5 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Data}
+\label{sec:data}
+
+\textbf{Climate stage.} Industry returns are Ken French FF49 value-weighted portfolios (1926--2026) with FF3 factors. Emissions intensity is the Homework~1 course file, one undated cross-section covering 41 of the 49 industries. The macro file's ``attention'' column equals FRED series EMVENRGYENVREG in all 500 months, the Equity Market Volatility tracker for energy and environmental regulation \citep{emv}. The audit also used the Media Climate Change Concerns index \citep{ardia}, the Climate Policy Uncertainty index \citep{cpu} and EPA supply-chain emission factors.
+
+\textbf{Revision stage.} Ken French 49 value-weighted industry returns (July 1926--August 2026) and FF5, UMD and short-term reversal factors, same vintage. Analyst data are I/B/E/S summary statistics (annual EPS, current fiscal year, US firms: 2.24 million firm-month snapshots, 1985--2026), linked to CRSP common stocks through the WRDS link table (score $\leq 2$), using the snapshot dated on or before each month-end, historical SIC codes and month-$t$ market caps. The link table has no valid links in 2026, so REV is missing from January 2026. We leave it missing and report coverage, which makes the REV strategies' ``recent 18 months'' only 10 return months. REV covers on average 93\% of industries per month. Cells with fewer than five linked firms are set to missing.
+
+\subsection{Implementation}
+\label{sec:impl}
+
+\textbf{Climate rule.} Green and Brown are the five lowest- and highest-intensity industries (Brown: Util, Ships, Aero, Steel, BldMt). The Brown leg is hedged with rolling 60-month FF3 betas lagged one month. When the 60-month z-score of the attention series crosses its past-only 80th percentile, the rule shorts the hedged Brown leg for 3 or 6 months, sized to 5\% residual volatility. Costs are charged on the leg and on each factor overlay. Design used 2010-01 to 2022-07. 2022-08 to 2026-07 was held out. Beyond the rules as first built we ran: a \emph{corrected baseline} that lags attention one month and fills a missing CPI print. An \emph{always-short} benchmark, the same hedged leg with no signal, to separate timing from exposure. A \emph{frozen test}, a cleaner signal and a four-part pass bar written down before any 1994--2009 return was used. Finally, an audit that checked the signal against genuine climate-concern indices, rebuilt the emissions ranking from EPA factors, and put every test into one multiple-testing ledger (Appendix~\ref{app:climate}).
+
+\textbf{Revision signals.} \emph{MOM}: compounded industry return over months $t-11$ to $t-1$. \emph{REV}: for firms with at least three estimates, $(\#\text{up}-\#\text{down})/\#\text{estimates}$, cap-weighted within each industry (at least five firms). \emph{REV orthogonal}: the residual of a monthly cross-sectional regression of REV on MOM, the direct test of the thesis. \emph{Blend}: the HW2 rule $w\propto R^{-1}\mathrm{IC}$, with the MOM--REV correlation and mean ICs estimated on an expanding window of past months only (60-month minimum, weights from January 1990, the blended book from 1995). Each signal is z-scored across industries monthly and winsorized at $\pm3$.
+
+\textbf{Risk model and portfolio.} Alphas follow Grinold--Kahn, $\alpha_n=\mathrm{IC}\cdot\omega_n\cdot z_n$, demeaned. Holdings solve $h=\Sigma^{-1}\alpha/(2\lambda)$ subject to dollar neutrality and $|h_n|\leq 10\%$ of gross. $\Sigma$ is an EWMA covariance of the 49 industries with a 30-month half-life (the HW1 choice), estimated with data through $t$ and shrunk 50\% toward its diagonal: without shrinkage the optimizer met its 5\% ex-ante target but realized about 10\% with roughly four times gross leverage. Each month $\lambda$ is set so that ex-ante active risk is 5\% a year. For the blend the median $\lambda$ is 2.32 (10th--90th percentile 1.93--3.23). Holdings formed at $t$ earn $h(t)'r(t+1)$. We run four books: MOM, REV, REV orthogonal and the blend.
+
+\textbf{Turnover and costs.} Turnover is measured against drifted weights and charged 10, 20 (base) or 30 bp one-way on the next month's return. Industry revision ranks change a lot from month to month, so REV books trade about 174\% of capital a month (182\% for REV orthogonal), against 51\% for MOM and 58\% for the blend. REV's break-even cost is about 1 bp. At 20 bp it loses 4.0\% a year (net Sharpe $-0.80$) with a 72\% drawdown. Net of 20 bp the blend's Sharpe is 0.27 and its worst drawdown 23\% (Appendix Table~8). The Climate rules turn over 2.7 to 5.3 times a year and costs take at most 0.6 points of their return.
+
+\subsection{Claude prompts}
+\label{sec:prompts}
+
+Five prompts carried the project, one per member. Each is quoted here by its opening and its request, and in full with the reply summary and our evaluation in Appendix~\ref{app:claude}. The styles differ, and that turned out to matter: the two prompts that fixed every number and constraint in advance (D.2, D.3) got the most accurate replies, and the shortest follow-ups (D.5) delegated the most.
+
+\textbf{D.1 Jack, design review of the Climate rule} (962 words, with a 408-word follow-up):
+\begin{promptbox}
+``I built the climate-attention timing strategy in our team repo (\path{notebooks/climate_alpha_analysis.py}) and I want a design review before we sink more hours into it. Act as a skeptical buy-side quant. Find the weak points. Don't fix my prose. [\ldots] What I want back, in this order. 1. Design critique: max six problems, ranked by how much each could flip the verdict. Problem / why it matters here / fix. 2. Proposal ranking: one table for A--G [\ldots] 3. New ideas: exactly five [\ldots] each with (a) a falsifiable hypothesis and the result that rejects it. (b) the exact test [\ldots] Rules: work from our numbers, not generic ESG results. Don't invent backtest results. Label anything you haven't computed as a guess.''
+\end{promptbox}
+
+\textbf{D.2 Hashim, code for a pre-registered backtest} (997 words, with a 444-word follow-up):
+\begin{promptbox}
+``Write Python code for a pre-registered backtest I will run exactly once. You do not have the data, so report no results. [\ldots] THE FROZEN RULE. 1. Signal: $s_t$ = EMVENRGYENVREG$_t$ / EMVOVERALLEMV$_t$, observed one month late. 2. Zeros: a zero month is missing, not low attention. [\ldots] 6. Pass bar, all four required [\ldots] Where the spec is silent, pick one reading, make it a parameter and say why. [\ldots] AFTER THE CODE. (a) Number every assumption you made beyond this spec. (b) The checks you would run before my single real run, each with the result that would make you stop, including a look-ahead test.''
+\end{promptbox}
+
+\textbf{D.3 Cristhian, the multiple-testing framework} (1,060 words):
+\begin{promptbox}
+``Please act as the skeptical member of an investment committee. The task is to design the robustness and multiple-testing framework that will decide the final verdict of our project. [\ldots] 4. My own four tests (8-and-8 legs, FF5+UMD+commodity controls, HML source, 5/10/25 bp costs): 8,091 alpha tests, 0 positive survivors under Holm or BH. [\ldots] Question 1, families. How should the family-wise error rate or the false discovery rate be controlled across a project of this size [\ldots] Conditions. Do not propose new signals. `No candidate can reach implement' is an acceptable answer, provided you say why.''
+\end{promptbox}
+
+\textbf{D.4 Aditya, red team of the Climate verdict} (809 and 879 words, two rounds):
+\begin{promptbox}
+``I'm the red team on my own team's report. Read Hashim's draft verdict twice: once as the investment-committee member who has to sign `Do not implement', once as a journal referee. Break it before the grader does. No summary. No praise. [\ldots] 1. Weakest claims. Exactly five, ranked by how much each affects the verdict or the grade. [\ldots] Overreach toward `Do not implement' counts. $t=0.87$ does not prove timing adds nothing.'' Round two added: ``This time you also get the best evidence against us.''
+\end{promptbox}
+
+\textbf{D.5 Charishma, the revision strategy in Claude Code} (the project plan as the first prompt, then short follow-ups):
+\begin{promptbox}
+``[The project plan \texttt{CLAUDE.md} attached as a file.] I want to set up this repo for the project'' [\ldots] ``how is this looking so far; any improvements needed?'' [\ldots] ``what are the next steps now? currently ignoring 2026'' [\ldots] ``how are the risks looking so far; ok go with covariance shrinkage and go with phase 6;'' [\ldots] ``ok'' (in reply to ``Should I go ahead with Phase 7?'', and again for Phases 8 and 9).
+\end{promptbox}
+
+The plan behind D.5 fixed the thesis, the rejection rule, the timing rules (``a signal formed at the end of month $t$ may only use information available on or before the end of month $t$'') and per-phase acceptance checks before any result existed. It, not the follow-ups, was the specification.
+
+\section{What Did You Learn?}
+\label{sec:learn}
+
+\subsection{Style and risk factor exposures}
+\label{sec:exposures}
+
+\textbf{The Climate spread is a value bet, and the attention signal is a volatility measure.} The raw Green-minus-Brown spread loads $-0.23$ on HML ($t=-4.63$, 1970--2026, and $-0.30$, $t=-5.74$, since 2010) with no significant alpha, mostly through the Brown leg. The hedge removes most but not all of it. The ``attention'' z-score correlates $-0.0004$ with media climate concern \citep{ardia} and is mostly zero since late 2021. Climate-concern indices fed through the same rules earn nothing (0 of 12 validation alphas with $t\geq 1.96$), while overall equity-market volatility news, a placebo, earns almost as much as the team signal. The COVID gain is mostly exposure: the 3-month rule's COVID FF3 alpha was 6.38\% ($t=3.62$), the always-short position earned 4.54\% ($t=1.96$), and the rule's paired edge over it was 1.84\% a year ($t=0.87$).
+
+\begin{table}[h]
+\centering\footnotesize
+\caption{Revision strategy, net returns (20 bp) regressed on FF5, FF5+UMD (primary) and FF5+UMD+short-term reversal (STREV). Annual alpha in \%, Newey--West (6 lags) $t$ in parentheses. Post-2010 has 192 return months for REV-based books and 199 for MOM.}
+\label{tab:attr}
+\fit{tables/T5_attribution.tex}
+\end{table}
+
+\textbf{The revision blend's apparent alpha is momentum beta.} This is the decisive test (Table~2, Appendix Figure~\ref{fig:alpha}). Against FF5 alone, MOM shows 3.3\% a year ($t=2.84$) and the blend 2.4\% ($t=2.21$). Adding UMD removes most of it: the blend's alpha falls to 0.2\% ($t=0.36$) with a UMD loading of 0.30 ($t=20.4$), and $R^2$ rises from 0.10 to 0.59. After 2010 the blend's FF5+UMD alpha is 0.0\% ($t=-0.02$). Short-term reversal changes nothing. REV and REV orthogonal have significantly negative net alphas ($-4.5\%$ and $-4.6\%$ a year, $t\approx-5.5$ to $-5.8$). Before costs the blend's 6-factor alpha is 1.6\% ($t=2.44$), smaller than MOM's 2.4\% ($t=3.18$), so revisions dilute rather than add. It is fully consumed at 23 bp and not significant at 10 bp ($t=1.40$) or after 2010 (Appendix Table~12). Plain industry momentum keeps some alpha beyond UMD at 10 bp (1.8\%, $t=2.36$) but not at our 20 bp base case ($t=1.55$) or after 2010 ($t=0.64$). That is not our thesis, so we treat it as a paper-trading candidate, not a result. Realized volatility runs above the 5\% target for the blend (6.6\%, 1.32 times target) and MOM (6.2\%), mainly because of the 2009 momentum crash (Appendix Table~7).
+
+\subsection{Time patterns of performance}
+\label{sec:time}
+
+\begin{table}[h]
+\centering\footnotesize
+\caption{Climate strategy, corrected baseline. Each cell: annual net return / FF3 alpha (Newey--West, 6 lags, $t$), in \%. Recent window has 18 observations (low power).}
+\label{tab:ctime}
+\fit{tables/C2_time_patterns.tex}
+\end{table}
+
+\textbf{Climate.} In the design window the rules worked (Table~3). As first built, before the attention lag and the CPI fix, the 6-month rule earned 2.45\% a year net (FF3 alpha $t=2.23$). Every rule lost in the holdout, as did the always-short position, and the signal's IC reversed sign (continuous weight: $-0.15$, $t=-2.19$, in design and $+0.06$ in the holdout). The last 18 months lose for every rule. Rates do not explain the loss, and the frozen 1994--2009 rule, the one clean window, had a timing alpha of $-0.18\%$ a year ($t=-0.27$, and random re-datings give $p=0.48$).
+
+\textbf{Revisions.} MOM has a mean IC of 0.047 ($t=3.96$) over 1985--2025 and 0.035 after 2010 ($t=2.22$). REV is positive but insignificant (0.010, $t=1.06$) and zero after 2010. Its part orthogonal to momentum has an IC of 0.000 ($t=-0.05$) and $-0.007$ after 2010 ($t=-0.50$). REV and MOM have an average cross-sectional correlation of 0.31: most of what REV knows, momentum already knows. The blend weight on REV falls from 0.34 in 1990 to $-0.05$ by 2010 and $-0.13$ by 2026 (Appendix Figure~\ref{fig:ic}b). A descriptive split, chosen after seeing the weights, shows REV with a significant IC in 1985--1994 (0.045, $t=2.35$) and none since 1995. Even then its orthogonal part was not significant (0.020, $t=1.13$, Appendix Table~6). MOM earns 3.9\% a year gross at 6.6\% volatility (Sharpe 0.59) and the blend 3.2\% (Sharpe 0.48) over 1995--2025. The blend's net Sharpe is 0.27 and 0.32 after 2010, with zero FF5+UMD alpha in both (Appendix Table~9). Its recent-window alpha has $t=3.40$, but from 10 observations for seven parameters, so it is labeled LOW POWER and carries no information. MOM's recent alpha (17 months) is $-0.5\%$ ($t=-0.12$). In 2009 the blend lost 13.3\% and MOM 11.8\% while UMD lost 52.8\% (April 2009 alone cost the blend 12.1\%), and REV did not hedge the crash ($-18.3\%$). In 2020 the blend gained 12.3\% (Appendix Table~10). The rolling 36-month FF5+UMD alpha averages $-0.1\%$ a year, with $t\geq 2$ in 6\% of windows and $t\leq-2$ in 5\%, about what noise produces (Appendix Figure~\ref{fig:roll}). There is no persistent alpha regime.
+
+\subsection{Robustness and limits}
+\label{sec:robust}
+
+\textbf{Climate.} In order of importance: (1) out-of-sample failure in the holdout, the frozen window and the IC. (2) The proxy does not measure climate concern. (3) Timing cannot be separated from exposure. (4) Multiple testing: across 73 primary alpha tests the smallest Holm-adjusted $p$ is 1.00, and Cristhian's 8,091-cell grid of legs, controls and costs has no positive survivor under Holm or BH. (5) Data limits: a single undated emissions snapshot applied back in time is a look-ahead in leg membership, and on EPA factors Aero and Ships rank 31st and 20th of 49, not in the top five. Costs were not the reason: gross holdout alphas were already negative. The strongest case against the verdict is our own signal lagged one month, with a timing alpha of $+0.69\%$ over 1994--2009 ($t=1.00$) but $-1.11\%$ over the holdout ($t=-1.13$). Pooled over both unseen windows it is $+0.36\%$ a year ($t=0.70$).
+
+\textbf{Revisions.} Does any reasonable specification reverse the conclusion? No (Appendix Table~11). Each row of the one-at-a-time grid reruns signals, blend, holdings and backtest. The highest FF5+UMD $t$ is 1.40 (10 bp costs) and the highest net Sharpe 0.38. Covariance half-life and risk target barely matter. Shorter momentum lookbacks trade more and lose the edge (6-month: alpha $-3.1\%$, $t=-3.89$). The consensus-change revision measure makes the blend worse. A dollar- and beta-neutral book has $t=0.74$. A $3\times3$ grid of lookback and half-life gives net Sharpe ratios from $-0.42$ to $0.28$ (Appendix Figure~\ref{fig:heat}). \emph{Limits:} industry aggregation may hide firm-level drift. REV ends in December 2025. The 50\% shrinkage was chosen after seeing the unshrunk model miss its risk target (a risk decision, not a return-based one). Costs are linear. Three robustness rows came from a different cleaned CRSP panel and are flagged.
+
+\subsection{Critical evaluation of Claude}
+\label{sec:claude}
+
+Each of us evaluated our own conversation against the data (Appendix~\ref{app:claude}). The pattern across the five is the same. \textbf{Claude was a sharp referee of method and wording, an exact implementer of an exact specification, and a poor judge of inputs it could not see.}
+
+\textbf{Jack (D.1).} The design review changed the plan three times: it showed that a timing claim's null is the always-short position, not zero. It proposed the backward test on the one window with no computed strategy returns, and it flagged Aero and Ships as odd Brown members, which the EPA rebuild confirmed. It also got 6 of 52 checkable claims wrong (it blamed the holdout loss on duration, though the hedged leg's rate beta has $t=0.05$), and neither reply asked what ``attention'' measured. That was a failure of the prompt as much as of the reply.
+
+\textbf{Hashim (D.2).} Given a frozen specification, the 985-line script ran the first time and reached the verdict of our own implementation (alpha $-0.19\%$, $t=-0.25$, against $-0.18\%$, $t=-0.27$). With two open readings set to ours it matched all 5,000 shuffle draws to $3.3\times10^{-13}$. Its errors sat outside the formulas: a hard-coded burn-in, a positive control that failed its own stop rule, and a look-ahead test that caught 4 of 6 injected bugs (7 of 8 after the fix). Claude is a cheap second implementation of backtest code, not a verifier of it.
+
+\textbf{Cristhian (D.3).} All ten cells of its deflated Sharpe table reproduce to within 0.005 and its bottom line matched ours, but 11 of 93 claims were wrong, three of them because the prompt printed the equal-weight book's UMD beta (0.99) beside the optimizer's numbers. Several of its pass bars would have misread our data: its $\pm2\%$ equivalence test calls a significantly negative holdout ``insufficient evidence''. We kept the framework (families defined by the decision a test can change, and the deflated appraisal ratio) and dropped the bars.
+
+\textbf{Aditya (D.4).} Every criticism aimed at a sentence landed, and thirteen summary rewordings came from it, including the holdout interval and the power of the frozen test (an edge of about 1.9\% a year is detectable with 80\% probability). But almost every number it needed from our files was guessed, and four of the six guesses we could check were wrong. One proposed edit would have put a false claim in the summary. A red team is only as hard as its evidence, which is why round two sent the best evidence against us.
+
+\textbf{Charishma (D.5).} Claude Code's review of our own code found two real errors (momentum used $t-12$ to $t-2$, and CRSP characteristics were carried across gaps), its implementation of the point-in-time joins, optimizer and attribution was correct and unit-tested, and it raised the risk-target overshoot itself. But when told ``currently ignoring 2026'' it added a December 2025 cutoff that silently moved the required recent window to one where coverage looks complete. Its rejection flag marked a 10-month regression as a ``pass'', and its first draft summary said no window reached $t\geq 2$, which was false. One-word follow-ups delegated too much. They worked only because the plan had fixed the thesis, windows and rejection rule first.
+
+\textbf{What we would do differently.} State in every follow-up the specific risk to be checked (``does any choice in this phase depend on the result?''). Require the model to list its own assumptions, which D.1--D.4 did and D.5 did not. Name the source of every input series, and log every prompt, including those sent to other tools.
+
+\subsection{Decision and lessons}
+\label{sec:decision}
+
+\textbf{Do not implement} either strategy. For the Climate rule, the signal is volatility news, the gain is not separable from a Brown-leg exposure, and the pre-registered test of the timing rule failed. For the revision overlay, the pre-registered test fails for every book in the 1995--2025 and post-2010 windows and for every robustness row. Industry revisions are mostly a lagged reflection of the news that drives industry momentum, and their month-to-month rank changes make them expensive to trade. A revision idea would need a slower-moving signal and evidence that it predicts returns after UMD and realistic costs. We take four rules from the project: read the label of every input. Benchmark every timing claim against the untimed position. Write the rejection rule before the test, which is what let us stop twice without arguing with the data. Treat an AI assistant's defaults, flags and summaries as claims to be checked, not results.
+
+\begin{thebibliography}{9}\small
+\setlength{\itemsep}{0pt}
+\bibitem[Ardia et al.(2023)]{ardia} Ardia, D., K. Bluteau, K. Boudt, and K. Inghelbrecht (2023). Climate change concerns and the performance of green vs.\ brown stocks. \emph{Management Science} 69(12), 7607--7632.
+\bibitem[Baker et al.(2019)]{emv} Baker, S., N. Bloom, S. Davis, and K. Kost (2019). Policy news and stock market volatility. NBER Working Paper 25720.
+\bibitem[Bolton and Kacperczyk(2021)]{bk} Bolton, P., and M. Kacperczyk (2021). Do investors care about carbon risk? \emph{Journal of Financial Economics} 142, 517--549.
+\bibitem[Gavriilidis(2021)]{cpu} Gavriilidis, K. (2021). Measuring climate policy uncertainty. SSRN Working Paper 3847388.
+\bibitem[Grinold and Kahn(2000)]{gk} Grinold, R., and R. Kahn (2000). \emph{Active Portfolio Management}, 2nd ed. McGraw-Hill.
+\bibitem[P\'astor et al.(2021)]{pst2021} P\'astor, L., R. Stambaugh, and L. Taylor (2021). Sustainable investing in equilibrium. \emph{Journal of Financial Economics} 142, 550--571.
+\bibitem[P\'astor et al.(2022)]{pst2022} P\'astor, L., R. Stambaugh, and L. Taylor (2022). Dissecting green returns. \emph{Journal of Financial Economics} 146, 403--424.
+\end{thebibliography}
+
+%% =====================================================================================
+\clearpage
+\appendix
+
+\section{Climate strategy: supporting evidence}
+\label{app:climate}
+
+Table~4 condenses the Climate research program. Rows 1 and 3 are reproduced in Notebook~1. The other rows are imported verified results from the audit modules (Appendix~\ref{app:repro}), where each module's headline numbers were computed twice by independent code. The audit used the always-short benchmark, the frozen pre-registered test, the climate-concern indices MCCC \citep{ardia} and CPU \citep{cpu}, an EPA supply-chain rebuild of the emissions ranking for all 49 industries, carbon-aware industry momentum, and a project-wide multiple-testing ledger.
+
+\begin{table}[!htbp]
+\centering\footnotesize
+\caption{The experiments that changed our view of the Climate strategy. Alphas annualized. $t$-statistics Newey--West with 6 lags. Row 1 uses the rules as first built. Table~3 uses the corrected baseline.}
+\label{tab:cexp}
+\input{tables/C1_experiments.tex}
+\end{table}
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=0.86\linewidth]{figures/C1_timed_vs_always_short.pdf}
+\caption{Cumulative net return of the 6-month timing rule and the untimed always-short position, January 2010 to July 2026 (corrected baseline). The two lines move together, and both lose in the holdout.}
+\label{fig:c1}
+\end{figure}
+
+\clearpage
+\section{Revision strategy: additional tables}
+\label{app:rev}
+
+\begin{table}[!htbp]
+\centering\footnotesize
+\caption{Monthly Spearman IC (signal at $t$, industry return at $t+1$) with Newey--West (6 lags) $t$. The 1985--2025 column uses only the 492 months where REV exists. Recent 18m = March 2025--August 2026 (REV: 10 months, low power).}
+\label{tab:ic}
+\fit{tables/T1_ic_summary.tex}
+\end{table}
+
+\begin{table}[!htbp]
+\centering\footnotesize
+\caption{Descriptive IC split (Spearman, NW $t$ in parentheses), REV months only. Chosen after seeing the blend weights. Not part of the test.}
+\label{tab:icsub}
+\fit{tables/T2_ic_subperiods.tex}
+\end{table}
+
+\begin{table}[!htbp]
+\centering\footnotesize
+\caption{Risk and sizing, mean-variance books, each from its first to its last month. Ex-ante risk is the mean monthly ex-ante active risk. Realized is the annualized volatility of monthly gross returns.}
+\label{tab:risk}
+\fit{tables/T3_risk.tex}
+\end{table}
+
+\begin{table}[!htbp]
+\centering\footnotesize
+\caption{Mean-variance books, formation months January 1995 to December 2025 (372 months, the only window in which all four books trade). Annualized returns and volatility. Turnover is one-way per month as a fraction of capital. Break-even is the one-way cost at which the mean net return is zero.}
+\label{tab:perf}
+\fit{tables/T4_performance.tex}
+\end{table}
+
+\begin{table}[!htbp]
+\centering\footnotesize
+\caption{Horizon analysis, net of 20 bp. ``Full'' starts when each book first trades (MOM 1974, blend 1995). Regressions with fewer than 36 months are LOW POWER and not used for the verdict. REV rows are in \texttt{tables/T6\_horizons.csv}.}
+\label{tab:hor}
+\fit{tables/T6_horizons.tex}
+\end{table}
+
+\begin{table}[!htbp]
+\centering\footnotesize
+\caption{Stress years: compounded net returns (20 bp) of each book and the UMD factor, in \%.}
+\label{tab:stress}
+\fit{tables/T7_stress.tex}
+\end{table}
+
+\begin{table}[!htbp]
+\centering\footnotesize
+\caption{One-at-a-time robustness grid for the blend, formation months January 1995 to December 2025, net of 20 bp unless the row changes costs. (*) Run on a different cleaned CRSP panel. Not strictly comparable.}
+\label{tab:rob}
+\fit{tables/T8_robustness.tex}
+\end{table}
+
+\begin{table}[!htbp]
+\centering\footnotesize
+\caption{FF5+UMD alpha (\% a year, NW $t$) by cost level, and the one-way cost at which the gross 6-factor alpha is fully consumed.}
+\label{tab:cost}
+\fit{tables/T9_alpha_by_cost.tex}
+\end{table}
+
+\clearpage
+\section{Additional figures}
+\label{app:figs}
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=0.9\linewidth]{figures/fig1_ic_and_weights.pdf}
+\caption{(a) Cumulative sum of monthly Spearman ICs over the 492 REV months, January 1985 to December 2025. A rising line means positive average IC. (b) Expanding IC-based blend weights, January 1990 to August 2026 (frozen after 2025, when REV is missing).}
+\label{fig:ic}
+\end{figure}
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=0.85\linewidth]{figures/fig2_cumulative_drawdown.pdf}
+\caption{(a) Growth of \$1 in each mean-variance book, net of 20 bp, return months February 1995 to January 2026, log scale. (b) Drawdown of the blended book, net of 20 bp.}
+\label{fig:cum}
+\end{figure}
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=0.85\linewidth]{figures/fig3_alpha_ff5_vs_umd.pdf}
+\caption{Annual net alpha (20 bp) with 95\% Newey--West intervals against FF5 (gray) and FF5+UMD (blue), 1995--2025 and post-2010.}
+\label{fig:alpha}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\begin{minipage}[t]{0.58\linewidth}\centering
+\includegraphics[width=\linewidth]{figures/rolling_alpha_blend.png}
+\caption{Rolling 36-month FF5+UMD alpha of the blended book, net of 20 bp, windows ending January 1998 to January 2026.}
+\label{fig:roll}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.38\linewidth}\centering
+\includegraphics[width=\linewidth]{figures/robustness_heatmap_sharpe.png}
+\caption{Net Sharpe (20 bp) of the blended book over momentum lookback and covariance half-life, formation months 1995--2025.}
+\label{fig:heat}
+\end{minipage}
+\end{figure}
+
+\clearpage
+\section{Claude interactions, by member}
+\label{app:claude}
+{\small
+\input{appendix_D_claude_interactions.tex}
+}
+
+\section{Data and reproducibility}
+\label{app:repro}
+
+\begin{table}[!htbp]
+\centering\footnotesize
+\begin{tabular}{p{0.37\linewidth}p{0.57\linewidth}}
+\toprule
+Location & Contents \\
+\midrule
+\path{notebooks/01_Green_Climate_Strategy.ipynb} & Climate rules, corrected baseline, benchmarks, imported verified evidence. Writes \path{tables/C*}, \path{figures/C1*} \\
+\path{notebooks/02_Charisma_Final_Strategy.ipynb} & Revision strategy: IC, risk, performance, costs, attribution, horizons, robustness. Writes \path{tables/T*}, \path{figures/fig*} \\
+\path{data/green/} & Team inputs (FF49 returns, FF3, emissions intensity, macro incl.\ attention), FRED EMVENRGYENVREG, the team's committed results, imported audit results with source file and row \\
+\path{data/charisma/processed/} & Industry-month signal panels \texttt{signals.parquet} and \path{signals_phase4.parquet} \\
+\path{data/charisma/raw/} & Ken French FF49, FF5, UMD, short-term reversal (Aug.\ 2026 vintage) \\
+\path{data/charisma/results/} & Validated pipeline output tables and figures read by Notebook~2 \\
+\path{supporting/} & Code and tests (\path{code/charisma/src}, 68 tests, \path{code/green/}). The Claude replies and prompts behind Appendix~\ref{app:claude}, one folder per member, and the Claude Code log (\path{transcripts/}). The claim audit (\path{claim_audit/}). Earlier separate documents (\path{original_notes/}) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Notebook~2 reads the validated results by default (\path{RUN_PIPELINE = False}). \texttt{True} recomputes the IC, holdings, backtest and attribution from the signal panel in about 90 seconds. The processed signal panels needed to reproduce the reported analysis are included. Raw I/B/E/S and CRSP security-level data are licensed and not redistributed (the build steps, which need WRDS access, are in \path{supporting/code/charisma/src/}). The Climate audit modules are imported from verified outputs rather than rerun, because they need about 70 MB of external raw data and several hours.
+
+\section{Claim audit and methodological notes}
+\label{app:audit}
+\enlargethispage{\baselineskip}
+
+\textbf{Claim audit.} Every number quoted in the prose of this report is traced to the notebook outputs (\path{tables/report_numbers.json}, \path{tables/climate_numbers.json}, \path{data/green/verified_extension_results.csv}) by \path{supporting/claim_audit/claim_audit.py}, which checks each value after rounding. The key regressions were re-estimated independently in the notebook (difference $4\times10^{-16}$).
+
+\textbf{Methodological notes.} (1) Windows with fewer than 36 months are reported but cannot pass or fail the criterion. (2) The descriptive IC split was chosen after seeing the blend weights. It is not part of the test. (3) Three robustness rows (minimum analysts 1 and 5, and 30 industries) came from a different cleaned CRSP panel and are flagged. (4) The Climate ``corrected baseline'' lags attention one month and fills the unpublished October 2025 CPI print. No verdict changes. (5) The Climate emissions file is one undated cross-section applied to all years, a look-ahead in leg membership that we disclose rather than fix. (6) Only the frozen 1994--2009 test has a timestamped pre-registration. The other Climate modules fixed theirs in code without a timestamp, and the revision strategy's rejection rule was fixed in the project plan before any data were pulled.
+
+\end{document}

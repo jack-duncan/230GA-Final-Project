@@ -1,0 +1,748 @@
+\input{preamble}
+% ---------------------------------------------------------------- report-specific setup
+\usepackage{pdflscape}
+\usepackage{adjustbox}
+\usepackage{placeins}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcommand{\pending}[1]{\textcolor{red!70!black}{\textit{[Pending: #1]}}}
+\newcommand{\CR}{Cristhian}
+\lstdefinestyle{transcript}{basicstyle=\ttfamily\footnotesize,breaklines=true,columns=fullflexible,numbers=none,
+  frame=single,rulecolor=\color{black!25},xleftmargin=2pt,xrightmargin=2pt,showstringspaces=false,
+  postbreak=\mbox{\textcolor{gray}{$\hookrightarrow$}\space}}
+\lstdefinestyle{transcriptsmall}{style=transcript,basicstyle=\ttfamily\scriptsize}
+\makeatletter% number each code listing with the source file's own line numbers (Appendix D says so)
+\lstdefinestyle{code}{language=Python,basicstyle=\ttfamily\scriptsize,breaklines=true,columns=fullflexible,
+  numbers=left,numberstyle=\tiny\color{black!40},frame=single,rulecolor=\color{black!25},firstnumber=\lst@firstline,
+  postbreak=\mbox{\textcolor{gray}{$\hookrightarrow$}\space}}
+\makeatother
+\renewcommand{\runningtitle}{Read the Label: MFE 230GA Final Project}
+\hypersetup{pdftitle={Read the Label: Climate-Attention Timing of Brown Industries, Audited and Tested Out of Sample},
+  pdfauthor={Hashim Almodamagha}}
+\setlength{\textfloatsep}{10pt plus 2pt minus 2pt}
+\setlength{\floatsep}{8pt plus 2pt minus 2pt}
+\setlength{\intextsep}{8pt plus 2pt minus 2pt}
+\captionsetup{skip=4pt}
+\setlength{\emergencystretch}{3em}
+\makeatletter% slightly tighter subsection spacing (11pt text, 1in margins unchanged)
+\renewcommand\subsection{\@startsection{subsection}{2}{\z@}{-2.9ex\@plus -1ex \@minus -.2ex}{1.1ex \@plus .2ex}{\normalfont\large\bfseries}}
+\makeatother
+
+\begin{document}
+
+% ================================================================ title block
+\thispagestyle{plain}
+\begin{center}
+{\LARGE\bfseries Read the Label}\\[4pt]
+{\Large Climate-Attention Timing of Brown Industries,\\ Audited and Tested Out of Sample}\\[6pt]
+{\large MFE 230GA Active Asset Management, Final Project}\\[4pt]
+{\large Hashim Almodamagha}\\[2pt]
+UC Berkeley Haas, Master of Financial Engineering $\cdot$ October 2026\\[2pt]
+{\footnotesize Group 4: Hashim Almodamagha, Aditya Aryan, Jack Duncan, Charishma Takkallapalli, Cristhian Ruiz Cardozo}
+\end{center}
+\vspace{2pt}
+
+% ================================================================ executive summary
+\section*{Executive Summary}
+\label{sec:exec}
+Our team's halfway project proposed a state-dependent climate trade, and this report is my solo extension of it. The strategy shorts a factor-hedged Brown leg of five industries the team ranked high-emission (utilities, shipbuilding and railroad equipment, aircraft, steel, construction materials; two rank mid-table on EPA factors) for three or six months after ``climate-transition attention'' crosses its past-only 80th percentile, sized to 5\% residual volatility. For that to be climate alpha, three things had to hold: the signal measures climate concern, the gain comes from timing rather than being short, and the rule works on data it was not designed on. I tested each on Fama--French industry and factor returns, FRED news and macro series, two climate-concern indices, media climate change concern (MCCC) and climate policy uncertainty (CPU), and EPA supply-chain emission factors. Every threshold and hedge uses only past data, and independent code rebuilt each module's headline numbers. The recommendation is \textbf{Do not implement}: the label is wrong, and under any label the returns do not pay. First, the ``attention'' series is FRED's equity-volatility news tracker for energy and environmental regulation (identical in 500 of 500 months). Its z-score is uncorrelated with MCCC ($r=-0.0004$), its weak link to CPU runs through overall volatility news, and the same rules fed either climate index earn 0 of 12 validation alphas with $t\ge1.96$. In effect, the rule shorts hedged utility and industrial stocks after stock-market volatility makes the news. Second, COVID cannot certify the timing: the always-short position, an untimed short of the same leg, had an alpha of 4.54\% a year ($t=1.96$), and the rule's edge over it is $+1.84$\% ($t=0.87$), or 3.0\% over an exposure-matched short ($t=1.67$). Third, timing earns nothing detectable on windows no rule was designed on. A cleaner version frozen before its test (the regulation share of volatility news) has a timing alpha of $-0.18$\% a year over 1994--2009 ($t=-0.27$; $p=0.48$ against random re-datings, whose median is $-0.22$\%). The team's signal, lagged, earns $+0.69$\% there ($t=1.00$) and $-1.11$\% in the holdout ($t=-1.13$). Pooled, these windows detect only edges above about 1.5\% a year with 80\% power. Fourth, all six of the team's rules lost over the 2022--2026 holdout, before costs as well as after (6-month rule: FF3 alpha $-1.97$\% a year, $t=-1.30$). The always-short position lost too (FF3 alpha $-1.72$\%, $t=-1.09$), the discrete rules' timing lost a further 1.0\% to 1.7\% a year against an exposure-matched short, and rate factors or dropping any one industry leave both alphas negative. Of the alternatives, climate indices on EPA-ranked legs add no timing edge, and shrinkage timing collapses to the historical mean under pre-specified cross-validation. An optimized industry-momentum book passed a pre-registered 1931--1969 test (alpha 1.95\% a year, $t=2.45$), but it fails the deflated appraisal ratio and its holdout alpha is $-0.34$\%, which earns it a paper-trading pilot, not capital. In short: read the label, benchmark timing against the always-short position, and spend the only window left, the live record, on one frozen rule.
+
+\clearpage
+% ================================================================ section 1
+\section{What Did I Try?}
+\label{sec:try}
+
+\subsection{The inherited strategy and where the idea came from}
+\label{sec:idea}
+
+Our team's thesis was falsifiable, and it failed its own holdout. The halfway write-up argued that Green-minus-Brown (GB) has no permanent premium but that its factor-neutral part pays after spikes in climate-transition attention. Green and Brown are the five lowest- and highest-intensity Fama--French 49 (FF49) industries in the team's emissions file (Brown: Util, Ships, Aero, Steel and BldMt), each an equal-weighted mean of value-weighted industry returns. The rule shorts the Brown leg for 3 or 6 months after the signal's 60-month z-score crosses its past-only 80th percentile, hedged with rolling 60-month Fama--French three-factor (FF3) betas lagged one month and sized to 5\% residual volatility. The six rules are Original and Pure (the raw signal and a macro-purified one) with 3- and 6-month holds, written Original 3m to Pure 6m, plus Continuous raw and Continuous pure, which scale the position with the signal. In validation (2010-01 to 2022-07) the 6-month rules earned 2.45\% and 2.59\% a year net (FF3 alpha $t=2.23$ and $2.46$), and in COVID 2020--21 the 3-month rule earned 5.94\% net (FF3 alpha 6.03\%, $t=3.21$). Over the 2022-08 to 2026-07 holdout every discrete rule lost 2.1\% to 3.8\% a year, and the team wrote ``Do not implement''.
+
+The idea descends from HW1's comparison of high- and low-emitting industries and from a literature that reads realized green returns as responses to concern shocks rather than as a premium. \citet{pst2022} explain 2012--2020 green outperformance by climate-concern shocks (mean return after removing concern shocks about $-4$ bp a month, HML loading $-0.26$). \citet{eijp2026} find no green-minus-brown alpha that survives Benjamini--Hochberg (BH; \citealp{bh1995}), and \citet{bk2021} and \citet{zhang2025} disagree on the sign of the carbon premium. In the \citet{pst2021} model green outperforms only when concerns strengthen unexpectedly, and a spike that is already known carries no positive expected green-minus-brown return. A rule that shorts Brown after a known spike is therefore a bet that concerns keep surprising upward, not a bet on a known premium.
+
+For our team's result to be climate alpha, three things had to hold: the signal measures climate concern, the gain comes from timing rather than exposure, and the rule survives a window it was not designed on. The study tests them simplest first, in the order each result demanded (Table~2; the module codes are labels, not the run order). After the replication, M1 asks what the signal is. M1b feeds the same rules climate-concern indices and volatility placebos. M2 runs \CR's four overlooked tests (8-and-8 legs, momentum and commodity controls, the source of the HML loading, uniform costs), M3 takes up Charishma's question of alpha versus beta, M4 audits the emissions file, and M8 scores one frozen rule once on 1994--2009. The brief's other drivers became alternatives on the same data: an EPA emissions tilt (M4), carbon-aware industry momentum (M5, as the brief suggests, \citealp{za2024}) and macro-driven shrinkage timing (M6). M7, run last, puts every test into one multiple-testing census and runs the checks that decide the verdict.
+
+\subsection{Data, and what the data turned out to be}
+\label{sec:data}
+
+The study uses only public data (Table~1). Returns and macro controls enter only after publication and the Equity Market Volatility (EMV) trackers are lagged one month; the emissions snapshots are the exception (Section~\ref{sec:robust}). Two findings about the data changed the study.
+
+\begin{table}[!htb]
+\caption{Data. Each series, its source, span and role. Returns are monthly decimals at month-end; in every real-time test the EMV trackers are lagged one month and macro controls enter only after publication.}
+\label{tab:data}
+\centering\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\textwidth}{@{}L{5.2cm}L{3.3cm}L{3.0cm}Y@{}}
+\toprule
+Series & Source & Span & Role \\
+\midrule
+FF49 value-weighted industry returns; FF3 factors and RF & Team files (Ken French data) & 1926-07 to 2026-07 & Legs, hedge \\
+FF5 (2$\times$3), UMD, industry BE/ME and firm counts & Ken French library, Aug 2026 & from 1963-07 (UMD 1927) & Evaluation \\
+Emissions intensity, one cross-section & Team file (the HW1 course file) & undated; 41 of 49 & Team legs \\
+EPA supply-chain GHG factors v1.3; USEEIO v2.0.1 (built on BEA input-output accounts); SIC--NAICS maps & US EPA; US Census Bureau & 2022 USD; 1,016 NAICS codes & Rebuilt legs (M4) \\
+EMVENRGYENVREG, EMVOVERALLEMV; VIX & FRED \citep{bbdk2019} & 1985-01 (VIX 1990-01) to 2026-08 & Signal, placebos \\
+MCCC aggregate; CPU index & \citet{ardia2023}; \citet{gavriilidis2021} & 2003-01 to 2025-06; 1987-04 to 2025-09 & Climate concern \\
+GS10, TB3MS, BAA, AAA, CPI, CFNAI, WTI, IMF commodities; par yields; Damodaran bond returns & FRED; US Treasury; Damodaran & to 2026-08 & Controls, instruments, BOND \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\textbf{The ``attention'' series is an equity-volatility news count, and since late 2021 it is mostly exact zeros} (Figure~\ref{fig:signal}). Our team's column equals FRED EMVENRGYENVREG in 500 of 500 months. That series is the \citet{bbdk2019} EMV tracker for energy and environmental regulation: a count of newspaper articles on stock-market volatility that mention the category, scaled to the VIX. It is exactly zero in 12 of 441 months before 2021-10 and in 39 of 59 since (Fisher $p=1.3\times10^{-32}$), including 31 of the 48 holdout months, and a zero month cannot trigger the rule. The zeros did not change which months the rule traded: under the team's timing, with the z-score's scaling frozen at 2021-09 or with zeros treated as missing, the rule enters in the same five holdout months, and every team strategy still loses. The label was wrong and the zeros are a data problem, but neither explains the holdout.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=0.74\textwidth]{M1_signal_audit_standardized_measures.pdf}
+\caption{What the signal measures. Twelve-month trailing means of standardized log levels, 2003-01 to 2025-06: our team's ``attention'' (FRED EMVENRGYENVREG, orange), media climate concern \citep[MCCC, green;][]{ardia2023} and climate policy uncertainty \citep[CPU, purple;][]{gavriilidis2021}; the dashed line drops the exact zeros. Climate concern rose from 2022 until MCCC ends in mid-2025, while the team series fell into its zero regime.}
+\label{fig:signal}
+\end{figure}
+
+\textbf{The Brown leg rests on an undocumented emissions file} (Figure~\ref{fig:emissions} in Appendix~\ref{app:m4}). The team file is the HW1 course file and records no source, units, scope or vintage. It has three groups of exactly equal values and a ratio of 6,051 between Util and Fun (entertainment), against a 33-fold range of EPA supply-chain intensities. Against a full EPA rebuild the ranking agrees broadly (Spearman 0.700) but not where it matters: Ships and Aero rank 2nd and 3rd of 41 in the team file and 20th and 31st of 49 on EPA factors. Their values are 14 to 47 times what their manufacturing codes imply and 1.9 to 6.0 times what transport codes imply, consistent with, not proof of, a transport mis-mapping. It matters because Aero, Util and Ships carry 86\% of the 3-month rule's COVID gross P\&L under our team's timing (my fact-check of exchange 01).
+
+\subsection{Evaluation framework, fixed before testing}
+\label{sec:framework}
+
+The corrected baseline fixes two input problems before any new test ran. Our team traded at the close of month $t$ on month-$t$ EMV, which I could not verify is published by then, so the corrected baseline lags EMV and every purification control one month. I call this real-time timing and the team's version same-month timing (Original 3m's 2010--2026 net return moves from 0.07\% to 0.73\% a year, and no verdict changes). The October 2025 CPI print, never published because of the federal government shutdown, silenced the purified signal for two months and explains the whole holdout gap between the Pure and Original rules. With the print interpolated, the two coincide in the holdout. Every number below uses the corrected baseline unless it says otherwise.
+
+Every timing claim is tested against the always-short position, an untimed short of the same leg with the same hedge and volatility target. Two versions of the comparison appear. The paired alpha is the factor alpha of the rule's return minus the always-short return. The second, $D_t=R^T_t-\pi R^{AO}_t$, scales the benchmark by $\pi$, the ratio of mean absolute positions, so that a rule that is flat part of the time is compared with the same average exposure, and the frozen test uses it. Unless stated otherwise, every $t$-statistic is Newey--West \citep{nw1987} with 6 lags, NW(6). In the tests of our team's rules and the frozen rule (for the climate-index versions, on windows under 60 months) p-values come from $t(n-k)$ rather than the normal, and with them the team's ``2 of 32 claims survive Holm'' \citep{holm1979} becomes 0 of 32.
+
+One rule was frozen before its window was touched. I adopted exchange 01's follow-up rule (the regulation share of overall EMV, zeros as missing, the 6-month hold, a four-part pass bar) plus a one-month publication lag. The share divides out overall volatility news, treats the zeros as missing and, unlike MCCC (from 2003) and CPU (no signal before 1995), can trade before 2010. I saved a date-stamped pre-registration of 32 implementation choices before writing its code, and its SHA-256 hash shows the file never changed (Appendix~\ref{app:m8}). The proposed window was 1993--2009, and the first usable month after the burn-in is 1994-03. That window is out of sample for returns, not for design: the rule was chosen after 2010--2026 had been seen, and our team's macro-state notebook had used 192 pre-2010 months of forward Brown residuals.
+
+Each module's headline numbers were produced twice, by the module's code and by a second implementation that shares none of it except the team library (128 of 128 match for the frozen test), and every inferential statistic is logged: 23,923 tests in eight module ledgers, 155 of them primary. Only the two frozen tests have timestamped pre-registrations; the other modules fixed their primary tests in code without a timestamp, and the few fact-check numbers computed only once are listed in Appendix~\ref{app:code}. An AI coding agent (Anthropic's Claude) wrote each module's code under my direction, and a second agent wrote the re-implementation. I chose every test, wrote the pre-registrations and prompts, and accepted a number only when both implementations agreed.
+
+\begin{table}[!tb]
+\caption{The research program: each module's question, its primary test with the headline statistic, the adjusted p-value within its pre-specified family, and the verdict. No module's primary alpha survives its own family or the project-wide correction (M7); the one pre-registered pass is a momentum book tested before 1970.}
+\label{tab:program}
+\centering\footnotesize
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabularx}{\textwidth}{@{}L{1.62cm}L{2.85cm}YL{2.0cm}L{2.05cm}@{}}
+\toprule
+Module & Question & Primary test and headline result & Adjusted $p$ & Verdict \\
+\midrule
+Replication & Does the team code reproduce the write-up? & 14 unit tests; all 32 cells of the team write-up's Table 1; 11 audit findings & -- & Reproduced; two input problems \\
+M1 Signal & What does ``attention'' measure? & Team signal's z-score on VIX and overall EMV: $R^2=0.169$; correlation with MCCC $-0.0004$, CPU 0.123; 8 predictive information coefficients (ICs) null & $8.8\times10^{-12}$; 0.996, 0.074; ICs $\ge0.62$ & Volatility news \\
+M1b Signals & Does climate concern reproduce it? & 40 alphas and ICs for MCCC and CPU: no significant positive holdout alpha (largest $t=0.37$); placebo rule fails only at its threshold & 1.00 & EMV-specific \\
+M2 Four tests & Is any defensible alpha left? & 14 alphas each for 8-and-8 legs, commodity hedge, 5 bp costs; GB HML $-0.233$, $-0.298$ & $\ge0.397$; HML $\le0.017$ & No alpha; Brown value tilt \\
+M3 Alpha or beta & Alpha or beta? Rates? & GB BOND loading 0.132, 0.088 post-2010; holdout alphas fall with UMD and BOND; beta timing negative & 0.019, 0.549; $\ge0.155$; 4 of 6 & Beta, not alpha \\
+M4 Emissions & Is the ranking sound? & EPA 5-vs-5 GB, FF5+UMD alpha post-2010 4.7\% ($t=1.52$) & 0.129 & No alpha \\
+M5 Momentum & Carbon-aware momentum alpha? & FF5+UMD alpha 1.74\% ($t=1.09$), 1.86\% post-2010 ($t=0.71$); optimized book's carbon IR change $+0.010$ at $b=0$ & 0.823 each & UMD in industry form \\
+M6 Timing & Can a shrinkage model time GB? & $R^2_{OOS}=0.000$\%; attention increment 0; timing minus static $+0.84$\% ($t=1.17$) & 1.00; timing 0.24 (unadjusted) & Nothing to time \\
+M8 Frozen & Does one frozen rule work in 1994--2009? & Timing alpha $-0.18$\% ($t=-0.27$), shuffle $p=0.478$; 1 of 4 components & single verdict & FAIL \\
+M7 Ledger & What survives project-wide? & 73 module primary alphas, one-sided; search-adjusted and deflated tests; frozen 1931--1969 run of the momentum book, alpha 1.95\% ($t=2.45$) & Holm 1.00; book 0.017, 0.199; frozen 0.015 & Book: paper-trade; rest: do not implement \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Implementation: risk model, turnover and costs}
+\label{sec:implementation}
+
+The risk model is a rolling 60-month FF3 time-series regression of the Brown leg, and the traded object is its residual. Betas estimated on months $t-59$ to $t$ hedge the return of month $t+1$, the position is $-\min\{1,\,0.05/(\sqrt{12}\,\hat\sigma_t)\}$ while a hold is open ($\hat\sigma_t$ the 36-month residual volatility), and only the Brown leg is traded, so the Green leg never enters the P\&L. Realized risk sits below the 5\% target because the rules are flat part of the time and the position is capped at one. Over 2010--2026 Original 6m ran at 4.3\% volatility with an information ratio (IR, annualized net return over volatility) of 0.28 and a worst drawdown of 14.4\%, against 5.2\%, 0.20 and 17.0\% for the always-short position. Its IR was 0.51 in validation and $-0.43$ in the holdout.
+
+The wider risk models add two traded exposures and two conditional decompositions. COMEQ is a traded commodity-equity factor (Oil, Coal, Mines and Gold minus the risk-free rate) that correlates 0.66 with the Brown leg. It is a distinct exposure rather than an alpha source, since its alpha on the Fama--French five factors plus momentum (FF5+UMD) is $-0.89$\% a year ($t=-0.24$). BOND is the excess return of a 10-year par Treasury built from GS10 with exact duration and convexity (validated in Appendix~\ref{app:m3}). Conditional betas \citep{fs1996} and the \citet{ln2006} split of alpha into conditional alpha, static beta and beta timing complete the set, and the momentum alternative adds a \citet{gk2000} optimizer with a carbon bound $c'h\le b$ ($c$ the industries' standardized log carbon intensities, $h$ the active weights).
+
+Costs are not the binding constraint; the gross return is. The team's costs are 10 bp on the leg, 5 bp on the market overlay and 25 bp on SMB and HML per unit of turnover. In validation the discrete rules turn over 2.4 to 5.8 times a year (cost drag at most 0.63\%). The uniform cost that erases the validation alpha is 40 to 100 bp (211 bp for the always-short position), and the richer FF5+UMD+COMEQ hedge cuts it to 19 to 50 bp. Before any cost the holdout alpha is already negative in all 28 cost-free runs (the six rules and the always-short position, both baselines, 5-and-5 legs, the FF3 or FF5+UMD+COMEQ hedge; highest $-0.39$\%).
+
+\subsection{Claude as a research assistant: the prompts}
+\label{sec:prompts}
+
+Each prompt was written as a specification, and every reply was fact-checked with code before any follow-up. Following the HW2 workflow, each prompt put our numbers and constraints first and fixed the number of items. The design and red-team prompts also asked for falsifiable tests, capped the length and said ``label any number you have not computed as a guess''. Three asked for the assumptions the reply was least sure of. The four exchanges cover the brief's three uses plus a red team: a design review, code for the frozen test, the multiple-testing framework behind M7, and an attack on the draft's conclusion, run twice. Each follow-up sent the fact-check's corrections and a narrow request. The prompts changed after each failure. After exchange 01 accepted an unsourced label, exchanges 02 and 03 named the signal's FRED series. After exchange 01's generic ideas, exchange 03 said ``Do not propose new signals'' and allowed ``no candidate can reach implement'' as an answer. Exchange 04 counted overreach toward my own verdict as a weak claim, and its second round also sent the best evidence against it. The brief names ChatGPT; I used Claude (Anthropic), in chats without file access, code execution or web search, so it saw only what each prompt contained. Appendix~\ref{app:claude} reproduces them in full, Table~3 summarizes them and Section~\ref{sec:claude} evaluates them.
+
+\begin{table}[!htb]
+\caption{Claude interactions: prompt excerpts, what came back, what the fact-check found wrong, and what I adopted. Every exchange changed the plan, and most errors concerned our data, not the method.}
+\label{tab:claude}
+\centering\scriptsize
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabularx}{\textwidth}{@{}L{1.45cm}YYYY@{}}
+\toprule
+Exchange & Asked for (excerpts) & Produced & What was wrong & What I adopted \\
+\midrule
+01 Idea generation & ``Treat this as a design review: I want the weak points found before I spend time on them'' (993 words) & A 1,609-word review; a follow-up with a frozen 1993--2009 rule and a pass bar & 6 of 52 claims (duration, NW lags, IC flip, dates, coverage); never asked what ``attention'' measures & The always-short benchmark; the frozen pre-2010 test (M8); Aero and Ships as suspect (M4) \\
+02 Coding support & ``a pre-registered backtest I will run exactly once. You do not have the data, so report no results'' (997 words) & A 985-line script that, run on my data, gave my verdict ($-0.19$\%, $t=-0.25$); six fixed functions with unit tests & Hard-coded burn-in; a broken positive control; a look-ahead test that missed 2 of 6 bugs; a broken interface & A second implementation matching M8 to $3.3\times10^{-13}$; a size check on 100 simulated null datasets \\
+03 Robustness design & ``design the robustness and multiple-testing framework that decides my project's final verdict'' (997 words) & 1,716 words (cap 1,500): test families, a deflated Sharpe table, two candidates & 11 of 93 claims: a UMD beta from the wrong book; Romano--Wolf ``stricter'' than BH; ``insufficient evidence'' for a holdout that rejects & Test families defined by the decision each test can change; the deflated appraisal ratio; a one-sided holdout reading; the 1931--1969 run (M7) \\
+04 Red team, two rounds & ``Break the conclusion before a grader does'' (795 words); round 2 added the best evidence against me (798) & 1,340 and 1,091 words (caps 1,200 and 1,000) with replacement text & A fix for a rule that never traded; a wrong comparator; a misread pooled edge; costs counted twice & Thirteen summary rewordings; the holdout interval and timing loss; three alternatives tested and retired \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+% ================================================================ section 2
+\clearpage
+\section{What Did I Learn?}
+\label{sec:learn}
+
+\subsection{The signal is volatility news}
+\label{sec:signal}
+
+\textbf{The team signal is overall volatility news plus a topic share unrelated to climate concern.} Regressed on the z-scores of VIX and overall EMV, it has $R^2=0.169$ ($p=8.8\times10^{-12}$), all of it through overall EMV in the full sample. It correlates $-0.0004$ with MCCC ($p=0.996$) and 0.123 with CPU (Holm $p=0.074$), a link through overall volatility news: the topic share, the part that is not volatility news, correlates 0.03 with CPU. Crossings fall in months with overall EMV above its past-only median 88\% of the time, against 64.5\% otherwise (Fisher $p=0.0006$). The index counts articles on market volatility, so it spikes with turmoil, whatever the climate news.
+
+\textbf{Climate-concern indices fed through the same rules earn no significant validation or holdout alpha} (Table~C.6, Appendix~\ref{app:m1b}). The EMV tracker earns validation alphas with $t\ge1.96$ in 4 of 6 rules, MCCC and CPU in none; all six MCCC holdout alphas are negative, and the two positive CPU ones are within noise (largest $t=0.37$). Overall EMV, a pure volatility measure, comes close to the team signal (mean validation alpha 1.07\% against 1.45\%), so the validation alpha belongs to volatility news. On EPA-ranked legs MCCC and CPU add no timing edge (Appendix~\ref{app:m4}), so this is a null about industry legs, not a refutation of \citet{pst2022}.
+
+\subsection{Style and risk exposures: a Brown-leg value bet}
+\label{sec:exposures}
+
+\textbf{The raw spread is a short-value bet, and the value tilt lives in the Brown leg.} GB's FF3 HML loading is $-0.233$ ($t=-4.63$) over 1970--2026 and $-0.298$ ($t=-5.74$) since 2010, of which the Brown side contributes $-0.437$ (Steel and Ships alone $-0.239$) and the Green side $+0.14$. In FF5 it loads $-0.11$ on HML, $-0.15$ on RMW and $-0.25$ on CMA (only CMA significant, $t=-2.80$); it also loads $-0.18$ on COMEQ ($t=-8.70$) and 0.132 on BOND ($t=2.60$, Holm $p=0.019$; 0.088, $t=0.60$, since 2010). GB is long financials, real estate and a few growth industries and short value-priced commodity and industrial producers, with no significant alpha in any long window.
+
+\textbf{The hedge removes most of this, and what remains is a timing drag.} The rules' residual HML loading is $-0.015$ to $-0.053$ since 2010, and their \citet{ln2006} beta-timing term ($-0.57$\% to $-1.07$\% a year; 4 of 6 survive Holm) is shared by the always-short position ($-1.35$\%), so it belongs mostly to the hedged leg, not to attention. In COVID the FF3 hedge left momentum and duration open (always-short position: UMD 0.31, $t=4.49$; BOND 0.76, $t=2.29$).
+
+\subsection{Time patterns: full sample, post-2010 and the last 18 and 12 months}
+\label{sec:time}
+
+\textbf{Outside COVID, the only positive $t$ above 2 is in the validation sample the rules were designed on} (Table~4). Over seven factor models, both baselines and all six rules, the smallest post-2010 $p$ is 0.053.
+
+\begin{table}[!htb]
+\caption{Time patterns. Net return and FF3 alpha (\% a year, NW(6) $t$) of three corrected-baseline rules, the always-short position and the raw GB spread. Under $t(n-4)$, 18 and 12 months need $|t|$ above 2.14 and 2.31. Wherever the rules gain, the always-short position earns at least two-thirds of the best rule's return.}
+\label{tab:time}
+\centering\scriptsize
+\setlength{\tabcolsep}{4.5pt}
+\begin{threeparttable}
+\input{tables/tab_time.tex}
+\begin{tablenotes}[para,flushleft]\scriptsize
+\item[a] Continuous raw from 1993-01; the raw spread from 1970-01 ($n=679$). \item[b] Unhedged and cost-free; classical OLS $|t|$ of 1.41 and 1.37 over the last 18 and 12 months.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\textbf{The holdout loss is residual Brown performance plus costs, and every variant shares it.} Corrected Pure 6m (identical to the table's Original 6m in the holdout) has an FF3 alpha of $-1.97$\% a year ($t=-1.30$; 95\% interval $-5.0$\% to $+1.1$\%) over 32 months in position. All 900 net-of-cost holdout alphas of the six rules in \CR's robustness grid are negative, and one principal component carries 90\% of the corrected rules' holdout variance. Adding BOND and UMD lowers each of the 12 primary holdout alphas (six rules, two baselines; smallest Holm $p=0.155$), so rates do not explain the loss. Of Pure 6m's net $-1.84$\%, the residual Brown return is $-1.14$\%, cost 0.46\% and hedge leakage $-0.24$\% (centered ex post betas). By industry, Steel's $-1.37$ points match the gross loss ($-1.38$) only because Util's gain offsets the rest, yet the rule rebuilt without any one industry still loses. Against an exposure-matched short, the discrete rules' timing lost 1.0\% to 1.7\% a year ($t=-0.99$ to $-1.72$; Appendix~\ref{app:m3}). Over the last 18 months every timed rule lost and the raw spread lost 14.7\% a year; twelve months are too few to split a loss into alpha and beta (Original 3m nets $-5.21$\%, alpha $+1.20$\%, $t=0.30$).
+
+\subsection{COVID cannot separate the position from the timing}
+\label{sec:covid}
+
+\begin{figure}[!tb]
+\centering
+\includegraphics[width=0.62\textwidth]{M1b_alt_signals_covid_paths.pdf}
+\caption{The COVID window. Cumulative net return, 2020-01 to 2021-12, of Original 3m (left) and Continuous raw (right) under real-time timing for each measure and for the always-short position (dashed); shading marks March and April 2020. On the left the always-short position tracks the team signal's rule (edge within noise); on the right it ends well above every Continuous raw version, which holds smaller positions.}
+\label{fig:covid}
+\end{figure}
+
+\textbf{The always-short position earns 71\% of the COVID alpha} (Figure~\ref{fig:covid}; Table~4). Original 3m's COVID alpha is 6.38\% ($t=3.62$) and the always-short position's 4.54\% ($t=1.96$). The rule's paired alpha over that position is $+1.84$\% a year ($t=0.87$; 95\% interval $-2.6$\% to $+6.2$\%). Its edge over the $\pi$-scaled, exposure-matched short is 5.4\% a year ($t=2.35$) but falls to 3.0\% ($t=1.67$, $p=0.11$) once factors estimated inside the COVID window enter. Neither edge is then significant, and Pure 6m held the always-short position in all 24 months (Figure~\ref{fig:attribution}). The pre-specified placebo test rejects the climate reading only at its threshold: overall EMV earns at least half the team signal's COVID alpha in exactly the 4 of 6 rules the test requires. For Original 3m, where the volatility placebos fall short, CPU matches it.
+
+\subsection{The pre-registered 1994--2009 test}
+\label{sec:frozen}
+
+\textbf{The frozen rule meets one of four components and sits at the center of its own null} (Table~5; Section~\ref{sec:framework}). Its timing alpha is $-0.18$\% a year ($t=-0.27$), and 5,000 calendar shuffles of its holds have a median of $-0.22$\% ($p=0.478$). Power was limited: only an edge near 1.9\% a year passes with 80\% probability. But the estimate is negative, and the rule had no in-sample edge to confirm: on the seen 2010--2022 window its timing alpha was already $-0.12$\% ($t=-0.19$).
+
+\begin{table}[!tb]
+\caption{The frozen 1994--2009 test: the pre-registered pass bar for the EMV-share rule and, for context, our team's own signal lagged one month. All four components had to pass; both signals fail.}
+\label{tab:frozen}
+\centering\scriptsize
+\setlength{\tabcolsep}{3.5pt}
+\input{tables/tab_frozen.tex}
+\end{table}
+
+\subsection{Alternatives on the same data}
+\label{sec:alternatives}
+
+\textbf{A complete supply-chain ranking reverses the sign of the raw spread but produces no post-2010 alpha.} The EPA-ranked spread's post-2010 FF5+UMD alpha is 4.7\% ($t=1.52$, $p=0.129$). Its full-sample FF5+UMD alpha (4.5\%, $t=2.58$, on a 2022 sort applied back to 1970) exceeds its raw return (2.5\%, $t=1.40$) because the spread is short CMA and UMD, which earned positive premia, and it fails the search correction even there (Romano--Wolf $p=0.058$).
+
+\textbf{Equal-weight industry momentum is the UMD premium in industry form.} Long the top 8 and short the bottom 8 industries on returns over months $t-11$ to $t-1$ \citep{mg1999}, the book nets 8.52\% a year, but its FF5+UMD alpha is 1.74\% ($t=1.09$), 1.86\% since 2010 ($t=0.71$), with a UMD beta of 0.99. On the optimized version below, a carbon limit costs no detectable IR, with low power: the primary bound $b=0$ cut long-book carbon intensity only 11.6\% (IR change $+0.010$; Appendix~\ref{app:m5}).
+
+\textbf{An optimized momentum book passed a pre-registered test before 1970 and still falls short of capital.} The \citet{gk2000} version (5\% ex-ante tracking error) had an exploratory FF5+UMD alpha of 2.17\% ($t=3.07$) over 1970--2026. Following exchange 03, its specification and code were hashed before any pre-1970 return existed, and it ran once on 1931--1969: FF3+UMD alpha 1.95\% a year ($t=2.45$, one-sided $p=0.007$), positive in both halves. It fails the other bars: the Romano--Wolf search correction \citep{rw2005} passes over 1970--2026 ($p=0.017$) but not over 2010--2026 ($p=0.199$), its deflated appraisal ratio \citep[discounted for the number of strategies tried;][]{bldp2014} is 0.56 and 0.36 against a bar of 0.95, and its holdout alpha is $-0.34$\%. The decision rule fixed before the run sends it to a paper-trading pilot: the pass shows the edge existed before 1970, not that it exists now.
+
+\textbf{A disciplined shrinkage model refuses to time the spread.} Under pre-specified cross-validation the \citet{lmn2024}-style ridge picks the largest penalty in all 758 monthly refits, so every forecast is the historical mean; attention lowers out-of-sample $R^2$ at every fixed penalty.
+
+\subsection{Robustness, multiple testing and limitations}
+\label{sec:robust}
+
+\textbf{No module's primary alpha survives the project-wide correction, and the holdout is evidence against the attention rules.} The project-wide ledger (M7) assigned all 23,923 module tests to families by the decision each could change; 4,184 are nominally significant at 5\%. The 73 distinct primary alpha tests, one-sided, have a best $p$ of 0.030 and a smallest Holm $p$ of 1.00 (BH 0.72). Within each module's robustness grid (9,337 alphas in all), the \citet{by2001} correction (BY) keeps none and BH keeps one, a CPU variant of the COVID rule that pooling the grids removes and Appendix~\ref{app:ledger} retires. The holdout rejects a worthwhile alpha for all six rules as our team ran them (every 90\% upper bound lies below a margin of a quarter of the rule's residual volatility), so it is evidence against the rules, not an absence of evidence.
+
+\textbf{Limitations.} One undated (team) or 2022-vintage (EPA) emissions snapshot is applied back to 1970, a look-ahead in leg membership. FRED, EMV and MCCC data are final vintages, and the one-month EMV lag is assumed. COVID and recent-window inference rests on 12 to 24 observations, the NW(6) $t$ over-rejects on synthetic nulls (13 of 100 at 5\%), and 1994--2009 predates the concern shocks that \citet{pst2022} use to explain 2012--2020 green returns. Pre-specification is timestamped only for the two frozen tests. Costs are linear, and an industry-level test says nothing about firm-level carbon premia \citep{bk2021}.
+
+\subsection{Critical evaluation of the Claude exchanges}
+\label{sec:claude}
+
+\textbf{The replies were sharp referees of method and wording, and each exchange changed the plan} (Table~3). Their errors were mostly about our data, not the method; the exchange 01 reply, for example, blamed the holdout loss on duration (rate beta $t=0.05$).
+
+\textbf{The exchange 01 replies never asked what the signal measures and did not push back on a confident user:} they accepted the ``climate-transition attention'' label and amplified my wrong claim that the holdout ``tested a near-binary signal''; later prompts countered both (Section~\ref{sec:prompts}). The exchange 04 red team prompted thirteen summary rewordings, but its cases against the verdict rested on one holdout sign (round 1) and on a pooled $+0.36$\% read as two positives (round 2).
+
+\textbf{As a research assistant, Claude was a referee and a second implementation, never a verifier.} Where the specification was exact its code was exact: with two choices my prompt had left open set to mine, its 985-line script reproduced all 5,000 of my shuffle draws to $3.3\times10^{-13}$. But it took its inputs on trust, adopted the framing of a confident prompt, and its checks missed what they were not told to look for: its look-ahead test caught 4 of the 6 timing bugs I injected, and its revised version 7 of 8.
+
+\subsection{Verdict}
+\label{sec:verdict}
+
+\textbf{Do not implement}, timed or untimed: the signal is volatility news, the gain is not separable from a Brown-leg exposure, and the pre-registered test of the timing rule failed. The strongest case against the verdict, our team's own signal lagged one month, has a timing alpha of $+0.69$\% over 1994--2009 ($t=1.00$) but $-1.11$\% over the holdout ($t=-1.13$). The playbook I would hand a desk has three rules: read the label of every input, benchmark every timing claim against the always-short position, and test one frozen rule, once, on a window it was not designed on.
+
+\label{mainbody:end}
+% ================================================================ references
+\clearpage
+\begin{thebibliography}{99}
+\bibitem[Ardia et~al.(2023)]{ardia2023} Ardia, D., K. Bluteau, K. Boudt, and K. Inghelbrecht (2023). Climate change concerns and the performance of green vs.\ brown stocks. \textit{Management Science} 69(12), 7607--7632.
+\bibitem[Bailey and L\'opez de Prado(2014)]{bldp2014} Bailey, D. H., and M. L\'opez de Prado (2014). The deflated Sharpe ratio: Correcting for selection bias, backtest overfitting, and non-normality. \textit{Journal of Portfolio Management} 40(5), 94--107.
+\bibitem[Baker et~al.(2019)]{bbdk2019} Baker, S. R., N. Bloom, S. J. Davis, and K. J. Kost (2019). Policy news and stock market volatility. NBER Working Paper 25720; published in \textit{Journal of Financial Economics} 175, 104187 (2026).
+\bibitem[Benjamini and Hochberg(1995)]{bh1995} Benjamini, Y., and Y. Hochberg (1995). Controlling the false discovery rate: A practical and powerful approach to multiple testing. \textit{Journal of the Royal Statistical Society, Series B} 57(1), 289--300.
+\bibitem[Benjamini and Yekutieli(2001)]{by2001} Benjamini, Y., and D. Yekutieli (2001). The control of the false discovery rate in multiple testing under dependency. \textit{Annals of Statistics} 29(4), 1165--1188.
+\bibitem[Bolton and Kacperczyk(2021)]{bk2021} Bolton, P., and M. Kacperczyk (2021). Do investors care about carbon risk? \textit{Journal of Financial Economics} 142(2), 517--549.
+\bibitem[Campbell and Thompson(2008)]{ct2008} Campbell, J. Y., and S. B. Thompson (2008). Predicting excess stock returns out of sample: Can anything beat the historical average? \textit{Review of Financial Studies} 21(4), 1509--1531.
+\bibitem[Clark and West(2007)]{cw2007} Clark, T. E., and K. D. West (2007). Approximately normal tests for equal predictive accuracy in nested models. \textit{Journal of Econometrics} 138(1), 291--311.
+\bibitem[Eskildsen et~al.(2026)]{eijp2026} Eskildsen, M., M. Ibert, T. I. Jensen, and L. H. Pedersen (2026). Realized returns to green investing: A global replication. SSRN Working Paper 6527562, April 2026.
+\bibitem[Ferson and Schadt(1996)]{fs1996} Ferson, W. E., and R. W. Schadt (1996). Measuring fund strategy and performance in changing economic conditions. \textit{Journal of Finance} 51(2), 425--461.
+\bibitem[Gavriilidis(2021)]{gavriilidis2021} Gavriilidis, K. (2021). Measuring climate policy uncertainty. SSRN Working Paper 3847388.
+\bibitem[Grinold and Kahn(2000)]{gk2000} Grinold, R. C., and R. N. Kahn (2000). \textit{Active Portfolio Management}, 2nd ed. McGraw-Hill.
+\bibitem[Hansen(2005)]{hansen2005} Hansen, P. R. (2005). A test for superior predictive ability. \textit{Journal of Business and Economic Statistics} 23(4), 365--380.
+\bibitem[Henriksson and Merton(1981)]{hm1981} Henriksson, R. D., and R. C. Merton (1981). On market timing and investment performance. II. Statistical procedures for evaluating forecasting skills. \textit{Journal of Business} 54(4), 513--533.
+\bibitem[Holm(1979)]{holm1979} Holm, S. (1979). A simple sequentially rejective multiple test procedure. \textit{Scandinavian Journal of Statistics} 6(2), 65--70.
+\bibitem[Lehnherr et~al.(2025)]{lmn2024} Lehnherr, R., M. Mehta, and S. Nagel (2025). Optimal factor timing in a high-dimensional setting. \textit{Financial Analysts Journal} 81(2), 51--66.
+\bibitem[Lewellen and Nagel(2006)]{ln2006} Lewellen, J., and S. Nagel (2006). The conditional CAPM does not explain asset-pricing anomalies. \textit{Journal of Financial Economics} 82(2), 289--314.
+\bibitem[Li and Ji(2005)]{liji2005} Li, J., and L. Ji (2005). Adjusting multiple testing in multilocus analyses using the eigenvalues of a correlation matrix. \textit{Heredity} 95(3), 221--227.
+\bibitem[Moskowitz and Grinblatt(1999)]{mg1999} Moskowitz, T. J., and M. Grinblatt (1999). Do industries explain momentum? \textit{Journal of Finance} 54(4), 1249--1290.
+\bibitem[Newey and West(1987)]{nw1987} Newey, W. K., and K. D. West (1987). A simple, positive semi-definite, heteroskedasticity and autocorrelation consistent covariance matrix. \textit{Econometrica} 55(3), 703--708.
+\bibitem[Nyholt(2004)]{nyholt2004} Nyholt, D. R. (2004). A simple correction for multiple testing for single-nucleotide polymorphisms in linkage disequilibrium with each other. \textit{American Journal of Human Genetics} 74(4), 765--769.
+\bibitem[P\'astor et~al.(2021)]{pst2021} P\'astor, L., R. F. Stambaugh, and L. A. Taylor (2021). Sustainable investing in equilibrium. \textit{Journal of Financial Economics} 142(2), 550--571.
+\bibitem[P\'astor et~al.(2022)]{pst2022} P\'astor, L., R. F. Stambaugh, and L. A. Taylor (2022). Dissecting green returns. \textit{Journal of Financial Economics} 146(2), 403--424.
+\bibitem[Romano and Wolf(2005)]{rw2005} Romano, J. P., and M. Wolf (2005). Stepwise multiple testing as formalized data snooping. \textit{Econometrica} 73(4), 1237--1282.
+\bibitem[Treynor and Mazuy(1966)]{tm1966} Treynor, J. L., and K. K. Mazuy (1966). Can mutual funds outguess the market? \textit{Harvard Business Review} 44(4), 131--136.
+\bibitem[Zarattini and Antonacci(2024)]{za2024} Zarattini, C., and G. Antonacci (2024). A century of profitable industry trends. SSRN Working Paper 4857230.
+\bibitem[Zhang(2025)]{zhang2025} Zhang, S. (2025). Carbon returns across the globe. \textit{Journal of Finance} 80(1), 615--645.
+\end{thebibliography}
+
+% ================================================================ appendices
+\clearpage
+\appendix
+\counterwithin{table}{section}
+\counterwithin{figure}{section}
+\renewcommand{\runningtitle}{Read the Label: Appendices}
+
+\section{Claude interactions}
+\label{app:claude}
+
+This appendix documents the four exchanges: for each, a four-line box of what I asked, what came back, what I verified and what I kept, then my evaluation, the prompts and replies verbatim, and the fact-check. The main-body summary is Table~3 and the critical evaluation is Section~\ref{sec:claude}. The provenance note below applies to every reply.
+
+\input{appendix_transcripts}
+
+% ---------------------------------------------------------------- appendix B
+\clearpage
+\section{Replication and audit of our team's pipeline}
+\label{app:replication}
+
+\subsection{How reproduction was checked}
+I ported our team's two analysis scripts (\texttt{climate\_alpha\_\allowbreak analysis.py} and \texttt{macro\_state\_\allowbreak dependence.py}, commit \texttt{08e7d31}) into one library, \texttt{lib/\allowbreak team\_pipeline.py}, with 14 unit tests that pass in about 20 seconds. Reproduction was checked in four steps.
+\begin{enumerate}
+\item \textbf{The team code regenerates the team's committed tables} (comparison table maximum difference $3.8\times10^{-15}$; the \LaTeX{} table byte-identical; macro-state tables $1.9\times10^{-14}$), with numpy, pandas and scipy versions equal to the team lock file.
+\item \textbf{The library reproduces the committed tables} to $3.8\times10^{-15}$ and $3.1\times10^{-14}$.
+\item \textbf{The library reproduces every intermediate object of the team script}: positions, gross and net returns and turnover of all 8 strategies bitwise; rolling betas, hedged returns and residuals bitwise; the 48-row period table, 32 claims, bootstrap and placebo draws exactly.
+\item \textbf{The write-up is reproduced}: all 32 cells of the write-up's Table~1 at two decimals, the COVID numbers (5.94\%, 6.03\%, $t=3.21$; 7.41\%, 5.23\%, $t=2.07$), ``2 of 32 claims survive Holm'', and raw-spread HML loadings of $-0.24$ and $-0.35$ over the write-up's windows, 1970 to 2022-07 and 2010-01 to 2022-07 (over 1970--2026 and 2010--2026 they are $-0.233$ and $-0.298$).
+\end{enumerate}
+A default run takes 1.9 seconds against 36.5 seconds for the two team scripts, which made the many reruns in M1b and M2 cheap.
+
+\subsection{Audit findings, ordered by impact on the conclusions}
+\begin{table}[H]
+\caption{Audit of the team pipeline. Each item was checked by running code; the status column says how the item is treated in this report.}
+\label{tab:audit}
+\centering\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\textwidth}{@{}rL{3.6cm}YL{3.2cm}@{}}
+\toprule
+\# & Finding & Effect & Status in this report \\
+\midrule
+1 & The signal is exactly zero in 31 of 48 holdout months & Near-binary signal in the holdout & Real, but the zeros changed no holdout trade (M1); not an explanation of the loss \\
+2 & The missing Oct-2025 CPI print silenced the purified signal for two months & Explains the whole Pure-versus-Original holdout gap (Pure 3m $-2.17$\% becomes $-3.82$\%) & Fixed in the corrected baseline \\
+3 & Normal p-values on 24-month NW(6) $t$-statistics & ``2 of 32 survive Holm'' becomes 0 of 32 with $t(n-4)$ (smallest Holm $p=0.119$); COVID $t$ from 2.36 (OLS) to 4.00 (12 lags) & $t(n-k)$ p-values in the strategy tests \\
+4 & The continuous variant's gain is mostly de-leveraging & Mean $|$position$|$ 0.14--0.16 against 0.26--0.47; vol-matched paired $p$ rise from 0.014, 0.072, 0.031, 0.023 to 0.062, 0.829, 0.145, 0.148 & Not called an improvement \\
+5 & Month-$t$ EMV used at the close of month $t$ & Original 3m 2010--2026 net 0.07\% becomes 0.73\% with a one-month lag & Lag applied in the corrected baseline \\
+6 & \texttt{active\_months} counts exit-cost months & Original 3m: 96 reported, 75 held & Months held reported instead \\
+7 & Emissions file: 41 of 49 industries, static, tied values, Coal 9th & Mild look-ahead; 8-and-8 tie at Hardw/MedEq & Audited in M4 \\
+8 & Write-up text numbers slightly off & Volatility cut 52--67\% (not 55--65\%), holdout loss cut 70--84\% (not 75--85\%), residual HML $-0.040$ to $-0.061$ & Not repeated \\
+9--11 & IC window boundary, cost timing, data vintage & At most 0.008 in any IC, 0.04 pp in holdout net, $10^{-5}$ in table cells & Negligible \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Checked and clean}
+A fuzz test that randomizes every input after 2012-06, 2016-12 and 2020-03 changes no signal or strategy value before the cut (the 2016-12 version is kept as \texttt{test\_no\_lookahead}). The rolling hedge uses betas estimated through $t$ on $t+1$ returns; annualization ($12\times$ mean, $\sqrt{12}\times$ standard deviation), the Holm implementation and the bootstrap p-value inversion are correct; and the FF49 portfolios include dead firms, so there is no survivorship bias at the industry level. The write-up's 12- and 18-lag robustness holds (validation Pure 6m $t=2.45$ and $2.44$).
+
+\subsection{Design notes}
+Only the Brown leg is traded: the Green-leg model is built but never used in a strategy, so ``Green minus Brown'' describes the signal's motivation, not the position. The ``buy-and-hold Green-Brown'' benchmark row is unhedged, not volatility-targeted and cost-free, so it is not like-for-like with the strategy rows.
+
+% ---------------------------------------------------------------- appendix C
+\clearpage
+\section{Supporting exhibits by module}
+\label{app:modules}
+
+Each subsection covers one module, in module order, and opens with its verdict; the module's written record is its \texttt{FINDINGS.md} and \texttt{VERIFY.md} in \texttt{modules/<id>/}. Tables without a takeaway sentence are the modules' own output tables. The project-wide checks of M7 are in Appendix~\ref{app:ledger}.
+
+\subsection{M1: what the signal measures}
+\label{app:m1}
+The team's ``attention'' is FRED's EMV tracker for energy and environmental regulation; it is overall volatility news plus a topic share, and it is unrelated to climate concern. Same-month slopes of GB on MCCC and CPU shocks have the wrong sign ($t=-0.49$ and $-1.23$), so a faster trade would not have caught a \citet{pst2022} repricing on these legs. VIX adds nothing to overall EMV over the full sample ($t=-0.35$), but in the validation window it enters negatively ($t=-2.51$).
+
+\input{tables/app_M1_signal_audit_zero_counts.tex}
+\input{tables/app_M1_signal_audit_decomposition_team_signal.tex}
+\begin{table}[H]
+\caption{Crossings and volatility. Share of crossing months flagged as high-volatility against all other months, with Fisher exact, circular-shift and linear-probability (LPM, NW(12)) p-values. A shift $p$ of zero is printed as its resolution, one over the number of rotations, which runs from 25 in the holdout to 382. The link to overall EMV survives the dependence corrections and the VIX link is borderline; the holdout LPM $p$ is not informative, because all five holdout crossings are flagged.}
+\label{tab:m1cross}
+\centering\footnotesize
+\begin{adjustbox}{max width=\linewidth}\input{tables/tab_m1_cross.tex}\end{adjustbox}
+\end{table}
+\begin{landscape}
+\input{tables/app_M1_signal_audit_predictive_ic_summary.tex}
+\input{tables/app_M1_signal_audit_zero_counterfactual_summary.tex}
+\end{landscape}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{M1_signal_audit_emv_vs_vix.pdf}
+\caption{The team series against VIX, with exact-zero months marked. The zeros cluster after 2021-10: 39 of the 59 months since then are exactly zero.}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.72\textwidth]{M1_signal_audit_rule_mechanics.pdf}
+\caption{Rule mechanics, including the counterfactual that freezes the z-score's scaling at 2021-09. No holdout entry month differs, so the zeros did not cause the holdout loss.}
+\end{figure}
+
+\subsection{M1b: the same machinery, other signals}
+\label{app:m1b}
+Fed MCCC or CPU, the team machinery produces no validation alpha with $t\ge1.96$ and no significant positive holdout alpha (the largest, CPU Original 3m, is $+0.36$\%, $t=0.37$), and the COVID placebo rule fails only at its threshold (overall EMV reproduces the gain in exactly the 4 of 6 rules the test requires). The COVID paths of every measure are Figure~\ref{fig:covid} in Section~\ref{sec:covid}. Under our team's same-month timing, Original 3m's FF3 alphas over the last 18 and 12 months are $-10.82$\% ($t=-4.75$) and $-11.31$\% ($t=-2.68$), against the real-time values in Table~C.10.
+
+\begin{table}[H]
+\caption{The same machinery, three signals. FF3 alpha, \% a year (NW(6) $t$), of our team's six rules under real-time timing, fed the EMV tracker, MCCC or CPU. Validation is 2010-01 to 2022-07; the holdout runs from 2022-08 to each measure's last usable month (48, 36 and 39 months). Only the EMV tracker produces validation alphas with $t\ge1.96$, and every MCCC holdout alpha is negative.}
+\label{tab:signals}
+\centering\footnotesize
+\setlength{\tabcolsep}{3.3pt}
+\input{tables/tab_signals.tex}
+\end{table}
+\input{tables/app_M1b_alt_signals_primary.tex}
+\input{tables/app_M1b_alt_signals_placebo_covid.tex}
+\input{tables/app_M1b_alt_signals_covid_attribution.tex}
+\input{tables/app_M1b_alt_signals_recent.tex}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{M1b_alt_signals_alpha_t_heatmap.pdf}
+\caption{Alpha $t$-statistics by measure, rule and window under real-time timing. The validation gains belong to the EMV family (the tracker, its share and overall EMV), every holdout cell of the EMV tracker and MCCC is negative, and COVID is positive for almost every measure, volatility placebos included.}
+\end{figure}
+
+\subsection{M2: \CR's four tests}
+\label{app:m2}
+Wider legs, momentum and commodity controls and uniform costs leave no positive alpha that survives Holm or Benjamini--Hochberg among 8,091 tests (368 positive and 531 negative alphas have $p<0.05$ before correction); the HML loading is a Brown-leg value tilt.
+
+\input{tables/app_M2_christhian_tests_q1_table1_corr.tex}
+\input{tables/app_M2_christhian_tests_q2_spread_controls.tex}
+\input{tables/app_M2_christhian_tests_q3_hml_contributions.tex}
+\input{tables/app_M2_christhian_tests_q4_costs_corr.tex}
+\input{tables/app_M2_christhian_tests_summary_best_case.tex}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{M2_christhian_tests_hml_decomposition.pdf}
+\caption{Where GB's HML loading comes from: industry contributions by leg. The Brown side supplies the negative loading, led by Steel and Ships.}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.75\textwidth]{M2_christhian_tests_cost_sensitivity.pdf}
+\caption{Validation and holdout alphas at uniform costs of 5, 10 and 25 bp. Costs shrink the validation alphas, and the holdout alphas are negative before any cost.}
+\end{figure}
+
+\subsection{M3: alpha versus beta}
+\label{app:m3}
+Green-minus-Brown is static factor beta, the holdout loss is not a rates accident, and the strategies' beta-timing term is a drag that the untimed short shares. The BOND factor tracks Damodaran's annual 10-year Treasury returns with a correlation of 0.991 over 1954--2025 (0.987 over 1993--2025); its 2022 total return is $-15.0$\% against Damodaran's $-17.8$\%, the gap coming from GS10's monthly averaging. Steel carries the corrected 6-month rule's gross holdout loss in the five-industry split ($-1.37$ of $-1.38$ points, because Util's $+1.07$ offsets the $-1.08$ of Ships, Aero and BldMt), but that split is accounting, not a counterfactual. Rebuilt without any one Brown industry (leg, hedge and volatility scaling re-estimated), the rule's holdout FF3 alpha is $-1.45$\% to $-2.61$\% for 6-month holds and $-1.26$\% to $-2.43$\% for 3-month holds, 10 of 10 negative. Without Steel the untimed short loses more ($-2.67$\%, $t=-1.66$), and only the timing alpha from M8's attribution regression turns positive ($+0.39$\%, $t=0.38$, against $-1.11$\% with Steel; exploratory, \texttt{exchange/\allowbreak 04\_red\_team/\allowbreak checks/\allowbreak fc04b\_checks.py}). Against the $\pi$-scaled short with in-window FF3, UMD and BOND, the four corrected discrete rules' holdout timing alphas are $-1.03$\% to $-1.71$\% ($t=-0.99$ to $-1.72$; M3, exploratory), so the holdout indicts the timing as well as the position.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.72\textwidth]{M3_alpha_beta_attribution.pdf}
+\caption{What the traded position earned, window by window. Each bar splits the annualized net return of corrected Pure 6m (top) and Continuous pure (bottom) into leakage of the lagged FF3 hedge by factor (market, SMB, HML, UMD, BOND), the residual non-factor return and trading cost; diamonds mark the net return. Betas come from centered 36-month windows, so the split is descriptive and ex post. The COVID gain is mostly factor leakage (4.76 of 6.87 points, 4.11 of them from market and size), with a residual of 2.21 ($t=1.27$), and the holdout loss is residual Brown performance plus costs, not rates.}
+\label{fig:attribution}
+\end{figure}
+\begin{table}[H]
+\caption{Holdout alphas (\% a year, NW(6) $t$) before and after adding UMD and BOND (M3 primary test ii), both baselines; $p$ is that of the FF3+UMD+BOND alpha. Every alpha becomes more negative.}
+\centering
+\begin{adjustbox}{max width=\linewidth}\input{../outputs/tables/M3_alpha_beta_holdout_alpha.tex}\end{adjustbox}
+\end{table}
+\begin{table}[H]
+\caption{Lewellen--Nagel decomposition (\% a year), post-2010, backward 36-month betas (M3 primary test iii); the 95\% interval and $p$ are from a block bootstrap of the timing term. The beta-timing term is negative for the rules and for the always-short position alike.}
+\centering\footnotesize
+\begin{adjustbox}{max width=\linewidth}\input{../outputs/tables/M3_alpha_beta_ln_post2010.tex}\end{adjustbox}
+\end{table}
+\begin{table}[H]
+\caption{Ferson--Schadt conditional alphas (\% a year) and the joint test that betas do not vary with the instruments, with fixed-design and wild block bootstrap p-values.}
+\centering\footnotesize
+\begin{adjustbox}{max width=\linewidth}\input{../outputs/tables/M3_alpha_beta_ferson_schadt.tex}\end{adjustbox}
+\end{table}
+\begin{table}[H]
+\caption{Holdout net return (\% a year, with $t$) when the rolling hedge also includes BOND (and UMD). A rates hedge does not turn the holdout positive.}
+\centering\footnotesize
+\begin{adjustbox}{max width=\linewidth}\input{../outputs/tables/M3_alpha_beta_bond_hedge_rerun.tex}\end{adjustbox}
+\end{table}
+\begin{table}[H]
+\caption{Validation of the BOND factor: its eight worst calendar years since 1954 (total return, exact repricing and excess over the risk-free rate, in \%) against Damodaran's annual 10-year T-bond returns. GS10 Dec is the December average of the 10-year yield.}
+\centering\footnotesize
+\begin{adjustbox}{max width=\linewidth}\input{../outputs/tables/M3_alpha_beta_bond_validation.tex}\end{adjustbox}
+\end{table}
+
+\subsection{M4: the emissions file}
+\label{app:m4}
+The team's ranking is undocumented and puts Ships and Aero in the Brown leg on values closer to transport than to manufacturing emissions. A complete EPA ranking changes both legs and reverses the sign of the raw spread, but produces no post-2010 alpha (none of 9 specifications, smallest Holm $p=0.471$). Its full-sample FF5+UMD alpha (EPA 5-vs-5 4.5\%, $t=2.58$; 7 of 9 variants with raw $p<0.05$, 5 of 9 surviving Holm) exceeds its raw return (2.5\%, $t=1.40$) because the spread is short CMA ($-0.345$, $t=-3.04$) and UMD ($-0.096$, $t=-2.02$), both of which earned positive premia, and it rests on a 2022 sort applied back to 1970.
+
+Exchange 04 asked whether the climate reading fails only because of the legs, so I fed MCCC and CPU through our team's rules on the EPA-ranked legs (exploratory; \texttt{exchange/\allowbreak 04\_red\_team/\allowbreak checks/\allowbreak fc04b\_checks.py}). The same-month GB slopes on real-time concern shocks become more wrong-signed, not less: $-0.50$\% and $-0.29$\% a month per standard deviation ($t=-2.95$ and $-2.17$; with FF3 controls $t=-2.50$ and $-2.05$), against $-0.09$\% and $-0.16$\% on the team legs. In validation, 1 of the 12 rule alphas has $t\ge1.96$ (CPU Original 3m, 1.78\%, $t=1.98$), and none of the 12 timing edges over the exposure-matched short does (largest $t=0.92$). All six CPU-timed rules have positive holdout alphas to 2025-10 (0.49\% to 1.97\%, largest $t=1.79$), but the untimed EPA short earns 1.41\% over the same 39 months ($t=1.05$). The timing edge over an exposure-matched short ($\pi$ and FF3 fitted in each window) is $+0.05$\% to $+1.22$\% there (largest $t=1.43$), and over 1994--2009, a window this combination never saw, it is negative in 5 of 6 rules ($-2.59$\% to $+0.15$\%). MCCC timing on the same legs does no better (holdout edges $-1.29$\% to $+0.61$\%). The holdout gain belongs to the EPA position, not the climate timing.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.86\textwidth]{M4_emissions_intensity_scatter.pdf}
+\caption{The Brown leg as delivered. (a) The team's intensity file against EPA supply-chain GHG intensity (kg CO$_2$e per 2022 dollar, log scales), 41 common industries; (b) ranks, top five of each shaded. The rankings agree broadly (Spearman 0.70), but Ships and Aero rank 20th and 31st of 49 on EPA factors, and EPA's Green leg shares no industry with the team's.}
+\label{fig:emissions}
+\end{figure}
+\begin{landscape}
+\input{tables/app_M4_emissions_key_industries.tex}
+\input{tables/app_M4_emissions_aero_ships_calibration.tex}
+\end{landscape}
+\input{tables/app_M4_emissions_post2010_family.tex}
+\input{tables/app_M4_emissions_primary_sensitivity.tex}
+\input{tables/app_M4_emissions_team_rule_rerun.tex}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{M4_emissions_cum_gb.pdf}
+\caption{Cumulative GB under the team and EPA rankings, from 1970 and from 2010. The EPA ranking reverses the sign of the spread after 2010, but its post-2010 FF5+UMD alpha is not significant.}
+\end{figure}
+
+\subsection{M5: carbon-aware industry momentum}
+\label{app:m5}
+Industry momentum is the UMD premium in industry form, and a carbon constraint costs no detectable IR on it, with low power. The primary carbon test at $b=0$ was weak (it cut the long book's weighted average carbon intensity, WACI, by 11.6\%); at $b=-1$ WACI falls 60\% for an IR change of $-0.005$ (95\% interval $-0.110$ to $+0.096$). The frozen pre-1970 run of the optimizer book is in Appendix~\ref{app:m7frozen}.
+
+\begin{table}[H]
+\caption{Industry momentum performance by period, net of 10 bp.}
+\centering\footnotesize
+\begin{adjustbox}{max width=\linewidth}\input{../outputs/tables/M5_industry_momentum_perf_periods.tex}\end{adjustbox}
+\end{table}
+\begin{table}[H]
+\caption{Industry momentum alphas by factor model and window. No full-sample alpha of the equal-weight book is significant once UMD is in the model.}
+\centering\footnotesize
+\begin{adjustbox}{max width=\linewidth}\input{../outputs/tables/M5_industry_momentum_alphas.tex}\end{adjustbox}
+\end{table}
+\begin{table}[H]
+\caption{Carbon exclusion screens: long-leg WACI and Sharpe differences against the primary book.}
+\centering\footnotesize
+\begin{adjustbox}{max width=\linewidth}\input{../outputs/tables/M5_industry_momentum_carbon_screens.tex}\end{adjustbox}
+\end{table}
+\begin{table}[H]
+\caption{Grinold--Kahn carbon frontier: IR and alpha change against the unconstrained book, by carbon bound $b$. dIR is the IR change with its 95\% bootstrap interval; convention X drops the 8 industries without an intensity and convention M assigns them the median. Only $b=-2$, partly infeasible, costs significantly, and only under convention X over the full sample ($p=0.038$; 0.185 after 2010 and 0.17 under convention M).}
+\centering\footnotesize
+\begin{adjustbox}{max width=\linewidth}\input{../outputs/tables/M5_industry_momentum_carbon_cost_test.tex}\end{adjustbox}
+\end{table}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{M5_industry_momentum_carbon_frontier.pdf}
+\caption{The Grinold--Kahn carbon frontier of the optimized momentum book: realized IR against long-book carbon intensity as the bound $c'h\le b$ tightens. The frontier is flat until the bound becomes extreme.}
+\end{figure}
+
+\subsection{M6: shrinkage timing}
+\label{app:m6}
+Under its pre-specified cross-validation the ridge model collapses to the historical mean in every month, and attention makes forecasts worse at every fixed penalty.
+
+\begin{landscape}
+\input{tables/app_M6_factor_timing_oos_primary.tex}
+\input{tables/app_M6_factor_timing_cv_design.tex}
+\input{tables/app_M6_factor_timing_team_target_check.tex}
+\end{landscape}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\textwidth]{M6_factor_timing_shrinkage_path.pdf}
+\caption{Cross-validation error relative to the historical mean along the penalty path. It never falls below one, so the largest penalty, which returns the historical mean, always wins.}
+\end{figure}
+
+\subsection{M8: the frozen 1994--2009 test}
+\label{app:m8}
+The rule meets one of four pre-registered components and fails. All 128 published numbers were rebuilt from raw files, and the corrections made after verification are output-only.
+
+\paragraph{Timeline.} The pre-registration was saved before the code was written, and its SHA-256 hash (\texttt{e926c3aeef48555d3b895243cfeeb2007a356654207eb10ed8a630de2f270b51}) shows that it never changed. It is stamped 03:29 PDT on 2026-09-26. The rule ran once on 1994--2009, after a dry run on the seen 2010--2022 window; only output formatting changed afterward, and every later execution reproduces the first run's recorded alpha, $t$, shuffle $p$, episodes, drop-one alphas and verdict. The file times are recorded in \texttt{modules/\allowbreak M8\_frozen\_pre2010/\allowbreak corrections/\allowbreak pre\_correction\_0341/\allowbreak manifest.json}.
+
+\input{tables/app_M8_attribution.tex}
+\input{tables/app_M8_decomposition.tex}
+\input{tables/app_M8_drop_one.tex}
+\input{tables/app_M8_crossings.tex}
+\input{tables/app_M8_bond_check.tex}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.72\textwidth]{M8_share_signal.pdf}
+\caption{The frozen rule's signal: the EMV share with zero months marked; its z-score, threshold, crossings and months in position; and our team's signal, lagged, for comparison. The share rule is in position in 142 of 190 months, close to the always-short position.}
+\end{figure}
+
+% ---------------------------------------------------------------- appendix D
+\clearpage
+\section{Code snippets}
+\label{app:code}
+
+The listings are read directly from the files that produced the results (line numbers are the files' own), so the code shown is the code that ran. Every module runs with \texttt{cd research \&\& uv run python modules/<id>/run.py}.
+
+\subsection{The team trade, ported}
+The lagged hedge (\texttt{lib/team\_pipeline.py}): betas estimated through $t$ hedge month $t+1$.
+\lstinputlisting[style=code,firstline=128,lastline=150]{../lib/team_pipeline.py}
+Past-only threshold, crossings and holds, and the 5\% volatility target with a cap of one.
+\lstinputlisting[style=code,firstline=157,lastline=159]{../lib/team_pipeline.py}
+\lstinputlisting[style=code,firstline=350,lastline=354]{../lib/team_pipeline.py}
+\lstinputlisting[style=code,firstline=380,lastline=390]{../lib/team_pipeline.py}
+The P\&L engine: a position set at the end of $t$ earns $t+1$, and the cost of a trade at $t$ is charged at $t+1$.
+\lstinputlisting[style=code,firstline=412,lastline=438]{../lib/team_pipeline.py}
+
+\subsection{The frozen rule (M8)}
+The share signal, with zeros treated as missing and the off rule (M8, \texttt{run.py}).
+\lstinputlisting[style=code,firstline=157,lastline=179]{../modules/M8_frozen_pre2010/run.py}
+The publication lag and the hold.
+\lstinputlisting[style=code,firstline=193,lastline=198]{../modules/M8_frozen_pre2010/run.py}
+The attribution regression of $D_t$ with $k=15$ and $t(n-k)$ p-values.
+\lstinputlisting[style=code,firstline=259,lastline=286]{../modules/M8_frozen_pre2010/run.py}
+The calendar shuffle: the same blocks, in random order, at random non-touching dates.
+\lstinputlisting[style=code,firstline=304,lastline=353]{../modules/M8_frozen_pre2010/run.py}
+The BOND factor (also used by M3): exact duration and convexity of a 10-year semiannual par bond.
+\lstinputlisting[style=code,firstline=67,lastline=77]{../modules/M8_frozen_pre2010/run.py}
+\lstinputlisting[style=code,firstline=89,lastline=104]{../modules/M8_frozen_pre2010/run.py}
+
+\subsection{Alpha versus beta (M3)}
+The \citet{ln2006} identity: mean return equals conditional alpha plus static beta plus the beta-timing covariance (M3, \texttt{m3lib.py}).
+\lstinputlisting[style=code,firstline=288,lastline=307]{../modules/M3_alpha_beta/m3lib.py}
+
+\subsection{Shrinkage timing (M6)}
+Walk-forward ridge with expanding-fold cross-validation, ties to the larger penalty, and the \citet{ct2008} and \citet{cw2007} statistics (M6, \texttt{m6lib.py}).
+\lstinputlisting[style=code,firstline=104,lastline=149]{../modules/M6_factor_timing/m6lib.py}
+\lstinputlisting[style=code,firstline=171,lastline=189]{../modules/M6_factor_timing/m6lib.py}
+
+\subsection{The carbon frontier (M5)}
+The Grinold--Kahn problem: alpha minus cost, a tracking-error limit, dollar neutrality, a box and the carbon bound (M5, \texttt{optimizer.py}).
+\lstinputlisting[style=code,firstline=58,lastline=68]{../modules/M5_industry_momentum/optimizer.py}
+
+\subsection{Look-ahead discipline}
+The fuzz test kept in the unit-test suite (\texttt{lib/test\_team\_pipeline.py}).
+\lstinputlisting[style=code,firstline=211,lastline=227]{../lib/test_team_pipeline.py}
+
+\subsection{How the work was done and verified}
+The research ran as a set of modules, each built by an AI coding agent (Anthropic's Claude) under my direction and then verified in two rounds by a second agent that re-implemented the module's headline numbers from the raw files without importing the module's own code. The shared team library and, for comparison only, M8's BOND builder were the exceptions. Each verification record (\texttt{modules/<id>/VERIFY.md}) lists every check, the mismatches found and how each was resolved, and every fix adopted is reflected in this report. The Claude exchanges followed the same division of labor: I wrote every prompt and fact-checked every reply with code before acting on it (Appendix~\ref{app:claude}).
+
+Two qualifications apply. First, a few fact-check numbers come from the exchanges' check scripts alone and were computed once: the 86\% of the 3-month rule's COVID gross P\&L carried by Aero, Util and Ships (exchange 01); the 13 of 100 synthetic null datasets on which the NW(6) $t$ rejects at 5\% (exchange 02); the runs of the replies' own code that grade them, such as the 4 of 6 and 7 of 8 injected timing bugs their look-ahead tests caught (exchange 02); and the numbers that appear only in my evaluations in Appendix~\ref{app:claude}. The exchange 04 numbers in the body and in Appendix~\ref{app:modules} were recomputed on 2026-10-02 by a second script that shares only the team library with the check scripts (\texttt{exchange/\allowbreak 04\_red\_team/\allowbreak checks/\allowbreak verify\_fc04b\_independent.py}), and every printed value matched. Second, M2's commodity-hedge primary test is not strictly blind: a smoke test printed its alphas four minutes before the code that pre-specifies it was written. Its result is null.
+
+\subsection{Reproducibility}
+Every module is deterministic: seeds are 230 for the bootstraps and the M8 shuffle and 20260926 for M5 and for M7's bootstraps, and each verifier confirmed that a rerun reproduces the module's tables. Approximate run times: M1 20 to 60 seconds, M1b one minute, M2 2 to 4 minutes, M3 2.5 to 4 minutes, M4 one minute, M5 4 to 10.5 minutes, M6 one minute, M7 41 seconds. The pre-registration hashes are recorded in \texttt{outputs/tables/M8\_preregistration\_hash.csv} and \texttt{outputs/tables/M7\_preregistration\_hash.csv}. Each exhibit's file name starts with the module that makes it; the report tables are built by \texttt{report/make\_tables.py} and Appendix~\ref{app:claude} by \texttt{report/build\_transcripts.py}.
+
+% ---------------------------------------------------------------- appendix E
+\clearpage
+\section{Tests ledger and multiple testing}
+\label{app:ledger}
+
+\subsection{Ledger schema}
+{\raggedright Every module logs each inferential statistic once, in \texttt{outputs/tables/<id>\_tests\_ledger.csv}, with nine shared columns: \texttt{test\_id}, \texttt{module}, \texttt{question}, \texttt{statistic\_name}, \texttt{statistic}, \texttt{p\_value\_two\_sided}, \texttt{n\_obs}, \texttt{primary\_or\_exploratory} and \texttt{note}; M6 adds a one-sided p-value and the alternative for its Clark--West rows, and M7 adds both plus its family label. A hypothesis reported in two tables is logged once. M7 stacks the eight module ledgers into \texttt{M7\_all\_tests.csv} (24,404 rows with its own), with no exact duplicates.\par}
+
+\subsection{Counts by ledger}
+\begin{table}[H]
+\caption{Rows in each tests ledger, by label. Only primary rows form pre-specified families; M7's one primary row is the frozen 1931--1969 test.}
+\label{tab:ledgers}
+\centering\small
+\input{tables/tab_ledgers.tex}
+\end{table}
+
+\subsection{Primary families within each module}
+\begin{table}[H]
+\caption{Primary families. Each row is a pre-specified family with its correction and outcome. ``Certified'' in this report means a Holm survivor within a primary family, and nothing else.}
+\label{tab:families}
+\centering\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\textwidth}{@{}L{1.2cm}YL{2.2cm}Y@{}}
+\toprule
+Module & Family & Correction & Outcome \\
+\midrule
+M1 & Q2 NW(6) Wald test of the team signal's z-score on VIX and overall EMV; Q3 zero-rate Fisher test; Q4 crossings and high VIX; Q5 two correlations; Q6a two contemporaneous slopes; Q6b eight predictive ICs & Holm within Q5, Q6a and Q6b & $R^2=0.169$, $p=8.8\times10^{-12}$; zeros $p=1.3\times10^{-32}$; Q4 $p=0.097$ (borderline); Q5 Holm 0.996 and 0.074; Q6a 0.62 and 0.43; Q6b smallest 0.62 \\
+M1b & 40 tests: MCCC and CPU alphas (24) and ICs (16) & Holm and BH & Smallest Holm $p=1.00$; no significant positive holdout alpha (largest $t=0.37$) \\
+M2 & Q1, Q2, Q4: 14 alphas each; Q3: four HML loadings & Holm within each & 0 positive survivors (smallest Holm 0.397); Q3 all four survive (largest 0.017) \\
+M3 & (i) two BOND loadings; (ii) six holdout alphas and six UMD-and-BOND Wald tests per baseline; (iii) seven beta-timing terms & Holm within each & (i) 0.019 and 0.549; (ii) smallest 0.155 for the alphas, 1.00 for every Wald test; (iii) 4 of 6 strategies survive, all negative \\
+M4 & One test: EPA 5-vs-5 post-2010 FF5+UMD alpha & none needed & $p=0.129$ \\
+M5 & Four tests: two alphas, the carbon IR change at $b=0$, GB's momentum loading & Holm & 0.823, 0.823, 0.823, 0.211 \\
+M6 & Six Clark--West tests (Q1 and Q2) plus two timing-minus-static tests & Holm over the six & All 1.00; timing minus static $p=0.24$ and 0.65 \\
+M8 & Four pass-bar components, all required & conjunction & 1 of 4 met: FAIL \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Project-wide correction (M7)}
+\label{app:m7}
+M7 implements the checks adopted from exchange 03 (\texttt{exchange/03\_robustness\_design/}; code \texttt{modules/M7\_robustness\_ledger/run.py}, about 41 seconds end to end, verified independently). Each of the 23,923 module tests belongs to one family, defined by the decision it could change (Table~E.3): F, the frozen and hash-verified tests; P, the module primary alpha tests, corrected one-sided with Holm and BH; D, other primaries; X, placebo and reference rows; L, loadings and beta-timing terms, reported with confidence intervals only; R, the robustness alpha grids, corrected with BH and BY and read as distributions; and E, exploratory rows. Collapsing the 8 exact duplicates in P (Original and Pure holdout variants that coincide once the CPI gap is corrected) leaves 73 tests. The best one-sided $p$ is 0.030 (M2, Pure 6m post-2010 at a uniform 5 bp cost, $t=1.89$; at our team's costs its alpha is 1.42\%, $t=1.65$); it would stay significant only if the effective number of tests were below 1.69. Uncorrected families, as nominal counts: D 15 of 73 rows with $p<0.05$, X 33 of 170, L 1,452 of 4,850 and E 1,636 of 9,411. For reference, all 155 labeled primaries as one family have 4 Holm survivors, none of them an alpha: M1's Fisher test on zero months, M1's joint Wald test and two M2 HML loadings of the spread.
+
+\begin{table}[H]
+\caption{Project test census: module ledger rows by family and module. Loadings (L) and exploratory rows (E) are 60\% of the census and enter no correction.}
+\label{tab:m7census}
+\centering\footnotesize
+\input{tables/body_M7_census_family_by_module.tex}
+\end{table}
+\begin{table}[H]
+\caption{Families and survivors across the project. No module primary alpha survives Holm or BH; the one survivor in family F is the frozen 1931--1969 run, and the one BH survivor in family R is a CPU variant of the COVID rule that fails BY and does not beat the always-short position.}
+\label{tab:m7mt}
+\centering\footnotesize
+\input{tables/body_M7_multiple_testing_summary.tex}
+\end{table}
+\begin{table}[H]
+\caption{\CR's robustness grid (family R-M2, 8,161 rows: the 8,091 alpha tests of Appendix~\ref{app:m2} plus 112 zero-cost runs, minus the 42 primary tests counted in family P) as a distribution: share of positive alpha $t$-statistics and median $t$ by evaluation window. Gains sit in validation and its sub-windows; every window that starts in 2022 or later loses.}
+\label{tab:m7grid}
+\centering\footnotesize
+\input{tables/body_M7_grid_windows.tex}
+\end{table}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{M7_grid_windows.pdf}
+\caption{Alpha $t$-statistics of \CR's grid by window. The distribution sits to the right of zero in validation and to the left in the holdout and the last 18 months.}
+\end{figure}
+
+\subsection{Search-adjusted tests and the deflated appraisal ratio}
+Two search families collect every strategy return series that could have been presented as the strategy: S-full, 58 series over 1970--2026 (24 optimizer paths, the equal-weight book and 8 variants, 10 carbon screens and 15 EPA spread variants), and S-post, 89 series over 2010--2026 (S-full plus our team's six rules, 12 MCCC and CPU rules and 13 shrinkage series). Romano--Wolf stepdown \citep{rw2005} and Hansen's SPA \citep{hansen2005} use a stationary bootstrap with mean block 12 and 5,000 draws. Over 1970--2026, 15 members survive (11 optimizer paths and four EPA variants, not the EPA 5-vs-5 spread itself); over 2010--2026 none does. The deflated appraisal ratio \citep{bldp2014} deflates each candidate's FF5+UMD appraisal ratio for the effective number of trials (the \citet{nyholt2004} estimate from residual correlations: 42.4 and 74.8) and must reach 0.95 in both windows. Both candidates fail in both windows and under every sensitivity; the most lenient case, the book over 1970--2026 with the \citet{liji2005} count and the variance floor, gives 0.897. M2's grid is not in either search family, because its series are not saved, which makes both tests slightly lenient.
+
+\begin{table}[H]
+\caption{Search-adjusted tests of the best FF5+UMD alpha. Over 1970--2026 the best $t$ of 3.34 clears the bootstrap max-$t$ bar of 2.68; over 2010--2026 nothing does.}
+\label{tab:m7search}
+\centering\footnotesize
+\input{tables/body_M7_search_summary.tex}
+\end{table}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{M7_search_family_t.pdf}
+\caption{Member $t$-statistics of the two search families by source, with the bootstrap max-$t$ critical value. Several optimizer paths clear it over 1970--2026, and no member clears it over 2010--2026.}
+\end{figure}
+\begin{table}[H]
+\caption{Deflated appraisal ratio of the two candidates. The pass bar is a governing DSR of at least 0.95 in both windows; the book would pass both windows only if the project had tried at most three independent strategies over 1970--2026 and at most two over 2010--2026.}
+\label{tab:m7dsr}
+\centering\footnotesize
+\input{tables/body_M7_dsr.tex}
+\end{table}
+
+\subsection{The holdout read against a worthwhile alpha}
+Each holdout alpha is read against a margin of a quarter of its own residual volatility, a quarter of an appraisal-ratio unit: an alpha whose 90\% upper bound lies below the margin rejects a worthwhile alpha, and one whose interval straddles it is inconclusive. The team rules are run as our team ran them (same-month timing, CPI gap uninterpolated), so Original and Pure differ here. The readings use the pre-registered NW(6) standard errors. In the M7 verifier's FF5+UMD rerun with classical OLS standard errors, the four hold rules and Continuous raw still reject, while Continuous pure and the always-short position become inconclusive.
+
+\begin{table}[H]
+\caption{Holdout (2022-08 to 2026-07, 48 months) alphas read against the margin. Every attention rule rejects a worthwhile alpha under both factor models; the momentum books and the EPA spread are inconclusive, because 48 months cannot tell 0\% from 3\% for them.}
+\label{tab:m7holdout}
+\centering\footnotesize
+\input{tables/body_M7_holdout_reading.tex}
+\end{table}
+
+\subsection{The frozen 1931--1969 run of the momentum book}
+\label{app:m7frozen}
+\paragraph{Specification and timeline.} The book is the unconstrained Grinold--Kahn momentum book of M5, called exactly as M5 calls it (41 covered industries, IC 0.05, 5\% ex-ante tracking error, 10 bp), with formation months 1931-06 to 1969-11 and return months 1931-07 to 1969-12 (462 months). The benchmark is FF3+UMD, because RMW and CMA start in 1963-07. When \texttt{run.py} first started, before any pre-1970 strategy return existed, it wrote the SHA-256 hashes of the adopted specification, \texttt{optimizer.py} and \texttt{m5lib.py} (08:49:39 PDT on 2026-09-26). The specification's hash was first taken from its text, before the file was saved at 10:43 PDT. Every run since then has re-hashed the saved file and matched the recorded value, and a run stops if any hash differs. Two development runs before the frozen run used only formation months from 1969-12 to 2008-05, whose returns start in 1970-01. The frozen run executed once, at 08:53:41 PDT, and every later execution reproduces its record. The pre-registered pass bar was an alpha with $t\ge2.00$ and positive alphas in both halves; a pass moves the book to paper-trading, never to implementation, because its holdout alpha is negative.
+
+\paragraph{Result and caveats.} The run passes: 1.95\% a year ($t=2.45$, one-sided $p=0.007$; Holm 0.015 with the M8 test in family F), with 1.71\% ($t=1.44$) and 0.90\% ($t=0.83$) in the two halves. The window is unseen for this book, not for the field: UMD from 1927 is public, and industry trend rules have been studied over about a century \citep{za2024}. The second-half alpha is about half the first-half alpha, although the difference is far from significant ($t$ about 0.5). After 1970 the book's FF5+UMD alpha did not decay after 2010 (1.99\%, $t=2.31$, over 1970--2009; 3.12\%, $t=2.18$, over 2010--2026) but disappeared in the 2022--2026 holdout ($-0.34$\%). At 25 bp the 1970--2026 FF5+UMD alpha stays positive (1.73\%, $t=2.43$; Table~E.10), but the frozen run's own alpha at 25 bp is 1.55\% ($t=1.94$, row S4 of Table~E.9), below the pass bar's $t$ of 2.00, so the pass also rests on a 10 bp cost that is low for 1931--1969. The carbon-constrained version ($b=-1$) differs from the unconstrained book by a net IR of $-0.006$ (95\% interval $-0.194$ to $+0.228$) before 1970.
+
+\begin{table}[H]
+\caption{Frozen 1931--1969 run of the optimizer book (pre-registered). The primary test (i) passes, with both halves positive.}
+\label{tab:m7frozen}
+\centering\footnotesize
+\input{tables/body_M7_frozen_pre1970.tex}
+\end{table}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{M7_frozen_pre1970.pdf}
+\caption{The frozen run: cumulative net return of the book and of the book less its FF3+UMD exposures, 1931 to 1969. The hedged line rises in both halves, faster in the first.}
+\end{figure}
+\begin{table}[H]
+\caption{Cost stress on the optimizer book: FF5+UMD alpha of gross returns less $c$ times turnover, holdings fixed. The full-sample alpha survives 25 bp; the holdout alpha is negative before any cost.}
+\label{tab:m7cost}
+\centering\footnotesize
+\input{tables/body_M7_cost_stress.tex}
+\end{table}
+
+\subsection{The verdict map}
+The map was fixed in the adopted specification before the frozen run: implement requires a hash-verified confirmatory alpha test, a Romano--Wolf adjusted $p$ of at most 0.05 in both search families, a governing deflated appraisal ratio of at least 0.95 in both windows, and a positive holdout alpha that does not read ``rejects''. The frozen run decided only between retiring the optimizer book and paper-trading it.
+
+\begin{table}[H]
+\caption{Final verdict by candidate. No candidate reaches ``implement''; the optimizer book moves to paper-trading, and the report's verdict stays ``Do not implement''.}
+\label{tab:m7verdict}
+\centering\footnotesize
+\input{tables/body_M7_verdict_table.tex}
+\end{table}
+
+\subsection{Nominal positives, and why each is not a discovery}
+\begin{itemize}
+\item \textbf{M5 COVID alpha of industry momentum}, 15.80\% (NW $t=3.18$, BH 0.022 on a normal p-value of 0.0015): 24 months and 7 parameters; the classical OLS $t$ is 1.58 ($p=0.132$).
+\item \textbf{M6 post-2010 yield-change forecasts} (one-sided $p=0.018$ and 0.020): exploratory among 34 univariate forecasts; BH $q=0.34$.
+\item \textbf{M1b paired COVID edge of the EMV rule over the volatility placebos} ($t$ up to 3.22 under real-time timing): smallest Holm $p=0.051$ within the 12 paired tests. Under team timing it vanishes against overall EMV (Original 3m $+1.39$\%, $t=0.87$) but stays nominally significant against VIX (Original 3m $+4.08$\%, $t=2.34$, $p=0.030$; Pure 3m $t=2.15$).
+\item \textbf{M7's one BH survivor in the robustness grids}, a level-transform variant of the CPU Original 3m rule in COVID (6.83\%, $t=4.72$, 24 months): it fails BY, disappears when the grids are pooled, and M1b shows that CPU Original 3m does not beat the always-short position ($+1.90$\%, $t=1.02$).
+\item \textbf{M4 EPA-minus-team spread}, 8.2\% a year post-2010 before factor adjustment ($t=2.84$): Holm 0.071 over 16 window-by-model tests and 0.178 over all 42 tests of the spread.
+\item \textbf{M4 full-sample EPA alpha}, 4.5\% ($t=2.58$, 5 of 9 variants survive Holm): it exceeds the raw return (2.5\%) because the spread is short CMA and UMD, rests on a 2022 sort applied back to 1970, is absent after 2010, and the 5-vs-5 spread fails the search correction over 1970--2026 (Romano--Wolf $p=0.058$) although four sister variants pass it.
+\item \textbf{M3 HML convexity}: 45 of the 48 pooled BH survivors among 1,080 timing tests are HML tests, but the always-short position shows it too (Treynor--Mazuy $t=3.24$), so it belongs to the hedged leg, not to attention \citep{tm1966,hm1981}.
+\end{itemize}
+
+\end{document}
