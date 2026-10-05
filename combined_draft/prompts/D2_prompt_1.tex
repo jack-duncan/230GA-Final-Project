@@ -1,0 +1,46 @@
+\par\noindent Write Python code for a pre-registered backtest I will run exactly once. You do not have the data, so report no results.
+\medskip
+\par\noindent CONTEXT. This is my MFE 230GA final project at Berkeley. Our team's strategy shorts a factor-hedged ``Brown'' industry leg after attention spikes. It failed its 2022-2026 holdout, and we recommend ``Do not implement''. I froze one rule for 1993-2009, the one tradable window nobody has backtested. I will debug your code on synthetic data and the seen 2010-2022 window first, so the test window is a parameter and nothing is tuned.
+\medskip
+\par\noindent INPUTS. Returns are monthly decimals.
+\par\noindent 1. \texttt{ff49\_industry\_monthly.csv}: a \texttt{date} column (month-end, e.g. 1926-07-31) and 49 Fama-French industry columns of value-weighted returns, NaN before an industry exists. Brown = Util, Ships, Aero, Steel, BldMt. The Brown leg R\^{}B\_t is their equal-weighted mean minus RF.
+\par\noindent 2. \texttt{fac}: a DataFrame parsed from Ken French's FF5 and momentum files, month-end DatetimeIndex from 1963-07, columns Mkt-RF, SMB, HML, RMW, CMA, RF, UMD.
+\par\noindent 3. FRED CSVs with columns \texttt{observation\_date} (first of month; map to month-end) and the series id: EMVENRGYENVREG and EMVOVERALLEMV (monthly from 1985-01; the first has exact zeros, the second none), GS10 (monthly average 10-year yield, percent), MCOILWTICO (monthly average WTI price, from 1986-01), VIXCLS (daily closes from 1990-01-02, blank on holidays).
+\medskip
+\par\noindent THE TEAM TRADE (validated, unchanged).
+\par\hangindent=1.2em\hangafter=1\noindent\textbullet~Hedge: OLS of R\^{}B on a constant and f = (Mkt-RF, SMB, HML) over months t-59 to t gives (a\_t, b\_t); residual e\_t = R\^{}B\_t - a\_\{t-1\} - b\_\{t-1\}'f\_t.
+\par\hangindent=1.2em\hangafter=1\noindent\textbullet~Size: m\_t = min(1, 0.05 / (sqrt(12) * sd\_t)), sd\_t = 36-month rolling std (ddof=1) of e through t.
+\par\hangindent=1.2em\hangafter=1\noindent\textbullet~Position w\_t = -m\_t in a hold month, else 0, set at the end of month t; it earns w\_t*R\^{}B\_\{t+1\} - w\_t*b\_t'f\_\{t+1\}.
+\par\hangindent=1.2em\hangafter=1\noindent\textbullet~Costs per unit of turnover: 10 bp on |$\Delta$w|, 5 bp on the Mkt-RF overlay change, 25 bp on SMB and HML overlay changes; a trade at the end of t pays in t+1.
+\par\hangindent=1.2em\hangafter=1\noindent\textbullet~A crossing is an extreme month whose previous month was not extreme. The hold covers the crossing month and the next five. With the publication lag, the hold state at the end of t uses the extreme flag of t-1.
+\par\hangindent=1.2em\hangafter=1\noindent\textbullet~Always-on benchmark R\^{}AO: every month is a hold month.
+\medskip
+\par\noindent THE FROZEN RULE.
+\par\noindent 1. Signal: s\_t = EMVENRGYENVREG\_t / EMVOVERALLEMV\_t, observed one month late (the value for month t is usable at the end of month t+1).
+\par\noindent 2. Zeros: a zero month is missing, not low attention. It cannot trigger a position, and it is dropped from both the z-score window and the percentile history. The z-score needs at least 48 nonzero months in the trailing 60; if more than 10\% of the trailing 60 months are zero, the signal is off.
+\par\noindent 3. Extreme month: z\_t = 60-month rolling z-score of log(s\_t) over nonzero months; extreme when z\_t exceeds its expanding, past-only 80th percentile (team convention: at least 60 prior z observations).
+\par\noindent 4. Trade: the 6-month rule above. A new crossing during a hold extends the hold; positions never stack.
+\par\noindent 5. Sample: 1993-01 to 2009-12 (or from the first month the rule can fire, if later), run once.
+\par\noindent 6. Pass bar, all four required: (i) the timing alpha below is positive with t \textgreater{}= 2 and p from t(n-k); (ii) calendar-shuffle p \textless{}= 0.05 (move the same hold windows to random dates, 5,000 times, recompute alpha); (iii) at least 8 independent episodes (merge holds that touch or overlap); (iv) alpha keeps its sign when each Brown industry is dropped in turn (rebuild leg, hedge, sizing, R\^{}AO and pi each time).
+\medskip
+\par\noindent ATTRIBUTION. D\_t = R\^{}T\_t - pi*R\^{}AO\_t, net of costs, with R\^{}T the timed strategy and pi = mean |timed position| / mean |always-on position| over the test window. Regress D\_t on FF5 + UMD, BOND, the WTI log return, dVIX\_t (change in the monthly mean of daily VIX), dlog EMVOVERALLEMV\_t, and I\_\{t-1\} x \{Mkt-RF, HML, BOND, dVIX\}, where I\_\{t-1\} = 1 if the strategy held a position entering month t. Alpha is the intercept. Newey-West with 6 lags (12 as a check); p from t(n-k), k = number of estimated parameters. Report mean(D) = alpha + sum beta*mean(F) + sum gamma*mean(I*F).
+\medskip
+\par\noindent BOND is the monthly excess return of a constant-maturity 10-year Treasury from GS10 (percent to decimal): r\_t = y\_\{t-1\}/12 - D\_\{t-1\}*(y\_t - y\_\{t-1\}) + 0.5*C\_\{t-1\}*(y\_t - y\_\{t-1\})\^{}2, with D and C the modified duration and convexity of a 10-year semiannual par bond at yield y\_\{t-1\}, minus RF.
+\medskip
+\par\noindent CONSTRAINTS.
+\par\hangindent=1.2em\hangafter=1\noindent\textbullet~No look-ahead: every input used at the end of month t is known then (the signal a month later). Attribution regressors are contemporaneous by design; do not lag them.
+\par\hangindent=1.2em\hangafter=1\noindent\textbullet~pandas, numpy and statsmodels only. \texttt{sm.OLS(...).fit(cov\_type=``HAC'', cov\_kwds=\{``maxlags'': 6\}, use\_t=True)} matches our team's Newey-West t and gives p from t(n-k). Count k from the design matrix.
+\par\hangindent=1.2em\hangafter=1\noindent\textbullet~One function per step, each with a docstring giving inputs, outputs and timing convention. Fixed seed, no parameter search, no plots.
+\medskip
+\par\noindent Where the spec is silent, pick one reading, make it a parameter and say why. Three I see: whether a zero month between two extreme months makes the next one a new crossing; how the shuffle places windows and whether pi and I are recomputed per draw; what happens to a hold still open in 2009-12.
+\medskip
+\par\noindent OUTPUTS, as DataFrames, also printed.
+\par\noindent 1. Pass/fail table: one row per component (i) to (iv), with statistic, bar, value, pass/fail; then the overall verdict.
+\par\noindent 2. Attribution: coefficient, NW(6) t, NW(12) t and p per regressor; n, k, R-squared, pi, window dates.
+\par\noindent 3. Decomposition: mean(D), alpha, every beta*mean(F) and gamma*mean(I*F) term, and the identity gap (zero to machine precision).
+\par\noindent 4. Diagnostics: first month the rule can fire, zero-month counts, crossing dates, episode list, leave-one-out alphas and t.
+\par\noindent 5. Shuffle: actual alpha, null quantiles, p.
+\medskip
+\par\noindent AFTER THE CODE.
+\par\noindent (a) Number every assumption you made beyond this spec.
+\par\noindent (b) The checks you would run before my single real run, each with the result that would make you stop, including a look-ahead test.

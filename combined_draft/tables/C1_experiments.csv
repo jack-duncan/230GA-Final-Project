@@ -1,0 +1,7 @@
+Experiment,Looked promising,What happened
+Team rules as first built (validation 2010-2022 vs. holdout 2022-2026),"Original 6m validation net 2.45%, FF3 alpha t = 2.23",every discrete rule lost 2.1% to 3.8% a year in the holdout
+What the attention series measures,label: climate-transition attention,equals FRED EMV energy/environmental-regulation volatility tracker in 500/500 months; corr. with MCCC climate concern -0.0004; 0 of 12 climate-index validation alphas with t >= 1.96
+Timing vs. simply being short Brown (COVID),Original 3m COVID FF3 alpha 6.38% (t = 3.62),always-short alpha 4.54% (t = 1.96); paired edge 1.84% (t = 0.87)
+"Frozen pre-registered rule, 1994-2009","a cleaner signal (regulation share of volatility news), frozen before testing",timing alpha -0.18% a year (t = -0.27); calendar-shuffle p = 0.48; fails 3 of 4 bars
+Alternatives on the same data,EPA supply-chain ranking: post-2010 FF5+UMD alpha 4.7%; carbon-aware industry momentum,EPA alpha t = 1.52; momentum book FF5+UMD alpha t = 1.09 with UMD beta 0.99
+Multiple testing across the whole program,several individual t > 2 results,73 module primary alphas: smallest Holm-adjusted p = 1.000

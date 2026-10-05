@@ -1,0 +1,23 @@
+\par\noindent I ran your script on the real data and through your checks. It ran the first time, with only file paths and \texttt{fac} supplied, and reaches the same verdict as my own implementation (FAIL, 1 of 4). The numbers differ, and one of your stop rules fires.
+\medskip
+\par\noindent 1. \texttt{make\_synthetic\_inputs}. GS10 is a random walk clipped at 0.5 that sits on the floor (76\% of 1995-2009 months for seed 0, every month for seed 16). BOND is then constant, I x BOND acts as an I main effect, and your positive control fails check (b)10: 4\% of the planted 3\% effect reaches alpha (t 0.98), while I x BOND has t -10.8. Seed 16 crashes the null-seed loop (rank-deficient design).
+\medskip
+\par\noindent 2. \texttt{attention\_signal}. Requiring 60 full calendar months before the first z is a silent reading you hard-coded. I treat pre-1985 months as unavailable, not zero, so the 48-nonzero minimum is the burn-in. Your reading moves the first threshold from 1994-01 to 1994-12, adds a 2002-12 crossing and starts the window at 1995-02, not 1994-03: pi 0.809 vs. 0.729, shuffle p 0.536 vs. 0.478.
+\medskip
+\par\noindent 3. \texttt{leg\_pipeline}. You hedge with the Mkt-RF, SMB and HML in \texttt{fac}, the FF5 file. The team hedge uses its FF3 file, which my prompt never said (my gap). SMB differs by up to 3.5 pp a month, b\_t moves by up to 0.09, and your check (b)2 stops at 2.3e-3 a month (6e-17 with FF3).
+\medskip
+\par\noindent 4. \texttt{pass\_fail\_table}. (iv) passes a negative alpha whose five drop-one alphas are also negative.
+\medskip
+\par\noindent With readings 2 and 3 switched to mine, your code matches my implementation to 1e-13, all 5,000 shuffle draws included.
+\medskip
+\par\noindent Two smaller gaps. \texttt{check\_no\_lookahead} compares end-of-T states only, so it missed both return-side bugs I injected (month-t return hedged with b\_t; a position earning its own month). Seen mode ends at 2022-12; its five holdout months flip the seen alpha from -0.16\%/yr (t -0.24) to +0.26\%/yr (t 0.37).
+\medskip
+\par\noindent Please send corrected versions of these functions only, each with a unit test:
+\par\hangindent=1.2em\hangafter=1\noindent\textbullet~\texttt{make\_synthetic\_inputs}: BOND varies in every window for seeds 0-20, and the positive control puts at least 80\% of the planted shift in alpha with t \textgreater{} 2.
+\par\hangindent=1.2em\hangafter=1\noindent\textbullet~\texttt{attention\_signal}: a \texttt{z\_burn\_in} parameter with both readings; on a zero-free series from 1985-01, the first z falls in month 48 under mine and month 60 under yours.
+\par\hangindent=1.2em\hangafter=1\noindent\textbullet~\texttt{leg\_pipeline}: a separate \texttt{hedge\_fac} input; changing its SMB moves b\_t but not the attribution regressors.
+\par\hangindent=1.2em\hangafter=1\noindent\textbullet~\texttt{pass\_fail\_table}: a negative alpha fails (iv).
+\par\hangindent=1.2em\hangafter=1\noindent\textbullet~\texttt{check\_no\_lookahead}: a return-side comparison that flags both injected bugs.
+\par\hangindent=1.2em\hangafter=1\noindent\textbullet~\texttt{\_\_main\_\_}: seen mode ends at 2022-07, with \texttt{cut\_to} on its look-ahead call.
+\medskip
+\par\noindent These fixes are for reproducibility; the frozen rule stays.

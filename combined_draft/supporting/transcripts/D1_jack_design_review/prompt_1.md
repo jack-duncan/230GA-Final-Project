@@ -1,0 +1,38 @@
+I built the climate-attention timing strategy in our team repo (notebooks/climate_alpha_analysis.py) and I want a design review before we sink more hours into it. Act as a skeptical buy-side quant. Find the weak points. Don't fix my prose.
+
+## Course context
+MFE 230GA final project, Berkeley. The report needs: a one-paragraph exec summary that says "Do not implement" if there is no alpha, "What did you try" (idea, data, risk model, turnover/costs, at least three substantial AI interactions), "What did you learn" (factor exposures, full sample / post-2010 / last 12-18 months, robustness, critical evaluation of the AI). Grading: thesis 40%, execution 40%, originality 20% (novel data use, prompt design). A clean "Do not implement" is fine. Our team of five built the first pass. I own the repo and I'm the one making the changes.
+
+## What's in the repo right now
+- Thesis: Green minus Brown has no permanent premium, but its factor-neutral part pays after spikes in climate-transition attention.
+- Legs: Green = 5 lowest emissions-intensity FF49 industries (Fun, RlEst, Drugs, Telcm, Fin). Brown = 5 highest (Util, Ships, Aero, Steel, BldMt). Equal-weight across value-weighted industries. The emissions file is one static snapshot, 41 of 49 industries (missing Oil, Chips, FabPr, Gold, Hshld, LabEq, Other, Toys).
+- Traded position: short the Brown leg alone (not the spread), with an FF3 overlay from rolling 60-month betas lagged one month.
+- Signal: the attention index (monthly from 1985), as a 60-month rolling z-score of log(1 + attention). Extreme = above the expanding, past-only 80th percentile. Each crossing opens Short-Brown for 3 or 6 months, sized to 5% residual vol, cap 1x.
+- Costs (assumed): 10 bp on the leg, 5 bp on the market overlay, 25 bp on SMB/HML, per unit of turnover.
+- Variants: "purified" attention (the residual from a 120-month walk-forward ridge on rate, oil, inflation and activity shocks). A continuous weight (floor 0.5, 3-month half-life).
+- Validation 2010 to Jul 2022. Holdout Aug 2022 to Jul 2026, frozen.
+
+## Numbers (from the notebook)
+- Validation: the 6-month rules earn about 2.5%/yr net, FF3 alpha NW t = 2.23 and 2.46. The 3-month rules have t of about 1.5.
+- COVID does the work: the 3-month rule earns 5.94% net in 2020-21, alpha t = 3.21.
+- Holdout: every version loses 2.1 to 3.8%/yr (t = -1.7 to -2.2). The IC flips from about -0.08 (negative is the expected sign for a short-Brown rule) to +0.12 to +0.15.
+- 2010-2026: the best timed version earns 1.3%/yr net vs 1.0% for always-short Brown.
+- The raw spread loads on HML (-0.24 full sample, -0.35 since 2010). After hedging, residual HML is about -0.05 with t of about -2 in every version.
+- Continuous variant: vol down 55-65%, drawdown down 60-75%, but the calendar-shuffle placebo gives p of about 0.12.
+- 2 of 32 strategy-period cells survive Holm, both in COVID.
+- My macro-state notebook: the attention slope turns positive in high-rate months (difference t = 1.83, Holm p of about 0.6). 47 of those 74 months are in the holdout.
+
+## Teammate proposals on the table
+From Cristhian: (A) rebuild with 8 Green and 8 Brown industries. (B) add momentum and an explicit commodity exposure to the controls. (C) regress Fin, Telcm, Drugs, Fun and RlEst one at a time to find where the HML exposure comes from. (D) uniform costs at 5, 10 and 25 bp. From Charishma: (E) a Part B on whether this is alpha or beta at the portfolio level. From the group: (F) macro controls, since exposures look regime dependent (COVID, then inflation and rates). (G) a momentum control, in case the signal is only persistence in past returns.
+
+## Data
+In hand: the four team files (FF49 monthly returns, Jul 1926 to Jul 2026, FF3 and rf, the emissions snapshot, a macro file with attention, the 10-year yield, WTI, CPI, CFNAI, the NBER recession flag and GSCPI). Downloadable: Ken French FF5, UMD, short- and long-term reversal, FF49 value- and equal-weighted returns, industry BE/ME, firm counts and average size. FRED Treasury yields (3-month, 2-year, 10-year), BAA and AAA, VIX, commodity indices, activity series, breakevens and TIPS yields. The Gavriilidis Climate Policy Uncertainty index. The Ardia et al. Media Climate Change Concerns index. EPA supply-chain GHG factors by NAICS. No firm-level data. Every result so far starts in 2010, and we have now seen the holdout, so it is spent as a clean test.
+
+## What I want back, in this order
+1. Design critique: max six problems, ranked by how much each could flip the verdict. Problem / why it matters here / fix.
+2. Proposal ranking: one table for A to G: rank, proposal, the result that would change our conclusion, what it can't tell us, overlap with the other proposals, effort in hours. One line of reasoning per row.
+3. New ideas: exactly five, at least two extending the current strategy and at least two alternatives on the same data, each aimed at a small defensible alpha or a more rigorous "Do not implement". For each: (a) a falsifiable hypothesis and the result that rejects it. (b) the exact test: sample, return series, specification, benchmark, pass bar. (c) the data, and whether it's in the list above. (d) main pitfalls (look-ahead, multiple testing, small N, overlapping holds). (e) effort in hours. (f) what it adds to the report if it fails.
+4. Plan: the three items from 2 and 3 you'd run first, in order, and why.
+5. The three assumptions in your answer you're least confident about.
+
+Rules: work from our numbers, not generic ESG results. Cite a paper only with authors, year and the specific claim. Don't invent backtest results. Label anything you haven't computed as a guess. Under 1,800 words.
