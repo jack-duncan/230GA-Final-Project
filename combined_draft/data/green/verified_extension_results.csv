@@ -1,0 +1,36 @@
+name,value,source_file,row_filter,column,note
+M1_identity_overlap_months,500,outputs/tables/M1_signal_audit_key_numbers.csv,name=identity_overlap_months,value,signal audit
+M1_identity_months_not_equal,0,outputs/tables/M1_signal_audit_key_numbers.csv,name=identity_months_not_equal,value,signal audit
+M1_zeros_pre_2021-10,12/441,outputs/tables/M1_signal_audit_key_numbers.csv,name=zeros_pre_2021-10,value,signal audit
+M1_zeros_post_2021-10,39/59,outputs/tables/M1_signal_audit_key_numbers.csv,name=zeros_post_2021-10,value,signal audit
+M1_R2_teamz_on_z_VIX_and_z_EMV_overall_full,0.16863600008403268,outputs/tables/M1_signal_audit_key_numbers.csv,name=R2_teamz_on_z_VIX_and_z_EMV_overall_full,value,signal audit
+M1_corr_z_MCCC_teamsignal,-0.000350387614526,outputs/tables/M1_signal_audit_measure_correlations.csv,measure=MCCC; transform=z; reference=EMV_env; sample=overlap,pearson,"z-score correlation, 2005-12 to 2025-06"
+M1_corr_z_CPU_teamsignal,0.122784557316318,outputs/tables/M1_signal_audit_measure_correlations.csv,measure=CPU; transform=z; reference=EMV_env; sample=overlap,pearson,"z-score correlation, 1990-03 to 2025-09"
+M1b_climate_index_validation_alphas_total,12,outputs/tables/M1b_alt_signals_primary.csv,"kind=FF3 alpha; period=validation; measure in (MCCC, CPU)",count,
+M1b_climate_index_validation_alphas_t_ge_1.96,0,outputs/tables/M1b_alt_signals_primary.csv,"same rows, t >= 1.96",t,
+M8_primary_timing_alpha_statistic,"alpha -0.0018/yr, t -0.27",outputs/tables/M8_passbar.csv,"signal=Frozen EMV-share rule (primary); component=(i) timing alpha, NW(6)",statistic,
+M8_primary_timing_alpha_pass,False,outputs/tables/M8_passbar.csv,"signal=Frozen EMV-share rule (primary); component=(i) timing alpha, NW(6)",pass,
+M8_primary_shuffle_statistic,"5000 draws, 10 blocks",outputs/tables/M8_passbar.csv,signal=Frozen EMV-share rule (primary); component=(ii) calendar shuffle,statistic,
+M8_primary_shuffle_pass,False,outputs/tables/M8_passbar.csv,signal=Frozen EMV-share rule (primary); component=(ii) calendar shuffle,pass,
+M8_primary_drop_one_statistic,"alphas Util -0.0061, Ships +0.0003, Aero +0.0001, Steel -0.0019, BldMt -0.0011",outputs/tables/M8_passbar.csv,signal=Frozen EMV-share rule (primary); component=(iv) drop-one Brown industry,statistic,
+M8_primary_drop_one_pass,False,outputs/tables/M8_passbar.csv,signal=Frozen EMV-share rule (primary); component=(iv) drop-one Brown industry,pass,
+M8_primary_shuffle_p,0.4779044191161767,outputs/tables/M8_passbar.csv,signal=Frozen EMV-share rule (primary); component=(ii) calendar shuffle,p_value,
+M8_primary_verdict_pass,False,outputs/tables/M8_passbar.csv,signal=Frozen EMV-share rule (primary); component=VERDICT,pass,
+M8_team_lagged_timing_alpha_statistic,"alpha 0.0069/yr, t 1.00",outputs/tables/M8_passbar.csv,"signal=Team EMV_env level, lagged 1m (secondary); component=(i) timing alpha, NW(6)",statistic,
+M8_window,1994-03 to 2009-12,outputs/tables/M8_strategy_summary.csv,signal=Frozen EMV-share rule (primary),window,
+M4_epa_gb_post2010_ff5umd_alpha,0.0472154785769354,outputs/tables/M4_emissions_primary_test.csv,n=199,alpha_ann,
+M4_epa_gb_post2010_ff5umd_t,1.5164186316677917,outputs/tables/M4_emissions_primary_test.csv,n=199,t_alpha,
+M5_ew_momentum_full_1970_ff5umd_alpha_ann,0.0173672585634427,outputs/tables/M5_industry_momentum_alphas.csv,series=net; period=full_1970; model=FF5+UMD,alpha_ann,
+M5_ew_momentum_full_1970_ff5umd_t_alpha,1.093471544008086,outputs/tables/M5_industry_momentum_alphas.csv,series=net; period=full_1970; model=FF5+UMD,t_alpha,
+M5_ew_momentum_full_1970_ff5umd_b_UMD,0.9867828758071052,outputs/tables/M5_industry_momentum_alphas.csv,series=net; period=full_1970; model=FF5+UMD,b_UMD,
+M5_ew_momentum_post2010_ff5umd_alpha_ann,0.0185738868733907,outputs/tables/M5_industry_momentum_alphas.csv,series=net; period=post2010; model=FF5+UMD,alpha_ann,
+M5_ew_momentum_post2010_ff5umd_t_alpha,0.7051072355141196,outputs/tables/M5_industry_momentum_alphas.csv,series=net; period=post2010; model=FF5+UMD,t_alpha,
+M5_ew_momentum_post2010_ff5umd_b_UMD,0.9580956464545354,outputs/tables/M5_industry_momentum_alphas.csv,series=net; period=post2010; model=FF5+UMD,b_UMD,
+M7_optimizer_frozen_1931_1969_alpha,0.01952620483582832,outputs/tables/M7_frozen_pre1970.csv,item=alpha,value,"optimized industry-momentum book, hash-frozen"
+M7_optimizer_frozen_1931_1969_t,2.4477859313425823,outputs/tables/M7_frozen_pre1970.csv,item=t,value,"optimized industry-momentum book, hash-frozen"
+M7_optimizer_frozen_1931_1969_first_month,1931-07,outputs/tables/M7_frozen_pre1970.csv,item=first_month,value,"optimized industry-momentum book, hash-frozen"
+M7_optimizer_frozen_1931_1969_last_month,1969-12,outputs/tables/M7_frozen_pre1970.csv,item=last_month,value,"optimized industry-momentum book, hash-frozen"
+M7_optimizer_frozen_1931_1969_verdict,PASS,outputs/tables/M7_frozen_pre1970.csv,item=verdict,value,"optimized industry-momentum book, hash-frozen"
+M7_optimizer_evidence_against,holdout alpha -0.34% (inconclusive); DSR 0.559 / 0.362; validation-to-holdout decay,outputs/tables/M7_verdict_table.csv,Candidate=Optimizer book (X_unc),Evidence against,
+M7_family_P_tests,73,outputs/tables/M7_multiple_testing_summary.csv,"Family=P (module primary alphas); Method=Holm, one-sided",Tests,
+M7_family_P_holm_min_p,1.000,outputs/tables/M7_multiple_testing_summary.csv,"Family=P (module primary alphas); Method=Holm, one-sided",Smallest adjusted p,
